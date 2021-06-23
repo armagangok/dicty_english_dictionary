@@ -28,60 +28,63 @@ class MyHomePage extends StatelessWidget {
       body: Container(
         height: double.infinity,
         child: ClickableListWheelScrollView(
-            scrollController: _scrollController,
-            itemHeight: _itemHeight,
-            itemCount: _itemCount,
-            onItemTapCallback: (index) {
-              if (_scrollController.hasClients) {
-                if (index == 0) {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return AddingPage();
-                  }));
-                } else if (index == 2) {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return LookUpPage();
-                  }));
-                } else if (index == 4) {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return LoopingPage();
-                  }));
-                } else if (index == 6) {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return ListenPage();
-                  }));
-                }
+          scrollController: _scrollController,
+          itemHeight: _itemHeight,
+          itemCount: _itemCount,
+          onItemTapCallback: (index) {
+            if (_scrollController.hasClients) {
+              if (index == 0) {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return AddingPage();
+                }));
+              } else if (index == 2) {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return LookUpPage();
+                }));
+              } else if (index == 4) {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return LoopingPage();
+                }));
+              } else if (index == 6) {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return ListenPage();
+                }));
               }
-            },
-            child: ListWheelScrollView(
-              controller: _scrollController,
-              itemExtent: _itemHeight,
-              physics: FixedExtentScrollPhysics(),
-              children: [
-                Text(
-                  "Add A Word",
-                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 15),
-                Text(
-                  "Look Up",
-                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 15),
-                Text(
-                  "Looping",
-                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 15),
-                Text(
-                  "Listen",
-                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                ),
-              ],
-            )),
+            }
+          },
+          child: ListWheelScrollView(
+            controller: _scrollController,
+            itemExtent: _itemHeight,
+            magnification: 1.8,
+            useMagnifier: true,
+            physics: FixedExtentScrollPhysics(),
+            children: [
+              Text(
+                "Add A Word",
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 15),
+              Text(
+                "Look Up",
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 15),
+              Text(
+                "Looping",
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 15),
+              Text(
+                "Listen",
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
