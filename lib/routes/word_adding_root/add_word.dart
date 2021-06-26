@@ -16,11 +16,15 @@ class AddingPage extends StatelessWidget {
             maxLines: 10,
             cursorHeight: 20,
             cursorColor: Colors.black,
-            style: TextStyle(fontSize: 20),
+            maxLength: 2000,
+            style: TextStyle(
+              fontSize: 20,
+            ),
             decoration: InputDecoration(
               hintText: 'Type ',
+              labelText: 'add text',
               border: OutlineInputBorder(),
-              fillColor: Colors.yellow[50],
+              fillColor: Colors.yellow[100],
               filled: true,
             ),
           ),
@@ -31,7 +35,10 @@ class AddingPage extends StatelessWidget {
                 onPressed: () {},
                 child: Text(
                   "Save",
-                  style: TextStyle(fontSize: 30),
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
               ),
             ),

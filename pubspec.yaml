@@ -24,6 +24,10 @@ dependencies:
   flutter:
     sdk: flutter
   clickable_list_wheel_view:
+  numberpicker: 2.1.1
+  
+
+
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -46,7 +46,7 @@ class MyHomePage extends StatelessWidget {
               } else if (index == 4) {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
-                  return LoopingPage();
+                  return ExampleApp();
                 }));
               } else if (index == 6) {
                 Navigator.of(context)
@@ -65,22 +65,22 @@ class MyHomePage extends StatelessWidget {
             children: [
               Text(
                 "Add A Word",
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 33, fontWeight: FontWeight.w800),
               ),
               SizedBox(height: 15),
               Text(
                 "Look Up",
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.w800),
               ),
               SizedBox(height: 15),
               Text(
                 "Looping",
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.w800),
               ),
               SizedBox(height: 15),
               Text(
                 "Listen",
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.w800),
               ),
             ],
           ),
