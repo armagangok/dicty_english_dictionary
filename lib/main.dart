@@ -25,6 +25,7 @@ class MyHomePage extends StatelessWidget {
     const int _itemCount = 100;
 
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       body: Container(
         height: double.infinity,
         child: ClickableListWheelScrollView(
@@ -41,7 +42,7 @@ class MyHomePage extends StatelessWidget {
               } else if (index == 2) {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
-                  return LookUpPage();
+                  return HomePage();
                 }));
               } else if (index == 4) {
                 Navigator.of(context)
@@ -63,29 +64,29 @@ class MyHomePage extends StatelessWidget {
             useMagnifier: true,
             physics: FixedExtentScrollPhysics(),
             children: [
-              Text(
-                "Add A Word",
-                style: TextStyle(fontSize: 33, fontWeight: FontWeight.w800),
-              ),
+              homeText(text: 'Add A Word'),
               SizedBox(height: 15),
-              Text(
-                "Look Up",
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.w800),
-              ),
+              homeText(text: 'Look Up'),
               SizedBox(height: 15),
-              Text(
-                "Looping",
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.w800),
-              ),
+              homeText(text: 'Looping'),
               SizedBox(height: 15),
-              Text(
-                "Listen",
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.w800),
-              ),
+              homeText(text: 'Listen'),
             ],
           ),
         ),
       ),
     );
   }
+}
+
+Widget homeText({String text = ''}) {
+  return Column(children: [
+    Text(
+      text,
+      style: TextStyle(
+        fontSize: 33,
+        fontWeight: FontWeight.w800,
+      ),
+    ),
+  ]);
 }
