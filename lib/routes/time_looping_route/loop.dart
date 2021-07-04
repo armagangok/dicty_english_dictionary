@@ -49,64 +49,69 @@ class __IntegerExampleState extends State<_IntegerExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              color: Colors.amber[900],
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                color: Colors.amber[900],
+                child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 16, horizontal: 40),
+                    child: Text('Choose loop time as minute!',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ))),
+                elevation: 8),
+            SizedBox(height: 20),
+            Center(
               child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 16, horizontal: 40),
-                  child: Text('Choose loop time as minute!',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ))),
-              elevation: 8),
-          SizedBox(height: 20),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.amber[50],
-              border: Border.all(),
-            ),
-            child: NumberPicker(
-              textStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              value: _currentIntValue,
-              minValue: 0,
-              maxValue: 40,
-              step: 1,
-              haptics: true,
-              itemHeight: 60,
-              itemWidth: 360,
-              selectedTextStyle: TextStyle(
-                  color: Colors.amber[900],
-                  fontWeight: FontWeight.bold,
-                  fontSize: 50),
-              itemCount: 5,
-              onChanged: (value) => setState(
-                () => _currentIntValue = value,
+                decoration: BoxDecoration(
+                  color: Colors.amber[50],
+                  border: Border.all(),
+                ),
+                child: NumberPicker(
+                  textStyle:
+                      TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  value: _currentIntValue,
+                  minValue: 0,
+                  maxValue: 40,
+                  step: 1,
+                  haptics: true,
+                  itemHeight: 60,
+                  itemWidth: 360,
+                  selectedTextStyle: TextStyle(
+                      color: Colors.amber[900],
+                      fontWeight: FontWeight.bold,
+                      fontSize: 50),
+                  itemCount: 5,
+                  onChanged: (value) => setState(
+                    () => _currentIntValue = value,
+                  ),
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 10),
-          TextButton(
-            onPressed: () {
-              print(_currentIntValue);
-            },
-            child: Container(
-              child: Text(
-                "Save",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 40,
-                    color: Colors.amber[900]),
+            SizedBox(height: 10),
+            TextButton(
+              onPressed: () {
+                print(_currentIntValue);
+              },
+              child: Container(
+                child: Text(
+                  "Save",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40,
+                      color: Colors.amber[900]),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

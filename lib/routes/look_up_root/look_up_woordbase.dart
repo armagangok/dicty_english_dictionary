@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:wordmind/utils/utils.dart';
+import 'edit_text.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,20 +12,30 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String data = '';
   List newData = [];
-  void fetchFileData() async {
+  getfiledata() async {
+    await fetchFileData();
+  }
+
+  Future<void> fetchFileData() async {
     String fetchData;
 
-    fetchData = await rootBundle.loadString('TEXT_FILES/wordbase.txt');
-    setState(() {
-      data = fetchData;
-      newData = data.split('\n');
-    });
+    final file = await FileUtils.getFile;
+
+    if (await file.exists()) {
+      fetchData = await file.readAsString();
+      setState(() {
+        data = fetchData;
+        newData = data.split('\n');
+      });
+      print(newData);
+    }
   }
 
   @override
   void initState() {
-    fetchFileData();
+    print(newData);
     super.initState();
+    getfiledata();
   }
 
   @override
@@ -35,7 +46,9 @@ class _HomePageState extends State<HomePage> {
         itemCount: newData.length,
         itemBuilder: (context, index) {
           return ListTile(
-            onTap: () {},
+            onTap: () {
+              editingField(context);
+            },
             title: Card(
               child: Row(children: <Widget>[
                 Expanded(
@@ -59,7 +72,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                   color: Colors.blue,
                   highlightColor: Colors.red,
-                  onPressed: () {},
+                  onPressed: () {
+                    print("will delete!");
+                  },
                 )
                 // IconButton(onPressed: () {}, icon: Icons.access_alarms),
               ]),
