@@ -47,10 +47,10 @@ class __IntegerExampleState extends State<_IntegerExample> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[200],
-      body: SafeArea(
-        child: Column(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.grey[200],
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Card(
