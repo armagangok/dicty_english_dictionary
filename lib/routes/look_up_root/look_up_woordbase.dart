@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'edit_text.dart';
-import 'package:wordmind/utils/database_helper.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -8,78 +7,65 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Map<String, dynamic>> rows = List<Map<String, dynamic>>.empty();
-
-  Future<List<Map<String, dynamic>>> passData() async {
-    List<Map<String, dynamic>> queryRows =
-        await DatabaseHelper.instance.queryAll();
-
-    return queryRows;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    nonAsync();
-  }
-
-  void nonAsync() async {
-    rows = await passData();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: passData(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData == null) {
-          return Container();
-        } else {
-          return Scaffold(
-            backgroundColor: Colors.grey[200],
-            body: ListView.builder(
-              itemCount: rows.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  onTap: () {
-                    editingField(context);
-                  },
-                  title: Card(
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
+    return Scaffold(
+      backgroundColor: Colors.purple[100],
+      body: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return ListTile(
+            onTap: () {
+              editingField(context);
+            },
+            title: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                10,
+              )),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white70,
+                          border: Border.all(
+                            width: 3,
+                            // c),
+                          )),
+                      height: 110,
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
                           child: Container(
-                            color: Colors.yellow[50],
-                            height: 100,
-                            child: SingleChildScrollView(
-                              child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Text(
-                                  rows[index]["words"],
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                              ),
+                            padding: EdgeInsets.all(3),
+                            child: Text(
+                              "merhaba",
+                              style: TextStyle(fontSize: 16),
                             ),
                           ),
                         ),
-                        IconButton(
-                          icon: const Icon(
-                            Icons.delete,
-                          ),
-                          color: Colors.blue,
-                          highlightColor: Colors.red,
-                          onPressed: () {},
-                        )
-                        // IconButton(onPressed: () {}, icon: Icons.access_alarms),
-                      ],
+                      ),
                     ),
                   ),
-                );
-              },
+                  IconButton(
+                    icon: const Icon(
+                      Icons.delete,
+                    ),
+                    color: Colors.black,
+                    iconSize: 20,
+                    onPressed: () {
+                      print(index);
+                    },
+                  )
+                  // IconButton(onPressed: () {}, icon: Icons.access_alarms),
+                ],
+              ),
             ),
           );
-        }
-      },
+        },
+      ),
     );
   }
 }

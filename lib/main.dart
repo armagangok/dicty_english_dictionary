@@ -86,6 +86,7 @@ Widget homeText({String text = ''}) {
       style: TextStyle(
         fontSize: 33,
         fontWeight: FontWeight.w800,
+        color: Colors.black,
       ),
     ),
   ]);

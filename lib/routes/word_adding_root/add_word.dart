@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import 'package:wordmind/utils/database_helper.dart';
 
 class AddingPage extends StatelessWidget {
   final textController = TextEditingController();
@@ -7,7 +6,7 @@ class AddingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.purple[100],
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.symmetric(
@@ -39,23 +38,19 @@ class AddingPage extends StatelessWidget {
                   // hintStyle: Style(),
                   labelText: 'add text',
 
-                  fillColor: Colors.grey[100],
+                  fillColor: Colors.white70,
                   filled: true,
                 ),
               ),
               Container(
                 child: TextButton(
-                  onPressed: () async {
-                    int i = await DatabaseHelper.instance.insert({
-                      DatabaseHelper.columnName: textController.text,
-                    });
-                  },
+                  onPressed: () {},
                   child: Text(
                     "Save",
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.w800,
-                        color: Colors.amber[900]),
+                        color: Colors.white),
                   ),
                 ),
               ),
