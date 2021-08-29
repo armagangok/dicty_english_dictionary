@@ -1,11 +1,22 @@
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:wordmind/routes/look_up_root/look_up_woordbase.dart';
-import 'package:wordmind/routes/time_looping_route/loop.dart';
-import 'package:wordmind/routes/word_listenin_root/listen.dart';
-import './routes/word_adding_root/add_word.dart';
+import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'app/routes/look_up_root/look_up_woordbase.dart';
+import 'app/routes/time_looping_route/loop.dart';
+import 'app/routes/word_adding_root/add_word.dart';
+import 'app/routes/word_listening_root/listen.dart';
+import 'models/words.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final directory = await path_provider.getApplicationDocumentsDirectory();
+  Hive.initFlutter(directory.path);
+  Hive.registerAdapter(WordAdapter());
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -25,7 +36,7 @@ class MyHomePage extends StatelessWidget {
     const int _itemCount = 100;
 
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[400],
       body: Container(
         height: double.infinity,
         child: ClickableListWheelScrollView(
@@ -50,10 +61,13 @@ class MyHomePage extends StatelessWidget {
                   return ExampleApp();
                 }));
               } else if (index == 6) {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) {
-                  return ListenPage();
-                }));
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ListenPage();
+                    },
+                  ),
+                );
               }
             }
           },

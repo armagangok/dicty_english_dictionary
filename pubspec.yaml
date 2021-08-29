@@ -26,6 +26,9 @@ dependencies:
   clickable_list_wheel_view:
   numberpicker: 2.1.1
   path_provider: ^2.0.2
+  hive:
+  hive_flutter:
+  
 
   
 
@@ -38,6 +41,8 @@ dependencies:
   sqflite: ^2.0.0+3
   path: ^1.8.0
   intl: ^0.17.0
+  hive_generator: ^1.1.0
+  build_runner: ^2.1.1
 
 dev_dependencies:
   flutter_test:
