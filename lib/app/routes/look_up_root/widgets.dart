@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:wordmind/models/tts_helper/text_to_speech_helper.dart';
 import 'package:wordmind/models/words.dart';
 import 'edit_text.dart';
 
@@ -15,7 +16,7 @@ class _WidgetsState extends State<Widgets> {
   Widget build(BuildContext context) {
     final wordBox = Hive.box("words");
     return Scaffold(
-      backgroundColor: Colors.grey[400],
+      backgroundColor: Colors.grey[200],
       body: WatchBoxBuilder(
         box: wordBox,
         builder: (context, wordBox) {
@@ -43,13 +44,22 @@ class _WidgetsState extends State<Widgets> {
                   ),
                   child: Row(
                     children: <Widget>[
+                      IconButton(
+                        icon: const Icon(Icons.record_voice_over),
+                        color: Colors.blue[500],
+                        iconSize: 30,
+                        splashColor: Colors.blue,
+                        onPressed: () {
+                          speak(data.word);
+                        },
+                      ),
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.white70,
+                            color: Colors.grey[200],
                             border: Border.all(
-                              width: 3,
+                              width: 2,
                             ),
                           ),
                           height: 110,
@@ -68,18 +78,17 @@ class _WidgetsState extends State<Widgets> {
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(
-                          Icons.delete,
-                        ),
-                        color: Colors.red[900],
-                        iconSize: 20,
-                        splashColor: Colors.red,
+                        icon: const Icon(Icons.delete),
+                        color: Colors.red[500],
+                        iconSize: 30,
+                        splashColor: Colors.red[900],
                         onPressed: () {
                           wordBox.deleteAt(index);
                         },
                       ),
                     ],
                   ),
+                  elevation: 10,
                 ),
               );
             },

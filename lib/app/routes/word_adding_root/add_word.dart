@@ -7,64 +7,69 @@ class AddingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey[400],
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.grey[400],
-          body: Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: 5,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.grey[500],
+          title: Text(
+            "Add",
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.w900,
             ),
-            child: Column(
-              children: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    FocusScopeNode currentFocus = FocusScope.of(context);
-                    if (!currentFocus.hasPrimaryFocus) {
-                      currentFocus.unfocus();
-                    }
-                  },
-                  child: TextFormField(
+          ),
+        ),
+        backgroundColor: Colors.grey[200],
+        body: Container(
+          padding: EdgeInsets.all(10),
+          child: ListView(
+            children: [
+              Column(
+                children: <Widget>[
+                  TextFormField(
                     controller: textController,
                     keyboardType: TextInputType.multiline,
-                    maxLines: 15,
+                    maxLines: 8,
                     cursorHeight: 20,
-                    cursorColor: Colors.amber[900],
+                    cursorColor: Colors.black,
                     maxLength: 2000,
                     style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
+                      fontSize: 20,
                     ),
                     decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Type ',
-                      hintStyle: TextStyle(color: Colors.black),
-                      labelStyle: TextStyle(color: Colors.black),
-                      labelText: 'add text',
-                      fillColor: Colors.white70,
+                      labelText: 'edit text',
+                      // hintText: "Type",
+
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.blue,
+                          width: 3,
+                        ),
+                      ),
+                      fillColor: Colors.white,
                       filled: true,
                     ),
                   ),
-                ),
-                Container(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      final word = Word(this.textController.text);
-                      addData(word);
-                    },
-                    child: Text(
-                      "Save",
-                      style: TextStyle(
-                        fontSize: 45,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.white,
+                  Container(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        final word = Word(this.textController.text);
+                        addData(word);
+                      },
+                      child: Text(
+                        "Save",
+                        style: TextStyle(
+                          fontSize: 45,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

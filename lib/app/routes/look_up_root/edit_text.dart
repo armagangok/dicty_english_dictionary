@@ -30,19 +30,29 @@ class _EditTextState extends State<EditText> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey[400],
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.grey[400],
-          body: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.all(5),
-                child: TextFormField(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        backgroundColor: Colors.grey[200],
+        appBar: AppBar(
+          backgroundColor: Colors.grey[500],
+          title: Text(
+            "Editing",
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+        ),
+        body: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.all(10),
+            child: Column(
+              children: [
+                TextFormField(
                   controller: textEditingController,
                   keyboardType: TextInputType.multiline,
-                  maxLines: 10,
+                  maxLines: 8,
                   cursorHeight: 20,
                   cursorColor: Colors.black,
                   maxLength: 2000,
@@ -63,17 +73,12 @@ class _EditTextState extends State<EditText> {
                     filled: true,
                   ),
                 ),
-              ),
-              TextButton(
-                onPressed: () {
-                  final word = Word(this.textEditingController.text);
-                  deleteAt(widget.index);
-                  addData(word);
-                },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 0.0,
-                  ),
+                TextButton(
+                  onPressed: () {
+                    final word = Word(this.textEditingController.text);
+                    deleteAt(widget.index);
+                    addData(word);
+                  },
                   child: Text(
                     "Save",
                     style: TextStyle(
@@ -82,8 +87,8 @@ class _EditTextState extends State<EditText> {
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

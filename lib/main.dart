@@ -1,13 +1,15 @@
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'app/routes/look_up_root/look_up_woordbase.dart';
+import 'app/routes/settings_page/settings.dart';
 import 'app/routes/time_looping_route/loop.dart';
 import 'app/routes/word_adding_root/add_word.dart';
 import 'app/routes/word_listening_root/listen.dart';
 import 'models/words.dart';
+
+import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,16 +60,13 @@ class MyHomePage extends StatelessWidget {
               } else if (index == 4) {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
-                  return ExampleApp();
+                  return ListenPage();
                 }));
               } else if (index == 6) {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return ListenPage();
-                    },
-                  ),
-                );
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return Setting();
+                }));
               }
             }
           },
@@ -79,12 +78,12 @@ class MyHomePage extends StatelessWidget {
             physics: FixedExtentScrollPhysics(),
             children: [
               homeText(text: 'Add A Word'),
-              SizedBox(height: 15),
+              SizedBox(height: 10),
               homeText(text: 'Look Up'),
-              SizedBox(height: 15),
-              homeText(text: 'Looping'),
-              SizedBox(height: 15),
+              SizedBox(height: 10),
               homeText(text: 'Listen'),
+              SizedBox(height: 10),
+              homeText(text: 'Settings'),
             ],
           ),
         ),
@@ -94,14 +93,16 @@ class MyHomePage extends StatelessWidget {
 }
 
 Widget homeText({String text = ''}) {
-  return Column(children: [
-    Text(
-      text,
-      style: TextStyle(
-        fontSize: 33,
-        fontWeight: FontWeight.w800,
-        color: Colors.black,
+  return Column(
+    children: [
+      Text(
+        text,
+        style: TextStyle(
+          fontSize: 33,
+          fontWeight: FontWeight.w800,
+          color: Colors.black,
+        ),
       ),
-    ),
-  ]);
+    ],
+  );
 }
