@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'widgets.dart';
+import 'widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
   @override

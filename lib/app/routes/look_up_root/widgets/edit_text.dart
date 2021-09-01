@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/database/hive.dart';
+import 'package:wordmind/app/database/hive.dart';
 import 'package:wordmind/models/words.dart';
 
 class EditText extends StatefulWidget {
