@@ -17,6 +17,7 @@ class _WidgetsState extends State<Widgets> {
     final wordBox = Hive.box("words");
     return Scaffold(
       backgroundColor: Colors.grey[200],
+      // ignore: deprecated_member_use
       body: WatchBoxBuilder(
         box: wordBox,
         builder: (context, wordBox) {

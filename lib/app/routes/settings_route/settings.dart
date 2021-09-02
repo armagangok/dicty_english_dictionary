@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wordmind/app/routes/settings_route/widgets/language_drowdown_button.dart';
 import 'package:wordmind/app/routes/settings_route/widgets/numberpicker_widget.dart';
 import 'package:wordmind/models/tts_helper/text_to_speech_helper.dart';
 
@@ -37,31 +38,13 @@ class _SettingState extends State<Setting> {
                   "Choose language",
                   style: TextStyle(fontSize: 20),
                 ),
-                Center(
-                  child: DropdownButton<String>(
-                    dropdownColor: Colors.grey[300],
-                    value: dropdownValue,
-                    style: TextStyle(color: Colors.blue[500]),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        dropdownValue = newValue!;
-                      });
-                    },
-                    items: <String>[
-                      'English-UK',
-                      'English-US',
-                      'English-IN',
-                      'Turkish',
-                      'Deutch',
-                      'French',
-                      'Arabic',
-                    ].map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
+                LanguageDropDown(
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      dropdownValue = newValue!;
+                    });
+                  },
+                  languageDropdownValue: dropdownValue,
                 ),
               ],
             ),
