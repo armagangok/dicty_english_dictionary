@@ -1,7 +1,7 @@
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
 import 'package:flutter/material.dart';
 import 'app/routes/look_up_root/look_up_woordbase.dart';
-import 'app/routes/settings_page/settings.dart';
+import 'app/routes/settings_route/settings.dart';
 import 'app/routes/word_adding_root/add_word.dart';
 import 'app/routes/word_listening_root/listen.dart';
 import 'models/words.dart';

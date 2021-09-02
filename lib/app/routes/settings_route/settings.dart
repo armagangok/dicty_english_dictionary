@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/routes/settings_page/widgets/numberpicker_widget.dart';
+import 'package:wordmind/app/routes/settings_route/widgets/numberpicker_widget.dart';
 import 'package:wordmind/models/tts_helper/text_to_speech_helper.dart';
 
 class Setting extends StatefulWidget {
