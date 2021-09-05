@@ -1,16 +1,28 @@
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:hive/hive.dart';
+import 'package:wordmind/app/database/hive.dart';
 
 final FlutterTts flutterTts = FlutterTts();
 
 void speak(String data) async {
-  print(await flutterTts.getLanguages);
-
+  String language = await getCountry();
+  print(data);
+  setLanguage(language);
+  // print(await flutterTts.getLanguages);
   await flutterTts.setPitch(1);
   await flutterTts.setSpeechRate(0.5);
   await flutterTts.speak(data);
 }
 
-languageController(language) async {
+void pause() {
+  flutterTts.pause();
+}
+
+setLanguage(String language) async {
+  await Hive.openBox("countryBox");
+  final box = Hive.box("countryBox");
+  final language = box.getAt(0);
+
   switch (language) {
     case 'English-UK':
       await flutterTts.setLanguage("en-GB");
@@ -42,6 +54,10 @@ languageController(language) async {
 
     case 'Arabic':
       await flutterTts.setLanguage("ar-SA");
+      break;
+
+    case 'French':
+      await flutterTts.setLanguage("fr-FR");
       break;
 
     default:

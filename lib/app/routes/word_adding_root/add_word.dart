@@ -11,7 +11,7 @@ class AddingPage extends StatelessWidget {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.grey[500],
+          backgroundColor: Colors.grey[600],
           title: Text(
             "Add",
             style: TextStyle(
@@ -53,6 +53,8 @@ class AddingPage extends StatelessWidget {
                   ),
                   Container(
                     child: ElevatedButton(
+                      style:
+                          ElevatedButton.styleFrom(primary: Colors.grey[500]),
                       onPressed: () {
                         final word = Word(this.textController.text);
                         addData(word);
@@ -60,7 +62,7 @@ class AddingPage extends StatelessWidget {
                       child: Text(
                         "Save",
                         style: TextStyle(
-                          fontSize: 45,
+                          fontSize: 25,
                           fontWeight: FontWeight.w800,
                           color: Colors.white,
                         ),
