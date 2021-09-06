@@ -1,14 +1,22 @@
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:wordmind/app/database/hive.dart';
 import 'package:wordmind/app/routes/look_up_root/look_up_woordbase.dart';
 import 'package:wordmind/app/routes/settings_route/settings.dart';
 import 'package:wordmind/app/routes/word_adding_root/add_word.dart';
 import 'package:wordmind/app/routes/word_listening_root/listen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final double _itemHeight = 60;
   final int _itemCount = 100;
   final _scrollController = FixedExtentScrollController();
+  late String countryLanguage;
+  late int loopTime;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +28,7 @@ class HomeScreen extends StatelessWidget {
           scrollController: _scrollController,
           itemHeight: _itemHeight,
           itemCount: _itemCount,
-          onItemTapCallback: (index) {
+          onItemTapCallback: (index) async {
             if (_scrollController.hasClients) {
               if (index == 0) {
                 Navigator.of(context)
@@ -38,9 +46,15 @@ class HomeScreen extends StatelessWidget {
                   return ListenPage();
                 }));
               } else if (index == 6) {
+                countryLanguage = await getCountry();
+                loopTime = await getTime();
+
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
-                  return Setting();
+                  return Setting(
+                    currentValue: loopTime,
+                    countryLanguage: countryLanguage,
+                  );
                 }));
               }
             }
@@ -53,11 +67,11 @@ class HomeScreen extends StatelessWidget {
             physics: FixedExtentScrollPhysics(),
             children: [
               homeText(text: 'Add A Word'),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               homeText(text: 'Look Up'),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               homeText(text: 'Listen'),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               homeText(text: 'Settings'),
             ],
           ),
@@ -65,19 +79,19 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-}
 
-Widget homeText({String text = ''}) {
-  return Column(
-    children: [
-      Text(
-        text,
-        style: TextStyle(
-          fontSize: 33,
-          fontWeight: FontWeight.w800,
-          color: Colors.black,
+  Widget homeText({String text = ''}) {
+    return Column(
+      children: [
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: 33,
+            fontWeight: FontWeight.w800,
+            color: Colors.black,
+          ),
         ),
-      ),
-    ],
-  );
+      ],
+    );
+  }
 }

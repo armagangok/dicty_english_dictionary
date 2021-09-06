@@ -14,8 +14,6 @@ String getData(int index) {
 }
 
 Future<void> putData(int index, Word data) async {
-  print(index);
-  print(index.runtimeType);
   final Box wordBox = Hive.box("words");
   await wordBox.putAt(index, data.word);
 }

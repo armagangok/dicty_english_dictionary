@@ -11,6 +11,7 @@ void speak(String data) async {
   // print(await flutterTts.getLanguages);
   await flutterTts.setPitch(1);
   await flutterTts.setSpeechRate(0.5);
+  await flutterTts.speak("Word is ready!");
   await flutterTts.speak(data);
 }
 
