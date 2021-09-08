@@ -28,7 +28,6 @@ class _EditTextState extends State<EditText> {
     super.dispose();
   }
 
-  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
@@ -39,8 +38,8 @@ class _EditTextState extends State<EditText> {
           title: Text(
             "Editing",
             style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.w900,
+              fontSize: 22,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),
@@ -79,12 +78,13 @@ class _EditTextState extends State<EditText> {
                     deleteAt(widget.index);
                     addData(word);
                   },
+                  style: TextButton.styleFrom(),
                   child: Text(
                     "Save",
                     style: TextStyle(
-                      fontSize: 45,
-                      fontWeight: FontWeight.w900,
-                    ),
+                        fontSize: 35,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.grey[600]),
                   ),
                 ),
               ],

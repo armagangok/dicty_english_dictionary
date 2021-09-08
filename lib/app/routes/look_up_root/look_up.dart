@@ -21,15 +21,17 @@ class _HomePageState extends State<HomePage> {
             else
               return Widgets();
           } else
-            return Scaffold();
+            return Scaffold(
+              body: CircularProgressIndicator(),
+            );
         },
       ),
     );
   }
 
-  // @override
-  // void dispose() {
-  //   Hive.close();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    Hive.close();
+    super.dispose();
+  }
 }

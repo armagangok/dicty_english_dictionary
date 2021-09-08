@@ -1,10 +1,11 @@
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:wordmind/app/database/hive.dart';
-import 'package:wordmind/app/routes/look_up_root/look_up_woordbase.dart';
+import 'package:wordmind/app/routes/home_screen/text_widget.dart';
+import 'package:wordmind/app/routes/listening_root/listen.dart';
+import 'package:wordmind/app/routes/look_up_root/look_up.dart';
 import 'package:wordmind/app/routes/settings_route/settings.dart';
 import 'package:wordmind/app/routes/word_adding_root/add_word.dart';
-import 'package:wordmind/app/routes/word_listening_root/listen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -52,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   return Setting(
-                    currentValue: loopTime,
+                    currentTime: loopTime,
                     countryLanguage: countryLanguage,
                   );
                 }));
@@ -77,21 +78,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget homeText({String text = ''}) {
-    return Column(
-      children: [
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: 33,
-            fontWeight: FontWeight.w800,
-            color: Colors.black,
-          ),
-        ),
-      ],
     );
   }
 }

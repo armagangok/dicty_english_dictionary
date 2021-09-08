@@ -6,9 +6,7 @@ final FlutterTts flutterTts = FlutterTts();
 
 void speak(String data) async {
   String language = await getCountry();
-  print(data);
-  setLanguage(language);
-  // print(await flutterTts.getLanguages);
+  await setLanguage(language);
   await flutterTts.setPitch(1);
   await flutterTts.setSpeechRate(0.5);
   await flutterTts.speak("Word is ready!");
@@ -22,7 +20,7 @@ void pause() {
 setLanguage(String language) async {
   await Hive.openBox("countryBox");
   final box = Hive.box("countryBox");
-  final language = box.getAt(0);
+  final language = await box.getAt(0);
 
   switch (language) {
     case 'English-UK':
