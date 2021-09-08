@@ -111,6 +111,9 @@ class _SettingState extends State<Setting> {
 
   Widget saveButton() {
     return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.grey[600],
+      ),
       onPressed: () {
         saveTime(widget.currentTime);
         saveLanguage(widget.countryLanguage);

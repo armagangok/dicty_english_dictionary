@@ -7,7 +7,7 @@ Widget saveButton(textController) {
     children: <Widget>[
       Container(
         child: ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: Colors.grey[500]),
+          style: ElevatedButton.styleFrom(primary: Colors.grey[600]),
           onPressed: () {
             final word = Word(textController.text);
             addData(word);

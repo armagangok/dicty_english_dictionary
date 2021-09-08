@@ -7,16 +7,33 @@ class ListenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appBar(),
       backgroundColor: Colors.grey[200],
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 100),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            startLoop(),
-            stopLoop(),
+            informationText(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 100),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  startLoop(),
+                  stopLoop(),
+                ],
+              ),
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  PreferredSizeWidget appBar() {
+    return AppBar(
+      backgroundColor: Colors.grey[500],
     );
   }
 
@@ -49,5 +66,9 @@ class ListenPage extends StatelessWidget {
         style: TextStyle(fontSize: 25),
       ),
     );
+  }
+
+  Widget informationText() {
+    return Text("Start or stop looping");
   }
 }
