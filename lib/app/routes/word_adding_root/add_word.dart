@@ -4,7 +4,6 @@ import 'package:wordmind/app/routes/word_adding_root/widgets/textField.dart';
 
 class AddingPage extends StatelessWidget {
   final textController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

@@ -12,33 +12,41 @@ class ListenPage extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.grey[600],
-              ),
-              onPressed: () async {
-                await Hive.openBox("timeBox");
-                loop(Hive.box("timeBox").getAt(0));
-              },
-              child: Text(
-                "Start",
-                style: TextStyle(fontSize: 25),
-              ),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.grey[600],
-              ),
-              onPressed: () {
-                pause();
-              },
-              child: Text(
-                "Stop",
-                style: TextStyle(fontSize: 25),
-              ),
-            ),
+            startLoop(),
+            stopLoop(),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget startLoop() {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.grey[600],
+      ),
+      onPressed: () async {
+        await Hive.openBox("timeBox");
+        loop(Hive.box("timeBox").getAt(0));
+      },
+      child: Text(
+        "Start",
+        style: TextStyle(fontSize: 25),
+      ),
+    );
+  }
+
+  Widget stopLoop() {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.grey[600],
+      ),
+      onPressed: () {
+        pause();
+      },
+      child: Text(
+        "Stop",
+        style: TextStyle(fontSize: 25),
       ),
     );
   }
