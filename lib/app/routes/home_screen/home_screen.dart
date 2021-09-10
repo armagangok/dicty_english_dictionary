@@ -13,12 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final double _itemHeight = 60;
-  final int _itemCount = 100;
   final _scrollController = FixedExtentScrollController();
-  late String countryLanguage;
-  late int loopTime;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,8 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
         height: double.infinity,
         child: ClickableListWheelScrollView(
           scrollController: _scrollController,
-          itemHeight: _itemHeight,
-          itemCount: _itemCount,
+          itemHeight: 60,
+          itemCount: 100,
           onItemTapCallback: (index) async {
             if (_scrollController.hasClients) {
               if (index == 0) {
@@ -47,14 +42,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   return ListenPage();
                 }));
               } else if (index == 6) {
-                countryLanguage = await getCountry();
-                loopTime = await getTime();
-
+                String lang = await getLanguage();
+                int time = await getTime();
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   return Setting(
-                    currentTime: loopTime,
-                    countryLanguage: countryLanguage,
+                    currentTime: time,
+                    countryLanguage: lang,
                   );
                 }));
               }
@@ -62,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           child: ListWheelScrollView(
             controller: _scrollController,
-            itemExtent: _itemHeight,
+            itemExtent: 60,
             magnification: 1.8,
             useMagnifier: true,
             physics: FixedExtentScrollPhysics(),

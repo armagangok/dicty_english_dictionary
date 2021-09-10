@@ -19,7 +19,9 @@ class _EditTextState extends State<EditText> {
 
   @override
   void initState() {
-    textEditingController = TextEditingController(text: getData(widget.index));
+    textEditingController = TextEditingController(
+      text: getData(widget.index),
+    );
     super.initState();
   }
 
@@ -75,7 +77,7 @@ class _EditTextState extends State<EditText> {
                 TextButton(
                   onPressed: () {
                     final word = Word(this.textEditingController.text);
-                    deleteAt(widget.index);
+                    deleteData(widget.index);
                     addData(word);
                   },
                   style: TextButton.styleFrom(),

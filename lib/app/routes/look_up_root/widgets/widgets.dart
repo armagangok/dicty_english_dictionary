@@ -53,7 +53,7 @@ class _WidgetsState extends State<Widgets> {
         children: <Widget>[
           SpeakButton(data: data),
           WordField(data: data.word, key: null),
-          Delete(wordBox: wordBox, index: index),
+          DeleteButton(wordBox: wordBox, index: index),
         ],
       ),
       elevation: 10,

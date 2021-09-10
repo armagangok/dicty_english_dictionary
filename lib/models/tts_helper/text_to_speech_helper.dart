@@ -5,7 +5,8 @@ import 'package:wordmind/app/database/hive.dart';
 final FlutterTts flutterTts = FlutterTts();
 
 void speak(String data) async {
-  String language = await getCountry();
+  String language = await getLanguage();
+  print(language);
   await setLanguage(language);
   await flutterTts.setPitch(1);
   await flutterTts.setSpeechRate(0.5);

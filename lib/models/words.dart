@@ -8,3 +8,19 @@ class Word extends HiveObject {
 
   Word(this.word);
 }
+
+@HiveType(typeId: 2)
+class Time extends HiveObject {
+  @HiveField(0)
+  final int time;
+
+  Time(this.time);
+}
+
+@HiveType(typeId: 3)
+class Language extends HiveObject {
+  @HiveField(0)
+  final int language;
+
+  Language(this.language);
+}

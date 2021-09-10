@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.wordmind">
    <application
-        android:label="wordmind"
+        android:label="Wordmind"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

@@ -44,6 +44,7 @@ class ListenPage extends StatelessWidget {
       ),
       onPressed: () async {
         await Hive.openBox("timeBox");
+        print(Hive.box("timeBox").getAt(0));
         loop(Hive.box("timeBox").getAt(0));
       },
       child: Text(

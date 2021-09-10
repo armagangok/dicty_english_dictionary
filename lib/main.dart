@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wordmind/app/database/hive.dart';
 import 'package:wordmind/app/routes/home_screen/home_screen.dart';
 import 'models/words.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
@@ -11,6 +13,15 @@ void main() async {
   Hive.initFlutter(directory.path);
   Hive.registerAdapter(WordAdapter());
 
+  var _prefs = await SharedPreferences.getInstance();
+  if (_prefs.getInt("firstRun") == null) {
+    setLangToLanguageBox();
+    setTimeToTimeBox();
+    await _prefs.setInt("firstRun", 1);
+    print("everything is fine");
+  } else {
+    print("*");
+  }
   runApp(MyApp());
 }
 

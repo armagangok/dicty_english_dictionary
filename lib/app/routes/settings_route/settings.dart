@@ -5,13 +5,15 @@ import 'package:numberpicker/numberpicker.dart';
 
 // ignore: must_be_immutable
 class Setting extends StatefulWidget {
-  String countryLanguage = 'English-UK';
+  String countryLanguage = "English-UK";
   int currentTime = 15;
+
   Setting({
     Key? key,
     required this.currentTime,
     required this.countryLanguage,
   }) : super(key: key);
+
   @override
   _SettingState createState() => _SettingState();
 }
@@ -28,7 +30,7 @@ class _SettingState extends State<Setting> {
         child: Column(
           children: [
             dropDownPart(),
-            const Divider(height: 50, thickness: 1, indent: 0, endIndent: 0),
+            Divider(height: 50, thickness: 1, indent: 0, endIndent: 0),
             numberPickerPart(),
             Divider(height: 50, thickness: 1, indent: 0, endIndent: 0),
             saveButton(),
@@ -42,7 +44,7 @@ class _SettingState extends State<Setting> {
   PreferredSizeWidget appBar() {
     return AppBar(
       backgroundColor: Colors.grey[500],
-      title: const Text(
+      title: Text(
         "Settings",
         style: TextStyle(
           fontSize: 30,
@@ -56,7 +58,7 @@ class _SettingState extends State<Setting> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text("Choose language", style: TextStyle(fontSize: 20)),
+        Text("Choose language", style: TextStyle(fontSize: 20)),
         LanguageDropDown(
           onChanged: (String? newValue) {
             setState(() {
@@ -78,7 +80,7 @@ class _SettingState extends State<Setting> {
           style: TextStyle(fontSize: 20),
         ),
         Padding(
-          padding: const EdgeInsets.only(right: 10),
+          padding: EdgeInsets.only(right: 10),
           child: NumberPicker(
             textStyle: TextStyle(
               fontSize: 12,
