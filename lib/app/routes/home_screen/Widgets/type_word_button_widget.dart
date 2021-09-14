@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wordmind/app/routes/word_adding_root/add_word.dart';
 
+import 'widgets.dart';
+
 Widget typeWordButton(context) {
   return TextButton.icon(
     onPressed: () {
@@ -8,26 +10,7 @@ Widget typeWordButton(context) {
         return AddingPage();
       }));
     },
-    icon: icon(),
-    label: text(),
-  );
-}
-
-Widget icon() {
-  return Icon(
-    Icons.text_fields,
-    size: 35,
-    color: Colors.amber[900],
-  );
-}
-
-Widget text() {
-  return Text(
-    "Type Word",
-    style: TextStyle(
-      fontSize: 30,
-      color: Colors.black,
-      fontWeight: FontWeight.w800,
-    ),
+    icon: iconButton(Icon(Icons.text_fields)),
+    label: text("Type Word"),
   );
 }

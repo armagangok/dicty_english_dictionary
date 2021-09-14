@@ -19,7 +19,7 @@ void saveTime(int currentValue) async {
   await box.add(currentValue);
 }
 
-void saveLanguage(String countryName) async {
+Future<void> saveLanguage(String countryName) async {
   await Hive.openBox("countryBox");
   final box = Hive.box("countryBox");
   await box.clear();
