@@ -9,7 +9,7 @@ void loop(int minute) async {
   for (var i = 0; i < box.length; i++) {
     final data = box.getAt(i) as Word;
     await Future.delayed(
-      Duration(seconds: minute),
+      Duration(minutes: minute),
       () {
         speak(data.word);
       },
