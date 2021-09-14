@@ -18,9 +18,6 @@ void main() async {
     setLangToLanguageBox();
     setTimeToTimeBox();
     await _prefs.setInt("firstRun", 1);
-    print("everything is fine");
-  } else {
-    print("*");
   }
   runApp(MyApp());
 }

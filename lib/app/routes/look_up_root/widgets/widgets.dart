@@ -35,7 +35,7 @@ class _WidgetsState extends State<Widgets> {
                     ),
                   );
                 },
-                title: wordField(data, wordBox, index),
+                subtitle: wordField(data, wordBox, index),
               );
             },
           );

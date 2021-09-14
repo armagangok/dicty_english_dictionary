@@ -43,7 +43,7 @@ class _SettingState extends State<Setting> {
 
   PreferredSizeWidget appBar() {
     return AppBar(
-      backgroundColor: Colors.grey[500],
+      backgroundColor: Colors.grey[600],
       title: Text(
         "Settings",
         style: TextStyle(
@@ -95,7 +95,7 @@ class _SettingState extends State<Setting> {
             itemHeight: 50,
             itemWidth: 35,
             selectedTextStyle: TextStyle(
-              color: Colors.blue,
+              color: Colors.orange[800],
               fontWeight: FontWeight.w700,
               fontSize: 25,
             ),

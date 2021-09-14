@@ -22,7 +22,7 @@ class _LanguageDropDownState extends State<LanguageDropDown> {
       child: DropdownButton<String>(
         dropdownColor: Colors.grey[300],
         value: widget.languageDropdownValue,
-        style: TextStyle(color: Colors.blue[500]),
+        style: TextStyle(color: Colors.orange[800]),
         onChanged: widget.onChanged,
         items: <String>[
           'English-UK',

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'widgets/widgets.dart';
 
-class HomePage extends StatefulWidget {
+class LookUpPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _LookUpPageState createState() => _LookUpPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _LookUpPageState extends State<LookUpPage> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

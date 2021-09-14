@@ -17,7 +17,6 @@ void saveTime(int currentValue) async {
   final Box box = Hive.box("timeBox");
   await box.clear();
   await box.add(currentValue);
-  print("{$currentValue}" + " minute is saved.");
 }
 
 void saveLanguage(String countryName) async {
@@ -25,7 +24,6 @@ void saveLanguage(String countryName) async {
   final box = Hive.box("countryBox");
   await box.clear();
   await box.add(countryName);
-  print("{$countryName}" " country name is saved.");
 }
 
 Future<String> getLanguage() async {
@@ -57,12 +55,10 @@ void setTimeToTimeBox() async {
   await Hive.openBox("timeBox");
   final Box box = Hive.box("timeBox");
   await box.add(10);
-  print(box.getAt(0));
 }
 
 void setLangToLanguageBox() async {
   await Hive.openBox("countryBox");
   final Box box = Hive.box("countryBox");
   await box.add("English-UK");
-  print(box.getAt(0));
 }

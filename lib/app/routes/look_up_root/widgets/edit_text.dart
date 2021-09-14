@@ -37,13 +37,6 @@ class _EditTextState extends State<EditText> {
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
           backgroundColor: Colors.grey[500],
-          title: Text(
-            "Editing",
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
         ),
         body: SingleChildScrollView(
           child: Container(

@@ -15,7 +15,7 @@ class AddingPage extends StatelessWidget {
         backgroundColor: Colors.grey[200],
         body: Container(
           padding: EdgeInsets.all(10),
-          child: ListView(
+          child: Column(
             children: [
               textField(textController),
               saveButton(textController),
