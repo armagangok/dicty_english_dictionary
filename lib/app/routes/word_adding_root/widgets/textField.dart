@@ -1,28 +1,35 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 Widget textField(textController) {
   return TextFormField(
     controller: textController,
     keyboardType: TextInputType.multiline,
-    maxLines: 8,
+    maxLines: 10,
     cursorHeight: 20,
     cursorColor: Colors.black,
-    maxLength: 2000,
     style: TextStyle(
-      fontSize: 20,
+      fontSize: 17,
     ),
     decoration: InputDecoration(
-      labelText: 'edit text',
-      // hintText: "Type",
-
-      border: OutlineInputBorder(
+      fillColor: Colors.grey[200],
+      filled: true,
+      labelText: "type your research",
+      labelStyle: TextStyle(color: Colors.black, fontSize: 15),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20.0),
         borderSide: BorderSide(
-          color: Colors.orange[900]!,
-          width: 3,
+          color: Colors.black,
+          width: 2,
         ),
       ),
-      fillColor: Colors.white,
-      filled: true,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20.0),
+        borderSide: BorderSide(
+          color: Colors.black,
+        ),
+      ),
     ),
   );
 }

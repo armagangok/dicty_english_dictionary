@@ -20,7 +20,7 @@ class _LookUpPageState extends State<LookUpPage> {
             return Widgets();
         } else
           return Scaffold(
-            body: CircularProgressIndicator(),
+            body: Center(child: CircularProgressIndicator()),
           );
       },
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:wordmind/app/routes/look_up_root/widgets/Buttons/delete.dart';
@@ -17,7 +18,7 @@ class _WidgetsState extends State<Widgets> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[400],
       // ignore: deprecated_member_use
       body: WatchBoxBuilder(
         box: wordBox,
@@ -28,12 +29,7 @@ class _WidgetsState extends State<Widgets> {
               final data = wordBox.getAt(index) as Word;
               return ListTile(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => EditText(index: index),
-                    ),
-                  );
+                  Get.to(() => EditText(index: index));
                 },
                 subtitle: wordField(data, wordBox, index),
               );

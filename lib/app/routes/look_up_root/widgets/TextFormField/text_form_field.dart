@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
 
-Widget searchTextField(textController) {
+TextFormField textFormFied(textEditingController) {
   return TextFormField(
-    controller: textController,
+    controller: textEditingController,
+    keyboardType: TextInputType.multiline,
+    maxLines: 10,
+    cursorHeight: 20,
+    cursorColor: Colors.black,
+    maxLength: 2000,
+    style: TextStyle(
+      fontSize: 17,
+    ),
     decoration: InputDecoration(
       fillColor: Colors.grey[200],
       filled: true,
-      labelText: "type your research",
+      labelText: "edit your text!",
       labelStyle: TextStyle(color: Colors.black, fontSize: 15),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(25.0),
+        borderRadius: BorderRadius.circular(20.0),
         borderSide: BorderSide(
-          color: Colors.grey,
+          color: Colors.black,
           width: 2,
         ),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(25.0),
+        borderRadius: BorderRadius.circular(20.0),
         borderSide: BorderSide(
           color: Colors.black,
         ),

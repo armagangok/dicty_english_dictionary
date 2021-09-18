@@ -15,10 +15,10 @@ class _SearchState extends State<Search> {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Container(
-        color: Colors.grey[200],
+        color: Colors.grey[600],
         child: SafeArea(
           child: Scaffold(
-            backgroundColor: Colors.grey[200],
+            backgroundColor: Colors.grey[400],
             body: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 3,
