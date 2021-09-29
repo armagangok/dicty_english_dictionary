@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/routes/home_screen/Widgets/widgets.dart';
-import 'package:wordmind/app/routes/listening_root/listen.dart';
 import 'package:get/get.dart';
+import '../../home_screen/Widgets/widgets.dart';
+import '../../routes/listening_root/listen.dart';
 
 Widget listenButton(context) {
   return TextButton.icon(

@@ -5,12 +5,7 @@ import 'Widgets/search_button_widget.dart';
 import 'Widgets/settings_button_widget.dart';
 import 'Widgets/type_word_button_widget.dart';
 
-class HomeScreen extends StatefulWidget {
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

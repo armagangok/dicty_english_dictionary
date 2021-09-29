@@ -7,7 +7,6 @@ TextFormField textFormFied(textEditingController) {
     maxLines: 10,
     cursorHeight: 20,
     cursorColor: Colors.black,
-    maxLength: 2000,
     style: TextStyle(
       fontSize: 17,
     ),
@@ -20,7 +19,7 @@ TextFormField textFormFied(textEditingController) {
         borderRadius: BorderRadius.circular(20.0),
         borderSide: BorderSide(
           color: Colors.black,
-          width: 2,
+          width: 1.5,
         ),
       ),
       enabledBorder: OutlineInputBorder(

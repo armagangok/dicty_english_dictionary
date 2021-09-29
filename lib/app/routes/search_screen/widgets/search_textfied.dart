@@ -11,8 +11,8 @@ Widget searchTextField(textController) {
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(25.0),
         borderSide: BorderSide(
-          color: Colors.grey,
-          width: 2,
+          color: Colors.black,
+          width: 1.5,
         ),
       ),
       enabledBorder: OutlineInputBorder(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:wordmind/app/routes/look_up_root/widgets/Buttons/delete.dart';
 import 'package:wordmind/app/routes/look_up_root/widgets/Buttons/speak.dart';
 import 'package:wordmind/app/routes/look_up_root/widgets/word_field.dart';
 import 'package:wordmind/models/words.dart';
@@ -27,11 +27,24 @@ class _WidgetsState extends State<Widgets> {
             itemCount: wordBox.length,
             itemBuilder: (context, index) {
               final data = wordBox.getAt(index) as Word;
-              return ListTile(
-                onTap: () {
-                  Get.to(() => EditText(index: index));
-                },
-                subtitle: wordField(data, wordBox, index),
+              return Slidable(
+                actionPane: const SlidableDrawerActionPane(),
+                actionExtentRatio: 0.25,
+                // actions: <Widget>[],
+                secondaryActions: <Widget>[
+                  IconSlideAction(
+                    caption: 'Delete',
+                    color: Colors.red,
+                    icon: Icons.delete,
+                    onTap: () => wordBox.deleteAt(index),
+                  ),
+                ],
+                child: ListTile(
+                  onTap: () {
+                    Get.to(() => EditText(index: index));
+                  },
+                  subtitle: wordField(data, wordBox, index),
+                ),
               );
             },
           );
@@ -49,7 +62,7 @@ class _WidgetsState extends State<Widgets> {
         children: <Widget>[
           SpeakButton(data: data),
           WordField(data: data.word, key: null),
-          DeleteButton(wordBox: wordBox, index: index),
+          // DeleteButton(wordBox: wordBox, index: index),
         ],
       ),
       elevation: 10,

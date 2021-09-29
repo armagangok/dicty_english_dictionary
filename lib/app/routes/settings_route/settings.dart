@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/database/hive.dart';
+import 'package:wordmind/app/routes/settings_route/widgets/appBar_widget.dart';
 import 'package:wordmind/app/routes/settings_route/widgets/language_drowdown_button.dart';
 import 'package:numberpicker/numberpicker.dart';
 
-// ignore: must_be_immutable
 class Setting extends StatefulWidget {
   String countryLanguage = "English-UK";
   int currentTime = 15;
-
   Setting({
     Key? key,
     required this.currentTime,
@@ -23,7 +21,7 @@ class _SettingState extends State<Setting> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: appBar(),
+      appBar: appBar(widget.currentTime, widget.countryLanguage),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 10),
         padding: EdgeInsets.only(top: 25),
@@ -33,22 +31,7 @@ class _SettingState extends State<Setting> {
             Divider(height: 50, thickness: 1, indent: 0, endIndent: 0),
             numberPickerPart(),
             Divider(height: 50, thickness: 1, indent: 0, endIndent: 0),
-            saveButton(),
-            Divider(height: 50, thickness: 1, indent: 0, endIndent: 0),
           ],
-        ),
-      ),
-    );
-  }
-
-  PreferredSizeWidget appBar() {
-    return AppBar(
-      backgroundColor: Colors.grey[600],
-      title: Text(
-        "Settings",
-        style: TextStyle(
-          fontSize: 30,
-          fontWeight: FontWeight.w900,
         ),
       ),
     );
@@ -108,22 +91,6 @@ class _SettingState extends State<Setting> {
           ),
         ),
       ],
-    );
-  }
-
-  Widget saveButton() {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        primary: Colors.grey[600],
-      ),
-      onPressed: () {
-        saveTime(widget.currentTime);
-        saveLanguage(widget.countryLanguage);
-      },
-      child: const Text(
-        "Save Settings",
-        style: TextStyle(fontSize: 18),
-      ),
     );
   }
 }
