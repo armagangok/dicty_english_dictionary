@@ -26,9 +26,9 @@ class _LookUpPageState extends State<LookUpPage> {
     );
   }
 
-  @override
-  void dispose() {
-    Hive.close();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   Hive.close();
+  //   super.dispose();
+  // }
 }

@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:wordmind/models/tts_helper/text_to_speech_helper.dart';
-import '../words.dart';
+import '../../app/database/words.dart';
 
 void loop(int minute) async {
   await Hive.openBox("words");

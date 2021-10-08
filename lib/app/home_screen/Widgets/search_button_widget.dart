@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/routes/search_screen/search.dart';
-import 'package:get/get.dart';
+import 'package:wordmind/app/screens/search_screen/search.dart';
 import 'widgets.dart';
 
 Widget searchButton(context) {
@@ -8,7 +7,10 @@ Widget searchButton(context) {
     label: text("Search"),
     icon: iconButton(Icon(Icons.search)),
     onPressed: () {
-      Get.to(() => Search());
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Search()),
+      );
     },
   );
 }

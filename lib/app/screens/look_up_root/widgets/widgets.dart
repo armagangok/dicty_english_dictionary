@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:wordmind/app/routes/look_up_root/widgets/Buttons/speak.dart';
-import 'package:wordmind/app/routes/look_up_root/widgets/word_field.dart';
-import 'package:wordmind/models/words.dart';
+
+import 'package:wordmind/app/database/words.dart';
+import '../../../../initApp.dart';
 import 'edit_text.dart';
+import './Buttons/speak.dart';
+import './word_field.dart';
 
 class Widgets extends StatefulWidget {
   @override
@@ -36,12 +37,16 @@ class _WidgetsState extends State<Widgets> {
                     caption: 'Delete',
                     color: Colors.red,
                     icon: Icons.delete,
-                    onTap: () => wordBox.deleteAt(index),
+                    onTap: () => helper.deleteData(index),
                   ),
                 ],
                 child: ListTile(
                   onTap: () {
-                    Get.to(() => EditText(index: index));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EditText(index: index)),
+                    );
                   },
                   subtitle: wordField(data, wordBox, index),
                 ),

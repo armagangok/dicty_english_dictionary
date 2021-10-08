@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/routes/settings_route/widgets/save_button.dart';
+import './save_button.dart';
 
-PreferredSizeWidget appBar(currentTime, language) {
+PreferredSizeWidget appBar(currentTime, countryLanguage) {
   return AppBar(
     backgroundColor: Colors.grey[600],
     title: Text(
@@ -12,7 +12,7 @@ PreferredSizeWidget appBar(currentTime, language) {
       ),
     ),
     actions: [
-      saveButton(currentTime, language),
+      saveLanguageTimeButton(currentTime, countryLanguage),
     ],
   );
 }

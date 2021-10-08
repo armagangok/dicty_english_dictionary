@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/routes/word_adding_root/add_word.dart';
+import 'package:wordmind/app/screens/word_adding_root/add_word.dart';
 import 'widgets.dart';
-import 'package:get/get.dart';
 
 Widget typeWordButton(context) {
   return TextButton.icon(
     onPressed: () {
-      Get.to(() => AddingPage());
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => AddingPage()),
+      );
     },
     icon: iconButton(Icon(Icons.text_fields)),
     label: text("Type Word"),

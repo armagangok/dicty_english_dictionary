@@ -28,23 +28,23 @@ Widget dictionaryDatas(snapshot) {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        title(snapshot),
+        titleText(snapshot),
         Divider(
           color: Colors.black,
         ),
-        meaning1(snapshot),
+        meaning1Text(snapshot),
         Divider(
           color: Colors.black,
         ),
-        meaning2(snapshot),
+        meaning2Text(snapshot),
         Divider(
           color: Colors.black,
         ),
-        origin(snapshot),
+        originText(snapshot),
         Divider(
           color: Colors.black,
         ),
-        example(snapshot),
+        exampleText(snapshot),
         Divider(
           color: Colors.black,
         ),

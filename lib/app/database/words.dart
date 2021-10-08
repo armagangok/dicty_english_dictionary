@@ -5,7 +5,6 @@ part 'words.g.dart';
 class Word extends HiveObject {
   @HiveField(0)
   final String word;
-
   Word(this.word);
 }
 

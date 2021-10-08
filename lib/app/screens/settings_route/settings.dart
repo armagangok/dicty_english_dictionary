@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/routes/settings_route/widgets/appBar_widget.dart';
-import 'package:wordmind/app/routes/settings_route/widgets/language_drowdown_button.dart';
 import 'package:numberpicker/numberpicker.dart';
+import './widgets/appBar_widget.dart';
+import './widgets/language_drowdown_button.dart';
 
+// ignore: must_be_immutable
 class Setting extends StatefulWidget {
   String countryLanguage = "English-UK";
   int currentTime = 15;

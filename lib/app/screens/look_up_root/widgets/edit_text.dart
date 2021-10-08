@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/database/hive.dart';
-import 'Buttons/save_editted_text_button.dart';
 import 'TextFormField/text_form_field.dart';
+import './Buttons/save_editted_text_button.dart';
 
 class EditText extends StatefulWidget {
   final int index;
-
   EditText({
     Key? key,
     required this.index,
@@ -17,12 +15,14 @@ class EditText extends StatefulWidget {
 
 class _EditTextState extends State<EditText> {
   var textEditingController = TextEditingController();
+  late final String data;
 
   @override
   void initState() {
-    textEditingController = TextEditingController(
-      text: getData(widget.index),
-    );
+    textEditingController = TextEditingController();
+    helper
+        .getData(widget.index)
+        .then((value) => textEditingController.text = value);
     super.initState();
   }
 
@@ -40,7 +40,7 @@ class _EditTextState extends State<EditText> {
           iconTheme: IconThemeData(color: Colors.black),
           backgroundColor: Colors.grey[400],
           actions: [
-            saveButton(textEditingController, widget.index),
+            saveEdittedTextButton(textEditingController, widget.index),
           ],
         ),
         body: SingleChildScrollView(
