@@ -6,7 +6,8 @@ import './widgets/language_drowdown_button.dart';
 // ignore: must_be_immutable
 class Setting extends StatefulWidget {
   String countryLanguage = "English-UK";
-  int currentTime = 15;
+  int currentTime;
+
   Setting({
     Key? key,
     required this.currentTime,
@@ -26,13 +27,25 @@ class _SettingState extends State<Setting> {
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 10),
         padding: EdgeInsets.only(top: 25),
-        child: Column(
-          children: [
-            dropDownPart(),
-            Divider(height: 50, thickness: 1, indent: 0, endIndent: 0),
-            numberPickerPart(),
-            Divider(height: 50, thickness: 1, indent: 0, endIndent: 0),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              dropDownPart(),
+              Divider(
+                height: MediaQuery.of(context).size.height / 10,
+                thickness: 1,
+                indent: 0,
+                endIndent: 0,
+              ),
+              numberPickerPart(),
+              Divider(
+                height: MediaQuery.of(context).size.height / 10,
+                thickness: 1,
+                indent: 0,
+                endIndent: 0,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -84,8 +97,9 @@ class _SettingState extends State<Setting> {
               fontSize: 25,
             ),
             itemCount: 5,
-            onChanged: (value) async {
+            onChanged: (value) {
               setState(() {
+                print(value);
                 widget.currentTime = value;
               });
             },

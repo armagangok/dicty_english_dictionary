@@ -2,19 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
-import 'package:wordmind/app/database/words.dart';
-import '../../../../initApp.dart';
+import 'package:wordmind/database/hive_helper_object.dart';
+import 'package:wordmind/database/words.dart';
 import 'edit_text.dart';
 import './Buttons/speak.dart';
 import './word_field.dart';
 
-class Widgets extends StatefulWidget {
-  @override
-  _WidgetsState createState() => _WidgetsState();
-}
-
-class _WidgetsState extends State<Widgets> {
+class Widgets extends StatelessWidget {
   final wordBox = Hive.box("words");
   @override
   Widget build(BuildContext context) {
@@ -37,7 +31,7 @@ class _WidgetsState extends State<Widgets> {
                     caption: 'Delete',
                     color: Colors.red,
                     icon: Icons.delete,
-                    onTap: () => helper.deleteData(index),
+                    onTap: () => hiveHelper.deleteData(index),
                   ),
                 ],
                 child: ListTile(

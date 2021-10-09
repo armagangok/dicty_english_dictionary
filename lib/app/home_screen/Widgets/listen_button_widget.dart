@@ -11,6 +11,6 @@ Widget listenButton(context) {
 						  );
     },
     icon: iconButton(Icon(Icons.timer)),
-    label: text("Listen"),
+    label: text("Listen", context),
   );
 }

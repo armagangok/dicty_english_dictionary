@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/database/hive.dart';
-import 'package:wordmind/app/database/words.dart';
+import 'package:wordmind/database/hive_helper_object.dart';
+import 'package:wordmind/database/words.dart';
 
-var helper = HiveHelper();
+
 
 Widget saveEdittedTextButton(textEditingController, index) {
   return IconButton(
@@ -11,8 +11,8 @@ Widget saveEdittedTextButton(textEditingController, index) {
     ),
     onPressed: () {
       final word = Word(textEditingController.text);
-      helper.deleteData(index);
-      helper.addData(word);
+      hiveHelper.deleteData(index);
+      hiveHelper.addData(word);
     },
   );
 }

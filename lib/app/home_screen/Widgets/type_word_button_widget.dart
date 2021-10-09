@@ -11,6 +11,6 @@ Widget typeWordButton(context) {
       );
     },
     icon: iconButton(Icon(Icons.text_fields)),
-    label: text("Type Word"),
+    label: text("Type Word", context),
   );
 }

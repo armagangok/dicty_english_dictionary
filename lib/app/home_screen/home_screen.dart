@@ -9,19 +9,26 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[400],
+      backgroundColor: Colors.grey[500],
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 100.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              searchButton(context),
-              typeWordButton(context),
-              lookUpButton(context),
-              listenButton(context),
-              settingsButton(context),
-            ],
+        child: Container(
+          color: Colors.grey[300],
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: MediaQuery.of(context).size.height / 5.2,
+              horizontal: MediaQuery.of(context).size.width / 9,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                searchButton(context),
+                typeWordButton(context),
+                lookUpButton(context),
+                listenButton(context),
+                settingsButton(context),
+              ],
+            ),
           ),
         ),
       ),

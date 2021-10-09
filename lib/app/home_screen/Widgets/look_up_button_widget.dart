@@ -4,8 +4,10 @@ import 'widgets.dart';
 
 Widget lookUpButton(context) {
   return TextButton.icon(
-    icon: iconButton(Icon(Icons.text_snippet_outlined)),
-    label: text("Look Up"),
+    icon: iconButton(
+      Icon(Icons.text_snippet_outlined),
+    ),
+    label: text("Look Up", context),
     onPressed: () {
       Navigator.push(
         context,

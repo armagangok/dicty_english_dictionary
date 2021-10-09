@@ -1,11 +1,11 @@
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:wordmind/app/database/hive.dart';
+import 'package:wordmind/database/hive_helper_object.dart';
 
-var helper = HiveHelper();
+
 final FlutterTts flutterTts = FlutterTts();
 
 Future<void> speak(String data) async {
-  String language = await helper.getLanguage();
+  String language = await hiveHelper.getLanguage();
 
   await setLanguage(language);
   await flutterTts.setPitch(1);
@@ -19,7 +19,6 @@ Future<void> pause() async {
 }
 
 Future<void> setLanguage(String language) async {
-
   switch (language) {
     case 'English-UK':
       await flutterTts.setLanguage("en-GB");

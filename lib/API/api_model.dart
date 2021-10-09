@@ -3,10 +3,10 @@ import 'package:http/http.dart' as http;
 
 class WordApi {
   final String? word;
-  final String? origin;
-  String? meaning1 = "";
-  String? meaning2 = "";
-  final String? example;
+  String? origin = "";
+  final String? meaning1;
+  final String? meaning2;
+  String? example = "";
 
   WordApi({
     this.word,
@@ -23,7 +23,7 @@ class WordApi {
       meaning1: json[0]?["meanings"]?[0]["definitions"]?[0]["definition"],
       meaning2: json[0]["meanings"][0]["definitions"].length > 1
           ? json[0]["meanings"][0]["definitions"][1]["definition"]
-          : null,
+          : "",
       example: json[0]?["meanings"]?[0]["definitions"]?[0]["example"],
     );
   }

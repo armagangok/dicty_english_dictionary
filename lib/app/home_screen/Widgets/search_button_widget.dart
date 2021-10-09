@@ -4,7 +4,7 @@ import 'widgets.dart';
 
 Widget searchButton(context) {
   return TextButton.icon(
-    label: text("Search"),
+    label: text("Search", context),
     icon: iconButton(Icon(Icons.search)),
     onPressed: () {
       Navigator.push(

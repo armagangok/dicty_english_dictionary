@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:wordmind/app/database/words.dart';
+import './words.dart';
 
 class HiveHelper {
   Future<void> addData(Word word) async {
@@ -39,6 +39,7 @@ class HiveHelper {
     await Hive.openBox("timeBox");
     final Box box = Hive.box("timeBox");
     final int timeData = await box.getAt(0);
+    print(timeData);
     return timeData;
   }
 
@@ -58,6 +59,7 @@ class HiveHelper {
     await Hive.openBox("timeBox");
     final Box box = Hive.box("timeBox");
     await box.add(10);
+    print(box.values);
   }
 
   Future<void> setLangToLanguageBox() async {

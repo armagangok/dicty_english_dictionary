@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/database/hive.dart';
-import 'package:wordmind/app/database/words.dart';
-
-
+import 'package:wordmind/database/hive_helper_object.dart';
+import 'package:wordmind/database/words.dart';
 
 
 PreferredSizeWidget appBar(textController) {
@@ -22,8 +20,8 @@ Widget saveButton(textController) {
     ),
     onPressed: () {
       final word = Word(textController.text);
-      var helper = HiveHelper();
-      helper.addData(word);
+      
+      hiveHelper.addData(word);
     },
   );
 }

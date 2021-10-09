@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:wordmind/API/api_model.dart';
-import 'package:wordmind/app/database/hive.dart';
-import 'package:wordmind/app/screens/search_screen/widgets/future_builder_widget.dart';
-import 'package:wordmind/app/database/words.dart';
+import 'package:wordmind/database/hive_helper_object.dart';
+import 'package:wordmind/database/words.dart';
+import 'future_builder_widget.dart';
+
 
 late Future wordInfo;
-
-var helper = HiveHelper();
 
 Widget searchButton(textController, context) {
   return IconButton(
@@ -60,7 +59,7 @@ Widget saveToDatabaseButton(Future<dynamic> wordInfo) {
       Word data1 = Word(meaning);
       print(data1.word);
 
-      helper.addData(data1);
+      hiveHelper.addData(data1);
     },
     child: Text("Save"),
     style: ElevatedButton.styleFrom(
