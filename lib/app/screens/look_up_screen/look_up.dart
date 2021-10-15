@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'widgets/widgets.dart';
 
-class LookUpPage extends StatefulWidget {
+class LookUpPage extends StatelessWidget {
   @override
-  _LookUpPageState createState() => _LookUpPageState();
-}
-
-class _LookUpPageState extends State<LookUpPage> {
-  @override
-  Widget build(BuildContext context) {
+  build(BuildContext context) {
     return FutureBuilder(
       future: Hive.openBox('words'),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -25,10 +20,4 @@ class _LookUpPageState extends State<LookUpPage> {
       },
     );
   }
-
-  // @override
-  // void dispose() {
-  //   Hive.close();
-  //   super.dispose();
-  // }
 }

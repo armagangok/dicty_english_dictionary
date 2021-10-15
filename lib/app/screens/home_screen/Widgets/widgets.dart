@@ -15,6 +15,6 @@ Widget iconButton(Icon icon) {
   return Icon(
     icon.icon,
     color: Colors.amber[900],
-    size: 55,
+    size: 40,
   );
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './app/home_screen/home_screen.dart';
+import 'app/screens/home_screen/home_screen.dart';
 import 'initApp.dart';
 
 void main() async {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/screens/word_adding_root/add_word.dart';
+import 'package:wordmind/app/screens/word_adding_screen/add_word.dart';
 import 'widgets.dart';
 
 Widget typeWordButton(context) {

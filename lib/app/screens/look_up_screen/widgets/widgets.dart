@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:wordmind/database/hive_helper_object.dart';
+import 'package:wordmind/database/hive_helper.dart';
 import 'package:wordmind/database/words.dart';
 import 'edit_text.dart';
 import './Buttons/speak.dart';
@@ -14,7 +14,6 @@ class Widgets extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[400],
-      // ignore: deprecated_member_use
       body: WatchBoxBuilder(
         box: wordBox,
         builder: (context, wordBox) {
@@ -39,7 +38,8 @@ class Widgets extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => EditText(index: index)),
+                        builder: (context) => EditText(index: index),
+                      ),
                     );
                   },
                   subtitle: wordField(data, wordBox, index),

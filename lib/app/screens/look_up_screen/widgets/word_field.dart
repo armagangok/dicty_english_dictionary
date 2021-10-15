@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class WordField extends StatefulWidget {
+class WordField extends StatelessWidget {
   final String data;
 
   const WordField({
@@ -9,11 +9,6 @@ class WordField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _WordFieldState createState() => _WordFieldState();
-}
-
-class _WordFieldState extends State<WordField> {
-  @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
@@ -21,7 +16,7 @@ class _WordFieldState extends State<WordField> {
           borderRadius: BorderRadius.circular(10),
           color: Colors.grey[200],
           border: Border.all(
-            width: 2,
+            width: 1.4,
           ),
         ),
         height: 110,
@@ -31,8 +26,8 @@ class _WordFieldState extends State<WordField> {
             child: Container(
               padding: const EdgeInsets.all(3),
               child: Text(
-                widget.data,
-                style: TextStyle(fontSize: 16),
+                data,
+                style: TextStyle(fontSize: 15),
               ),
             ),
           ),

@@ -1,8 +1,9 @@
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:wordmind/database/hive_helper_object.dart';
+import 'package:wordmind/database/hive_helper.dart';
 
 
 final FlutterTts flutterTts = FlutterTts();
+
 
 Future<void> speak(String data) async {
   String language = await hiveHelper.getLanguage();

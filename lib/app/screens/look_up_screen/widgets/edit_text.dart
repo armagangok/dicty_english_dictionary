@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/database/hive_helper_object.dart';
+import 'package:wordmind/database/hive_helper.dart';
 import './Buttons/save_editted_text_button.dart';
 import '../widgets/textformfield_widget/text_form_field.dart';
 
 class EditText extends StatefulWidget {
   final int index;
+
   EditText({
     Key? key,
     required this.index,

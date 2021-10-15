@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/database/hive_helper_object.dart';
-import 'package:wordmind/app/screens/settings_route/settings.dart';
+import 'package:wordmind/database/hive_helper.dart';
+import 'package:wordmind/app/screens/settings_screen/settings.dart';
 import 'widgets.dart';
 
 

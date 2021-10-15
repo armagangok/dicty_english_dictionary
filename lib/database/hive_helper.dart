@@ -1,7 +1,18 @@
 import 'package:hive/hive.dart';
 import './words.dart';
 
+HiveHelper hiveHelper = HiveHelper();
+
 class HiveHelper {
+  static final HiveHelper _singleton = HiveHelper._internal();
+  String content = "String";
+
+  factory HiveHelper() {
+    return _singleton;
+  }
+
+  HiveHelper._internal();
+
   Future<void> addData(Word word) async {
     await Hive.openBox("words");
     final wordBox = Hive.box('words');

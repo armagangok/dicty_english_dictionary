@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wordmind/API/api_model.dart';
-import 'package:wordmind/database/hive_helper_object.dart';
+import 'package:wordmind/database/hive_helper.dart';
 import 'package:wordmind/database/words.dart';
 import 'future_builder_widget.dart';
 

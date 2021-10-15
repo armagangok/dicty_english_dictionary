@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/database/hive_helper_object.dart';
+import 'package:wordmind/database/hive_helper.dart';
 import 'package:wordmind/database/words.dart';
 
 
@@ -20,7 +20,6 @@ Widget saveButton(textController) {
     ),
     onPressed: () {
       final word = Word(textController.text);
-      
       hiveHelper.addData(word);
     },
   );
