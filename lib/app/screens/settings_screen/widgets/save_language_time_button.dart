@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:wordmind/database/hive_helper.dart';
 
-
-Widget saveLanguageTimeButton(currentTime, countryLanguage) {
+Widget saveLanguageTimeButton(countryLanguage) {
   return IconButton(
     icon: Icon(
       Icons.save,
     ),
     onPressed: () {
-      hiveHelper.saveTime(currentTime);
       hiveHelper.saveLanguage(countryLanguage);
     },
   );

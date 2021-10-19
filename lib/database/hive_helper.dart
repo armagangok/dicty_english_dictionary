@@ -46,13 +46,13 @@ class HiveHelper {
     return language;
   }
 
-  Future<int> getTime() async {
-    await Hive.openBox("timeBox");
-    final Box box = Hive.box("timeBox");
-    final int timeData = await box.getAt(0);
-    print(timeData);
-    return timeData;
-  }
+  // Future<int> getTime() async {
+  //   await Hive.openBox("timeBox");
+  //   final Box box = Hive.box("timeBox");
+  //   final int timeData = await box.getAt(0);
+  //   print(timeData);
+  //   return timeData;
+  // }
 
   Future<Word> getData(int index) async {
     await Hive.openBox("words");
@@ -66,12 +66,12 @@ class HiveHelper {
     await wordBox.putAt(index, data.word);
   }
 
-  Future<void> setTimeToTimeBox() async {
-    await Hive.openBox("timeBox");
-    final Box box = Hive.box("timeBox");
-    await box.add(10);
-    print(box.values);
-  }
+  // Future<void> setTimeToTimeBox() async {
+  //   await Hive.openBox("timeBox");
+  //   final Box box = Hive.box("timeBox");
+  //   await box.add(10);
+  //   print(box.values);
+  // }
 
   Future<void> setLangToLanguageBox() async {
     await Hive.openBox("countryBox");

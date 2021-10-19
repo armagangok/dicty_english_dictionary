@@ -14,7 +14,7 @@ class LookUpScreen extends StatelessWidget {
           else
             return Widgets();
         } else
-          return Center(child: CircularProgressIndicator());
+          return Text("");
       },
     );
   }

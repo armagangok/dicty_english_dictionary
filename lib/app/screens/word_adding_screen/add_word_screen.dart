@@ -3,7 +3,7 @@ import 'package:wordmind/app/screens/word_adding_screen/widgets/appbar_widget.da
 import 'package:wordmind/app/screens/word_adding_screen/widgets/text_field_widget.dart';
 
 class AddingPage extends StatelessWidget {
-  TextEditingController textEditingController = TextEditingController();
+  final TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

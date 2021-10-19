@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'save_language_time_button.dart';
 
-PreferredSizeWidget appBar(currentTime, countryLanguage) {
+PreferredSizeWidget appBar( countryLanguage) {
   return AppBar(
     title: Text(
       "Settings",
@@ -11,7 +11,7 @@ PreferredSizeWidget appBar(currentTime, countryLanguage) {
       ),
     ),
     actions: [
-      saveLanguageTimeButton(currentTime, countryLanguage),
+      saveLanguageTimeButton( countryLanguage),
     ],
   );
 }

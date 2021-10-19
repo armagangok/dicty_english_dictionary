@@ -16,7 +16,7 @@ Future<void> initApp() async {
 
   if (_prefs.getInt("firstRun") == null) {
     hiveHelper.setLangToLanguageBox();
-    hiveHelper.setTimeToTimeBox();
+    
     await _prefs.setInt("firstRun", 1);
   }
 }

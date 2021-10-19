@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'app/screens/home_screen/home_screen.dart';
 import 'initApp.dart';
 import 'theme/theme.dart';
+import 'app/screens/home/home_screen/home_screen.dart';
 
 void main() async {
   await initApp();
