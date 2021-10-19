@@ -1,14 +1,13 @@
 import "package:flutter/material.dart";
 import 'package:hive/hive.dart';
-import 'package:wordmind/models/tts_helper/text_to_speech_helper.dart';
-import 'package:wordmind/models/tts_helper/tts_looper.dart';
+import 'package:wordmind/tts_helper/text_to_speech_helper.dart';
+import 'package:wordmind/tts_helper/tts_looper.dart';
 
 class ListenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(),
-      backgroundColor: Colors.grey[200],
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 100),
         child: Column(
@@ -31,17 +30,9 @@ class ListenPage extends StatelessWidget {
     );
   }
 
-  PreferredSizeWidget appBar() {
-    return AppBar(
-      backgroundColor: Colors.grey[600],
-    );
-  }
-
   Widget startLoop() {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        primary: Colors.grey[600],
-      ),
+      style: ElevatedButton.styleFrom(),
       onPressed: () async {
         await Hive.openBox("timeBox");
         loop(Hive.box("timeBox").getAt(0));
@@ -55,9 +46,7 @@ class ListenPage extends StatelessWidget {
 
   Widget stopLoop() {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        primary: Colors.grey[600],
-      ),
+      style: ElevatedButton.styleFrom(),
       onPressed: () {
         pause();
       },

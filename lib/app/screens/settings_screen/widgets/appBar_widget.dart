@@ -3,7 +3,6 @@ import 'save_language_time_button.dart';
 
 PreferredSizeWidget appBar(currentTime, countryLanguage) {
   return AppBar(
-    backgroundColor: Colors.grey[600],
     title: Text(
       "Settings",
       style: TextStyle(

@@ -1,36 +1,21 @@
 import 'package:flutter/material.dart';
-import 'Widgets/listen_button_widget.dart';
-import 'Widgets/look_up_button_widget.dart';
-import 'Widgets/search_button_widget.dart';
-import 'Widgets/settings_button_widget.dart';
-import 'Widgets/type_word_button_widget.dart';
+import 'Widgets/bottom_appbar_widget.dart';
+import 'Widgets/scaffold_body_widget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey[600],
-      child: SafeArea(
+    return SafeArea(
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
-          backgroundColor: Colors.grey[500],
-          body: Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: MediaQuery.of(context).size.height / 9,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  searchButton(context),
-                  typeWordButton(context),
-                  lookUpButton(context),
-                  listenButton(context),
-                  settingsButton(context),
-                ],
-              ),
-            ),
-          ),
+          bottomNavigationBar: BottomAppBarWidget(),
+          body: ScaffoldBodyWidget(),
         ),
       ),
     );

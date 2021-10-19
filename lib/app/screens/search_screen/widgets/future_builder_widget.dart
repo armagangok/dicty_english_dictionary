@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/API/api_model.dart';
+import 'package:wordmind/API/models/word_api_model.dart';
 import 'text_widget.dart';
 
 Widget futureBuilder(wordInfo) {

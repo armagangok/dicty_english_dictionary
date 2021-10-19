@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'widgets/widgets.dart';
+import 'widgets/listview_builder_widget/widgets.dart';
 
-class LookUpPage extends StatelessWidget {
+class LookUpScreen extends StatelessWidget {
   @override
   build(BuildContext context) {
     return FutureBuilder(
@@ -14,9 +14,7 @@ class LookUpPage extends StatelessWidget {
           else
             return Widgets();
         } else
-          return Scaffold(
-            body: Center(child: CircularProgressIndicator()),
-          );
+          return Center(child: CircularProgressIndicator());
       },
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/screens/word_adding_screen/add_word.dart';
-import 'widgets.dart';
+import 'package:wordmind/app/screens/word_adding_screen/add_word_screen.dart';
+import '../widgets.dart';
 
 Widget typeWordButton(context) {
   return TextButton.icon(

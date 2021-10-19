@@ -5,7 +5,6 @@ Widget text(String text, context) {
     "$text",
     style: TextStyle(
       fontSize: 35,
-      color: Colors.black,
       fontWeight: FontWeight.w800,
     ),
   );
@@ -14,7 +13,6 @@ Widget text(String text, context) {
 Widget iconButton(Icon icon) {
   return Icon(
     icon.icon,
-    color: Colors.amber[900],
     size: 40,
   );
 }

@@ -1,18 +1,18 @@
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:wordmind/database/hive_helper.dart';
-
+import 'package:wordmind/database/words.dart';
 
 final FlutterTts flutterTts = FlutterTts();
 
-
-Future<void> speak(String data) async {
+Future<void> speak(Word data) async {
   String language = await hiveHelper.getLanguage();
-
   await setLanguage(language);
   await flutterTts.setPitch(1);
   await flutterTts.setSpeechRate(0.5);
   await flutterTts.speak("Word is ready!");
-  await flutterTts.speak(data);
+  await flutterTts.speak(
+    "${data.word}. First meaning; ${data.meaning1}. Second meaning is; ${data.meaning2}. Example: ${data.example}",
+  );
 }
 
 Future<void> pause() async {

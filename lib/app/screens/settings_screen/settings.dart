@@ -22,7 +22,6 @@ class _SettingState extends State<Setting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
       appBar: appBar(widget.currentTime, widget.countryLanguage),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 10),

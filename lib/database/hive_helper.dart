@@ -54,11 +54,11 @@ class HiveHelper {
     return timeData;
   }
 
-  Future<String> getData(int index) async {
+  Future<Word> getData(int index) async {
     await Hive.openBox("words");
     final wordBox = Hive.box("words");
     final data = wordBox.getAt(index) as Word;
-    return data.word;
+    return data;
   }
 
   Future<void> putData(int index, Word data) async {

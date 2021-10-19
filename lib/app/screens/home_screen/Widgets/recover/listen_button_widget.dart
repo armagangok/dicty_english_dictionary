@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../home_screen/Widgets/widgets.dart';
-import '../../listening_screen/listen.dart';
+import '../widgets.dart';
+import '../../../listening_screen/listen.dart';
 
 Widget listenButton(context) {
   return TextButton.icon(

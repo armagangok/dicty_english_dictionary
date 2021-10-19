@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
-import 'package:wordmind/models/tts_helper/text_to_speech_helper.dart';
-import '../../database/words.dart';
+import 'package:wordmind/database/words.dart';
+import 'text_to_speech_helper.dart';
 
 void loop(int minute) async {
   await Hive.openBox("words");
@@ -11,7 +11,9 @@ void loop(int minute) async {
     await Future.delayed(
       Duration(seconds: minute),
       () {
-        speak(data.word);
+        // speak(
+        //   "words is ready. ${data.word} means that; ${data.meaning1}. Another meaning is; ${data.meaning2}",
+        // );
       },
     );
   }

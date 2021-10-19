@@ -2,25 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:wordmind/database/hive_helper.dart';
 import 'package:wordmind/database/words.dart';
 
-
 PreferredSizeWidget appBar(textController) {
   return AppBar(
-    iconTheme: IconThemeData(color: Colors.black),
-    backgroundColor: Colors.grey[400],
+    iconTheme: IconThemeData(color: Colors.white),
     actions: [
-      saveButton(textController),
+      SaveButtonWidget(textController: textController),
     ],
   );
 }
 
-Widget saveButton(textController) {
-  return IconButton(
-    icon: Icon(
-      Icons.save,
-    ),
-    onPressed: () {
-      final word = Word(textController.text);
-      hiveHelper.addData(word);
-    },
-  );
+class SaveButtonWidget extends StatelessWidget {
+  final textController;
+  const SaveButtonWidget({Key? key, this.textController}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.save),
+      onPressed: () {
+        final word = Word(
+          word: textController.text,
+          origin: "",
+          meaning1: "",
+          meaning2: "",
+          example: "",
+        );
+        hiveHelper.addData(word);
+      },
+    );
+  }
 }
