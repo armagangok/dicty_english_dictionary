@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'widgets/listview_builder_widget/widgets.dart';
-
+import 'package:wordmind/app/screens/home/Widgets/look_up_widgets/widgets/listview_builder_widget/widgets.dart';
 class LookUpScreen extends StatelessWidget {
   @override
   build(BuildContext context) {

@@ -1,9 +1,9 @@
 class WordApi {
-  String? word = "";
-  String? origin = "";
-  String? meaning1 = "";
-  String? meaning2 = "";
-  String? example = "";
+  String? word;
+  String? origin;
+  String? meaning1;
+  String? meaning2;
+  String? example;
 
   WordApi({this.word, this.origin, this.meaning1, this.meaning2, this.example});
 

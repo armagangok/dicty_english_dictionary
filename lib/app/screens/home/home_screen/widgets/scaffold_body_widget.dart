@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/screens/home/search_widgets/widgets/search_button.dart';
-import 'package:wordmind/app/screens/home/search_widgets/widgets/search_textfied.dart';
-import 'package:wordmind/app/screens/home_screen/look_up_screen/look_up.dart';
+import 'package:wordmind/app/screens/home/Widgets/search_widgets/widgets/search_button.dart';
+import 'package:wordmind/app/screens/home/Widgets/search_widgets/widgets/search_textfied.dart';
+import 'package:wordmind/app/screens/home/home_screen/widgets/look_up.dart';
 
 
 
