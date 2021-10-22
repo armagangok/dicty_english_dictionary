@@ -25,34 +25,12 @@ class HiveHelper {
     await wordBox.deleteAt(index);
   }
 
-  Future<void> saveTime(int currentValue) async {
-    await Hive.openBox("timeBox");
-    final Box box = Hive.box("timeBox");
-    await box.clear();
-    await box.add(currentValue);
-  }
-
-  Future<void> saveLanguage(String countryName) async {
-    await Hive.openBox("countryBox");
-    final box = Hive.box("countryBox");
-    await box.clear();
-    await box.add(countryName);
-  }
-
   Future<String> getLanguage() async {
     await Hive.openBox("countryBox");
     final Box box = Hive.box("countryBox");
     final String language = await box.getAt(0);
     return language;
   }
-
-  // Future<int> getTime() async {
-  //   await Hive.openBox("timeBox");
-  //   final Box box = Hive.box("timeBox");
-  //   final int timeData = await box.getAt(0);
-  //   print(timeData);
-  //   return timeData;
-  // }
 
   Future<Word> getData(int index) async {
     await Hive.openBox("words");
@@ -66,16 +44,16 @@ class HiveHelper {
     await wordBox.putAt(index, data.word);
   }
 
-  // Future<void> setTimeToTimeBox() async {
-  //   await Hive.openBox("timeBox");
-  //   final Box box = Hive.box("timeBox");
-  //   await box.add(10);
-  //   print(box.values);
-  // }
-
-  Future<void> setLangToLanguageBox() async {
+  Future<void> setupLanguage() async {
     await Hive.openBox("countryBox");
     final Box box = Hive.box("countryBox");
     await box.add("English-UK");
+  }
+
+  Future<void> saveLanguage(String countryName) async {
+    await Hive.openBox("countryBox");
+    final box = Hive.box("countryBox");
+    await box.clear();
+    await box.add(countryName);
   }
 }

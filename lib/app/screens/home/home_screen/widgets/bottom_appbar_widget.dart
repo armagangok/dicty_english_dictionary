@@ -10,16 +10,13 @@ class BottomAppBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomAppBar(
       child: SizedBox(
-        height: 40,
+        height: 60,
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              IconButtonWidget(
-                routeName: AddingPage(),
-                icon: Icon(Icons.add),
-              ),
+              addWordButton(),
               const VerticalDivider(color: Colors.white),
               IconButton(
                 onPressed: () async {
@@ -27,9 +24,7 @@ class BottomAppBarWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Setting(
-                        countryLanguage: lang,
-                      ),
+                      builder: (context) => Setting(countryLanguage: lang),
                     ),
                   );
                 },
@@ -40,6 +35,16 @@ class BottomAppBarWidget extends StatelessWidget {
         ),
       ),
       elevation: 5,
+    );
+  }
+
+  IconButtonWidget addWordButton() {
+    return IconButtonWidget(
+      routeName: AddingPage(),
+      icon: Icon(
+        Icons.add,
+        size: 30,
+      ),
     );
   }
 }

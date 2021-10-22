@@ -9,14 +9,13 @@ import 'database/hive_helper.dart';
 Future<void> initApp() async {
   WidgetsFlutterBinding.ensureInitialized();
   final directory = await path_provider.getApplicationDocumentsDirectory();
-  Hive.initFlutter(directory.path);
+  await Hive.initFlutter(directory.path);
   Hive.registerAdapter(WordAdapter());
 
   var _prefs = await SharedPreferences.getInstance();
 
   if (_prefs.getInt("firstRun") == null) {
-    hiveHelper.setLangToLanguageBox();
-    
+    await hiveHelper.setupLanguage();
     await _prefs.setInt("firstRun", 1);
   }
 }
