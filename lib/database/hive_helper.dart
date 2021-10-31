@@ -47,7 +47,7 @@ class HiveHelper {
   Future<void> setupLanguage() async {
     await Hive.openBox("countryBox");
     final Box box = Hive.box("countryBox");
-    await box.add("English-UK");
+    await box.add("English-GB");
   }
 
   Future<void> saveLanguage(String countryName) async {

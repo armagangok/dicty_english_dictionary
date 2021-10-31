@@ -3,8 +3,6 @@ import 'package:wordmind/app/screens/home/Widgets/search_widgets/widgets/search_
 import 'package:wordmind/app/screens/home/Widgets/search_widgets/widgets/search_textfied.dart';
 import 'package:wordmind/app/screens/home/home_screen/widgets/look_up.dart';
 
-
-
 class ScaffoldBodyWidget extends StatelessWidget {
   final TextEditingController textController = TextEditingController();
 

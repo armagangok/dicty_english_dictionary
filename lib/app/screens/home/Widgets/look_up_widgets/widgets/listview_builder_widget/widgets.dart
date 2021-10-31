@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:wordmind/database/words.dart';
 import '../slide_action_widgets/delete_slide_action_widget.dart';
 import '../slide_action_widgets/speak_slide_action_widget.dart';
-import 'list_tile_widget.dart';
+import 'components/list_tile_widget.dart';
 
 class Widgets extends StatelessWidget {
   final wordBox = Hive.box("words");

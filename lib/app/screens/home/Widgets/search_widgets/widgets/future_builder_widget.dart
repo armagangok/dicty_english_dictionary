@@ -29,25 +29,15 @@ Widget dictionaryDatas(snapshot) {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         titleText(snapshot),
-        Divider(
-          color: Colors.black,
-        ),
+        Divider(),
         meaning1Text(snapshot),
-        Divider(
-          color: Colors.black,
-        ),
+        Divider(),
         meaning2Text(snapshot),
-        Divider(
-          color: Colors.black,
-        ),
+        Divider(),
         originText(snapshot),
-        Divider(
-          color: Colors.black,
-        ),
+        Divider(),
         exampleText(snapshot),
-        Divider(
-          color: Colors.black,
-        ),
+        Divider(),
       ],
     ),
   );

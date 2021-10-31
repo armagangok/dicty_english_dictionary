@@ -21,16 +21,12 @@ Future<void> pause() async {
 
 Future<void> setLanguage(String language) async {
   switch (language) {
-    case 'English-UK':
+    case 'English-GB':
       await flutterTts.setLanguage("en-GB");
       break;
 
     case 'English-US':
       await flutterTts.setLanguage("en-US");
-      break;
-
-    case 'English-IN':
-      await flutterTts.setLanguage("en-IN");
       break;
 
     case 'English-AU':
@@ -41,20 +37,12 @@ Future<void> setLanguage(String language) async {
       await flutterTts.setLanguage("en-IE");
       break;
 
-    case 'Deutch':
-      await flutterTts.setLanguage("de-DE");
+    case 'English-IN':
+      await flutterTts.setLanguage("en-IN");
       break;
 
-    case 'Turkish':
-      await flutterTts.setLanguage("tr-TR");
-      break;
-
-    case 'Arabic':
-      await flutterTts.setLanguage("ar-SA");
-      break;
-
-    case 'French':
-      await flutterTts.setLanguage("fr-FR");
+    case 'English-ZA':
+      await flutterTts.setLanguage("en-ZA");
       break;
 
     default:

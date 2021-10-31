@@ -11,7 +11,7 @@ PreferredSizeWidget appBar( countryLanguage) {
       ),
     ),
     actions: [
-      saveLanguageTimeButton( countryLanguage),
+      saveLanguageTimeButton(countryLanguage),
     ],
   );
 }

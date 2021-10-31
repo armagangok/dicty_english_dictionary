@@ -6,8 +6,8 @@ Widget saveLanguageTimeButton(countryLanguage) {
     icon: Icon(
       Icons.save,
     ),
-    onPressed: () {
-      hiveHelper.saveLanguage(countryLanguage);
+    onPressed: () async {
+      await hiveHelper.saveLanguage(countryLanguage);
     },
   );
 }

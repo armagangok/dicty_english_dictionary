@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class LanguageDropDown extends StatefulWidget {
+  Function(String? lang) onChanged;
+  String languageDropdownValue;
   LanguageDropDown({
     Key? key,
     required this.onChanged,
     required this.languageDropdownValue,
   }) : super(key: key);
-
-  Function(String? lang) onChanged;
-  String languageDropdownValue;
 
   @override
   _LanguageDropDownState createState() => _LanguageDropDownState();
@@ -25,13 +24,12 @@ class _LanguageDropDownState extends State<LanguageDropDown> {
         style: TextStyle(color: Colors.orange[800]),
         onChanged: widget.onChanged,
         items: <String>[
-          'English-UK',
+          'English-GB',
+          'English-IE',
           'English-US',
+          'English-AU',
           'English-IN',
-          'Turkish',
-          'Deutch',
-          'French',
-          'Arabic',
+          "English-ZA",
         ].map<DropdownMenuItem<String>>(
           (String value) {
             return DropdownMenuItem<String>(
@@ -43,8 +41,4 @@ class _LanguageDropDownState extends State<LanguageDropDown> {
       ),
     );
   }
-  
 }
-
-
-

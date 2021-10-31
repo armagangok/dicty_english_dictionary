@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'package:wordmind/API/models/fetch_word.dart';
+import 'package:wordmind/services/fetch_word.dart';
 import 'package:wordmind/API/models/word_api_model.dart';
 import 'package:wordmind/database/hive_helper.dart';
 import 'package:wordmind/database/words.dart';
-
 import 'future_builder_widget.dart';
 
 late Future wordInfo;
@@ -47,15 +45,6 @@ Widget saveToDatabaseButton(Future<dynamic> wordInfo) {
   return ElevatedButton(
     onPressed: () async {
       WordApi data = await wordInfo;
-
-      // var meaning = data.word.toString().toUpperCase() +
-      //     ": " +
-      //     "means that, " +
-      //     data.meaning1.toString() +
-      //     "\n\nAnother meaning: " +
-      //     data.meaning2.toString() +
-      //     "\n\nSample sentence: " +
-      //     data.example.toString();
       Word data1 = Word(
         word: data.word,
         origin: data.origin,
