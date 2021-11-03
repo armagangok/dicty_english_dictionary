@@ -8,8 +8,6 @@ class TextSpeakButtonWidget extends StatelessWidget {
     required this.data,
   }) : super(key: key);
 
-  
-
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -17,7 +15,7 @@ class TextSpeakButtonWidget extends StatelessWidget {
         data!,
         style: TextStyle(color: Colors.red),
       ),
-      onPressed: () => flutterTts.speak(data!),
+      onPressed: () => speak(data!),
     );
   }
 }

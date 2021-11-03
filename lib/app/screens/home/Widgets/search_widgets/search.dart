@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'widgets/search_button.dart';
+import 'package:wordmind/app/screens/home/home_screen/components/buttons/search_button.dart';
 
 class Search extends StatelessWidget {
   final textController = TextEditingController();

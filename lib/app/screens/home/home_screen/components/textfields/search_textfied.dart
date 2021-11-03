@@ -8,11 +8,11 @@ class SearchTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: textController,
+      cursorColor: Colors.white,
       decoration: InputDecoration(
-        // fillColor: Colors.grey[200],
         filled: true,
         labelText: "type a word or phrase",
-        // labelStyle: TextStyle(color: Colors.black, fontSize: 15),
+        labelStyle: TextStyle(color: Colors.white),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0),
           borderSide: BorderSide(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../Widgets/scaffold_body_widget.dart';
-import 'widgets/bottom_appbar_widget.dart';
+import 'components/bottom_appbar/bottom_appbar_widget.dart';
+import 'scaffold_body_widget/scaffold_body_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

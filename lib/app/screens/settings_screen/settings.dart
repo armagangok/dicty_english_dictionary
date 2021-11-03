@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import './widgets/appBar_widget.dart';
 import './widgets/language_drowdown_button.dart';
 

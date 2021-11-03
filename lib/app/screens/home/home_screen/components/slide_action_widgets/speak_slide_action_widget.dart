@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:wordmind/database/words.dart';
+import 'package:wordmind/database/word_hive_model.dart';
 import 'package:wordmind/tts_helper/text_to_speech_helper.dart';
 
 class SlideActionSpeak extends StatelessWidget {
@@ -19,7 +19,7 @@ class SlideActionSpeak extends StatelessWidget {
         caption: 'Speak',
         color: Colors.blue,
         icon: Icons.record_voice_over,
-        onTap: () => speak(data),
+        onTap: () => speakWord(data),
       ),
     );
   }

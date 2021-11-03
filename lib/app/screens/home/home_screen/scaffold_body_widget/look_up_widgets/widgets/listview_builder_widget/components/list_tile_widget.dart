@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/core/common/components/text_button_speak_widget.dart';
-import 'package:wordmind/database/words.dart';
+import 'package:wordmind/app/core/common/components/text_button/text_button_speak_widget.dart';
+import 'package:wordmind/database/word_hive_model.dart';
 
 class ListTileItem extends StatelessWidget {
   final Word data;
@@ -35,19 +35,25 @@ class ListTileItem extends StatelessWidget {
                         width: 65,
                       ),
                       Expanded(
-                          child: Card(
-                              child: TextSpeakButtonWidget(data: data.word))),
+                        child: Card(
+                          child: TextSpeakButtonWidget(data: data.word),
+                        ),
+                      ),
                     ],
                   ),
                   Row(
                     children: [
                       SizedBox(
-                        child: Text("Origin:"),
+                        child: Text(
+                          "Origin:",
+                        ),
                         width: 65,
                       ),
                       Expanded(
-                          child: Card(
-                              child: TextSpeakButtonWidget(data: data.origin))),
+                        child: Card(
+                          child: TextSpeakButtonWidget(data: data.origin),
+                        ),
+                      ),
                     ],
                   ),
                   Row(
@@ -57,9 +63,10 @@ class ListTileItem extends StatelessWidget {
                         width: 65,
                       ),
                       Expanded(
-                          child: Card(
-                              child:
-                                  TextSpeakButtonWidget(data: data.meaning1))),
+                        child: Card(
+                          child: TextSpeakButtonWidget(data: data.meaning1),
+                        ),
+                      ),
                     ],
                   ),
                   Row(
@@ -71,9 +78,10 @@ class ListTileItem extends StatelessWidget {
                         width: 65,
                       ),
                       Expanded(
-                          child: Card(
-                              child:
-                                  TextSpeakButtonWidget(data: data.meaning2))),
+                        child: Card(
+                          child: TextSpeakButtonWidget(data: data.meaning2),
+                        ),
+                      ),
                     ],
                   ),
                   Row(
@@ -84,7 +92,8 @@ class ListTileItem extends StatelessWidget {
                       ),
                       Expanded(
                         child: Card(
-                            child: TextSpeakButtonWidget(data: data.example)),
+                          child: TextSpeakButtonWidget(data: data.example),
+                        ),
                       ),
                     ],
                   ),
