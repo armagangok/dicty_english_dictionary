@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:wordmind/API/models/word_api_model.dart';
-import 'package:wordmind/app/screens/home/home_screen/components/buttons/search_button.dart';
 import 'package:wordmind/database/hive_helper.dart';
 import 'package:wordmind/database/word_hive_model.dart';
+import '../../components/buttons/search_button.dart';
 
 class SaveButton extends StatelessWidget {
-  const SaveButton({
-    Key? key,
-  }) : super(key: key);
+  const SaveButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

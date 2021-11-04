@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/core/common/components/text_button/text_button_speak_widget.dart';
+import 'package:wordmind/app/core/components/text_button/text_button_speak_widget.dart';
 import 'package:wordmind/database/word_hive_model.dart';
 
 class ListTileItem extends StatelessWidget {
@@ -44,9 +44,7 @@ class ListTileItem extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(
-                        child: Text(
-                          "Origin:",
-                        ),
+                        child: Text("Origin:"),
                         width: 65,
                       ),
                       Expanded(
@@ -72,9 +70,7 @@ class ListTileItem extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(
-                        child: Text(
-                          "Meaning:",
-                        ),
+                        child: Text("Meaning:"),
                         width: 65,
                       ),
                       Expanded(

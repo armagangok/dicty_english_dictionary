@@ -19,10 +19,7 @@ class AddWordButtonWidget extends StatelessWidget {
           ),
         );
       },
-      icon: Icon(
-        Icons.add_circle,
-        size: 30,
-      ),
+      icon: Icon(Icons.add_circle, size: 30),
     );
   }
 }
