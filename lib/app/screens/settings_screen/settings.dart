@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import './widgets/appBar_widget.dart';
-import './widgets/language_drowdown_button.dart';
+import '../home/home_screen/components/buttons/language_drowdown_button.dart';
 
 class Setting extends StatefulWidget {
-  late String countryLanguage;
+  String countryLanguage;
 
   Setting({
     Key? key,

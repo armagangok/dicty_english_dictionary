@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class SearchTextWidget extends StatelessWidget {
   final TextEditingController textController;
+  
   const SearchTextWidget({
     Key? key,
     required this.textController,

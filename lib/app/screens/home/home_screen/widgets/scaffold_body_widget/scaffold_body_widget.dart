@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/screens/home/home_screen/components/buttons/setting_button.dart';
+import 'package:wordmind/API/models/word_api_model.dart';
+import 'package:wordmind/app/screens/home/home_screen/widgets/scaffold_body_widget/look_up_widgets/f.dart';
+import 'package:wordmind/services/fetch_word.dart';
 import 'look_up_widgets/look_up.dart';
 import '../../components/buttons/search_button.dart';
 import '../../components/textfields/search_textfied.dart';
+import '../../components/buttons/setting_button.dart';
+
+late Future<WordApi> wordInfo;
 
 class ScaffoldBodyWidget extends StatelessWidget {
   final TextEditingController textController = TextEditingController();
@@ -19,7 +24,9 @@ class ScaffoldBodyWidget extends StatelessWidget {
               Expanded(
                 child: SearchTextWidget(textController: textController),
               ),
-              SearchWordButtonWidget(textController: textController),
+              SearchWordButtonWidget(
+                onPressed: () => onPressed(),
+              ),
             ],
           ),
           Container(
@@ -29,5 +36,11 @@ class ScaffoldBodyWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void onPressed() {
+    wordInfo = fetchWord(textController.text);
+    dialogScreen(wordInfo);
+    textController.clear();
   }
 }

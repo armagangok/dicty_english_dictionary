@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import 'package:wordmind/app/screens/word_adding_screen/widgets/text_field_widget.dart';
 import 'widgets/save_button_widget.dart.dart';
 
-class AddingPage extends StatelessWidget {
+class AddWordScreen extends StatelessWidget {
   final TextEditingController word = TextEditingController();
   final TextEditingController origin = TextEditingController();
   final TextEditingController meaning1 = TextEditingController();

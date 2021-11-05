@@ -10,7 +10,6 @@ class HiveHelper {
   factory HiveHelper() {
     return _singleton;
   }
-
   HiveHelper._internal();
 
   Future<void> addData(Word word) async {
