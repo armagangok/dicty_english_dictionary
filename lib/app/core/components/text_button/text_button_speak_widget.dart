@@ -13,7 +13,6 @@ class TextSpeakButtonWidget extends StatelessWidget {
     return TextButton(
       child: Text(
         data!,
-        style: TextStyle(color: Colors.purpleAccent[100]),
       ),
       onPressed: () => speak(data!),
     );

@@ -13,6 +13,7 @@ class SettingButton extends StatelessWidget {
     return IconButton(
       onPressed: () async {
         String lang = await hiveHelper.getLanguage();
+        print(lang.runtimeType);
         navigation.getTo(Setting(countryLanguage: lang));
       },
       icon: Icon(Icons.settings),

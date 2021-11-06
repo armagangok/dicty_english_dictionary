@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wordmind/API/models/word_api_model.dart';
-import 'package:wordmind/app/screens/home/home_screen/widgets/scaffold_body_widget/look_up_widgets/f.dart';
+import 'package:wordmind/app/screens/home/home_screen/components/dialog_widget/dialog_widget.dart';
 import 'package:wordmind/services/fetch_word.dart';
-import 'look_up_widgets/look_up.dart';
+import 'look_up.dart';
 import '../../components/buttons/search_button.dart';
 import '../../components/textfields/search_textfied.dart';
 import '../../components/buttons/setting_button.dart';
@@ -16,18 +16,20 @@ class ScaffoldBodyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              SettingButton(),
-              Expanded(
-                child: SearchTextWidget(textController: textController),
-              ),
-              SearchWordButtonWidget(
-                onPressed: () => onPressed(),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Row(
+              children: [
+                SettingButton(),
+                Expanded(
+                  child: SearchTextWidget(textController: textController),
+                ),
+                SearchWordButtonWidget(
+                  onPressed: () => onPressed(),
+                ),
+              ],
+            ),
           ),
           Container(
             height: MediaQuery.of(context).size.height / 1.15,

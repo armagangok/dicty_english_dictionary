@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:hive_flutter/hive_flutter.dart';
@@ -10,6 +11,12 @@ Future<void> initApp() async {
   final directory = await path_provider.getApplicationDocumentsDirectory();
   await Hive.initFlutter(directory.path);
   Hive.registerAdapter(WordAdapter());
+
+  await Hive.openBox("countryBox");
+  await Hive.openBox("words");
+  await Hive.openBox("theme");
+
+  await GetStorage.init();
 
   var _prefs = await SharedPreferences.getInstance();
 

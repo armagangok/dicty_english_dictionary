@@ -19,38 +19,44 @@ class AddWordScreen extends StatelessWidget {
             children: [
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.5,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    AddingScreenTextFieldWidget(
-                      textController: word,
-                      label: 'Word',
-                    ),
-                    AddingScreenTextFieldWidget(
-                      textController: origin,
-                      label: 'Origin',
-                    ),
-                    AddingScreenTextFieldWidget(
-                      textController: meaning1,
-                      label: 'First Meaning',
-                    ),
-                    AddingScreenTextFieldWidget(
-                      textController: meaning2,
-                      label: 'Second Meaning',
-                    ),
-                    AddingScreenTextFieldWidget(
-                      textController: example,
-                      label: 'Example',
-                    ),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      AddingScreenTextFieldWidget(
+                        textController: word,
+                        label: 'Word',
+                      ),
+                      AddingScreenTextFieldWidget(
+                        textController: origin,
+                        label: 'Origin',
+                      ),
+                      AddingScreenTextFieldWidget(
+                        textController: meaning1,
+                        label: 'First Meaning',
+                      ),
+                      AddingScreenTextFieldWidget(
+                        textController: meaning2,
+                        label: 'Second Meaning',
+                      ),
+                      AddingScreenTextFieldWidget(
+                        textController: example,
+                        label: 'Example',
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              SaveManualWordButton(
-                word1: word,
-                origin: origin,
-                meaning1: meaning1,
-                meaning2: meaning2,
-                example: example,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SaveManualWordButton(
+                  word1: word,
+                  origin: origin,
+                  meaning1: meaning1,
+                  meaning2: meaning2,
+                  example: example,
+                ),
               ),
             ],
           ),

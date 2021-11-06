@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class SearchTextWidget extends StatelessWidget {
   final TextEditingController textController;
-  
+
   const SearchTextWidget({
     Key? key,
     required this.textController,
@@ -12,11 +12,8 @@ class SearchTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: textController,
-      cursorColor: Colors.white,
       decoration: InputDecoration(
-        filled: true,
         labelText: "type a word or phrase",
-        labelStyle: TextStyle(color: Colors.white),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0),
           borderSide: BorderSide(

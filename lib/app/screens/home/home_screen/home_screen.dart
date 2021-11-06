@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'components/buttons/floating_action_button.dart';
-import 'widgets/scaffold_body_widget/scaffold_body_widget.dart';
+import 'components/scaffold_body_widget/scaffold_body_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
