@@ -7,11 +7,13 @@ class CustomTheme {
     ),
     scaffoldBackgroundColor: Colors.blue[100],
     cardColor: Colors.orange[100],
+    dividerColor: Colors.black,
+    dividerTheme: DividerThemeData(thickness: 0.2),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
-        // backgroundColor: MaterialStateProperty.all<Color>(Colors.orange[200]!),
-        foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
-      ),
+          // backgroundColor: MaterialStateProperty.all<Color>(Colors.orange[200]!),
+          // foregroundColor: MaterialStateProperty.all<Color>(Colors.red[600]!),
+          ),
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
@@ -21,5 +23,10 @@ class CustomTheme {
       ),
     ),
   );
-  final darkTheme = ThemeData.from(colorScheme: const ColorScheme.dark());
+
+  final darkTheme =
+      ThemeData.from(colorScheme: const ColorScheme.dark()).copyWith(
+    dividerColor: Colors.white,
+    dividerTheme: DividerThemeData(thickness: 0.2),
+  );
 }

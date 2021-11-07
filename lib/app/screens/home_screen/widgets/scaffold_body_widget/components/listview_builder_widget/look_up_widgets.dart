@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:wordmind/app/screens/home/home_screen/components/scaffold_body_widget/widgets/list_tile_widget.dart';
-import 'package:wordmind/app/screens/home/home_screen/components/slide_action_widgets/delete_slide_action_widget.dart';
-import 'package:wordmind/app/screens/home/home_screen/components/slide_action_widgets/speak_slide_action_widget.dart';
+import 'package:wordmind/app/screens/home_screen/components/scaffold_body_widget/widgets/list_tile_widget.dart';
+import 'package:wordmind/app/screens/home_screen/components/slide_action_widgets/delete_slide_action_widget.dart';
+import 'package:wordmind/app/screens/home_screen/components/slide_action_widgets/speak_slide_action_widget.dart';
 import 'package:wordmind/database/word_hive_model.dart';
 
 class LookUpWidget extends StatelessWidget {

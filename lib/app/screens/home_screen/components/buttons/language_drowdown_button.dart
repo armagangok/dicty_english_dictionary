@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 
 class LanguageDropDown extends StatelessWidget {
   final Function(String? lang) onChanged;
-  String languageDropdownValue;
+  String dropdownValue;
   LanguageDropDown({
     Key? key,
     required this.onChanged,
-    required this.languageDropdownValue,
+    required this.dropdownValue,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: DropdownButton<String>(
-        dropdownColor: Colors.grey[300],
-        value: languageDropdownValue,
-        style: TextStyle(color: Colors.orange[800]),
+        value: dropdownValue,
         onChanged: onChanged,
+        
+        borderRadius: BorderRadius.all(Radius.circular(20)),
         items: <String>[
           'English-GB',
           'English-IE',

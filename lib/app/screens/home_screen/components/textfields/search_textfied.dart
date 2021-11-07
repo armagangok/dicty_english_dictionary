@@ -1,33 +1,34 @@
 import 'package:flutter/material.dart';
 
-class AddingScreenTextFieldWidget extends StatelessWidget {
+class SearchTextWidget extends StatelessWidget {
   final TextEditingController textController;
-  final String label;
 
-  const AddingScreenTextFieldWidget({
+  const SearchTextWidget({
     Key? key,
     required this.textController,
-    required this.label,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: 40,
       child: TextFormField(
         controller: textController,
-        keyboardType: TextInputType.multiline,
-        cursorHeight: 20,
         decoration: InputDecoration(
-          labelText: "$label",
+          labelText: "a word, phrase",
           labelStyle: TextStyle(fontSize: 14),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            borderSide: BorderSide(color: Colors.white, width: 2),
+            borderRadius: BorderRadius.circular(90.0),
+            borderSide: BorderSide(
+              color: Colors.white,
+              width: 1,
+            ),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            borderSide: BorderSide(color: Colors.white),
+            borderRadius: BorderRadius.circular(90.0),
+            borderSide: BorderSide(
+              color: Colors.white,
+            ),
           ),
         ),
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wordmind/API/models/word_api_model.dart';
-import '../../../../core/components/text_widgets/text_widget.dart';
+import '../../../core/components/text_widgets/text_widget.dart';
 
 class FutureBuilderWidget extends StatelessWidget {
   final Future<WordApi> wordInfo;

@@ -28,7 +28,7 @@ class ListTileItem extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    ContainerWidget(textWidget: Text("Word:")),
+                    ContainerWidget(textWidget: Text("Word")),
                     Expanded(
                       child: Card(
                         child: TextSpeakButtonWidget(data: data.word),
@@ -38,7 +38,7 @@ class ListTileItem extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    ContainerWidget(textWidget: Text("Origin:")),
+                    ContainerWidget(textWidget: Text("Origin")),
                     Expanded(
                       child: Card(
                         child: TextSpeakButtonWidget(data: data.origin),
@@ -48,7 +48,7 @@ class ListTileItem extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    ContainerWidget(textWidget: Text("Meaning:")),
+                    ContainerWidget(textWidget: Text("Meaning")),
                     Expanded(
                       child: Card(
                         child: TextSpeakButtonWidget(data: data.meaning1),
@@ -58,7 +58,7 @@ class ListTileItem extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    ContainerWidget(textWidget: Text("Meaning:")),
+                    ContainerWidget(textWidget: Text("Meaning")),
                     Expanded(
                       child: Card(
                         child: TextSpeakButtonWidget(data: data.meaning2),
@@ -68,7 +68,7 @@ class ListTileItem extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    ContainerWidget(textWidget: Text("Example:")),
+                    ContainerWidget(textWidget: Text("Example")),
                     Expanded(
                       child: Card(
                         child: TextSpeakButtonWidget(data: data.example),
