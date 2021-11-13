@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:wordmind/theme/theme.dart';
 import 'package:wordmind/theme/theme_service.dart';
-import 'app/screens/home_screen/home_screen.dart';
+import 'app/views/view_home/home_screen.dart';
 import 'initApp.dart';
 
 void main() async {
   await initApp();
-  runApp(MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: HomeView(),
       theme: CustomTheme().lightTheme,
       darkTheme: CustomTheme().darkTheme,
       themeMode: ThemeService().getThemeMode(),
