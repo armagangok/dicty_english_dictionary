@@ -15,7 +15,7 @@ class LookUpScreen extends StatelessWidget {
           else
             return LookUpWidget();
         } else {
-          return Text("");
+          return LookUpWidget();
         }
       },
     );

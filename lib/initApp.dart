@@ -11,6 +11,7 @@ import 'database/word_hive_model.dart';
 Future<void> initApp() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  MobileAds.instance.initialize();
 
   final directory = await path_provider.getApplicationDocumentsDirectory();
   await Hive.initFlutter(directory.path);
@@ -20,7 +21,6 @@ Future<void> initApp() async {
   await Hive.openBox("theme");
 
   await GetStorage.init();
-
   var _prefs = await SharedPreferences.getInstance();
 
   if (_prefs.getInt("firstRun") == null) {
