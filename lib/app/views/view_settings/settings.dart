@@ -1,14 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wordmind/advertisement/ad_helper.dart';
+import 'package:wordmind/advertisement/init_add.dart';
 import 'package:wordmind/app/views/view_home/components/buttons/language_drowdown_button.dart';
+import 'package:wordmind/app/views/view_settings/widgets/appBar_widget.dart';
 import 'package:wordmind/theme/theme_service.dart';
-
-import './widgets/appBar_widget.dart';
 
 class SettingView extends StatefulWidget {
   String countryLanguage;
 
-  SettingView({Key? key, required this.countryLanguage}) : super(key: key);
+  SettingView({
+    Key? key,
+    required this.countryLanguage,
+  }) : super(key: key);
 
   @override
   _SettingViewState createState() => _SettingViewState();
@@ -22,36 +26,44 @@ class _SettingViewState extends State<SettingView> {
     return Scaffold(
       appBar: appBar(widget.countryLanguage),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(5.0),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height - 70,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              dropDownPart(),
-              Divider(),
-              themeWidget(),
-              Divider(),
-              Container(
-                color: Colors.grey,
-                height: 100,
-                child: Center(
-                  child: Text("Advertise Zone"),
-                ),
+              Column(
+                children: [
+                  dropDownPart(),
+                  Divider(),
+                  themeWidget(),
+                  Divider(),
+                ],
               ),
-              Divider(),
-              Container(
-                color: Colors.grey,
-                height: 100,
-                child: Center(
-                  child: Text("Advertise Zone"),
-                ),
-              ),
-              Divider(),
-              Container(
-                color: Colors.grey,
-                height: 100,
-                child: Center(
-                  child: Text("Advertise Zone"),
-                ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 80,
+                    child: Center(
+                      child: addTool.checkForAd(initAd.isLoaded3, initAd.ad3),
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  Container(
+                    height: 80,
+                    child: Center(
+                      child: addTool.checkForAd(initAd.isLoaded4, initAd.ad4),
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  Container(
+                    height: 80,
+                    child: Center(
+                      child: addTool.checkForAd(initAd.isLoaded5, initAd.ad5),
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                ],
               ),
             ],
           ),

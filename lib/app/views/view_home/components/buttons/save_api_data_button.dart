@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wordmind/API/models/word_api_model.dart';
-import '../../home_screen.dart';
+import '../../view_home.dart';
 import 'package:wordmind/database/hive_helper.dart';
 import 'package:wordmind/database/word_hive_model.dart';
 
@@ -21,9 +21,19 @@ class SaveButton extends StatelessWidget {
         );
         await hiveHelper.addData(data1);
       },
-      child: Text("Save"),
+      child: Text(
+        "save",
+        style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w700,
+          fontSize: 18,
+        ),
+      ),
       style: ElevatedButton.styleFrom(
-        minimumSize: Size(100, 40),
+        minimumSize: Size(
+          MediaQuery.of(context).size.width,
+          MediaQuery.of(context).size.height / 24,
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(10),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wordmind/API/models/word_api_model.dart';
-import '../../../core/components/text_widgets/text_widget.dart';
+import 'package:wordmind/app/views/view_word_details/word_details_view.dart';
 
 class FutureBuilderWidget extends StatelessWidget {
   final Future<WordApi> wordInfo;
@@ -28,22 +28,45 @@ class FutureBuilderWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 5,
-        horizontal: 2,
+        horizontal: 1.5,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          textWidget("WORD: " + "${snapshot.data.word ?? ''}"),
-          Divider(),
-          textWidget("MEANING:  " + "${snapshot.data.meaning1 ?? ''}"),
-          Divider(),
-          textWidget("MEANING:  " + "${snapshot.data.meaning2 ?? ''}"),
-          Divider(),
-          textWidget("ORIGIN:  " + "${snapshot.data.origin ?? ''}"),
-          Divider(),
-          textWidget("EXAMPLE: " + "${snapshot.data.example ?? ''}"),
-          Divider(),
+          f(
+            snapshot.data.word ?? "",
+            size: 25,
+            color: Colors.red,
+            fWeigth: FontWeight.w700,
+          ),
+          SizedBox(height: 10),
+          f(
+            snapshot.data.meaning1 ?? "",
+            size: 14,
+            fWeigth: FontWeight.w400,
+            icon: Icon(Icons.menu_book),
+          ),
+          SizedBox(height: 10),
+          f(
+            snapshot.data.meaning2 ?? "",
+            size: 14,
+            fWeigth: FontWeight.w400,
+            icon: Icon(Icons.menu_book),
+          ),
+          SizedBox(height: 10),
+          f(
+            "Origin: " + snapshot.data.origin,
+            size: 14,
+            fWeigth: FontWeight.w400,
+          ),
+          SizedBox(height: 10),
+          f(
+            snapshot.data.example ?? "",
+            icon: Icon(Icons.star),
+            size: 14,
+            fWeigth: FontWeight.w400,
+          ),
         ],
       ),
     );

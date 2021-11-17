@@ -13,7 +13,7 @@ Future<void> speakWord(Word data) async {
   );
 }
 
-Future<void> speak(String phrase) async {
+Future<void> speakWordOneTime(String phrase) async {
   String language = await hiveHelper.getLanguage();
   await setLanguage(language);
   await flutterTts.speak(phrase);

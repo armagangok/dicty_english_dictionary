@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:wordmind/theme/theme.dart';
 import 'package:wordmind/theme/theme_service.dart';
-import 'app/views/view_home/home_screen.dart';
+import 'app/views/view_home/view_home.dart';
 import 'initApp.dart';
 
 void main() async {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeView(),
-      theme: CustomTheme().lightTheme,
+      theme: CustomTheme().ligthTheme,
       darkTheme: CustomTheme().darkTheme,
       themeMode: ThemeService().getThemeMode(),
     );

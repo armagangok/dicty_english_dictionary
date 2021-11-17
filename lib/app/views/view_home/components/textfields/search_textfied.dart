@@ -16,20 +16,6 @@ class SearchTextWidget extends StatelessWidget {
         controller: textController,
         decoration: InputDecoration(
           labelText: "a word, phrase",
-          labelStyle: TextStyle(fontSize: 14),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(90.0),
-            borderSide: BorderSide(
-              color: Colors.white,
-              width: 1,
-            ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(90.0),
-            borderSide: BorderSide(
-              color: Colors.white,
-            ),
-          ),
         ),
       ),
     );

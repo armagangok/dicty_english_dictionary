@@ -20,15 +20,6 @@ class AddingScreenTextFieldWidget extends StatelessWidget {
         cursorHeight: 20,
         decoration: InputDecoration(
           labelText: "$label",
-          labelStyle: TextStyle(fontSize: 14),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            borderSide: BorderSide(color: Colors.white, width: 2),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            borderSide: BorderSide(color: Colors.white),
-          ),
         ),
       ),
     );
