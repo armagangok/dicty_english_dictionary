@@ -20,83 +20,97 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  BannerAd? ad1;
+  BannerAd? ad2;
+  BannerAd? ad3;
+  BannerAd? ad4;
+  BannerAd? ad5;
+  BannerAd? ad6;
+
+  bool? isLoaded1;
+  bool? isLoaded2;
+  bool? isLoaded3;
+  bool? isLoaded4;
+  bool? isLoaded5;
+  bool? isLoaded6;
+
   @override
   void initState() {
     super.initState();
-    initAd.ad1 = BannerAd(
+    ad1 = BannerAd(
       size: AdSize.banner,
       adUnitId: AdHelper.bannerAdUnitId1,
       listener: BannerAdListener(
-        onAdLoaded: (_) => setState(() => initAd.isLoaded1 = true),
+        onAdLoaded: (_) => setState(() => isLoaded1 = true),
         onAdFailedToLoad: (_, error) => print("$error"),
       ),
       request: const AdRequest(),
     );
 
-    initAd.ad2 = BannerAd(
-      size: AdSize.banner,
-      adUnitId: AdHelper.bannerAdUnitId2,
-      listener: BannerAdListener(
-        onAdLoaded: (_) => setState(() => initAd.isLoaded2 = true),
-        onAdFailedToLoad: (_, error) => print("$error"),
-      ),
-      request: const AdRequest(),
-    );
+    // ad2 = BannerAd(
+    //   size: AdSize.banner,
+    //   adUnitId: AdHelper.bannerAdUnitId2,
+    //   listener: BannerAdListener(
+    //     onAdLoaded: (_) => setState(() => isLoaded2 = true),
+    //     onAdFailedToLoad: (_, error) => print("$error"),
+    //   ),
+    //   request: const AdRequest(),
+    // );
 
-    initAd.ad3 = BannerAd(
-      size: AdSize.banner,
-      adUnitId: AdHelper.bannerAdUnitId3,
-      listener: BannerAdListener(
-        onAdLoaded: (_) => setState(() => initAd.isLoaded3 = true),
-        onAdFailedToLoad: (_, error) => print("$error"),
-      ),
-      request: const AdRequest(),
-    );
+    // ad3 = BannerAd(
+    //   size: AdSize.banner,
+    //   adUnitId: AdHelper.bannerAdUnitId3,
+    //   listener: BannerAdListener(
+    //     onAdLoaded: (_) => setState(() => isLoaded3 = true),
+    //     onAdFailedToLoad: (_, error) => print("$error"),
+    //   ),
+    //   request: const AdRequest(),
+    // );
 
-    initAd.ad4 = BannerAd(
-      size: AdSize.banner,
-      adUnitId: AdHelper.bannerAdUnitId4,
-      listener: BannerAdListener(
-        onAdLoaded: (_) => setState(() => initAd.isLoaded4 = true),
-        onAdFailedToLoad: (_, error) => print("$error"),
-      ),
-      request: const AdRequest(),
-    );
-    initAd.ad5 = BannerAd(
-      size: AdSize.banner,
-      adUnitId: AdHelper.bannerAdUnitId5,
-      listener: BannerAdListener(
-        onAdLoaded: (_) => setState(() => initAd.isLoaded5 = true),
-        onAdFailedToLoad: (_, error) => print("$error"),
-      ),
-      request: const AdRequest(),
-    );
-    initAd.ad6 = BannerAd(
-      size: AdSize.banner,
-      adUnitId: AdHelper.bannerAdUnitId6,
-      listener: BannerAdListener(
-        onAdLoaded: (_) => setState(() => initAd.isLoaded6 = true),
-        onAdFailedToLoad: (_, error) => print("$error"),
-      ),
-      request: const AdRequest(),
-    );
+    // ad4 = BannerAd(
+    //   size: AdSize.banner,
+    //   adUnitId: AdHelper.bannerAdUnitId4,
+    //   listener: BannerAdListener(
+    //     onAdLoaded: (_) => setState(() => isLoaded4 = true),
+    //     onAdFailedToLoad: (_, error) => print("$error"),
+    //   ),
+    //   request: const AdRequest(),
+    // );
+    // ad5 = BannerAd(
+    //   size: AdSize.banner,
+    //   adUnitId: AdHelper.bannerAdUnitId5,
+    //   listener: BannerAdListener(
+    //     onAdLoaded: (_) => setState(() => isLoaded5 = true),
+    //     onAdFailedToLoad: (_, error) => print("$error"),
+    //   ),
+    //   request: const AdRequest(),
+    // );
+    // ad6 = BannerAd(
+    //   size: AdSize.banner,
+    //   adUnitId: AdHelper.bannerAdUnitId6,
+    //   listener: BannerAdListener(
+    //     onAdLoaded: (_) => setState(() => isLoaded6 = true),
+    //     onAdFailedToLoad: (_, error) => print("$error"),
+    //   ),
+    //   request: const AdRequest(),
+    // );
 
-    initAd.ad1!.load();
-    initAd.ad2!.load();
-    initAd.ad3!.load();
-    initAd.ad4!.load();
-    initAd.ad5!.load();
-    initAd.ad6!.load();
+    ad1!.load();
+    // ad2!.load();
+    // ad3!.load();
+    // ad4!.load();
+    // ad5!.load();
+    // ad6!.load();
   }
 
   @override
   void dispose() {
-    initAd.ad1?.dispose();
-    initAd.ad2?.dispose();
-    initAd.ad3?.dispose();
-    initAd.ad4?.dispose();
-    initAd.ad5?.dispose();
-    initAd.ad6?.dispose();
+    ad1?.dispose();
+    // ad2?.dispose();
+    // ad3?.dispose();
+    // ad4?.dispose();
+    // ad5?.dispose();
+    // ad6?.dispose();
     super.dispose();
   }
 
@@ -106,7 +120,9 @@ class _HomeViewState extends State<HomeView> {
       child: Scaffold(
         body: SingleChildScrollView(
           child: GestureDetector(
-            onTap: () => FocusScope.of(context).unfocus(),
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
             child: SizedBox(
               height: MediaQuery.of(context).size.height,
               child: Column(
@@ -125,7 +141,10 @@ class _HomeViewState extends State<HomeView> {
                         SearchWordButtonWidget(
                           onPressed: () => {
                             adDialogScreen(
-                                initAd.isLoaded2, initAd.ad2, context),
+                              isLoaded2,
+                              ad2,
+                              context,
+                            ),
                             wordInfo =
                                 fetchWord(textController.textController.text),
                             dialogScreen(wordInfo),
@@ -141,7 +160,7 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   SizedBox(
                     child: Center(
-                      child: addTool.checkForAd(initAd.isLoaded1, initAd.ad1),
+                      child: addTool.checkForAd(isLoaded1, ad1),
                     ),
                     height: 45,
                   ),
@@ -152,5 +171,14 @@ class _HomeViewState extends State<HomeView> {
         ),
       ),
     );
+  }
+}
+
+class SampleView extends StatelessWidget {
+  const SampleView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

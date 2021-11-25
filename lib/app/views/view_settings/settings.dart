@@ -39,32 +39,32 @@ class _SettingViewState extends State<SettingView> {
                   Divider(),
                 ],
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    height: 80,
-                    child: Center(
-                      child: addTool.checkForAd(initAd.isLoaded3, initAd.ad3),
-                    ),
-                  ),
-                  SizedBox(height: 15),
-                  Container(
-                    height: 80,
-                    child: Center(
-                      child: addTool.checkForAd(initAd.isLoaded4, initAd.ad4),
-                    ),
-                  ),
-                  SizedBox(height: 15),
-                  Container(
-                    height: 80,
-                    child: Center(
-                      child: addTool.checkForAd(initAd.isLoaded5, initAd.ad5),
-                    ),
-                  ),
-                  SizedBox(height: 15),
-                ],
-              ),
+              // Column(
+              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //   children: [
+              //     Container(
+              //       height: 80,
+              //       child: Center(
+              //         child: addTool.checkForAd(initAd.isLoaded3, initAd.ad3),
+              //       ),
+              //     ),
+              //     SizedBox(height: 15),
+              //     Container(
+              //       height: 80,
+              //       child: Center(
+              //         child: addTool.checkForAd(initAd.isLoaded4, initAd.ad4),
+              //       ),
+              //     ),
+              //     SizedBox(height: 15),
+              //     Container(
+              //       height: 80,
+              //       child: Center(
+              //         child: addTool.checkForAd(initAd.isLoaded5, initAd.ad5),
+              //       ),
+              //     ),
+              //     SizedBox(height: 15),
+              //   ],
+              // ),
             ],
           ),
         ),

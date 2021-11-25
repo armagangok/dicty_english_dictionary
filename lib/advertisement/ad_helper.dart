@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdHelper {
-  
-
   static String get bannerAdUnitId1 {
     if (Platform.isAndroid) {
       return "ca-app-pub-3284743895748498/2525921604";
@@ -55,7 +53,7 @@ class AdHelper {
     }
   }
 
-    static String get bannerAdUnitId6 {
+  static String get bannerAdUnitId6 {
     if (Platform.isAndroid) {
       return "ca-app-pub-3284743895748498/9662616533";
     } else if (Platform.isIOS) {
@@ -65,7 +63,6 @@ class AdHelper {
     }
   }
 }
-
 
 final addTool = AddTool();
 
@@ -78,7 +75,7 @@ class AddTool {
         ),
       );
     } else {
-      return const CircularProgressIndicator();
+      return Center(child: const CircularProgressIndicator());
     }
   }
 }

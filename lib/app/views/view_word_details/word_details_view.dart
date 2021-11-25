@@ -54,10 +54,10 @@ class DetailsView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 60,
-                child: addTool.checkForAd(initAd.isLoaded6, initAd.ad6),
-              )
+              // SizedBox(
+              //   height: 60,
+              //   child: addTool.checkForAd(initAd.isLoaded6, initAd.ad6),
+              // )
             ],
           ),
         ),

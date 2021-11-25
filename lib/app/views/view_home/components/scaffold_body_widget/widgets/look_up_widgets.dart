@@ -37,7 +37,7 @@ class LookUpWidget extends StatelessWidget {
                   SlideActionWidget(
                     data: data,
                     icon: Icons.record_voice_over,
-                    iconText: "speak",
+                    iconText: "Speak",
                     bgColor: Colors.blue,
                     onTap: () async => await speakWord(data),
                   ),

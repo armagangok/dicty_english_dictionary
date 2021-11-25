@@ -16,5 +16,4 @@ class TextController {
   TextEditingController get meaning2 => _meaning2;
   TextEditingController get example => _example;
   TextEditingController get textController => _textController;
-
 }

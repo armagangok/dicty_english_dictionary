@@ -13,6 +13,7 @@ Future<void> initApp() async {
 
   MobileAds.instance.initialize();
 
+
   final directory = await path_provider.getApplicationDocumentsDirectory();
   await Hive.initFlutter(directory.path);
   Hive.registerAdapter(WordAdapter());
