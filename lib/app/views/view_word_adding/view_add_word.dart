@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
+import 'package:wordmind/app/components/common/buttons.dart';
+import 'package:wordmind/app/components/common/textfields.dart';
 import 'package:wordmind/app/controllers/text_editing_controllers.dart';
-import 'package:wordmind/app/views/view_word_adding/widgets/text_field_widget.dart';
-import 'widgets/save_button_widget.dart.dart';
+import 'package:wordmind/database/hive_helper.dart';
+import 'package:wordmind/database/word_hive_model.dart';
 
 class AddWordView extends StatelessWidget {
   @override
@@ -20,24 +22,24 @@ class AddWordView extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      AddingScreenTextFieldWidget(
-                        textController: textController.word,
+                      CustomTextField(
+                        controller: textController.word,
                         label: 'Word',
                       ),
-                      AddingScreenTextFieldWidget(
-                        textController: textController.origin,
+                      CustomTextField(
+                        controller: textController.origin,
                         label: 'Origin',
                       ),
-                      AddingScreenTextFieldWidget(
-                        textController: textController.meaning1,
+                      CustomTextField(
+                        controller: textController.meaning1,
                         label: 'First Meaning',
                       ),
-                      AddingScreenTextFieldWidget(
-                        textController: textController.meaning2,
+                      CustomTextField(
+                        controller: textController.meaning2,
                         label: 'Second Meaning',
                       ),
-                      AddingScreenTextFieldWidget(
-                        textController: textController.example,
+                      CustomTextField(
+                        controller: textController.example,
                         label: 'Example',
                       ),
                     ],
@@ -46,13 +48,24 @@ class AddWordView extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: SaveManualWordButton(
-                  word1: textController.word,
-                  origin: textController.origin,
-                  meaning1: textController.meaning1,
-                  meaning2: textController.meaning2,
-                  example: textController.example,
-                ),
+                child: CustomElevatedButton(
+                    buttonH: 35,
+                    buttonW: MediaQuery.of(context).size.width,
+                    onPressed: ()  {
+                      final word = Word(
+                        word: textController.word.text,
+                        origin: textController.origin.text,
+                        meaning1: textController.meaning1.text,
+                        meaning2: textController.meaning2.text,
+                        example: textController.example.text,
+                      );
+                      hiveHelper.addData(word);
+                      textController.word.clear();
+                      textController.origin.clear();
+                      textController.meaning1.clear();
+                      textController.meaning2.clear();
+                      textController.example.clear();
+                    }),
               ),
             ],
           ),

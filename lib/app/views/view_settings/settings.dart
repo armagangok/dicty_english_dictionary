@@ -1,17 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wordmind/advertisement/ad_helper.dart';
-import 'package:wordmind/advertisement/init_add.dart';
 import 'package:wordmind/app/views/view_home/components/buttons/language_drowdown_button.dart';
 import 'package:wordmind/app/views/view_settings/widgets/appBar_widget.dart';
 import 'package:wordmind/theme/theme_service.dart';
 
 class SettingView extends StatefulWidget {
-  String countryLanguage;
+  String accent;
 
   SettingView({
     Key? key,
-    required this.countryLanguage,
+    required this.accent,
   }) : super(key: key);
 
   @override
@@ -24,7 +22,7 @@ class _SettingViewState extends State<SettingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(widget.countryLanguage),
+      appBar: appBar(widget.accent),
       body: SingleChildScrollView(
         child: SizedBox(
           height: MediaQuery.of(context).size.height - 70,
@@ -39,32 +37,6 @@ class _SettingViewState extends State<SettingView> {
                   Divider(),
                 ],
               ),
-              // Column(
-              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   children: [
-              //     Container(
-              //       height: 80,
-              //       child: Center(
-              //         child: addTool.checkForAd(initAd.isLoaded3, initAd.ad3),
-              //       ),
-              //     ),
-              //     SizedBox(height: 15),
-              //     Container(
-              //       height: 80,
-              //       child: Center(
-              //         child: addTool.checkForAd(initAd.isLoaded4, initAd.ad4),
-              //       ),
-              //     ),
-              //     SizedBox(height: 15),
-              //     Container(
-              //       height: 80,
-              //       child: Center(
-              //         child: addTool.checkForAd(initAd.isLoaded5, initAd.ad5),
-              //       ),
-              //     ),
-              //     SizedBox(height: 15),
-              //   ],
-              // ),
             ],
           ),
         ),
@@ -94,14 +66,14 @@ class _SettingViewState extends State<SettingView> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text("Speaker Language"),
+        Text("English Accent"),
         LanguageDropDown(
           onChanged: (String? newValue) {
             setState(() {
-              widget.countryLanguage = newValue!;
+              widget.accent = newValue!;
             });
           },
-          dropdownValue: widget.countryLanguage,
+          dropdownValue: widget.accent,
         )
       ],
     );

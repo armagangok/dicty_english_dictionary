@@ -5,7 +5,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:wordmind/app/views/view_home/components/scaffold_body_widget/widgets/list_tile_widget.dart';
-import 'package:wordmind/app/views/view_home/components/slide_action_widgets/slide_action_widgets.dart';
+import 'package:wordmind/app/views/view_home/components/stacks/slide_action_widgets.dart';
 import 'package:wordmind/app/views/view_word_details/word_details_view.dart';
 import 'package:wordmind/database/hive_helper.dart';
 import 'package:wordmind/database/word_hive_model.dart';

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:wordmind/advertisement/ad_helper.dart';
-import 'package:wordmind/advertisement/init_add.dart';
 import 'package:wordmind/database/word_hive_model.dart';
 
 class DetailsView extends StatelessWidget {
@@ -54,10 +51,7 @@ class DetailsView extends StatelessWidget {
                   ),
                 ],
               ),
-              // SizedBox(
-              //   height: 60,
-              //   child: addTool.checkForAd(initAd.isLoaded6, initAd.ad6),
-              // )
+
             ],
           ),
         ),
