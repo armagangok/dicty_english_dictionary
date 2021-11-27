@@ -23,23 +23,23 @@ class AddWordView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       CustomTextField(
-                        controller: textController.word,
+                        controller: controllers.word,
                         label: 'Word',
                       ),
                       CustomTextField(
-                        controller: textController.origin,
+                        controller: controllers.origin,
                         label: 'Origin',
                       ),
                       CustomTextField(
-                        controller: textController.meaning1,
+                        controller: controllers.meaning1,
                         label: 'First Meaning',
                       ),
                       CustomTextField(
-                        controller: textController.meaning2,
+                        controller: controllers.meaning2,
                         label: 'Second Meaning',
                       ),
                       CustomTextField(
-                        controller: textController.example,
+                        controller: controllers.example,
                         label: 'Example',
                       ),
                     ],
@@ -49,23 +49,25 @@ class AddWordView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: CustomElevatedButton(
-                    buttonH: 35,
-                    buttonW: MediaQuery.of(context).size.width,
-                    onPressed: ()  {
-                      final word = Word(
-                        word: textController.word.text,
-                        origin: textController.origin.text,
-                        meaning1: textController.meaning1.text,
-                        meaning2: textController.meaning2.text,
-                        example: textController.example.text,
-                      );
-                      hiveHelper.addData(word);
-                      textController.word.clear();
-                      textController.origin.clear();
-                      textController.meaning1.clear();
-                      textController.meaning2.clear();
-                      textController.example.clear();
-                    }),
+                  text: "save",
+                  buttonH: 30,
+                  buttonW: MediaQuery.of(context).size.width,
+                  onPressed: () {
+                    final word = Word(
+                      word: controllers.word.text,
+                      origin: controllers.origin.text,
+                      meaning1: controllers.meaning1.text,
+                      meaning2: controllers.meaning2.text,
+                      example: controllers.example.text,
+                    );
+                    hiveHelper.addData(word);
+                    controllers.word.clear();
+                    controllers.origin.clear();
+                    controllers.meaning1.clear();
+                    controllers.meaning2.clear();
+                    controllers.example.clear();
+                  },
+                ),
               ),
             ],
           ),

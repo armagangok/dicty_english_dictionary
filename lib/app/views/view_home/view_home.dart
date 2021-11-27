@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:wordmind/API/models/word_api_model.dart';
+import 'package:wordmind/ads/ad_helper.dart';
 import 'package:wordmind/app/components/common/buttons.dart';
 import 'package:wordmind/app/components/common/textfields.dart';
 import 'package:wordmind/app/controllers/text_editing_controllers.dart';
@@ -19,10 +21,58 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  late final BannerAd _bottom;
+  late final BannerAd _bottomSetting;
+
+  bool _isBottomBannerLoaded = false;
+  bool _isBottomBannerLoadedSetting = false;
+
+  Future<void> _createBottomBannerAd() async {
+    _bottom = BannerAd(
+      size: AdSize.banner,
+      adUnitId: AdHelper.bottomBannerId,
+      request: AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (_) => setState(() => _isBottomBannerLoaded = true),
+        onAdFailedToLoad: (ad, error) async => await ad.dispose(),
+      ),
+    );
+    await _bottom.load();
+  }
+
+  Future<void> _createBottomBannerAdSetting() async {
+    _bottomSetting = BannerAd(
+      size: AdSize.banner,
+      adUnitId: AdHelper.bottomBannerId2,
+      request: AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (_) => setState(() => _isBottomBannerLoadedSetting = true),
+        onAdFailedToLoad: (ad, error) async => await ad.dispose(),
+      ),
+    );
+    await _bottomSetting.load();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _createBottomBannerAd();
+    _createBottomBannerAdSetting();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _bottom.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar:
+            AdHelper().checkForAd(_isBottomBannerLoaded, _bottom) ??
+                Text("Advertisement could not show up."),
         body: SingleChildScrollView(
           child: GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
@@ -39,9 +89,13 @@ class _HomeViewState extends State<HomeView> {
                       children: [
                         CustomIconButton(
                           icon: Icon(Icons.settings),
-                          onPressed: () async => Get.to(SettingView(
-                            accent: await hiveHelper.getLanguage(),
-                          )),
+                          onPressed: () async => Get.to(
+                            SettingView(
+                              accent: await hiveHelper.getLanguage(),
+                              bottomBanner: _bottomSetting,
+                              isLoaded: _isBottomBannerLoadedSetting,
+                            ),
+                          ),
                         ),
                         CustomIconButton(
                           icon: Icon(Icons.add_chart),
@@ -50,12 +104,11 @@ class _HomeViewState extends State<HomeView> {
                         Expanded(
                           child: CustomTextField(
                             icon: Icon(Icons.search),
-                            onTap: () => {
-                              wordInfo = fetchWord(
-                                textController.searchController.text,
-                              ),
-                              dialogScreen(wordInfo),
-                              textController.textController.clear(),
+                            onTap: () async => {
+                              print(controllers.search),
+                              wordInfo = fetchWord(controllers.search.text),
+                              dialogScreen(wordInfo, context),
+                              controllers.textController.clear(),
                             },
                           ),
                         ),
@@ -63,7 +116,9 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
                   Container(
-                    height: MediaQuery.of(context).size.height - 80,
+                    height: MediaQuery.of(context).size.height -
+                        75 -
+                        _bottom.size.height,
                     child: LookUpScreen(),
                   ),
                 ],

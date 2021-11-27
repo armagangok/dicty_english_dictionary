@@ -1,14 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wordmind/app/views/view_home/components/buttons/language_drowdown_button.dart';
-import 'package:wordmind/app/views/view_settings/widgets/appBar_widget.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:wordmind/ads/ad_helper.dart';
+
+import 'package:wordmind/app/components/common/buttons.dart';
+import 'package:wordmind/database/hive_helper.dart';
 import 'package:wordmind/theme/theme_service.dart';
 
 class SettingView extends StatefulWidget {
   String accent;
+  final BannerAd bottomBanner;
+  final bool isLoaded;
 
   SettingView({
     Key? key,
+    required this.bottomBanner,
+    required this.isLoaded,
     required this.accent,
   }) : super(key: key);
 
@@ -22,7 +29,10 @@ class _SettingViewState extends State<SettingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(widget.accent),
+      bottomNavigationBar:
+          AdHelper().checkForAd(widget.isLoaded, widget.bottomBanner) ??
+              Text("Advertisement could not show up."),
+      appBar: AppBar(title: Text("Settings")),
       body: SingleChildScrollView(
         child: SizedBox(
           height: MediaQuery.of(context).size.height - 70,
@@ -68,10 +78,12 @@ class _SettingViewState extends State<SettingView> {
       children: [
         Text("English Accent"),
         LanguageDropDown(
-          onChanged: (String? newValue) {
+          onChanged: (String? newValue) async {
             setState(() {
               widget.accent = newValue!;
             });
+            await hiveHelper.saveLanguage(widget.accent);
+            print(widget.accent);
           },
           dropdownValue: widget.accent,
         )

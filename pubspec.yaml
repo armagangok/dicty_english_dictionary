@@ -46,7 +46,7 @@ dependencies:
   get: ^4.3.8
   get_storage: ^2.0.3
   flutter_riverpod: ^1.0.0
-  google_mobile_ads: ^0.13.6
+  google_mobile_ads: ^1.0.0
 
   
 
