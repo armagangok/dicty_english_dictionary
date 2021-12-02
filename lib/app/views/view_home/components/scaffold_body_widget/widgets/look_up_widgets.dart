@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/route_manager.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
-import 'package:wordmind/app/views/view_home/components/scaffold_body_widget/widgets/list_tile_widget.dart';
-import 'package:wordmind/app/views/view_home/components/stacks/slide_action_widgets.dart';
-import 'package:wordmind/app/views/view_word_details/word_details_view.dart';
-import 'package:wordmind/database/hive_helper.dart';
-import 'package:wordmind/database/word_hive_model.dart';
-import 'package:wordmind/tts_helper/text_to_speech_helper.dart';
+import 'package:english_accent_dictionary/app/views/view_home/components/scaffold_body_widget/widgets/list_tile_widget.dart';
+import 'package:english_accent_dictionary/app/views/view_home/components/stacks/slide_action_widgets.dart';
+import 'package:english_accent_dictionary/app/views/view_word_details.dart';
+import 'package:english_accent_dictionary/core/database/hive_helper.dart';
+import 'package:english_accent_dictionary/core/database/word_hive_model.dart';
+import 'package:english_accent_dictionary/tts_helper/text_to_speech_helper.dart';
 
 class LookUpWidget extends StatelessWidget {
-  final BannerAd? bannerAd6;
-  final bool? isLoaded6;
   const LookUpWidget({
     Key? key,
-    this.bannerAd6,
-    this.isLoaded6,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -27,7 +21,6 @@ class LookUpWidget extends StatelessWidget {
         builder: (context, Box wordBox, _) {
           return ListView.builder(
             itemCount: wordBox.length,
-            // separatorBuilder: (context, index) => Divider(thickness: 0.3),
             itemBuilder: (context, index) {
               final data = wordBox.getAt(index) as Word;
               return Slidable(

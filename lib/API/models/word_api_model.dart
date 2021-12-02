@@ -10,14 +10,12 @@ class WordApi {
   factory WordApi.fromJson(List<dynamic> json) {
     return WordApi(
       word: json[0]["word"],
-      origin: json[0]["origin"] == null ? "None" : json[0]["origin"],
+      origin: json[0]["origin"] ?? "No Data",
       meaning1: json[0]["meanings"][0]["definitions"][0]["definition"],
       meaning2: json[0]["meanings"][0]["definitions"].length > 1
           ? json[0]["meanings"][0]["definitions"][1]["definition"]
           : "None",
-      example: json[0]["meanings"][0]["definitions"][0]["example"] == null
-          ? "None"
-          : json[0]["meanings"][0]["definitions"][0]["example"],
+      example: json[0]["meanings"][0]["definitions"][0]["example"] ?? "No Data",
     );
   }
 }

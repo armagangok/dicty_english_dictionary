@@ -1,78 +1,80 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:wordmind/API/models/word_api_model.dart';
-import 'package:wordmind/ads/ad_helper.dart';
-import 'package:wordmind/app/components/common/buttons.dart';
-import 'package:wordmind/app/components/common/textfields.dart';
-import 'package:wordmind/app/controllers/text_editing_controllers.dart';
-import 'package:wordmind/app/views/view_settings/settings.dart';
-import 'package:wordmind/app/views/view_word_adding/view_add_word.dart';
-import 'package:wordmind/database/hive_helper.dart';
-import 'package:wordmind/services/fetch_word.dart';
-import 'components/dialog_widget/dialog_widget.dart';
+import 'package:english_accent_dictionary/API/models/word_api_model.dart';
+import 'package:english_accent_dictionary/admob/ad_helper.dart';
+import 'package:english_accent_dictionary/app/global/components/common/buttons.dart';
+import 'package:english_accent_dictionary/app/global/components/common/textfields.dart';
+import 'package:english_accent_dictionary/app/global/controllers/text_editing_controllers.dart';
+import 'package:english_accent_dictionary/app/views/view_add_word.dart';
+import 'package:english_accent_dictionary/app/views/view_search_result.dart';
+import 'package:english_accent_dictionary/app/views/view_settings.dart';
+import 'package:english_accent_dictionary/core/database/hive_helper.dart';
+import 'package:english_accent_dictionary/services/fetch_word.dart';
+
 import 'components/scaffold_body_widget/look_up.dart';
 
 late Future<WordApi> wordInfo;
 
 class HomeView extends StatefulWidget {
+  const HomeView({Key? key}) : super(key: key);
+
   @override
   State<HomeView> createState() => _HomeViewState();
 }
 
 class _HomeViewState extends State<HomeView> {
-  late final BannerAd _bottom;
-  late final BannerAd _bottomSetting;
+  late final BannerAd _ad1;
+  late final BannerAd _ad2;
 
-  bool _isBottomBannerLoaded = false;
-  bool _isBottomBannerLoadedSetting = false;
+  bool _isLoad1 = false;
+  bool _isLoad2 = false;
 
-  Future<void> _createBottomBannerAd() async {
-    _bottom = BannerAd(
+  Future<void> _createAd1() async {
+    _ad1 = BannerAd(
       size: AdSize.banner,
-      adUnitId: AdHelper.bottomBannerId,
-      request: AdRequest(),
+      adUnitId: AdHelper.banner1,
+      request: const AdRequest(),
       listener: BannerAdListener(
-        onAdLoaded: (_) => setState(() => _isBottomBannerLoaded = true),
+        onAdLoaded: (_) => setState(() => _isLoad1 = true),
         onAdFailedToLoad: (ad, error) async => await ad.dispose(),
       ),
     );
-    await _bottom.load();
+    await _ad1.load();
   }
 
-  Future<void> _createBottomBannerAdSetting() async {
-    _bottomSetting = BannerAd(
+  Future<void> _createAd2() async {
+    _ad2 = BannerAd(
       size: AdSize.banner,
-      adUnitId: AdHelper.bottomBannerId2,
-      request: AdRequest(),
+      adUnitId: AdHelper.banner2,
+      request: const AdRequest(),
       listener: BannerAdListener(
-        onAdLoaded: (_) => setState(() => _isBottomBannerLoadedSetting = true),
+        onAdLoaded: (_) => setState(() => _isLoad2 = true),
         onAdFailedToLoad: (ad, error) async => await ad.dispose(),
       ),
     );
-    await _bottomSetting.load();
+    await _ad2.load();
   }
 
   @override
   void initState() {
     super.initState();
-    _createBottomBannerAd();
-    _createBottomBannerAdSetting();
+    _createAd1();
+    _createAd2();
   }
 
   @override
   void dispose() {
     super.dispose();
-    _bottom.dispose();
+    _ad1.dispose();
+    _ad2.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar:
-            AdHelper().checkForAd(_isBottomBannerLoaded, _bottom) ??
-                Text("Advertisement could not show up."),
+        bottomNavigationBar: AdHelper().checkForAd(_isLoad1, _ad1),
         body: SingleChildScrollView(
           child: GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
@@ -88,38 +90,40 @@ class _HomeViewState extends State<HomeView> {
                     child: Row(
                       children: [
                         CustomIconButton(
-                          icon: Icon(Icons.settings),
+                          icon: const Icon(Icons.settings),
                           onPressed: () async => Get.to(
                             SettingView(
                               accent: await hiveHelper.getLanguage(),
-                              bottomBanner: _bottomSetting,
-                              isLoaded: _isBottomBannerLoadedSetting,
+                              ad2: _ad2,
+                              isLoaded2: _isLoad2,
                             ),
                           ),
                         ),
                         CustomIconButton(
-                          icon: Icon(Icons.add_chart),
-                          onPressed: () => Get.to(() => AddWordView()),
+                          icon: const Icon(Icons.add_chart),
+                          onPressed: () => Get.to(() => const AddWordView()),
                         ),
                         Expanded(
                           child: CustomTextField(
-                            icon: Icon(Icons.search),
-                            onTap: () async => {
-                              print(controllers.search),
+                            controller: controllers.search,
+                            icon: const Icon(Icons.search),
+                            onTap: () => {
                               wordInfo = fetchWord(controllers.search.text),
-                              dialogScreen(wordInfo, context),
-                              controllers.textController.clear(),
+                              Get.to(() => const SearchResultView()),
+                              controllers.search.clear(),
                             },
                           ),
                         ),
                       ],
                     ),
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height -
-                        75 -
-                        _bottom.size.height,
-                    child: LookUpScreen(),
+                  SizedBox(
+                    height: _isLoad1
+                        ? MediaQuery.of(context).size.height -
+                            _ad1.size.height.toDouble() -
+                            75
+                        : MediaQuery.of(context).size.height - 75,
+                    child: const LookUpScreen(),
                   ),
                 ],
               ),

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/API/models/word_api_model.dart';
-import 'package:wordmind/app/views/view_word_details/word_details_view.dart';
+import 'package:english_accent_dictionary/API/models/word_api_model.dart';
+import 'package:english_accent_dictionary/app/global/components/common/buttons.dart';
+import 'package:english_accent_dictionary/core/database/hive_helper.dart';
+import 'package:english_accent_dictionary/core/database/word_hive_model.dart';
+
+import 'dict_data_stack.dart';
 
 class FutureBuilderWidget extends StatelessWidget {
   final Future<WordApi> wordInfo;
@@ -15,72 +19,40 @@ class FutureBuilderWidget extends StatelessWidget {
       future: wordInfo,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return dictionaryDatas(snapshot);
+          return Column(
+            children: [
+              DisctionaryDataStack(snapshot: snapshot),
+              CustomElevatedButton(
+                text: "save",
+                buttonH: 30,
+                buttonW: MediaQuery.of(context).size.height,
+                onPressed: () async {
+                  WordApi data = (await wordInfo);
+                  Word data1 = Word(
+                    word: data.word,
+                    origin: data.origin,
+                    meaning1: data.meaning1,
+                    meaning2: data.meaning2,
+                    example: data.example,
+                  );
+                  await hiveHelper.addData(data1);
+                },
+              ),
+            ],
+          );
         } else if (snapshot.hasError) {
-          return Text('Try again or there is no the word in dictionary.');
+          return const Text('Try again or there is no the word in dictionary.');
         }
-        return circularProgressIndicator();
+        return SingleChildScrollView(
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child:const Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
+        );
+        
       },
-    );
-  }
-
-  Widget dictionaryDatas(snapshot) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 5,
-        horizontal: 1.5,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          f(
-            snapshot.data.word ?? "",
-            size: 25,
-            color: Colors.red,
-            fWeigth: FontWeight.w700,
-          ),
-          SizedBox(height: 10),
-          f(
-            snapshot.data.meaning1 ?? "",
-            size: 14,
-            fWeigth: FontWeight.w400,
-            icon: Icon(Icons.menu_book),
-          ),
-          SizedBox(height: 10),
-          f(
-            snapshot.data.meaning2 ?? "",
-            size: 14,
-            fWeigth: FontWeight.w400,
-            icon: Icon(Icons.menu_book),
-          ),
-          SizedBox(height: 10),
-          f(
-            "Origin: " + snapshot.data.origin,
-            size: 14,
-            fWeigth: FontWeight.w400,
-          ),
-          SizedBox(height: 10),
-          f(
-            snapshot.data.example ?? "",
-            icon: Icon(Icons.star),
-            size: 14,
-            fWeigth: FontWeight.w400,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget circularProgressIndicator() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        CircularProgressIndicator(
-          color: Colors.amber[900],
-        ),
-      ],
     );
   }
 }

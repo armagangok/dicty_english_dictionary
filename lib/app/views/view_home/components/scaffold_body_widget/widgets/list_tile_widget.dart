@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wordmind/database/word_hive_model.dart';
-import 'package:wordmind/tts_helper/text_to_speech_helper.dart';
+import 'package:english_accent_dictionary/core/database/word_hive_model.dart';
+import 'package:english_accent_dictionary/tts_helper/text_to_speech_helper.dart';
 
 class ListTileItem extends StatelessWidget {
   final Word data;
@@ -25,13 +25,13 @@ class ListTileItem extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 5.0),
                   child: Text(
                     "${data.word}",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style:const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
               IconButton(
                 onPressed: () => speakWordOneTime("${data.word}"),
-                icon: Icon(
+                icon:const Icon(
                   Icons.record_voice_over,
                   color: Colors.blue,
                 ),

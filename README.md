@@ -1,9 +1,16 @@
-# Wordmind
+# wordmind
 
-Hi! this is a vocabulary builder application, it's called `Wordmind`. 
+A new Flutter project.
 
-It's powered by `text to speech` and a `dictionary API`. After searching for the specific word,
-the meaning and the sample sentence of the word could be saved to a database which is called `Hive`.
+## Getting Started
 
-There is a `Language dropdown button`, user also can choose the language of the speaker.
+This project is a starting point for a Flutter application.
 
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

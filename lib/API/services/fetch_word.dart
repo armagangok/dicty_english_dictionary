@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:wordmind/api/models/word_api_model.dart';
+import 'package:english_accent_dictionary/api/models/word_api_model.dart';
 
 
 Future<WordApi> fetchWord(text) async {

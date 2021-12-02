@@ -1,6 +1,7 @@
+import 'package:english_accent_dictionary/core/database/hive_helper.dart';
+import 'package:english_accent_dictionary/core/database/word_hive_model.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:wordmind/database/hive_helper.dart';
-import 'package:wordmind/database/word_hive_model.dart';
+
 
 final FlutterTts flutterTts = FlutterTts();
 
