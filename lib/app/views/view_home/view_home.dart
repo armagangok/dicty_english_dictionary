@@ -6,7 +6,6 @@ import 'package:english_accent_dictionary/admob/ad_helper.dart';
 import 'package:english_accent_dictionary/app/global/components/common/buttons.dart';
 import 'package:english_accent_dictionary/app/global/components/common/textfields.dart';
 import 'package:english_accent_dictionary/app/global/controllers/text_editing_controllers.dart';
-import 'package:english_accent_dictionary/app/views/view_add_word.dart';
 import 'package:english_accent_dictionary/app/views/view_search_result.dart';
 import 'package:english_accent_dictionary/app/views/view_settings.dart';
 import 'package:english_accent_dictionary/core/database/hive_helper.dart';

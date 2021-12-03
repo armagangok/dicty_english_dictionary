@@ -1,4 +1,4 @@
-# wordmind
+# english_accent_dictionary
 
 A new Flutter project.
 

@@ -1,10 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.armagangok.english_accent_dictionary">
+    package="com.example.english_accent_dictionary">
    <application
         android:label="English Accent Dictionary"
         android:icon="@mipmap/ic_launcher">
         <activity
-            android:name="com.armagangok.english_accent_dictionary.MainActivity"
+            android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -40,5 +40,5 @@
             <meta-data
     android:name="com.google.android.gms.ads.APPLICATION_ID"
     android:value="ca-app-pub-7691613791089480~4093786584"/>
-    </application>
+    </application>    
 </manifest>
