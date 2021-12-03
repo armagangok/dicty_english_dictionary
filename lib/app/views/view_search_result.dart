@@ -16,7 +16,6 @@ class SearchResultView extends StatelessWidget {
           children: [
             FutureBuilderWidget(wordInfo: wordInfo),
             
-
           ],
         ),
       ),

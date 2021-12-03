@@ -14,9 +14,9 @@ class DetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height - 70,
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height - 70,
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -33,7 +33,7 @@ class DetailsView extends StatelessWidget {
                   ),
                   dictData(
                     "${data.meaning1}",
-                    icon:const Icon(Icons.menu_book),
+                    icon: const Icon(Icons.menu_book),
                     fWeigth: FontWeight.w400,
                   ),
                   dictData(
@@ -43,12 +43,12 @@ class DetailsView extends StatelessWidget {
                   ),
                   dictData(
                     "Origin: " "${data.origin}",
-                    icon:const Icon(Icons.trip_origin),
+                    icon: const Icon(Icons.trip_origin),
                     fWeigth: FontWeight.w400,
                   ),
                   dictData(
                     "${data.example}",
-                    icon:const Icon(Icons.star),
+                    icon: const Icon(Icons.star),
                     fWeigth: FontWeight.w400,
                   ),
                 ],
@@ -60,5 +60,3 @@ class DetailsView extends StatelessWidget {
     );
   }
 }
-
-

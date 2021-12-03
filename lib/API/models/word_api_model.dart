@@ -14,7 +14,7 @@ class WordApi {
       meaning1: json[0]["meanings"][0]["definitions"][0]["definition"],
       meaning2: json[0]["meanings"][0]["definitions"].length > 1
           ? json[0]["meanings"][0]["definitions"][1]["definition"]
-          : "None",
+          : "No Data",
       example: json[0]["meanings"][0]["definitions"][0]["example"] ?? "No Data",
     );
   }

@@ -11,7 +11,6 @@ import 'package:english_accent_dictionary/app/views/view_search_result.dart';
 import 'package:english_accent_dictionary/app/views/view_settings.dart';
 import 'package:english_accent_dictionary/core/database/hive_helper.dart';
 import 'package:english_accent_dictionary/services/fetch_word.dart';
-
 import 'components/scaffold_body_widget/look_up.dart';
 
 late Future<WordApi> wordInfo;
@@ -99,10 +98,10 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ),
                         ),
-                        CustomIconButton(
-                          icon: const Icon(Icons.add_chart),
-                          onPressed: () => Get.to(() => const AddWordView()),
-                        ),
+                        // CustomIconButton(
+                        //   icon: const Icon(Icons.add_chart),
+                        //   onPressed: () => Get.to(() => const AddWordView()),
+                        // ),
                         Expanded(
                           child: CustomTextField(
                             controller: controllers.search,

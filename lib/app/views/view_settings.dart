@@ -28,7 +28,7 @@ class _SettingViewState extends State<SettingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: AdHelper().checkForAd(widget.isLoaded2, widget.ad2),
+      // bottomNavigationBar: AdHelper().checkForAd(widget.isLoaded2, widget.ad2),
       appBar: AppBar(title: const Text("Settings")),
       body: SingleChildScrollView(
         child: SizedBox(
