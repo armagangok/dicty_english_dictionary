@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:english_accent_dictionary/core/database/word_hive_model.dart';
-import 'package:english_accent_dictionary/tts_helper/text_to_speech_helper.dart';
+
+import '../../../../../../core/database/word_hive_model.dart';
+import '../../../../../../core/tts_helper/text_to_speech_helper.dart';
 
 class ListTileItem extends StatelessWidget {
   final Word data;

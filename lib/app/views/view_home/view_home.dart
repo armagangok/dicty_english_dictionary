@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:english_accent_dictionary/API/models/word_api_model.dart';
-import 'package:english_accent_dictionary/admob/ad_helper.dart';
-import 'package:english_accent_dictionary/app/global/components/common/buttons.dart';
-import 'package:english_accent_dictionary/app/global/components/common/textfields.dart';
-import 'package:english_accent_dictionary/app/global/controllers/text_editing_controllers.dart';
-import 'package:english_accent_dictionary/app/views/view_search_result.dart';
-import 'package:english_accent_dictionary/app/views/view_settings.dart';
-import 'package:english_accent_dictionary/core/database/hive_helper.dart';
-import 'package:english_accent_dictionary/services/fetch_word.dart';
+import '../../../core/admob/ad_helper.dart';
+import '../../../core/api/models/word_api_model.dart';
+import '../../../core/api/services/fetch_word.dart';
+import '../../../core/database/hive_helper.dart';
+import '../../global/components/common/buttons.dart';
+import '../../global/components/common/textfields.dart';
+import '../../global/controllers/text_editing_controllers.dart';
+import '../view_search_result.dart';
+import '../view_settings.dart';
 import 'components/scaffold_body_widget/look_up.dart';
+
+
 
 late Future<WordApi> wordInfo;
 

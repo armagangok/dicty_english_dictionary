@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:english_accent_dictionary/admob/ad_helper.dart';
-import 'package:english_accent_dictionary/app/global/components/common/buttons.dart';
-import 'package:english_accent_dictionary/app/theme/theme_service.dart';
-import 'package:english_accent_dictionary/core/database/hive_helper.dart';
+import '../../core/admob/ad_helper.dart';
+import '../../core/database/hive_helper.dart';
+import '../global/components/common/buttons.dart';
+import '../theme/theme_service.dart';
 
 class SettingView extends StatefulWidget {
   String accent;
   final BannerAd ad2;
   final bool isLoaded2;
 
-  SettingView({
+   SettingView({
     Key? key,
     required this.ad2,
     required this.isLoaded2,

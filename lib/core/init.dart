@@ -4,8 +4,8 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'core/database/hive_helper.dart';
-import 'core/database/word_hive_model.dart';
+import 'database/hive_helper.dart';
+import 'database/word_hive_model.dart';
 
 Future<void> initApp() async {
   WidgetsFlutterBinding.ensureInitialized();

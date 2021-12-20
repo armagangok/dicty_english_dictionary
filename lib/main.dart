@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'app/theme/theme.dart';
 import 'app/theme/theme_service.dart';
 import 'app/views/view_home/view_home.dart';
-import 'init.dart';
+import 'core/init.dart';
 
 void main() async {
   await initApp();

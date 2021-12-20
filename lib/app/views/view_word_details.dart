@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:english_accent_dictionary/app/views/view_home/components/scaffold_body_widget/widgets/dict_data_stack.dart';
-import 'package:english_accent_dictionary/core/database/word_hive_model.dart';
+import '../../core/database/word_hive_model.dart';
+import 'view_home/components/scaffold_body_widget/widgets/dict_data_stack.dart';
+
 
 class DetailsView extends StatelessWidget {
   final Word data;

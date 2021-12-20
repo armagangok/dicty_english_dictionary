@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/route_manager.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:english_accent_dictionary/app/views/view_home/components/scaffold_body_widget/widgets/list_tile_widget.dart';
-import 'package:english_accent_dictionary/app/views/view_home/components/stacks/slide_action_widgets.dart';
-import 'package:english_accent_dictionary/app/views/view_word_details.dart';
-import 'package:english_accent_dictionary/core/database/hive_helper.dart';
-import 'package:english_accent_dictionary/core/database/word_hive_model.dart';
-import 'package:english_accent_dictionary/tts_helper/text_to_speech_helper.dart';
+import '../../../../../../core/database/hive_helper.dart';
+import '../../../../../../core/database/word_hive_model.dart';
+import '../../../../../../core/tts_helper/text_to_speech_helper.dart';
+import '../../../../view_word_details.dart';
+import '../../stacks/slide_action_widgets.dart';
+import 'list_tile_widget.dart';
+
 
 class LookUpWidget extends StatelessWidget {
   const LookUpWidget({
