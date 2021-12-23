@@ -21,45 +21,45 @@ class CustomIconButton extends StatelessWidget {
   }
 }
 
-class CustomElevatedButton extends StatelessWidget {
-  
-  final String? text;
-  final double? buttonH;
-  final double? buttonW;
-  final Function? onPressed;
+// class CustomElevatedButton extends StatelessWidget {
 
-  const CustomElevatedButton({
-    Key? key,
-    
-    this.text,
-    this.buttonH,
-    this.buttonW,
-    this.onPressed,
-  }) : super(key: key);
+//   final String? text;
+//   final double? buttonH;
+//   final double? buttonW;
+//   final Function? onPressed;
 
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: buttonH,
-      width: buttonW,
-      child: ElevatedButton(
-        onPressed: () => onPressed!(),
-        child: Text(
-          "$text",
-          style:const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w700,
-            fontSize: 18,
-          ),
-        ),
-      ),
-    );
-  }
-}
+//   const CustomElevatedButton({
+//     Key? key,
+
+//     this.text,
+//     this.buttonH,
+//     this.buttonW,
+//     this.onPressed,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       height: buttonH,
+//       width: buttonW,
+//       child: ElevatedButton(
+//         onPressed: () => onPressed!(),
+//         child: Text(
+//           "$text",
+//           style:const TextStyle(
+//             color: Colors.white,
+//             fontWeight: FontWeight.w700,
+//             fontSize: 18,
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class LanguageDropDown extends StatelessWidget {
   final Function(String? lang) onChanged;
-   String dropdownValue;
+  String dropdownValue;
   LanguageDropDown({
     Key? key,
     required this.onChanged,
@@ -72,7 +72,7 @@ class LanguageDropDown extends StatelessWidget {
       child: DropdownButton<String>(
         value: dropdownValue,
         onChanged: onChanged,
-        borderRadius:const BorderRadius.all(Radius.circular(20)),
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
         items: <String>[
           'English-GB',
           'English-IE',

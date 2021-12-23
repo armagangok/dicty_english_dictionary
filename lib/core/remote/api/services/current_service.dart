@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:english_accent_dictionary/core/api/services/base_service.dart';
 import 'package:http/http.dart' as http;
 import '../models/word_model.dart';
+import 'base_service.dart';
 
 
 class CurrentService implements Base {

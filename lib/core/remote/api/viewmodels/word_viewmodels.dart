@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
-import '../api/models/word_model.dart';
-import '../api/services/base_service.dart';
-import '../locator/locator.dart';
-import '../repositories/repository.dart';
+import '../../../locator/locator.dart';
+import '../models/word_model.dart';
+import '../services/base_service.dart';
+import '../repository/repository.dart';
 
 enum ViewState { idle, busy }
 

@@ -1,10 +1,8 @@
-import 'package:english_accent_dictionary/app/views/view_home/components/scaffold_body_widget/widgets/dict_data_stack.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../../core/api/models/word_model.dart';
-import '../../../../../../core/database/hive_helper.dart';
-import '../../../../../../core/database/models/word_hive_model.dart';
-import '../../../../../global/components/common/buttons.dart';
+import '../../../../../../core/local/database/hive_helper.dart';
+import '../../../../../../core/local/database/models/word_hive_model.dart';
+import '../../../../../../core/remote/api/models/word_model.dart';
+import 'dict_data_stack.dart';
 
 class FutureBuilderWidget extends StatelessWidget {
   final Future<WordModel> wordInfo;
@@ -19,25 +17,18 @@ class FutureBuilderWidget extends StatelessWidget {
       future: wordInfo,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
+          Word data1 = Word(
+            word: snapshot.data?.word,
+            origin: snapshot.data?.origin,
+            meaning1: snapshot.data?.meaning1,
+            meaning2: snapshot.data?.meaning2,
+            example: snapshot.data?.example,
+          );
+
+          hiveHelper.addData(data1).then((value) => null);
           return Column(
             children: [
               DisctionaryDataStack(snapshot: snapshot),
-              CustomElevatedButton(
-                text: "save",
-                buttonH: 30,
-                buttonW: MediaQuery.of(context).size.height,
-                onPressed: () async {
-                  WordModel data = (await wordInfo);
-                  Word data1 = Word(
-                    word: data.word,
-                    origin: data.origin,
-                    meaning1: data.meaning1,
-                    meaning2: data.meaning2,
-                    example: data.example,
-                  );
-                  await hiveHelper.addData(data1);
-                },
-              ),
             ],
           );
         } else if (snapshot.hasError) {
@@ -46,12 +37,11 @@ class FutureBuilderWidget extends StatelessWidget {
         return SingleChildScrollView(
           child: SizedBox(
             height: MediaQuery.of(context).size.height,
-            child:const Center(
+            child: const Center(
               child: CircularProgressIndicator(),
             ),
           ),
         );
-        
       },
     );
   }

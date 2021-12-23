@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
-import '../api/services/current_service.dart';
-import '../api/services/dummy_service.dart';
-import '../repositories/repository.dart';
+import '../remote/api/services/current_service.dart';
+import '../remote/api/services/dummy_service.dart';
+import '../remote/api/repository/repository.dart';
 
 final GetIt locator = GetIt.asNewInstance();
 

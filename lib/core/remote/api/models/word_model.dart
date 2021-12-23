@@ -5,7 +5,13 @@ class WordModel {
   String? meaning2;
   String? example;
 
-  WordModel({this.word, this.origin, this.meaning1, this.meaning2, this.example});
+  WordModel({
+    this.word,
+    this.origin,
+    this.meaning1,
+    this.meaning2,
+    this.example,
+  });
 
   factory WordModel.fromJson(List<dynamic> json) {
     return WordModel(

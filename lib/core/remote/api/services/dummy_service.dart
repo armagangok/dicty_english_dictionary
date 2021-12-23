@@ -1,5 +1,5 @@
-import 'package:english_accent_dictionary/core/api/models/word_model.dart';
-import 'package:english_accent_dictionary/core/api/services/base_service.dart';
+import '../models/word_model.dart';
+import 'base_service.dart';
 
 class DummyService implements Base {
   @override

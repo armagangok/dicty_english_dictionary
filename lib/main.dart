@@ -1,4 +1,4 @@
-import 'package:english_accent_dictionary/core/viewmodels/word_viewmodels.dart';
+import 'package:english_accent_dictionary/core/remote/api/viewmodels/word_viewmodels.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'app/theme/theme.dart';

@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../core/database/models/word_hive_model.dart';
+import '../../core/local/database/models/word_hive_model.dart';
 import 'view_home/components/scaffold_body_widget/widgets/dict_data_stack.dart';
-
 
 class DetailsView extends StatelessWidget {
   final Word data;
 
-  const DetailsView({
-    Key? key,
-    required this.data,
-  }) : super(key: key);
+  const DetailsView({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

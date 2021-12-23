@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import '../../core/admob/ad_helper.dart';
-import '../../core/database/hive_helper.dart';
+import '../../core/local/database/hive_helper.dart';
+import '../../core/remote/admob/ad_helper.dart';
 import '../global/components/common/buttons.dart';
 import '../theme/theme_service.dart';
 

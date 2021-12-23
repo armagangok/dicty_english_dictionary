@@ -1,8 +1,7 @@
-import 'package:english_accent_dictionary/core/api/services/dummy_service.dart';
-
-import '../api/models/word_model.dart';
-import '../api/services/base_service.dart';
-import '../api/services/current_service.dart';
+import '../models/word_model.dart';
+import '../services/base_service.dart';
+import '../services/current_service.dart';
+import '../services/dummy_service.dart';
 
 enum AppMode { debug, release }
 

@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/route_manager.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import '../../../../../../core/database/hive_helper.dart';
-import '../../../../../../core/database/models/word_hive_model.dart';
-import '../../../../../../core/tts_helper/text_to_speech_helper.dart';
+import '../../../../../../core/local/database/hive_helper.dart';
+import '../../../../../../core/local/database/models/word_hive_model.dart';
+import '../../../../../../core/local/tts_helper/text_to_speech_helper.dart';
 import '../../../../view_word_details.dart';
 import '../../stacks/slide_action_widgets.dart';
 import 'list_tile_widget.dart';
-
 
 class LookUpWidget extends StatelessWidget {
   const LookUpWidget({

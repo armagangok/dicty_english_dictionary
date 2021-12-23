@@ -1,11 +1,10 @@
-import 'package:english_accent_dictionary/core/viewmodels/word_viewmodels.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import '../../../core/admob/ad_helper.dart';
-import '../../../core/api/models/word_model.dart';
-import '../../../core/api/services/current_service.dart';
-import '../../../core/database/hive_helper.dart';
+import '../../../core/local/database/hive_helper.dart';
+import '../../../core/remote/admob/ad_helper.dart';
+import '../../../core/remote/api/models/word_model.dart';
+import '../../../core/remote/api/viewmodels/word_viewmodels.dart';
 import '../../global/components/common/buttons.dart';
 import '../../global/components/common/textfields.dart';
 import '../../global/controllers/text_editing_controllers.dart';
@@ -13,8 +12,6 @@ import '../view_search_result.dart';
 import '../view_settings.dart';
 import 'components/scaffold_body_widget/look_up.dart';
 import 'package:provider/provider.dart';
-
-
 
 
 late Future<WordModel> wordInfo;
@@ -113,7 +110,7 @@ class _HomeViewState extends State<HomeView> {
                             icon: const Icon(Icons.search),
                             onTap: () => {
                               wordInfo = _wordViewModel.fetchData(controllers.search.text),
-                              Get.to(() => const SearchResultView()),
+                              Get.to(() => const SearchResultView()),                           
                               controllers.search.clear(),
                             },
                           ),
