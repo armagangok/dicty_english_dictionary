@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:english_accent_dictionary/core/database/word_hive_model.dart';
+import 'package:english_accent_dictionary/core/database/models/word_hive_model.dart';
 
 class SlideActionWidget extends StatelessWidget {
   final Word? data;

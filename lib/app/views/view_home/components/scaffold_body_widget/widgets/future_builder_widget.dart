@@ -1,13 +1,13 @@
 import 'package:english_accent_dictionary/app/views/view_home/components/scaffold_body_widget/widgets/dict_data_stack.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/api/models/word_api_model.dart';
+import '../../../../../../core/api/models/word_model.dart';
 import '../../../../../../core/database/hive_helper.dart';
-import '../../../../../../core/database/word_hive_model.dart';
+import '../../../../../../core/database/models/word_hive_model.dart';
 import '../../../../../global/components/common/buttons.dart';
 
 class FutureBuilderWidget extends StatelessWidget {
-  final Future<WordApi> wordInfo;
+  final Future<WordModel> wordInfo;
   const FutureBuilderWidget({
     Key? key,
     required this.wordInfo,
@@ -15,7 +15,7 @@ class FutureBuilderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<WordApi>(
+    return FutureBuilder<WordModel>(
       future: wordInfo,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
@@ -27,7 +27,7 @@ class FutureBuilderWidget extends StatelessWidget {
                 buttonH: 30,
                 buttonW: MediaQuery.of(context).size.height,
                 onPressed: () async {
-                  WordApi data = (await wordInfo);
+                  WordModel data = (await wordInfo);
                   Word data1 = Word(
                     word: data.word,
                     origin: data.origin,

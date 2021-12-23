@@ -1,14 +1,14 @@
-class WordApi {
+class WordModel {
   String? word;
   String? origin;
   String? meaning1;
   String? meaning2;
   String? example;
 
-  WordApi({this.word, this.origin, this.meaning1, this.meaning2, this.example});
+  WordModel({this.word, this.origin, this.meaning1, this.meaning2, this.example});
 
-  factory WordApi.fromJson(List<dynamic> json) {
-    return WordApi(
+  factory WordModel.fromJson(List<dynamic> json) {
+    return WordModel(
       word: json[0]["word"],
       origin: json[0]["origin"] ?? "No Data",
       meaning1: json[0]["meanings"][0]["definitions"][0]["definition"],

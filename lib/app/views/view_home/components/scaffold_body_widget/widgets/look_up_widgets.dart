@@ -3,7 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/route_manager.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../../../../../../core/database/hive_helper.dart';
-import '../../../../../../core/database/word_hive_model.dart';
+import '../../../../../../core/database/models/word_hive_model.dart';
 import '../../../../../../core/tts_helper/text_to_speech_helper.dart';
 import '../../../../view_word_details.dart';
 import '../../stacks/slide_action_widgets.dart';

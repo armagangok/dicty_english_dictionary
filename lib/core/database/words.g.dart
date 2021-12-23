@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'word_hive_model.dart';
+part of 'models/word_hive_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator

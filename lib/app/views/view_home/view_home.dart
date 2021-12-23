@@ -1,9 +1,10 @@
+import 'package:english_accent_dictionary/core/viewmodels/word_viewmodels.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../../core/admob/ad_helper.dart';
-import '../../../core/api/models/word_api_model.dart';
-import '../../../core/api/services/fetch_word.dart';
+import '../../../core/api/models/word_model.dart';
+import '../../../core/api/services/current_service.dart';
 import '../../../core/database/hive_helper.dart';
 import '../../global/components/common/buttons.dart';
 import '../../global/components/common/textfields.dart';
@@ -11,10 +12,12 @@ import '../../global/controllers/text_editing_controllers.dart';
 import '../view_search_result.dart';
 import '../view_settings.dart';
 import 'components/scaffold_body_widget/look_up.dart';
+import 'package:provider/provider.dart';
 
 
 
-late Future<WordApi> wordInfo;
+
+late Future<WordModel> wordInfo;
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -72,6 +75,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final WordViewModel _wordViewModel = Provider.of<WordViewModel>(context);
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: AdHelper().checkForAd(_isLoad1, _ad1),
@@ -108,7 +112,7 @@ class _HomeViewState extends State<HomeView> {
                             controller: controllers.search,
                             icon: const Icon(Icons.search),
                             onTap: () => {
-                              wordInfo = fetchWord(controllers.search.text),
+                              wordInfo = _wordViewModel.fetchData(controllers.search.text),
                               Get.to(() => const SearchResultView()),
                               controllers.search.clear(),
                             },

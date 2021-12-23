@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/database/word_hive_model.dart';
+import '../../../../../../core/database/models/word_hive_model.dart';
 import '../../../../../../core/tts_helper/text_to_speech_helper.dart';
 
 class ListTileItem extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/database/word_hive_model.dart';
+import '../../core/database/models/word_hive_model.dart';
 import 'view_home/components/scaffold_body_widget/widgets/dict_data_stack.dart';
 
 

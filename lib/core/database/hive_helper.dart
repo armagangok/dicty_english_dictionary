@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'word_hive_model.dart';
+import 'models/word_hive_model.dart';
 
 HiveHelper hiveHelper = HiveHelper();
 
