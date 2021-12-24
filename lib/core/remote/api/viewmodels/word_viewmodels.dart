@@ -8,6 +8,7 @@ enum ViewState { idle, busy }
 
 class WordViewModelAPI with ChangeNotifier implements Base {
   final WordRepository _userRepository = locator<WordRepository>();
+
   ViewState _state = ViewState.idle;
   ViewState get state => _state;
 

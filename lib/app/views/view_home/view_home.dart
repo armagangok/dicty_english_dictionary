@@ -98,10 +98,7 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ),
                         ),
-                        // CustomIconButton(
-                        //   icon: const Icon(Icons.add_chart),
-                        //   onPressed: () => Get.to(() => const AddWordView()),
-                        // ),
+
                         Expanded(
                           child: CustomTextField(
                             controller: controllers.search,
