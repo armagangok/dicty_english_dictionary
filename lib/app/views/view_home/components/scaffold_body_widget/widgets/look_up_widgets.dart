@@ -1,8 +1,9 @@
+import 'package:english_accent_dictionary/core/local/database/viewmodels/word_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/route_manager.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import '../../../../../../core/local/database/hive_helper.dart';
+import 'package:provider/provider.dart';
 import '../../../../../../core/local/database/models/word_hive_model.dart';
 import '../../../../../../core/local/tts_helper/text_to_speech_helper.dart';
 import '../../../../view_word_details.dart';
@@ -15,6 +16,7 @@ class LookUpWidget extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final WordViewModel _wordViewModel = Provider.of<WordViewModel>(context);
     return Scaffold(
       body: ValueListenableBuilder(
         valueListenable: Hive.box("words").listenable(),
@@ -32,13 +34,13 @@ class LookUpWidget extends StatelessWidget {
                     icon: Icons.record_voice_over,
                     iconText: "Speak",
                     bgColor: Colors.blue,
-                    onTap: () async => await speakWord(data),
+                    onTap: () async => await speakWord(data,context),
                   ),
                   SlideActionWidget(
                     bgColor: Colors.red,
                     icon: Icons.delete,
                     iconText: "Delete",
-                    onTap: () async => await hiveHelper.deleteData(index),
+                    onTap: () async => await _wordViewModel.deleteData(index),
                   ),
                 ],
                 secondaryActions: <Widget>[

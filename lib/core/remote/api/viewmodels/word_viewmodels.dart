@@ -6,7 +6,7 @@ import '../repository/repository.dart';
 
 enum ViewState { idle, busy }
 
-class WordViewModel with ChangeNotifier implements Base {
+class WordViewModelAPI with ChangeNotifier implements Base {
   final WordRepository _userRepository = locator<WordRepository>();
   ViewState _state = ViewState.idle;
   ViewState get state => _state;

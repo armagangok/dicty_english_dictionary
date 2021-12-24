@@ -1,14 +1,13 @@
 import 'package:flutter_tts/flutter_tts.dart';
-
-import '../database/hive_helper.dart';
 import '../database/models/word_hive_model.dart';
-
+import '../database/viewmodels/word_viewmodel.dart';
 
 final FlutterTts flutterTts = FlutterTts();
 
-Future<void> speakWord(Word data) async {
-  String language = await hiveHelper.getLanguage();
-  await setLanguage(language);
+Future<void> speakWord(Word data, context) async {
+  final WordViewModel _wordViewModel = WordViewModel();
+  int index = await _wordViewModel.getLanguage();
+  await setLanguage(index);
   await flutterTts.speak("Word is ready!");
   await flutterTts.speak(
     "${data.word}. First meaning; ${data.meaning1}. Second meaning is; ${data.meaning2}. Example: ${data.example}",
@@ -16,8 +15,9 @@ Future<void> speakWord(Word data) async {
 }
 
 Future<void> speakWordOneTime(String phrase) async {
-  String language = await hiveHelper.getLanguage();
-  await setLanguage(language);
+  final WordViewModel _wordViewModel = WordViewModel();
+  int index = await _wordViewModel.getLanguage();
+  await setLanguage(index);
   await flutterTts.speak(phrase);
 }
 
@@ -25,34 +25,34 @@ Future<void> pause() async {
   await flutterTts.pause();
 }
 
-Future<void> setLanguage(String language) async {
-  switch (language) {
-    case 'English-GB':
+Future<void> setLanguage(int index) async {
+  switch (index) {
+    case 0:
       await flutterTts.setLanguage("en-GB");
       break;
 
-    case 'English-US':
+    case 1:
       await flutterTts.setLanguage("en-US");
       break;
 
-    case 'English-AU':
+    case 2:
       await flutterTts.setLanguage("en-AU");
       break;
 
-    case 'English-IE':
+    case 3:
       await flutterTts.setLanguage("en-IE");
       break;
 
-    case 'English-IN':
+    case 4:
       await flutterTts.setLanguage("en-IN");
       break;
 
-    case 'English-ZA':
+    case 5:
       await flutterTts.setLanguage("en-ZA");
       break;
 
     default:
-      await flutterTts.setLanguage("en-GB");
+      await flutterTts.setLanguage("en-US");
       break;
   }
 }

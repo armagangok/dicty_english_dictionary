@@ -6,8 +6,8 @@ import '../services/dummy_service.dart';
 enum AppMode { debug, release }
 
 class WordRepository implements Base {
-  final CurrentService _currentService = CurrentService();
-  final DummyService _dummyService = DummyService();
+  final CurrentApiService _currentService = CurrentApiService();
+  final DummyApiService _dummyService = DummyApiService();
   final AppMode appMode = AppMode.release;
   @override
   Future<WordModel> fetchData(String? text) async {

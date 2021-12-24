@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import '../../../core/local/database/hive_helper.dart';
 import '../../../core/remote/admob/ad_helper.dart';
 import '../../../core/remote/api/models/word_model.dart';
 import '../../../core/remote/api/viewmodels/word_viewmodels.dart';
@@ -12,7 +11,6 @@ import '../view_search_result.dart';
 import '../view_settings.dart';
 import 'components/scaffold_body_widget/look_up.dart';
 import 'package:provider/provider.dart';
-
 
 late Future<WordModel> wordInfo;
 
@@ -72,7 +70,8 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final WordViewModel _wordViewModel = Provider.of<WordViewModel>(context);
+    final WordViewModelAPI _wordViewModel =
+        Provider.of<WordViewModelAPI>(context);
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: AdHelper().checkForAd(_isLoad1, _ad1),
@@ -93,8 +92,7 @@ class _HomeViewState extends State<HomeView> {
                         CustomIconButton(
                           icon: const Icon(Icons.settings),
                           onPressed: () async => Get.to(
-                            SettingView(
-                              accent: await hiveHelper.getLanguage(),
+                            () => SettingView(
                               ad2: _ad2,
                               isLoaded2: _isLoad2,
                             ),
@@ -109,8 +107,9 @@ class _HomeViewState extends State<HomeView> {
                             controller: controllers.search,
                             icon: const Icon(Icons.search),
                             onTap: () => {
-                              wordInfo = _wordViewModel.fetchData(controllers.search.text),
-                              Get.to(() => const SearchResultView()),                           
+                              wordInfo = _wordViewModel
+                                  .fetchData(controllers.search.text),
+                              Get.to(() => const SearchResultView()),
                               controllers.search.clear(),
                             },
                           ),

@@ -4,7 +4,7 @@ import '../models/word_model.dart';
 import 'base_service.dart';
 
 
-class CurrentService implements Base {
+class CurrentApiService implements Base {
   @override
   Future<WordModel> fetchData(String? text) async {
     final response = await http.get(

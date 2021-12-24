@@ -1,7 +1,7 @@
 import '../models/word_model.dart';
 import 'base_service.dart';
 
-class DummyService implements Base {
+class DummyApiService implements Base {
   @override
   Future<WordModel> fetchData(String? text) async {
     await Future.delayed(const Duration(seconds: 2));

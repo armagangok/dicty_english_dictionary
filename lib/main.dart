@@ -1,3 +1,4 @@
+import 'package:english_accent_dictionary/core/local/database/viewmodels/word_viewmodel.dart';
 import 'package:english_accent_dictionary/core/remote/api/viewmodels/word_viewmodels.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,8 +19,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (BuildContext context) => WordViewModel(),
+    return MultiProvider(
+      providers:[
+        ChangeNotifierProvider<WordViewModelAPI>(create:(_) => WordViewModelAPI()),
+        ChangeNotifierProvider<WordViewModel>(create:(_) => WordViewModel()),
+      ] ,
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         home: const HomeView(),

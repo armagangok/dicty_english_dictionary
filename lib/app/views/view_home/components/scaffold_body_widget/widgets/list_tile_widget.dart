@@ -15,7 +15,6 @@ class ListTileItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {},
       title: SingleChildScrollView(
         child: Card(
           child: Row(

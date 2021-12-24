@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/local/database/hive_helper.dart';
+import 'package:provider/provider.dart';
 import '../../../../../../core/local/database/models/word_hive_model.dart';
+import '../../../../../../core/local/database/viewmodels/word_viewmodel.dart';
 import '../../../../../../core/remote/api/models/word_model.dart';
 import 'dict_data_stack.dart';
 
@@ -13,6 +14,8 @@ class FutureBuilderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        final WordViewModel _wordViewModel = Provider.of<WordViewModel>(context);
+
     return FutureBuilder<WordModel>(
       future: wordInfo,
       builder: (context, snapshot) {
@@ -25,7 +28,7 @@ class FutureBuilderWidget extends StatelessWidget {
             example: snapshot.data?.example,
           );
 
-          hiveHelper.addData(data1).then((value) => null);
+          _wordViewModel.addData(data1).then((value) => null);
           return Column(
             children: [
               DisctionaryDataStack(snapshot: snapshot),
