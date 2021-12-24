@@ -1,5 +1,6 @@
+import 'package:english_accent_dictionary/app/global/navigation/navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../../core/remote/admob/ad_helper.dart';
 import '../../../core/remote/api/models/word_model.dart';
@@ -10,7 +11,6 @@ import '../../global/controllers/text_editing_controllers.dart';
 import '../view_search_result.dart';
 import '../view_settings.dart';
 import 'components/scaffold_body_widget/look_up.dart';
-import 'package:provider/provider.dart';
 
 late Future<WordModel> wordInfo;
 
@@ -91,14 +91,11 @@ class _HomeViewState extends State<HomeView> {
                       children: [
                         CustomIconButton(
                           icon: const Icon(Icons.settings),
-                          onPressed: () async => Get.to(
-                            () => SettingView(
-                              ad2: _ad2,
-                              isLoaded2: _isLoad2,
-                            ),
+                          onPressed: () async => navigate(
+                            SettingView(ad2: _ad2, isLoaded2: _isLoad2),
+                            context,
                           ),
                         ),
-
                         Expanded(
                           child: CustomTextField(
                             controller: controllers.search,
@@ -106,7 +103,7 @@ class _HomeViewState extends State<HomeView> {
                             onTap: () => {
                               wordInfo = _wordViewModel
                                   .fetchData(controllers.search.text),
-                              Get.to(() => const SearchResultView()),
+                              navigate(const SearchResultView(), context),
                               controllers.search.clear(),
                             },
                           ),
