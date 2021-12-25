@@ -1,80 +1,15 @@
-import 'package:english_accent_dictionary/app/global/navigation/navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import '../../../core/remote/admob/ad_helper.dart';
-import '../../../core/remote/api/models/word_model.dart';
-import '../../../core/remote/api/viewmodels/word_viewmodels.dart';
-import '../../global/components/common/buttons.dart';
-import '../../global/components/common/textfields.dart';
-import '../../global/controllers/text_editing_controllers.dart';
-import '../view_search_result.dart';
-import '../settings/view_settings.dart';
-import 'components/scaffold_body_widget/look_up.dart';
+import 'components/stacks/look_up.dart';
+import 'components/stacks/search_text_field.dart';
+import 'components/stacks/setting_button.dart';
 
-late Future<WordModel> wordInfo;
-
-class HomeView extends StatefulWidget {
+class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
 
   @override
-  State<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
-  late final BannerAd _ad1;
-  late final BannerAd _ad2;
-
-  bool _isLoad1 = false;
-  bool _isLoad2 = false;
-
-  Future<void> _createAd1() async {
-    _ad1 = BannerAd(
-      size: AdSize.banner,
-      adUnitId: AdHelper.banner1,
-      request: const AdRequest(),
-      listener: BannerAdListener(
-        onAdLoaded: (_) => setState(() => _isLoad1 = true),
-        onAdFailedToLoad: (ad, error) async => await ad.dispose(),
-      ),
-    );
-    await _ad1.load();
-  }
-
-  Future<void> _createAd2() async {
-    _ad2 = BannerAd(
-      size: AdSize.banner,
-      adUnitId: AdHelper.banner2,
-      request: const AdRequest(),
-      listener: BannerAdListener(
-        onAdLoaded: (_) => setState(() => _isLoad2 = true),
-        onAdFailedToLoad: (ad, error) async => await ad.dispose(),
-      ),
-    );
-    await _ad2.load();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _createAd1();
-    _createAd2();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _ad1.dispose();
-    _ad2.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final WordViewModelAPI _wordViewModel =
-        Provider.of<WordViewModelAPI>(context);
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: AdHelper().checkForAd(_isLoad1, _ad1),
         body: SingleChildScrollView(
           child: GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
@@ -88,35 +23,14 @@ class _HomeViewState extends State<HomeView> {
                       vertical: 3,
                     ),
                     child: Row(
-                      children: [
-                        CustomIconButton(
-                          icon: const Icon(Icons.settings),
-                          onPressed: () async => navigate(
-                            SettingView(ad2: _ad2, isLoaded2: _isLoad2),
-                            context,
-                          ),
-                        ),
-                        Expanded(
-                          child: CustomTextField(
-                            controller: controllers.search,
-                            icon: const Icon(Icons.search),
-                            onTap: () => {
-                              wordInfo = _wordViewModel
-                                  .fetchData(controllers.search.text),
-                              navigate(const SearchResultView(), context),
-                              controllers.search.clear(),
-                            },
-                          ),
-                        ),
+                      children: const [
+                        SettingButtonWidget(),
+                        SearchTextField(),
                       ],
                     ),
                   ),
                   SizedBox(
-                    height: _isLoad1
-                        ? MediaQuery.of(context).size.height -
-                            _ad1.size.height.toDouble() -
-                            75
-                        : MediaQuery.of(context).size.height - 75,
+                    height: MediaQuery.of(context).size.height - 75,
                     child: const LookUpScreen(),
                   ),
                 ],

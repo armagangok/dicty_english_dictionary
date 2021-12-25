@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'home/components/scaffold_body_widget/widgets/future_builder_widget.dart';
-import 'home/view_home.dart';
+import '../../core/remote/api/models/word_model.dart';
+import 'home/components/stacks/future_builder_widget.dart';
 
+
+late Future<WordModel> wordInfo;
 
 class SearchResultView extends StatelessWidget {
   const SearchResultView({Key? key}) : super(key: key);

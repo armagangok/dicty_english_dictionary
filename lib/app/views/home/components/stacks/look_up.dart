@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'widgets/look_up_widgets.dart';
+import 'look_up_widgets.dart';
 
 class LookUpScreen extends StatelessWidget {
   const LookUpScreen({Key? key}) : super(key: key);

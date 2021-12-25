@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../../../core/local/database/models/word_hive_model.dart';
-import '../../../../../../core/local/database/viewmodels/word_viewmodel.dart';
-import '../../../../../../core/remote/api/models/word_model.dart';
+import '../../../../../core/local/database/models/word_hive_model.dart';
+import '../../../../../core/local/database/viewmodels/word_viewmodel.dart';
+import '../../../../../core/remote/api/models/word_model.dart';
 import 'dict_data_stack.dart';
 
 class FutureBuilderWidget extends StatelessWidget {

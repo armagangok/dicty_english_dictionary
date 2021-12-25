@@ -6,7 +6,7 @@ import '../../../../global/components/common/texts.dart';
 import '../../../../theme/theme_service.dart';
 
 class AccentPickerWidget extends StatelessWidget {
-  final items = [
+  final List<String> items = [
     'English-GB',
     'English-US',
     'English-IE',
@@ -56,7 +56,6 @@ class AccentPickerWidget extends StatelessWidget {
     );
   }
 }
-
 
 class ThemePickerWidget extends StatefulWidget {
   const ThemePickerWidget({Key? key}) : super(key: key);

@@ -1,9 +1,10 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 // Below test unit ids' from google wgich means test unit ids'.
+
+AdHelper adHelper = AdHelper();
 
 class AdHelper {
   static String get banner1 {
@@ -24,22 +25,6 @@ class AdHelper {
     } else {
       throw UnsupportedError("Unsupported platform");
     }
-  }
-
-  Future<BannerAd> createAd(
-    Function func,
-    bannerAdUnitId,
-    bool isLoaded,
-  ) async {
-    return BannerAd(
-      size: AdSize.banner,
-      adUnitId: bannerAdUnitId,
-      request: const AdRequest(),
-      listener: BannerAdListener(
-        onAdLoaded: (_) => func,
-        onAdFailedToLoad: (ad, error) async => await ad.dispose(),
-      ),
-    );
   }
 
   Widget? checkForAd(isLoaded, BannerAd ad) {

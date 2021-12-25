@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/local/database/models/word_hive_model.dart';
-import 'home/components/scaffold_body_widget/widgets/dict_data_stack.dart';
+import 'home/components/stacks/dict_data_stack.dart';
 
 class DetailsView extends StatelessWidget {
   final Word data;
