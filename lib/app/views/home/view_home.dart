@@ -9,7 +9,7 @@ import '../../global/components/common/buttons.dart';
 import '../../global/components/common/textfields.dart';
 import '../../global/controllers/text_editing_controllers.dart';
 import '../view_search_result.dart';
-import '../view_settings.dart';
+import '../settings/view_settings.dart';
 import 'components/scaffold_body_widget/look_up.dart';
 
 late Future<WordModel> wordInfo;
