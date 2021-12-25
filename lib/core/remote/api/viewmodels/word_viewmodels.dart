@@ -9,24 +9,16 @@ enum ViewState { idle, busy }
 class WordViewModelAPI with ChangeNotifier implements Base {
   final WordRepository _userRepository = locator<WordRepository>();
 
-  ViewState _state = ViewState.idle;
-  ViewState get state => _state;
-
-  set state(ViewState value) {
-    _state = value;
-    notifyListeners();
-  }
-
   @override
-  Future<WordModel> fetchData(String? text) async {
+  Future<dynamic> fetchData(String text) async {
+    if (text == "") {
+      print("--------->" + text);
+    } else {}
     try {
-      state = ViewState.busy;
       return await _userRepository.fetchData(text);
     } catch (e) {
       debugPrint("ERROR IN VIEWMODEL --> $e");
       return WordModel();
-    } finally {
-      state = ViewState.idle;
-    }
+    } finally {}
   }
 }

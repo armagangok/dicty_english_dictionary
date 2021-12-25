@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class DisctionaryDataStack extends StatelessWidget {
+class DictionaryDataStack extends StatelessWidget {
   final AsyncSnapshot snapshot;
-  const DisctionaryDataStack({
+  const DictionaryDataStack({
     Key? key,
     required this.snapshot,
   }) : super(key: key);
@@ -24,30 +24,30 @@ class DisctionaryDataStack extends StatelessWidget {
             color: Colors.red,
             fWeigth: FontWeight.w700,
           ),
-         const SizedBox(height: 10),
+          const SizedBox(height: 10),
           dictData(
             snapshot.data.meaning1 ?? "",
             size: 14,
             fWeigth: FontWeight.w400,
-            icon:const Icon(Icons.menu_book),
+            icon: const Icon(Icons.menu_book),
           ),
-         const SizedBox(height: 10),
+          const SizedBox(height: 10),
           dictData(
             snapshot.data.meaning2 ?? "",
             size: 14,
             fWeigth: FontWeight.w400,
-            icon:const Icon(Icons.menu_book),
+            icon: const Icon(Icons.menu_book),
           ),
-         const SizedBox(height: 10),
+          const SizedBox(height: 10),
           dictData(
-            "Origin: " + snapshot.data.origin,
+            snapshot.data.origin ?? "",
             size: 14,
             fWeigth: FontWeight.w400,
           ),
-         const SizedBox(height: 10),
+          const SizedBox(height: 10),
           dictData(
             snapshot.data.example ?? "",
-            icon:const Icon(Icons.star),
+            icon: const Icon(Icons.star),
             size: 14,
             fWeigth: FontWeight.w400,
           ),
@@ -55,10 +55,9 @@ class DisctionaryDataStack extends StatelessWidget {
       ),
     );
   }
-
 }
 
-  Widget dictData(
+Widget dictData(
   String data, {
   Color? color,
   Widget? icon,

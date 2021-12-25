@@ -20,9 +20,16 @@ class SearchTextField extends StatelessWidget {
         controller: controllers.search,
         icon: const Icon(Icons.search),
         onTap: () => {
-          wordInfo = _wordViewModel.fetchData(controllers.search.text),
-          navigate(const SearchResultView(), context),
-          controllers.search.clear(),
+          if (controllers.search.text == "" || controllers.search.text == " ")
+            {
+              debugPrint("ahaaaaaaaaaaa!"),
+            }
+          else
+            {
+              wordInfo = _wordViewModel.fetchData(controllers.search.text),
+              navigate(const SearchResultView(), context),
+              controllers.search.clear(),
+            },
         },
       ),
     );

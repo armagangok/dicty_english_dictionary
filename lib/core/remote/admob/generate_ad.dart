@@ -1,21 +1,21 @@
-import 'package:english_accent_dictionary/core/remote/admob/ad_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-final GenerateAd generateAd = GenerateAd();
+final CreateAd createAd = CreateAd();
 
-class GenerateAd {
-  late final BannerAd _ad1;
-  bool _isLoad1 = false;
-  late Function f;
+class CreateAd {
+  BannerAd? ad;
+  bool isLoad = false;
+  Function? f;
 
-  set boolean(bool newVal) => _isLoad1 = newVal;
-  get getbool => _isLoad1;
-  get ad1 => _ad1;
+  set boolean(bool newVal) => isLoad = newVal;
 
-  Future<void> createAd(f) async {
-    _ad1 = BannerAd(
+  get getbool => isLoad;
+  get ad1 => ad;
+
+  Future<void> createAd1(f, {required String unitID}) async {
+    ad = BannerAd(
       size: AdSize.banner,
-      adUnitId: AdHelper.banner1,
+      adUnitId: unitID,
       request: const AdRequest(),
       listener: BannerAdListener(
         onAdLoaded: (_) => f(),

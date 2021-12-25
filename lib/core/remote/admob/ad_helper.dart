@@ -2,43 +2,58 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-// Below test unit ids' from google wgich means test unit ids'.
-
 AdHelper adHelper = AdHelper();
 
+final AdHelper admobHelper = AdHelper();
+
 class AdHelper {
-  static String get banner1 {
+  String get bannerAdUnitId1 {
     if (Platform.isAndroid) {
       return "ca-app-pub-7691613791089480/2780704918";
     } else if (Platform.isIOS) {
-      return "ca-app-pub-7691613791089480/4995804715";
+      return "ca-app-pub-3940256099942544/2934735716";
     } else {
       throw UnsupportedError("Unsupported platform");
     }
   }
 
-  static String get banner2 {
+  String get bannerAdUnitId2 {
     if (Platform.isAndroid) {
-      return "ca-app-pub-7691613791089480/5215296563";
+      return "ca-app-pub-7691613791089480~4093786584";
     } else if (Platform.isIOS) {
-      return "ca-app-pub-7691613791089480/6719949924";
+      return "ca-app-pub-3940256099942544/2934735716";
     } else {
       throw UnsupportedError("Unsupported platform");
     }
   }
 
-  Widget? checkForAd(isLoaded, BannerAd ad) {
+  String get bannerAdUnitId3 {
+    if (Platform.isAndroid) {
+      return "ca-app-pub-7691613791089480~4093786584";
+    } else if (Platform.isIOS) {
+      return "ca-app-pub-3940256099942544/2934735716";
+    } else {
+      throw UnsupportedError("Unsupported platform");
+    }
+  }
+
+  Widget checkForAd(
+    bool? isLoaded,
+    BannerAd? ad,
+    context,
+  ) {
     if (isLoaded == true) {
       return SizedBox(
-        height: ad.size.height.toDouble(),
-        width: ad.size.width.toDouble(),
-        child: AdWidget(ad: ad),
+        height: 35,
+        width: MediaQuery.of(context).size.longestSide,
+        child: AdWidget(ad: ad!),
       );
     } else {
-      return null;
+      return const SizedBox();
     }
   }
 }
+
 
 // String get banner1 {
 //   if (Platform.isAndroid) {

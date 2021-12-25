@@ -10,7 +10,7 @@ class WordRepository implements Base {
   final DummyApiService _dummyService = DummyApiService();
   final AppMode appMode = AppMode.release;
   @override
-  Future<WordModel> fetchData(String? text) async {
+  Future<WordModel?> fetchData(String text) async {
     if (appMode == AppMode.release) {
       return await _currentService.fetchData(text);
     } else {

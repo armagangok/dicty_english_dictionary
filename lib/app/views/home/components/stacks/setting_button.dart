@@ -13,7 +13,7 @@ class SettingButtonWidget extends StatelessWidget {
     return CustomIconButton(
       icon: const Icon(Icons.settings),
       onPressed: () async => navigate(
-        SettingView(),
+        const SettingView(),
         context,
       ),
     );

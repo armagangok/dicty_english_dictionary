@@ -8,8 +8,6 @@ enum ViewState { idle, busy }
 
 class WordViewModel with ChangeNotifier implements HiveBaseService {
   final WordDBRepository _dbRepository = locator<WordDBRepository>();
-  ViewState _state = ViewState.idle;
-  ViewState get state => _state;
 
   @override
   Future<void> addData(Word word) async {
