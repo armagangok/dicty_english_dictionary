@@ -11,9 +11,6 @@ class WordViewModelAPI with ChangeNotifier implements Base {
 
   @override
   Future<dynamic> fetchData(String text) async {
-    if (text == "") {
-      print("--------->" + text);
-    } else {}
     try {
       return await _userRepository.fetchData(text);
     } catch (e) {
