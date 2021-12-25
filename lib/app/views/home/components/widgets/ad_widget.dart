@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import '../../../../../core/remote/admob/ad_service.dart';
+import '../../../../../core/remote/admob/generate_ad.dart';
 
-import 'package:english_accent_dictionary/core/remote/admob/ad_helper.dart';
-import 'package:english_accent_dictionary/core/remote/admob/generate_ad.dart';
 
 class AdvertisementWidget extends StatefulWidget {
   BannerAd? ad;
@@ -36,6 +36,6 @@ class _AdvertisementWidgetState extends State<AdvertisementWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return admobHelper.checkForAd(createAd.getbool, createAd.ad1, context);
+    return checkForAd(createAd.getbool, createAd.ad1, context);
   }
 }

@@ -6,7 +6,7 @@ import '../services/base_service.dart';
 
 enum ViewState { idle, busy }
 
-class WordViewModel with ChangeNotifier implements HiveBaseService {
+class WordViewModel implements HiveBaseService {
   final WordDBRepository _dbRepository = locator<WordDBRepository>();
 
   @override

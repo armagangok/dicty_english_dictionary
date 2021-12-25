@@ -4,7 +4,6 @@ import 'look_up_widgets.dart';
 
 class LookUpScreen extends StatelessWidget {
   const LookUpScreen({Key? key}) : super(key: key);
-
   @override
   build(BuildContext context) {
     return FutureBuilder(
