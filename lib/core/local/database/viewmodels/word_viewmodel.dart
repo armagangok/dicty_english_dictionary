@@ -28,9 +28,9 @@ class WordViewModel implements HiveBaseService {
   }
 
   @override
-  Future<Word> getData(int index) async {
+  Word getData(int index)  {
     try {
-      return await _dbRepository.getData(index);
+      return _dbRepository.getData(index);
     } catch (e) {
       debugPrint("$e");
       return Word(

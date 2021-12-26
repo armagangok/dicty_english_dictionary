@@ -5,10 +5,10 @@ import '../../../../../core/remote/admob/generate_ad.dart';
 
 
 class AdvertisementWidget extends StatefulWidget {
-  BannerAd? ad;
-  String? unitID;
+  final BannerAd? ad;
+  final String? unitID;
 
-  AdvertisementWidget({
+  const AdvertisementWidget({
     Key? key,
     this.ad,
     this.unitID,

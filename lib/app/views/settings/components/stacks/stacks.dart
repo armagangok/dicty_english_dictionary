@@ -73,14 +73,17 @@ class _ThemePickerWidgetState extends State<ThemePickerWidget> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const Text("Dark Mode"),
-        CupertinoSwitch(
-          value: _switchValue,
-          onChanged: (value) {
-            setState(() {
-              _switchValue = value;
-              ThemeService().changeTheme();
-            });
-          },
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 25),
+          child: CupertinoSwitch(
+            value: _switchValue,
+            onChanged: (value) {
+              setState(() {
+                _switchValue = value;
+                ThemeService().changeTheme();
+              });
+            },
+          ),
         ),
       ],
     );

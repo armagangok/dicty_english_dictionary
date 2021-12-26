@@ -27,7 +27,6 @@ class HomeView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20.0,
-                      vertical: 3,
                     ),
                     child: Row(
                       children: const [
@@ -36,8 +35,10 @@ class HomeView extends StatelessWidget {
                       ],
                     ),
                   ),
+                  const Divider(),
+                  const Text("Recent Searches"),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height - 105,
+                    height: MediaQuery.of(context).size.height - 140,
                     child: const LookUpScreen(),
                   ),
                 ],

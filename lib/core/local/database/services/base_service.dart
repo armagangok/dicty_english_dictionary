@@ -7,7 +7,7 @@ abstract class HiveBaseService {
 
   Future<int> getLanguage();
 
-  Future<Word> getData(int index);
+  Word getData(int index);
 
   Future<void> setupLanguage();
 

@@ -9,7 +9,7 @@ enum AppMode { debug, release }
 class WordDBRepository implements HiveBaseService {
   AppMode appMode = AppMode.release;
 
-  final CurrentDatabaseService _currentDBService = CurrentDatabaseService();
+  final CurrentDBService _currentDBService = CurrentDBService();
   final DatabaseDummyService _dbDummyService = DatabaseDummyService();
 
   @override
@@ -31,11 +31,11 @@ class WordDBRepository implements HiveBaseService {
   }
 
   @override
-  Future<Word> getData(int index) async {
+  Word getData(int index)  {
     if (appMode == AppMode.debug) {
-      return await _dbDummyService.getData(index);
+      return  _dbDummyService.getData(index);
     } else {
-      return await _currentDBService.getData(index);
+      return  _currentDBService.getData(index);
     }
   }
 

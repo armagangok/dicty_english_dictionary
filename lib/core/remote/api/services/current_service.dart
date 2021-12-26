@@ -16,7 +16,6 @@ class CurrentApiService implements Base {
         throw Exception('Failed to load. ${response.body}');
       }
     } catch (e) {
-      print("$e");
       return null;
     }
   }

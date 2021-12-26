@@ -1,11 +1,10 @@
-import 'package:english_accent_dictionary/core/local/database/viewmodels/word_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:get/route_manager.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import '../../../../../core/local/database/models/word_hive_model.dart';
+import '../../../../../core/local/database/viewmodels/word_viewmodel.dart';
 import '../../../../../core/local/tts_helper/text_to_speech_helper.dart';
+import '../../../../global/navigation/navigation.dart';
 import '../../../view_word_details.dart';
 import 'slide_action_widgets.dart';
 import 'list_tile_widget.dart';
@@ -24,7 +23,7 @@ class LookUpWidget extends StatelessWidget {
           return ListView.builder(
             itemCount: wordBox.length,
             itemBuilder: (context, index) {
-              final data = wordBox.getAt(index) as Word;
+              final data = _wordViewModel.getData(index);
               return Slidable(
                 actionPane: const SlidableScrollActionPane(),
                 actionExtentRatio: 0.18,
@@ -34,7 +33,7 @@ class LookUpWidget extends StatelessWidget {
                     icon: Icons.record_voice_over,
                     iconText: "Speak",
                     bgColor: Colors.blue,
-                    onTap: () async => await speakWord(data,context),
+                    onTap: () async => await speakWord(data, context),
                   ),
                   SlideActionWidget(
                     bgColor: Colors.red,
@@ -45,7 +44,7 @@ class LookUpWidget extends StatelessWidget {
                 ],
                 secondaryActions: <Widget>[
                   SlideActionWidget(
-                    onTap: () => Get.to(() => DetailsView(data: data)),
+                    onTap: () => navigate(DetailsView(data: data), context),
                     icon: Icons.info,
                     iconText: "Details",
                     bgColor: Colors.green,

@@ -42,6 +42,7 @@ class DictionaryDataStack extends StatelessWidget {
           dictData(
             snapshot.data.origin ?? "",
             size: 14,
+            icon: const Icon(Icons.trip_origin),
             fWeigth: FontWeight.w400,
           ),
           const SizedBox(height: 10),

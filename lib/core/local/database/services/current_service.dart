@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 
 import 'base_service.dart';
 
-class CurrentDatabaseService implements HiveBaseService {
+class CurrentDBService implements HiveBaseService {
   String content = "String";
 
   @override
@@ -21,8 +21,7 @@ class CurrentDatabaseService implements HiveBaseService {
   }
 
   @override
-  Future<Word> getData(int index) async =>
-      await Hive.box("words").getAt(index) as Word;
+  Word getData(int index) => Hive.box("words").getAt(index) as Word;
 
   @override
   Future<void> setupLanguage() async =>

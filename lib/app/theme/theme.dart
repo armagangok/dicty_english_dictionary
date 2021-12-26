@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomTheme {
@@ -41,6 +42,11 @@ class CustomTheme {
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Colors.blue,
     ),
+    cupertinoOverrideTheme: const CupertinoThemeData(
+      textTheme: CupertinoTextThemeData(
+        pickerTextStyle: TextStyle(color: Colors.black),
+      ),
+    ),
   );
 
   final darkTheme =
@@ -65,6 +71,11 @@ class CustomTheme {
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Colors.blue,
+    ),
+    cupertinoOverrideTheme: const CupertinoThemeData(
+      textTheme: CupertinoTextThemeData(
+        pickerTextStyle: TextStyle(color: Colors.white),
+      ),
     ),
   );
 }

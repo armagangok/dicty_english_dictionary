@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
@@ -10,10 +9,7 @@ class CustomText extends StatelessWidget {
     return Center(
       child: Text(
         data,
-        style: const TextStyle(
-          fontSize: 14,
-          color: Colors.white,
-        ),
+        style: const TextStyle(fontSize: 14),
       ),
     );
   }

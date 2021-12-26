@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: multiProvider(context),
+      providers: multiProvider(),
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         home: const HomeView(),

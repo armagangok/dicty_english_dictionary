@@ -12,7 +12,7 @@ void setupLocator() {
   locator.registerLazySingleton(() => CurrentApiService());
   locator.registerLazySingleton(() => DummyApiService());
   locator.registerLazySingleton(() => WordRepository());
-  locator.registerLazySingleton(() => CurrentDatabaseService());
+  locator.registerLazySingleton(() => CurrentDBService());
   locator.registerLazySingleton(() => DatabaseDummyService());
   locator.registerLazySingleton(() => WordDBRepository());
 
