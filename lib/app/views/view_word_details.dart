@@ -1,5 +1,8 @@
+import 'package:english_accent_dictionary/core/remote/admob/ad_helper.dart';
 import 'package:flutter/material.dart';
 import '../../core/local/database/models/word_hive_model.dart';
+import '../../core/remote/admob/generate_ad.dart';
+import '../global/components/common/ad_widget.dart';
 import 'home/components/stacks/dict_data_stack.dart';
 
 class DetailsView extends StatelessWidget {
@@ -10,6 +13,10 @@ class DetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: AdvertisementWidget(
+        ad: createAd.ad,
+        unitID: adHelper.bannerAdUnitId4,
+      ),
       appBar: AppBar(),
       body: SizedBox(
         height: MediaQuery.of(context).size.height - 70,
