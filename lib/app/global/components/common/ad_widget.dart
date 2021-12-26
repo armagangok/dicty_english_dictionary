@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import '../../../../../core/remote/admob/ad_service.dart';
-import '../../../../../core/remote/admob/generate_ad.dart';
+import '../../../../core/remote/admob/ad_service.dart';
+import '../../../../core/remote/admob/generate_ad.dart';
 
 
 class AdvertisementWidget extends StatefulWidget {

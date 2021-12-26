@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/remote/admob/ad_helper.dart';
 import '../../../core/remote/admob/generate_ad.dart';
-import '../home/components/widgets/ad_widget.dart';
+import '../../global/components/common/ad_widget.dart';
 import 'components/stacks/stacks.dart';
 
 class SettingView extends StatelessWidget {
