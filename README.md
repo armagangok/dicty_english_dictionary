@@ -1,4 +1,4 @@
-## english_accent_dictionary
+## english accent dictionary
 
 This is a customised English dictionary.
 
