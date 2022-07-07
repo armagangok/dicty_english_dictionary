@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../core/remote/admob/ad_helper.dart';
 import '../core/remote/admob/generate_ad.dart';
 import '../feature/components/ad_widget.dart';
-import './home/components/stacks/future_builder_widget.dart';
+import './home/components/future_builder_widget.dart';
 
 late Future<dynamic> wordInfo;
 

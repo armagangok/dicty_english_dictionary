@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/local/database/models/word_hive_model.dart';
 import '../../../../../core/local/database/viewmodels/word_viewmodel.dart';
-import '../../../view_search_result.dart';
+
+import '../../view_search_result.dart';
 import 'dict_data_stack.dart';
 
 class FutureBuilderWidget extends StatelessWidget {

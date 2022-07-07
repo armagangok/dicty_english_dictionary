@@ -3,8 +3,8 @@ import 'package:get/route_manager.dart';
 
 import '../../../../../core/remote/api/viewmodels/word_viewmodels.dart';
 import '../../../../feature/components/textfields.dart';
-import '../../../view_search_result.dart';
-import '../../controller/text_controller.dart';
+import '../../view_search_result.dart';
+import '../controller/text_controller.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({
