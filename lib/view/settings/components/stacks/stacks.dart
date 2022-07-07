@@ -1,5 +1,7 @@
+import 'package:english_accent_dictionary/view/settings/controller/theme_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../core/local/database/viewmodels/word_viewmodel.dart';
 import '../../../../core/theme/theme_service.dart';
@@ -57,31 +59,27 @@ class AccentPickerWidget extends StatelessWidget {
   }
 }
 
-class ThemePickerWidget extends StatefulWidget {
+class ThemePickerWidget extends StatelessWidget {
   const ThemePickerWidget({Key? key}) : super(key: key);
 
   @override
-  State<ThemePickerWidget> createState() => _ThemePickerWidgetState();
-}
-
-class _ThemePickerWidgetState extends State<ThemePickerWidget> {
-  var _switchValue = ThemeService().isSavedDarkMode();
-
-  @override
   Widget build(BuildContext context) {
+    ThemeController themeController = Get.put(ThemeController());
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const Text("Dark Mode"),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 25),
-          child: CupertinoSwitch(
-            value: _switchValue,
-            onChanged: (value) {
-              setState(() {
-                _switchValue = value;
-                ThemeService().changeTheme();
-              });
+          child: Obx(
+            () {
+              return CupertinoSwitch(
+                value: themeController.switchValue.value,
+                onChanged: (value) {
+                  themeController.change(value);
+                  ThemeService().changeTheme();
+                },
+              );
             },
           ),
         ),

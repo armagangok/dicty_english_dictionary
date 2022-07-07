@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 
 import '../../../../feature/components/common/buttons.dart';
-import '../../../../feature/navigation/navigation.dart';
-import '../../../settings/view_settings.dart';
+import '../../../settings/setting_view.dart';
 
 class SettingButtonWidget extends StatelessWidget {
   const SettingButtonWidget({
@@ -13,10 +13,7 @@ class SettingButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomIconButton(
       icon: const Icon(Icons.settings),
-      onPressed: () async => navigate(
-        const SettingView(),
-        context,
-      ),
+      onPressed: () async => Get.to(const SettingView()),
     );
   }
 }

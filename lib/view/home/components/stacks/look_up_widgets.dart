@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/instance_manager.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../../../core/local/database/viewmodels/word_viewmodel.dart';
 import '../../../../../core/local/tts_helper/text_to_speech_helper.dart';
-import '../../../../feature/navigation/navigation.dart';
-
 import '../../../view_word_details.dart';
-import 'slide_action_widgets.dart';
 import 'list_tile_widget.dart';
+import 'slide_action_widgets.dart';
 
 class LookUpWidget extends StatelessWidget {
   const LookUpWidget({
@@ -45,7 +45,7 @@ class LookUpWidget extends StatelessWidget {
                 ],
                 secondaryActions: <Widget>[
                   SlideActionWidget(
-                    onTap: () => navigate(DetailsView(data: data), context),
+                    onTap: () => Get.to(DetailsView(data: data)),
                     icon: Icons.info,
                     iconText: "Details",
                     bgColor: Colors.green,

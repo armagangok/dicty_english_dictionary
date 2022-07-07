@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 
 import '../../../../../core/remote/api/viewmodels/word_viewmodels.dart';
 import '../../../../feature/components/common/textfields.dart';
-import '../../../../feature/navigation/navigation.dart';
 import '../../../view_search_result.dart';
 import '../../controller/text_controller.dart';
 
@@ -28,7 +28,7 @@ class SearchTextField extends StatelessWidget {
           else
             {
               wordInfo = _wordViewModel.fetchData(textController.search.text),
-              navigate(const SearchResultView(), context),
+              Get.to(const SearchResultView()),
               textController.search.clear(),
             },
         },
