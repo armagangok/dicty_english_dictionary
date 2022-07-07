@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 import '../../../../../core/local/database/models/word_hive_model.dart';
 import '../../../../../core/local/database/viewmodels/word_viewmodel.dart';
 import '../../../view_search_result.dart';
@@ -10,13 +10,12 @@ class FutureBuilderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final WordViewModel _wordViewModel = Provider.of<WordViewModel>(context);
+    final WordViewModel _wordViewModel = WordViewModel();
 
     return FutureBuilder<dynamic>(
       future: wordInfo,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-
           Word data1 = Word(
             word: snapshot.data?.word,
             origin: snapshot.data?.origin,

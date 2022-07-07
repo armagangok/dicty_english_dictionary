@@ -1,6 +1,6 @@
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-final CreateAd createAd = CreateAd();
+final CreateAd generateAd = CreateAd();
 
 class CreateAd {
   BannerAd? ad;

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
+import './components/stacks/stacks.dart';
 import '../../../core/remote/admob/ad_helper.dart';
 import '../../../core/remote/admob/generate_ad.dart';
-import '../../global/components/common/ad_widget.dart';
-import 'components/stacks/stacks.dart';
+import '../../feature/components/common/ad_widget.dart';
 
 class SettingView extends StatelessWidget {
   const SettingView({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class SettingView extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: AdvertisementWidget(
         unitID: adHelper.bannerAdUnitId2,
-        ad: createAd.ad,
+        ad: generateAd.ad,
       ),
       appBar: AppBar(title: const Text("Settings")),
       body: SizedBox(

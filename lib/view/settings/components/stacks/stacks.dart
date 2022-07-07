@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 import '../../../../../core/local/database/viewmodels/word_viewmodel.dart';
-import '../../../../global/components/common/texts.dart';
-import '../../../../theme/theme_service.dart';
+import '../../../../core/theme/theme_service.dart';
+import '../../../../feature/components/common/texts.dart';
 
 class AccentPickerWidget extends StatelessWidget {
   final List<String> items = [
@@ -18,7 +18,7 @@ class AccentPickerWidget extends StatelessWidget {
   AccentPickerWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final WordViewModel _wordViewModel = Provider.of<WordViewModel>(context);
+    final WordViewModel _wordViewModel = WordViewModel();
     return FutureBuilder(
       future: _wordViewModel.getLanguage(),
       builder: (context, AsyncSnapshot<int> snapshot) {

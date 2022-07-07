@@ -1,9 +1,10 @@
-import 'package:english_accent_dictionary/core/remote/admob/ad_helper.dart';
 import 'package:flutter/material.dart';
+
+import './home/components/stacks/dict_data_stack.dart';
 import '../../core/local/database/models/word_hive_model.dart';
 import '../../core/remote/admob/generate_ad.dart';
-import '../global/components/common/ad_widget.dart';
-import 'home/components/stacks/dict_data_stack.dart';
+import '../core/remote/admob/ad_helper.dart';
+import '../feature/components/common/ad_widget.dart';
 
 class DetailsView extends StatelessWidget {
   final Word data;
@@ -14,7 +15,7 @@ class DetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: AdvertisementWidget(
-        ad: createAd.ad,
+        ad: generateAd.ad,
         unitID: adHelper.bannerAdUnitId4,
       ),
       appBar: AppBar(),

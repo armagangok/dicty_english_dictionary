@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:provider/provider.dart';
+
 import '../../../../../core/local/database/viewmodels/word_viewmodel.dart';
 import '../../../../../core/local/tts_helper/text_to_speech_helper.dart';
-import '../../../../global/navigation/navigation.dart';
+import '../../../../feature/navigation/navigation.dart';
+
 import '../../../view_word_details.dart';
 import 'slide_action_widgets.dart';
 import 'list_tile_widget.dart';
@@ -15,7 +16,7 @@ class LookUpWidget extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final WordViewModel _wordViewModel = Provider.of<WordViewModel>(context);
+    final WordViewModel _wordViewModel = WordViewModel();
     return Scaffold(
       body: ValueListenableBuilder(
         valueListenable: Hive.box("words").listenable(),

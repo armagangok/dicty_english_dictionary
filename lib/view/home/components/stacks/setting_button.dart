@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../global/components/common/buttons.dart';
-import '../../../../global/navigation/navigation.dart';
+
+import '../../../../feature/components/common/buttons.dart';
+import '../../../../feature/navigation/navigation.dart';
 import '../../../settings/view_settings.dart';
 
 class SettingButtonWidget extends StatelessWidget {

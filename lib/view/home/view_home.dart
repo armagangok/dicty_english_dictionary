@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import './components/stacks/look_up.dart';
+import './components/stacks/search_text_field.dart';
+import './components/stacks/setting_button.dart';
 import '../../../core/remote/admob/ad_helper.dart';
 import '../../../core/remote/admob/generate_ad.dart';
-import 'components/stacks/look_up.dart';
-import 'components/stacks/search_text_field.dart';
-import 'components/stacks/setting_button.dart';
-import '../../global/components/common/ad_widget.dart';
+import '../../feature/components/common/ad_widget.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class HomeView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: AdvertisementWidget(
-          ad: createAd.ad,
+          ad: generateAd.ad,
           unitID: adHelper.bannerAdUnitId1,
         ),
         body: SingleChildScrollView(

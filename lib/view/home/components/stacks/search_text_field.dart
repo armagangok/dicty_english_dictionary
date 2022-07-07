@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 import '../../../../../core/remote/api/viewmodels/word_viewmodels.dart';
-import '../../../../global/components/common/textfields.dart';
-import '../../../../global/controllers/text_editing_controllers.dart';
-import '../../../../global/navigation/navigation.dart';
+import '../../../../feature/components/common/textfields.dart';
+import '../../../../feature/navigation/navigation.dart';
 import '../../../view_search_result.dart';
+import '../../controller/text_controller.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({
@@ -13,22 +13,23 @@ class SearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final WordViewModelAPI _wordViewModel =
-        Provider.of<WordViewModelAPI>(context);
+    final TextController textController = TextController();
+    final WordViewModelAPI _wordViewModel = WordViewModelAPI();
     return Expanded(
       child: CustomTextField(
-        controller: controllers.search,
+        controller: textController.search,
         icon: const Icon(Icons.search),
         onTap: () => {
-          if (controllers.search.text == "" || controllers.search.text == " ")
+          if (textController.search.text == "" ||
+              textController.search.text == " ")
             {
               debugPrint("ahaaaaaaaaaaa!"),
             }
           else
             {
-              wordInfo = _wordViewModel.fetchData(controllers.search.text),
+              wordInfo = _wordViewModel.fetchData(textController.search.text),
               navigate(const SearchResultView(), context),
-              controllers.search.clear(),
+              textController.search.clear(),
             },
         },
       ),
