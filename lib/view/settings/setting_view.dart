@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
-import './components/stacks/stacks.dart';
+import './components/accent_picker_widget.dart';
+import './components/theme_picker_widget.dart';
 import '../../../core/remote/admob/ad_helper.dart';
 import '../../../core/remote/admob/generate_ad.dart';
-import '../../feature/components/common/ad_widget.dart';
+import '../../core/extension/context_extension.dart';
+import '../../feature/components/ad_widget.dart';
 
 class SettingView extends StatelessWidget {
   const SettingView({Key? key}) : super(key: key);
@@ -16,22 +18,15 @@ class SettingView extends StatelessWidget {
         ad: generateAd.ad,
       ),
       appBar: AppBar(title: const Text("Settings")),
-      body: SizedBox(
-        height: MediaQuery.of(context).size.height - 70,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  const ThemePickerWidget(),
-                  const Divider(),
-                  AccentPickerWidget(),
-                ],
-              ),
-            ],
-          ),
-        ),
+      body: ListView(
+        padding: EdgeInsets.symmetric(horizontal: context.width(0.05)),
+        physics: const ClampingScrollPhysics(),
+        shrinkWrap: true,
+        children: [
+          const ThemePickerWidget(),
+          const Divider(),
+          AccentPickerWidget(),
+        ],
       ),
     );
   }

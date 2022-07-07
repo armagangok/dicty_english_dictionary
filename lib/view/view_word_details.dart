@@ -4,7 +4,7 @@ import './home/components/stacks/dict_data_stack.dart';
 import '../../core/local/database/models/word_hive_model.dart';
 import '../../core/remote/admob/generate_ad.dart';
 import '../core/remote/admob/ad_helper.dart';
-import '../feature/components/common/ad_widget.dart';
+import '../feature/components/ad_widget.dart';
 
 class DetailsView extends StatelessWidget {
   final Word data;

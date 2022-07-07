@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
 import '../../../../../core/remote/api/viewmodels/word_viewmodels.dart';
-import '../../../../feature/components/common/textfields.dart';
+import '../../../../feature/components/textfields.dart';
 import '../../../view_search_result.dart';
 import '../../controller/text_controller.dart';
 

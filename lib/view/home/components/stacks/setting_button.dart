@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
-import '../../../../feature/components/common/buttons.dart';
+import '../../../../feature/components/buttons.dart';
 import '../../../settings/setting_view.dart';
 
 class SettingButtonWidget extends StatelessWidget {
