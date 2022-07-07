@@ -1,12 +1,13 @@
-import 'package:english_accent_dictionary/core/local/database/viewmodels/word_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'local/database/models/word_hive_model.dart';
-import 'locator/locator.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:shared_preferences/shared_preferences.dart';
+
+import './local/database/models/word_hive_model.dart';
+import './local/database/viewmodels/word_viewmodel.dart';
+import './locator/locator.dart';
 
 Future<void> initApp() async {
   WidgetsFlutterBinding.ensureInitialized();
