@@ -6,6 +6,7 @@ import './components/search_text_field.dart';
 import './components/setting_button.dart';
 import '../../../core/remote/admob/ad_helper.dart';
 import '../../../core/remote/admob/generate_ad.dart';
+import '../../core/extension/context_extension.dart';
 import '../../feature/components/ad_widget.dart';
 
 class HomeView extends StatelessWidget {
@@ -14,44 +15,38 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        bottomNavigationBar: AdvertisementWidget(
-          ad: generateAd.ad,
-          unitID: adHelper.bannerAdUnitId1,
-        ),
-        body: SingleChildScrollView(
-          child: GestureDetector(
-            onTap: () => FocusScope.of(context).unfocus(),
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0,
-                    ),
-                    child: Row(
-                      children: const [
-                        SettingButtonWidget(),
-                        SearchTextField(),
-                      ],
-                    ),
-                  ),
-                  const Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(CupertinoIcons.time, size: 13),
-                      Text("Recents"),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height - 155,
-                    child: const LookUpScreen(),
-                  ),
+      child: GestureDetector(
+        onTap: () => context.dismissKeyboard(),
+        child: Scaffold(
+          bottomNavigationBar: AdvertisementWidget(
+            ad: generateAd.ad,
+            unitID: adHelper.bannerAdUnitId1,
+          ),
+          body: ListView(
+            physics: const ClampingScrollPhysics(),
+            shrinkWrap: true,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20.0,
+                ),
+                child: Row(
+                  children: const [
+                    SettingButtonWidget(),
+                    SearchTextField(),
+                  ],
+                ),
+              ),
+              const Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(CupertinoIcons.time, size: 13),
+                  Text("Recents"),
                 ],
               ),
-            ),
+              const LookUpScreen(),
+            ],
           ),
         ),
       ),

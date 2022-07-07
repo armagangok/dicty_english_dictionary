@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
 import 'look_up_widgets.dart';
 
 class LookUpScreen extends StatelessWidget {
@@ -15,8 +16,14 @@ class LookUpScreen extends StatelessWidget {
           } else {
             return const LookUpWidget();
           }
+        } else if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         } else {
-          return const LookUpWidget();
+          return const Center(
+            child: Text("Something went wrong...."),
+          );
         }
       },
     );
