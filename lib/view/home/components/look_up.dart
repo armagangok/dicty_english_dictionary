@@ -10,6 +10,7 @@ class LookUpScreen extends StatelessWidget {
     return FutureBuilder(
       future: Hive.openBox('words'),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
+        print(snapshot.data);
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasError) {
             return Text(snapshot.error.toString());

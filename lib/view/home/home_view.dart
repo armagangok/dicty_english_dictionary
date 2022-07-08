@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import './components/look_up.dart';
 import '../../feature/export/export.dart';
 
 class HomeView extends StatelessWidget {
@@ -20,16 +18,8 @@ class HomeView extends StatelessWidget {
           body: ListView(
             physics: const ClampingScrollPhysics(),
             shrinkWrap: true,
-            children: [
-              const Divider(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Icon(CupertinoIcons.time, size: 13),
-                  Text("Recents"),
-                ],
-              ),
-              const LookUpScreen(),
+            children: const [
+              Divider(),
             ],
           ),
         ),

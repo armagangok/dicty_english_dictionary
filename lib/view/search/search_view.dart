@@ -1,6 +1,6 @@
-import 'package:english_accent_dictionary/core/remote/api/models/word_model.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/remote/api/models/word_model.dart';
 import '../../feature/components/textfields.dart';
 import '../../feature/export/export.dart';
 
@@ -51,9 +51,7 @@ class SearchResultView extends StatelessWidget {
             SizedBox(
               height: context.height(0.035),
             ),
-            textController.search.text.isEmpty
-                ? const Center(child: Text("Please type something and search."))
-                : getData(),
+            getData(),
           ],
         ),
       ),
@@ -63,38 +61,36 @@ class SearchResultView extends StatelessWidget {
   //
 
   Widget getData() {
-    return FutureBuilder<WordModel?>(
-      future: DictController().fetchData(textController.search.text),
-      builder: (context, snapshot) {
-        switch (snapshot.connectionState) {
-          case ConnectionState.waiting:
-            return Column(
-              children: const [
-                Text("Waiting for the data..."),
-                CircularProgressIndicator(),
-              ],
-            );
-
-          case ConnectionState.none:
-            return const Center(
-              child: Text("Please check your internet connection."),
-            );
-
-          case ConnectionState.done:
-            if (snapshot.hasData) {
-              var data = snapshot.data!;
-              return WordWidget(wordModel: data);
-            } else {
-              return const Center(
-                child: Text("Something went wrong."),
+    return Obx(() {
+      return FutureBuilder<WordModel?>(
+        future: dictController.fetchData(textController.search.text),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.done:
+              return dictController.word.value == null
+                  ? const Center(
+                      child: Text("Search for the word that you want."),
+                    )
+                  : WordWidget(wordModel: dictController.word.value!);
+            case ConnectionState.waiting:
+              return Column(
+                children: const [
+                  Text("Waiting for the data..."),
+                  CircularProgressIndicator(),
+                ],
               );
-            }
 
-          default:
-            return const Text("something");
-        }
-      },
-    );
+            case ConnectionState.none:
+              return const Center(
+                child: Text("Please check your internet connection."),
+              );
+
+            default:
+              return const Text("something");
+          }
+        },
+      );
+    });
   }
 }
 

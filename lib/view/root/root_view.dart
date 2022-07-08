@@ -1,4 +1,5 @@
 import 'package:english_accent_dictionary/view/home/home_view.dart';
+import 'package:english_accent_dictionary/view/recent/recent_view.dart';
 import 'package:english_accent_dictionary/view/search/search_view.dart';
 import 'package:english_accent_dictionary/view/settings/setting_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,19 +19,15 @@ class _RootViewState extends State<RootView> {
     return Scaffold(
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedLabelStyle: const TextStyle(color: Colors.white),
         currentIndex: _selectedIndex,
-        backgroundColor: Colors.white,
         onTap: (int index) {
           setState(() {
             _selectedIndex = index;
           });
         },
-        fixedColor: Colors.black,
-        unselectedItemColor: Colors.black,
         items: [
           bottomNavyBarItem("Home", CupertinoIcons.home),
-          bottomNavyBarItem("Recent", CupertinoIcons.timelapse),
+          bottomNavyBarItem("Recent", CupertinoIcons.time),
           bottomNavyBarItem("Search", CupertinoIcons.search),
           bottomNavyBarItem("Special", CupertinoIcons.gift),
           bottomNavyBarItem("Setting", CupertinoIcons.settings),
@@ -55,8 +52,17 @@ class _RootViewState extends State<RootView> {
 
 List<Widget> _pages = [
   const HomeView(),
-  const SettingView(),
+  const Recent(),
   SearchResultView(),
-  const SettingView(),
+  const GiftView(),
   const SettingView(),
 ];
+
+class GiftView extends StatelessWidget {
+  const GiftView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView();
+  }
+}

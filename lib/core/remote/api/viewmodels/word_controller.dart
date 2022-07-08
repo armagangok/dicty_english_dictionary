@@ -6,20 +6,24 @@ import '../../../locator/locator.dart';
 import '../models/word_model.dart';
 import '../services/base_service.dart';
 
-class DictController extends GetxController implements Base {
+class DictController implements Base {
   final WordService _wordService = locator<WordService>();
+
+  Rx<WordModel?> word = Rx(null);
 
   @override
   Future<WordModel?> fetchData(String text) async {
     try {
       if (text.isEmpty) {
-        return null;
+        return word.value;
       } else {
-        return await _wordService.fetchData(text);
+        word.value = await _wordService.fetchData(text);
+        word.value;
       }
     } catch (e) {
       debugPrint("ERROR IN VIEWMODEL --> $e");
-      return null;
+      return word.value;
     }
+    return word.value;
   }
 }
