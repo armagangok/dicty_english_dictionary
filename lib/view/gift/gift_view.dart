@@ -6,7 +6,11 @@ class GiftView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [Center(child: Text("Comin soon!"),)],
+      children: const [
+        Center(
+          child: Text("Comin soon!"),
+        )
+      ],
     );
   }
 }

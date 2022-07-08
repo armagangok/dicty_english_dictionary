@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import './core/init.dart';
-import './core/remote/admob/intersitial.dart';
-import './core/theme/theme.dart';
-import './core/theme/theme_service.dart';
+import 'feature/export/export.dart';
 
 void main() async {
   await initApp();

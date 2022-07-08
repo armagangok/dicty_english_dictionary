@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../feature/components/textfields.dart';
 import '../../feature/export/export.dart';
 
 class SearchResultView extends StatelessWidget {
@@ -73,15 +72,3 @@ class SearchResultView extends StatelessWidget {
     });
   }
 }
-
-
-
-        // if (wordModel.value!.meaning1 == null) {
-        //   await WordViewModel().addData(Word(
-        //     word: wordModel.value!.word,
-        //     origin: wordModel.value!.origin,
-        //     meaning1: wordModel.value!.meaning1,
-        //     meaning2: wordModel.value!.meaning2,
-        //     example: wordModel.value!.example,
-        //   ));
-        // }

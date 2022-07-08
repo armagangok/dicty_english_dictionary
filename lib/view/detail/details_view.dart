@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/local/database/models/word_hive_model.dart';
 import '../../feature/export/export.dart';
 
 class DetailsView extends StatelessWidget {

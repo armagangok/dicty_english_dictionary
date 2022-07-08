@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/instance_manager.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../../../core/local/database/viewmodels/word_viewmodel.dart';
-import '../../../../../core/local/tts_helper/text_to_speech_helper.dart';
-import '../../detail/details_view.dart';
-import 'list_tile_widget.dart';
-import 'slide_action_widgets.dart';
+import '../../../feature/export/export.dart';
 
 class LookUpWidget extends StatelessWidget {
   const LookUpWidget({

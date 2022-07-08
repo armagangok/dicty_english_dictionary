@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
-import '../../../../../core/local/database/models/word_hive_model.dart';
+import '../../../feature/export/export.dart';
 
 class SlideActionWidget extends StatelessWidget {
   final Word? data;

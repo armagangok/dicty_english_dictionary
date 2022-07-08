@@ -1,7 +1,9 @@
-import 'package:english_accent_dictionary/feature/export/export.dart';
-import 'package:english_accent_dictionary/view/root/root_view.dart';
+
+
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
+
+import '../../../feature/export/export.dart';
+
 
 const int _maxFailedLoadAttempts = 3;
 

@@ -1,5 +1,6 @@
-import 'package:english_accent_dictionary/core/remote/api/models/word_model.dart';
 import 'package:flutter/material.dart';
+
+import '../../../feature/export/export.dart';
 
 class WordWidget extends StatelessWidget {
   final WordModel wordModel;
