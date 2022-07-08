@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 
-import '../../core/remote/api/viewmodels/word_viewmodels.dart';
 import '../../feature/components/textfields.dart';
 import '../../feature/export/export.dart';
-import '../home/components/dict_data_stack.dart';
-import '../home/controller/text_controller.dart';
 
 class SearchResultView extends StatelessWidget {
   SearchResultView({Key? key}) : super(key: key);
 
-  final WordViewModelAPI wordViewModelAPI = WordViewModelAPI();
+  final DictController dictController = DictController();
   final TextController textController = TextController();
 
   @override
@@ -32,22 +28,20 @@ class SearchResultView extends StatelessWidget {
               controller: textController.search,
               icon: const Icon(Icons.search),
               onTap: () async => {
-                if (textController.search.text == "" ||
-                    textController.search.text == " ")
+                if (textController.search.text.isEmpty)
                   {
                     Get.snackbar(
                         "Warning", "Please enter a word to search for.")
                   }
                 else
                   {
-                    await wordViewModelAPI
-                        .fetchData(textController.search.text),
+                    await dictController.fetchData(textController.search.text),
                     textController.search.clear(),
                   },
               },
             ),
           ),
-          getData(wordViewModelAPI),
+          getData(),
         ],
       ),
     );
@@ -55,9 +49,17 @@ class SearchResultView extends StatelessWidget {
 
   //
 
-  Widget getData(WordViewModelAPI wordViewModelAPI) {
-    return Obx(
-      () => Data(wordModel: wordViewModelAPI.wordModel.value),
-    );
+  Widget getData() {
+    if (textController.search.text.isEmpty) {
+      return const Center(
+        child: Text("Please search for the result"),
+      );
+    } else {
+      return Obx(
+        () {
+          return Data(wordModel: dictController.wordModel.value);
+        },
+      );
+    }
   }
 }
