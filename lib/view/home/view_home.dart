@@ -4,10 +4,7 @@ import 'package:flutter/material.dart';
 import './components/look_up.dart';
 import './components/search_text_field.dart';
 import './components/setting_button.dart';
-import '../../../core/remote/admob/ad_helper.dart';
-import '../../../core/remote/admob/generate_ad.dart';
-import '../../core/extension/context_extension.dart';
-import '../../feature/components/ad_widget.dart';
+import '../../feature/export/export.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);

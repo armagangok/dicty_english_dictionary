@@ -16,7 +16,7 @@ class LookUpWidget extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final WordViewModel _wordViewModel = WordViewModel();
+    final WordViewModel _wordViewModel = Get.put(WordViewModel());
     return ValueListenableBuilder(
       valueListenable: Hive.box("words").listenable(),
       builder: (context, Box wordBox, _) {
