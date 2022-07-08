@@ -1,3 +1,4 @@
+import 'package:english_accent_dictionary/core/remote/api/models/word_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../feature/components/textfields.dart';
@@ -8,7 +9,6 @@ class SearchResultView extends StatelessWidget {
 
   final DictController dictController = DictController();
   final TextController textController = TextController();
-  int a = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,9 @@ class SearchResultView extends StatelessWidget {
             SizedBox(
               height: context.height(0.035),
             ),
-            getData(),
+            textController.search.text.isEmpty
+                ? const Center(child: Text("Please type something and search."))
+                : getData(),
           ],
         ),
       ),
@@ -61,21 +63,49 @@ class SearchResultView extends StatelessWidget {
   //
 
   Widget getData() {
-    return Obx(
-      () {
-        if (dictController.wordModel.value == null) {
-          return const Center(
-            child: Text("Could not find result for this search"),
-          );
-        } else {
-          if (a == 0) {
-            a++;
-            return const SizedBox();
-          } else {
-            return Data(wordModel: dictController.wordModel.value);
-          }
+    return FutureBuilder<WordModel?>(
+      future: DictController().fetchData(textController.search.text),
+      builder: (context, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.waiting:
+            return Column(
+              children: const [
+                Text("Waiting for the data..."),
+                CircularProgressIndicator(),
+              ],
+            );
+
+          case ConnectionState.none:
+            return const Center(
+              child: Text("Please check your internet connection."),
+            );
+
+          case ConnectionState.done:
+            if (snapshot.hasData) {
+              var data = snapshot.data!;
+              return WordWidget(wordModel: data);
+            } else {
+              return const Center(
+                child: Text("Something went wrong."),
+              );
+            }
+
+          default:
+            return const Text("something");
         }
       },
     );
   }
 }
+
+
+
+        // if (wordModel.value!.meaning1 == null) {
+        //   await WordViewModel().addData(Word(
+        //     word: wordModel.value!.word,
+        //     origin: wordModel.value!.origin,
+        //     meaning1: wordModel.value!.meaning1,
+        //     meaning2: wordModel.value!.meaning2,
+        //     example: wordModel.value!.example,
+        //   ));
+        // }

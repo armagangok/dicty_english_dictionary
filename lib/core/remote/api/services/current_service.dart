@@ -1,9 +1,11 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
+
 import '../models/word_model.dart';
 import 'base_service.dart';
 
-class CurrentApiService implements Base {
+class WordService implements Base {
   @override
   Future<WordModel?> fetchData(String text) async {
     try {

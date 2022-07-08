@@ -1,9 +1,9 @@
 import 'package:english_accent_dictionary/core/remote/api/models/word_model.dart';
 import 'package:flutter/material.dart';
 
-class Data extends StatelessWidget {
+class WordWidget extends StatelessWidget {
   final WordModel wordModel;
-  const Data({
+  const WordWidget({
     Key? key,
     required this.wordModel,
   }) : super(key: key);

@@ -6,7 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../../../core/local/database/viewmodels/word_viewmodel.dart';
 import '../../../../../core/local/tts_helper/text_to_speech_helper.dart';
-import '../../view_word_details.dart';
+import '../../detail/details_view.dart';
 import 'list_tile_widget.dart';
 import 'slide_action_widgets.dart';
 
