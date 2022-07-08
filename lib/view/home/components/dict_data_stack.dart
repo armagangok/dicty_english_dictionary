@@ -10,51 +10,45 @@ class Data extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 5,
-        horizontal: 1.5,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          dictData(
-            wordModel.word ?? "",
-            size: 25,
-            color: Colors.red,
-            fWeigth: FontWeight.w700,
-          ),
-          const SizedBox(height: 10),
-          dictData(
-            wordModel.meaning1 ?? "",
-            size: 14,
-            fWeigth: FontWeight.w400,
-            icon: const Icon(Icons.menu_book),
-          ),
-          const SizedBox(height: 10),
-          dictData(
-            wordModel.meaning2 ?? "",
-            size: 14,
-            fWeigth: FontWeight.w400,
-            icon: const Icon(Icons.menu_book),
-          ),
-          const SizedBox(height: 10),
-          dictData(
-            wordModel.origin ?? "",
-            size: 14,
-            icon: const Icon(Icons.trip_origin),
-            fWeigth: FontWeight.w400,
-          ),
-          const SizedBox(height: 10),
-          dictData(
-            wordModel.example ?? "",
-            icon: const Icon(Icons.star),
-            size: 14,
-            fWeigth: FontWeight.w400,
-          ),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        dictData(
+          wordModel.word ?? "No data",
+          size: 25,
+          color: Colors.red,
+          fWeigth: FontWeight.w700,
+        ),
+        const SizedBox(height: 10),
+        dictData(
+          wordModel.meaning1 ?? "No data",
+          size: 14,
+          fWeigth: FontWeight.w400,
+          icon: const Icon(Icons.menu_book),
+        ),
+        const SizedBox(height: 10),
+        dictData(
+          wordModel.meaning2 ?? "No data",
+          size: 14,
+          fWeigth: FontWeight.w400,
+          icon: const Icon(Icons.menu_book),
+        ),
+        const SizedBox(height: 10),
+        dictData(
+          wordModel.origin ?? "No data",
+          size: 14,
+          icon: const Icon(Icons.trip_origin),
+          fWeigth: FontWeight.w400,
+        ),
+        const SizedBox(height: 10),
+        dictData(
+          wordModel.example ?? "No data",
+          icon: const Icon(Icons.star),
+          size: 14,
+          fWeigth: FontWeight.w400,
+        ),
+      ],
     );
   }
 }

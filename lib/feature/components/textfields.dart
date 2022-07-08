@@ -24,12 +24,13 @@ class CustomTextField extends StatelessWidget {
       height: textFieldH ?? 30,
       child: TextFormField(
         controller: controller,
+        textAlign: TextAlign.justify,
         decoration: InputDecoration(
           labelText: label,
+          label: const Text("search"),
           suffixIcon: InkWell(
             child: icon ?? const Text(""),
             onTap: () => onTap!(),
-            
             splashColor: null,
           ),
         ),

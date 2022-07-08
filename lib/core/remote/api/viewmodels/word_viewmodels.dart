@@ -14,11 +14,12 @@ class DictController extends GetxController implements Base {
   @override
   Future<void> fetchData(String text) async {
     try {
-      wordModel.value = await _userRepository.fetchData(text);
-      // print(wordModel!.meaning1);
-      notifyChildrens();
+      if (text.isEmpty) {
+      } else {
+        wordModel.value = await _userRepository.fetchData(text);
+      }
     } catch (e) {
       debugPrint("ERROR IN VIEWMODEL --> $e");
-    } finally {}
+    }
   }
 }
