@@ -1,11 +1,33 @@
-import 'package:english_accent_dictionary/view/home/components/look_up.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-class Recent extends StatelessWidget {
-  const Recent({Key? key}) : super(key: key);
+import '../home/components/look_up_widgets.dart';
 
+
+
+class RecentView extends StatelessWidget {
+  const RecentView({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
-    return const LookUpScreen();
+  build(BuildContext context) {
+    return FutureBuilder(
+      future: Hive.openBox('words'),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasError) {
+            return Text(snapshot.error.toString());
+          } else {
+            return const LookUpWidget();
+          }
+        } else if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else {
+          return const Center(
+            child: Text("Something went wrong...."),
+          );
+        }
+      },
+    );
   }
 }
