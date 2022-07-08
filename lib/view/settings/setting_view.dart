@@ -14,7 +14,7 @@ class SettingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: AdvertisementWidget(
-        unitID: adHelper.bannerAdUnitId2,
+        unitID: AdHelper.bannerAdUnitId2,
         ad: generateAd.ad,
       ),
       appBar: AppBar(title: const Text("Settings")),

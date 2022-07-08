@@ -23,6 +23,7 @@ Future<void> initApp() async {
       "31E74826447186709EC324B30C8E83C8",
     ],
   );
+
   MobileAds.instance.updateRequestConfiguration(configuration);
 
   final directory = await path_provider.getApplicationDocumentsDirectory();

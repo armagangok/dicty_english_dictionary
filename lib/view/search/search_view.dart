@@ -18,7 +18,7 @@ class SearchResultView extends StatelessWidget {
       child: Scaffold(
         bottomNavigationBar: AdvertisementWidget(
           ad: generateAd.ad,
-          unitID: adHelper.bannerAdUnitId3,
+          unitID: AdHelper.bannerAdUnitId3,
         ),
         body: ListView(
           shrinkWrap: true,
@@ -66,7 +66,7 @@ class SearchResultView extends StatelessWidget {
       } else {
         return dictController.word.value == null
             ? const Center(
-                child: Text("Search for the word that you want."),
+                child: Text("Search for the word you want."),
               )
             : WordWidget(wordModel: dictController.word.value!);
       }

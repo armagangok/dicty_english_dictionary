@@ -7,21 +7,19 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: GestureDetector(
-        onTap: () => context.dismissKeyboard(),
-        child: Scaffold(
-          bottomNavigationBar: AdvertisementWidget(
-            ad: generateAd.ad,
-            unitID: adHelper.bannerAdUnitId1,
-          ),
-          body: ListView(
-            physics: const ClampingScrollPhysics(),
-            shrinkWrap: true,
-            children: const [
-              Divider(),
-            ],
-          ),
+    return GestureDetector(
+      onTap: () => context.dismissKeyboard(),
+      child: Scaffold(
+        bottomNavigationBar: AdvertisementWidget(
+          ad: generateAd.ad,
+          unitID: AdHelper.bannerAdUnitId1,
+        ),
+        body: ListView(
+          physics: const ClampingScrollPhysics(),
+          shrinkWrap: true,
+          children: const [
+            Divider(),
+          ],
         ),
       ),
     );
