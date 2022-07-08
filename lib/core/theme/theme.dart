@@ -47,6 +47,11 @@ class CustomTheme {
         pickerTextStyle: TextStyle(color: Colors.black),
       ),
     ),
+
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData().copyWith(
+      selectedItemColor: Colors.black,
+      unselectedItemColor: Colors.grey,
+    ),
   );
 
   final darkTheme =
@@ -76,6 +81,10 @@ class CustomTheme {
       textTheme: CupertinoTextThemeData(
         pickerTextStyle: TextStyle(color: Colors.white),
       ),
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData().copyWith(
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.grey,
     ),
   );
 }

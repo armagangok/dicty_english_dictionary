@@ -1,8 +1,9 @@
-import 'package:english_accent_dictionary/view/root/controller/bottom_navy_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import './controller/bottom_navy_controller.dart';
+import '../gift/gift_view.dart';
 import '../home/home_view.dart';
 import '../recent/recent_view.dart';
 import '../search/search_view.dart';
@@ -38,10 +39,7 @@ class RootView extends StatelessWidget {
   ) {
     return BottomNavigationBarItem(
       label: label,
-      icon: Icon(
-        iconData,
-        
-      ),
+      icon: Icon(iconData),
     );
   }
 
@@ -52,13 +50,4 @@ class RootView extends StatelessWidget {
     const GiftView(),
     const SettingView(),
   ];
-}
-
-class GiftView extends StatelessWidget {
-  const GiftView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView();
-  }
 }
