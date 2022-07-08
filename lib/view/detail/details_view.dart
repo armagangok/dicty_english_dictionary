@@ -12,10 +12,6 @@ class DetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      bottomNavigationBar: AdvertisementWidget(
-        ad: generateAd.ad,
-        unitID: AdHelper.bannerAdUnitId4,
-      ),
       body: ListView(
         padding: EdgeInsets.fromLTRB(
           context.width(0.05),
