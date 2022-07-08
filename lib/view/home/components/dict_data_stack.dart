@@ -1,10 +1,11 @@
+import 'package:english_accent_dictionary/core/remote/api/models/word_model.dart';
 import 'package:flutter/material.dart';
 
-class DictionaryDataStack extends StatelessWidget {
-  final AsyncSnapshot snapshot;
-  const DictionaryDataStack({
+class Data extends StatelessWidget {
+  final WordModel wordModel;
+  const Data({
     Key? key,
-    required this.snapshot,
+    required this.wordModel,
   }) : super(key: key);
 
   @override
@@ -19,35 +20,35 @@ class DictionaryDataStack extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           dictData(
-            snapshot.data.word ?? "",
+            wordModel.word ?? "",
             size: 25,
             color: Colors.red,
             fWeigth: FontWeight.w700,
           ),
           const SizedBox(height: 10),
           dictData(
-            snapshot.data.meaning1 ?? "",
+            wordModel.meaning1 ?? "",
             size: 14,
             fWeigth: FontWeight.w400,
             icon: const Icon(Icons.menu_book),
           ),
           const SizedBox(height: 10),
           dictData(
-            snapshot.data.meaning2 ?? "",
+            wordModel.meaning2 ?? "",
             size: 14,
             fWeigth: FontWeight.w400,
             icon: const Icon(Icons.menu_book),
           ),
           const SizedBox(height: 10),
           dictData(
-            snapshot.data.origin ?? "",
+            wordModel.origin ?? "",
             size: 14,
             icon: const Icon(Icons.trip_origin),
             fWeigth: FontWeight.w400,
           ),
           const SizedBox(height: 10),
           dictData(
-            snapshot.data.example ?? "",
+            wordModel.example ?? "",
             icon: const Icon(Icons.star),
             size: 14,
             fWeigth: FontWeight.w400,

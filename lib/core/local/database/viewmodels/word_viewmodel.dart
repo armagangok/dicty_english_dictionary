@@ -4,7 +4,7 @@ import '../models/word_hive_model.dart';
 import '../repository/repository.dart';
 import '../services/base_service.dart';
 
-enum ViewState { idle, busy }
+
 
 class WordViewModel implements HiveBaseService {
   final WordDBRepository _dbRepository = locator<WordDBRepository>();

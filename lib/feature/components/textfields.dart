@@ -29,6 +29,7 @@ class CustomTextField extends StatelessWidget {
           suffixIcon: InkWell(
             child: icon ?? const Text(""),
             onTap: () => onTap!(),
+            
             splashColor: null,
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:english_accent_dictionary/view/home/view_home.dart';
+import 'package:english_accent_dictionary/view/search/search_view.dart';
 import 'package:english_accent_dictionary/view/settings/setting_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +56,7 @@ class _RootViewState extends State<RootView> {
 List<Widget> _pages = [
   const HomeView(),
   const SettingView(),
-  const SettingView(),
+  SearchResultView(),
   const SettingView(),
   const SettingView(),
 ];

@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import './components/look_up.dart';
-import './components/search_text_field.dart';
-import './components/setting_button.dart';
 import '../../feature/export/export.dart';
 
 class HomeView extends StatelessWidget {
@@ -23,17 +21,6 @@ class HomeView extends StatelessWidget {
             physics: const ClampingScrollPhysics(),
             shrinkWrap: true,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20.0,
-                ),
-                child: Row(
-                  children: const [
-                    SettingButtonWidget(),
-                    SearchTextField(),
-                  ],
-                ),
-              ),
               const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
