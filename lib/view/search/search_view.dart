@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../core/remote/api/models/word_model.dart';
 import '../../feature/components/textfields.dart';
 import '../../feature/export/export.dart';
 
@@ -9,6 +8,8 @@ class SearchResultView extends StatelessWidget {
 
   final DictController dictController = DictController();
   final TextController textController = TextController();
+
+  var a;
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +24,9 @@ class SearchResultView extends StatelessWidget {
           shrinkWrap: true,
           physics: const ClampingScrollPhysics(),
           children: [
-            SizedBox(
-              height: context.height(0.05),
-            ),
+            SizedBox(height: context.height(0.05)),
             Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: context.width(0.05),
-              ),
+              padding: EdgeInsets.symmetric(horizontal: context.width(0.05)),
               child: CustomTextField(
                 controller: textController.search,
                 icon: const Icon(Icons.search),
@@ -41,7 +38,7 @@ class SearchResultView extends StatelessWidget {
                     }
                   else
                     {
-                      await dictController
+                      a = await dictController
                           .fetchData(textController.search.text),
                       textController.search.clear(),
                     },
@@ -62,34 +59,17 @@ class SearchResultView extends StatelessWidget {
 
   Widget getData() {
     return Obx(() {
-      return FutureBuilder<WordModel?>(
-        future: dictController.fetchData(textController.search.text),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.done:
-              return dictController.word.value == null
-                  ? const Center(
-                      child: Text("Search for the word that you want."),
-                    )
-                  : WordWidget(wordModel: dictController.word.value!);
-            case ConnectionState.waiting:
-              return Column(
-                children: const [
-                  Text("Waiting for the data..."),
-                  CircularProgressIndicator(),
-                ],
-              );
-
-            case ConnectionState.none:
-              return const Center(
-                child: Text("Please check your internet connection."),
-              );
-
-            default:
-              return const Text("something");
-          }
-        },
-      );
+      if (a == 0) {
+        return const Center(
+          child: Text("Could find the word that you've searched for."),
+        );
+      } else {
+        return dictController.word.value == null
+            ? const Center(
+                child: Text("Search for the word that you want."),
+              )
+            : WordWidget(wordModel: dictController.word.value!);
+      }
     });
   }
 }
