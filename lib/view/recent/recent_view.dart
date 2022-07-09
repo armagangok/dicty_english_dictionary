@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../feature/export/export.dart';
-import '../home/components/look_up_widgets.dart';
+import 'components/look_up_widgets.dart';
 
 class RecentView extends StatelessWidget {
   const RecentView({Key? key}) : super(key: key);
   @override
   build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: AdvertisementWidget(
-        ad: generateAd.ad,
-        unitID: AdHelper.bannerAdUnitId4,
-      ),
+      // bottomNavigationBar: AdvertisementWidget(
+      //   ad: generateAd.ad,
+      //   unitID: AdHelper.bannerAdUnitId4,
+      // ),
       body: FutureBuilder(
         future: Hive.openBox('words'),
         builder: (BuildContext context, AsyncSnapshot snapshot) {

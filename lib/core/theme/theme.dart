@@ -4,19 +4,6 @@ import 'package:flutter/material.dart';
 class CustomTheme {
   final ligthTheme =
       ThemeData.from(colorScheme: const ColorScheme.light()).copyWith(
-    // textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.black),
-    // scaffoldBackgroundColor: Colors.blue[100],
-    // cardColor: Colors.orange[100],
-    // dividerColor: Colors.black,
-    // dividerTheme: DividerThemeData(thickness: 0.2),
-    // textButtonTheme: TextButtonThemeData(
-    //   style: ButtonStyle(
-    //       // backgroundColor: MaterialStateProperty.all<Color>(Colors.orange[200]!),
-    //       // foregroundColor: MaterialStateProperty.all<Color>(Colors.red[600]!),
-    //       ),
-    // ),
-    // iconTheme: IconThemeData(color: Colors.purple),
-
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(90.0),
@@ -35,7 +22,7 @@ class CustomTheme {
         borderSide: BorderSide(color: Colors.black),
       ),
     ),
-    cardColor: Colors.grey[300],
+    cardColor: Colors.transparent,
     dividerColor: Colors.black,
     dividerTheme: const DividerThemeData(thickness: 0.2),
     scaffoldBackgroundColor: Colors.grey[100],
@@ -88,3 +75,24 @@ class CustomTheme {
     ),
   );
 }
+
+
+
+
+
+
+
+
+
+    // textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.black),
+    // scaffoldBackgroundColor: Colors.blue[100],
+    // cardColor: Colors.orange[100],
+    // dividerColor: Colors.black,
+    // dividerTheme: DividerThemeData(thickness: 0.2),
+    // textButtonTheme: TextButtonThemeData(
+    //   style: ButtonStyle(
+    //       // backgroundColor: MaterialStateProperty.all<Color>(Colors.orange[200]!),
+    //       // foregroundColor: MaterialStateProperty.all<Color>(Colors.red[600]!),
+    //       ),
+    // ),
+    // iconTheme: IconThemeData(color: Colors.purple),

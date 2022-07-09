@@ -17,17 +17,16 @@ class ListTileItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      tileColor: Colors.transparent,
+      
       title: SingleChildScrollView(
         child: Card(
           child: Row(
             children: [
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 5.0),
-                  child: Text(
-                    "${data.word}",
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
+                child: Text(
+                  "${data.word}",
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
               IconButton(
@@ -39,7 +38,7 @@ class ListTileItem extends StatelessWidget {
               ),
             ],
           ),
-          elevation: 7,
+          elevation: 0,
         ),
       ),
     );

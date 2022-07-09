@@ -15,10 +15,10 @@ class SearchResultView extends StatelessWidget {
     return GestureDetector(
       onTap: () => context.dismissKeyboard(),
       child: Scaffold(
-        bottomNavigationBar: AdvertisementWidget(
-          ad: generateAd.ad,
-          unitID: AdHelper.bannerAdUnitId3,
-        ),
+        // bottomNavigationBar: AdvertisementWidget(
+        //   ad: generateAd.ad,
+        //   unitID: AdHelper.bannerAdUnitId3,
+        // ),
         body: ListView(
           shrinkWrap: true,
           physics: const ClampingScrollPhysics(),

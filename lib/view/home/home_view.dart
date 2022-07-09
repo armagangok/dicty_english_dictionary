@@ -10,10 +10,10 @@ class HomeView extends StatelessWidget {
     return GestureDetector(
       onTap: () => context.dismissKeyboard(),
       child: Scaffold(
-        bottomNavigationBar: AdvertisementWidget(
-          ad: generateAd.ad,
-          unitID: AdHelper.bannerAdUnitId1,
-        ),
+        // bottomNavigationBar: AdvertisementWidget(
+        //   ad: generateAd.ad,
+        //   unitID: AdHelper.bannerAdUnitId1,
+        // ),
         body: ListView(
           physics: const ClampingScrollPhysics(),
           shrinkWrap: true,
