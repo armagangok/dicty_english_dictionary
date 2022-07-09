@@ -1,13 +1,13 @@
 import '../models/word_hive_model.dart';
 
 abstract class HiveBaseService {
-  Future<void> addData(Word word);
+  Future<void> addData(HiveWord word);
 
   Future<void> deleteData(int index);
 
   Future<int> getLanguage();
 
-  Word getData(int index);
+  HiveWord getData(int index);
 
   Future<void> setupLanguage();
 

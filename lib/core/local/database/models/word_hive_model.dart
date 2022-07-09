@@ -1,8 +1,9 @@
 import 'package:hive/hive.dart';
+
 part '../words.g.dart';
 
 @HiveType(typeId: 1)
-class Word extends HiveObject {
+class HiveWord extends HiveObject {
   @HiveField(0)
   String? word = "";
   @HiveField(1)
@@ -13,7 +14,7 @@ class Word extends HiveObject {
   String? meaning2 = "";
   @HiveField(4)
   String? example = "";
-  Word({
+  HiveWord({
     required this.word,
     required this.origin,
     required this.meaning1,

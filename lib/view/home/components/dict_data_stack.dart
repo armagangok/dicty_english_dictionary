@@ -11,45 +11,59 @@ class WordWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
+    return ListView(
+      padding: EdgeInsets.symmetric(horizontal: context.width(0.05)),
+      physics: const ClampingScrollPhysics(),
+      shrinkWrap: true,
       children: [
         dictData(
-          wordModel.word ?? "No data",
+          wordModel.word!,
           size: 25,
           color: Colors.red,
           fWeigth: FontWeight.w700,
         ),
-        const SizedBox(height: 10),
+        const SizedBox001(),
         dictData(
-          wordModel.meaning1 ?? "No data",
+          wordModel.meaning1!,
           size: 14,
           fWeigth: FontWeight.w400,
           icon: const Icon(Icons.menu_book),
         ),
-        const SizedBox(height: 10),
+        const SizedBox001(),
         dictData(
-          wordModel.meaning2 ?? "No data",
+          wordModel.meaning2!,
           size: 14,
           fWeigth: FontWeight.w400,
           icon: const Icon(Icons.menu_book),
         ),
-        const SizedBox(height: 10),
+        const SizedBox001(),
         dictData(
-          wordModel.origin ?? "No data",
+          wordModel.origin!,
           size: 14,
           icon: const Icon(Icons.trip_origin),
           fWeigth: FontWeight.w400,
         ),
-        const SizedBox(height: 10),
+        const SizedBox001(),
         dictData(
-          wordModel.example ?? "No data",
+          wordModel.example!,
           icon: const Icon(Icons.star),
           size: 14,
           fWeigth: FontWeight.w400,
         ),
       ],
+    );
+  }
+}
+
+class SizedBox001 extends StatelessWidget {
+  const SizedBox001({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: context.height(0.01),
     );
   }
 }
@@ -61,22 +75,25 @@ Widget dictData(
   double? size,
   FontWeight? fWeigth,
 }) {
-  return Row(
-    children: [
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: icon,
-      ),
-      Expanded(
-        child: SelectableText(
-          data,
-          style: TextStyle(
-            color: color,
-            fontSize: size,
-            fontWeight: fWeigth ?? FontWeight.w900,
+  return Builder(builder: (context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.all(context.height(0.005)),
+          child: icon,
+        ),
+        Expanded(
+          child: SelectableText(
+            data,
+            style: TextStyle(
+              color: color,
+              fontSize: size,
+              fontWeight: fWeigth ?? FontWeight.w900,
+            ),
           ),
         ),
-      ),
-    ],
-  );
+      ],
+    );
+  });
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class CustomTheme {
   final ligthTheme =
       ThemeData.from(colorScheme: const ColorScheme.light()).copyWith(
+    splashColor: Colors.transparent,
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(90.0),
@@ -16,7 +17,7 @@ class CustomTheme {
         borderSide: const BorderSide(),
       ),
       filled: true,
-      fillColor: Colors.grey[300],
+      fillColor: Colors.white,
       labelStyle: const TextStyle(color: Colors.black),
       border: const OutlineInputBorder(
         borderSide: BorderSide(color: Colors.black),
@@ -25,7 +26,7 @@ class CustomTheme {
     cardColor: Colors.transparent,
     dividerColor: Colors.black,
     dividerTheme: const DividerThemeData(thickness: 0.2),
-    scaffoldBackgroundColor: Colors.grey[100],
+    scaffoldBackgroundColor: Colors.grey[200],
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Colors.blue,
     ),
@@ -34,7 +35,6 @@ class CustomTheme {
         pickerTextStyle: TextStyle(color: Colors.black),
       ),
     ),
-
     bottomNavigationBarTheme: const BottomNavigationBarThemeData().copyWith(
       selectedItemColor: Colors.black,
       unselectedItemColor: Colors.grey,
@@ -43,6 +43,7 @@ class CustomTheme {
 
   final darkTheme =
       ThemeData.from(colorScheme: const ColorScheme.dark()).copyWith(
+    splashColor: Colors.transparent,
     dividerColor: Colors.white,
     dividerTheme: const DividerThemeData(thickness: 0.2),
     inputDecorationTheme: InputDecorationTheme(

@@ -6,17 +6,17 @@ part of 'models/word_hive_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class WordAdapter extends TypeAdapter<Word> {
+class WordAdapter extends TypeAdapter<HiveWord> {
   @override
   final int typeId = 1;
 
   @override
-  Word read(BinaryReader reader) {
+  HiveWord read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Word(
+    return HiveWord(
       word: fields[0] as String?,
       origin: fields[1] as String?,
       meaning1: fields[2] as String?,
@@ -26,7 +26,7 @@ class WordAdapter extends TypeAdapter<Word> {
   }
 
   @override
-  void write(BinaryWriter writer, Word obj) {
+  void write(BinaryWriter writer, HiveWord obj) {
     writer
       ..writeByte(5)
       ..writeByte(0)

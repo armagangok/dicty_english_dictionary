@@ -4,14 +4,14 @@ import 'base_service.dart';
 
 class DatabaseDummyService implements HiveBaseService {
   @override
-  Future<void> addData(Word word) async {}
+  Future<void> addData(HiveWord word) async {}
 
   @override
   Future<void> deleteData(index) async {}
 
   @override
-  Word getData(int index) {
-    return Word(
+  HiveWord getData(int index) {
+    return HiveWord(
       word: "word",
       origin: "origin",
       meaning1: "meaning1",

@@ -1,16 +1,14 @@
-import 'package:flutter/material.dart';
+import '../../../../feature/export/export.dart';
 import '../../../locator/locator.dart';
-import '../models/word_hive_model.dart';
 import '../repository/repository.dart';
 import '../services/base_service.dart';
 
-
-
 class WordViewModel implements HiveBaseService {
   final WordDBRepository _dbRepository = locator<WordDBRepository>();
+  List<HiveWord> wordList = [];
 
   @override
-  Future<void> addData(Word word) async {
+  Future<void> addData(HiveWord word) async {
     try {
       await _dbRepository.addData(word);
     } catch (e) {
@@ -28,12 +26,12 @@ class WordViewModel implements HiveBaseService {
   }
 
   @override
-  Word getData(int index)  {
+  HiveWord getData(int index) {
     try {
       return _dbRepository.getData(index);
     } catch (e) {
       debugPrint("$e");
-      return Word(
+      return HiveWord(
         word: "word",
         origin: "origin",
         meaning1: "meaning1",
@@ -60,6 +58,14 @@ class WordViewModel implements HiveBaseService {
     } catch (e) {
       debugPrint("$e");
     }
+  }
+
+  List<HiveWord> getAll() {
+    for (HiveWord word in Hive.box("words").values) {
+      wordList.add(word);
+    }
+
+    return wordList;
   }
 
   @override

@@ -1,10 +1,9 @@
-import 'package:english_accent_dictionary/core/local/database/models/word_hive_model.dart';
-import 'package:english_accent_dictionary/core/local/database/viewmodels/word_viewmodel.dart';
-import 'package:flutter/material.dart';
+// ignore_for_file: avoid_print
+
 import 'package:get/state_manager.dart';
 
+import '../../../../feature/export/export.dart';
 import '../../../locator/locator.dart';
-import '../models/word_model.dart';
 import '../services/base_service.dart';
 import '../services/current_service.dart';
 
@@ -16,6 +15,7 @@ class DictController implements Base {
 
   @override
   Future<dynamic> fetchData(String text) async {
+    int checker = 0;
     try {
       if (text.isEmpty) {
         return null;
@@ -23,17 +23,30 @@ class DictController implements Base {
         word.value = await _wordService.fetchData(text);
 
         if (word.value == null) {
-          return 0;
+          return 0.obs;
         } else {
-          _wordViewModel.addData(
-            Word(
-              word: word.value!.word,
-              origin: word.value!.origin,
-              meaning1: word.value!.meaning1,
-              meaning2: word.value!.meaning2,
-              example: word.value!.example,
-            ),
-          );
+          for (var element in _wordViewModel.getAll()) {
+            if (element.word == word.value!.word) {
+              print("${element.word}  ${word.value!.word} ");
+              checker++;
+            }
+
+            print("${element.word}  ${word.value!.word} ");
+          }
+          print(checker);
+
+          checker == 0
+              ? await _wordViewModel.addData(
+                  HiveWord(
+                    word: word.value!.word,
+                    origin: word.value!.origin,
+                    meaning1: word.value!.meaning1,
+                    meaning2: word.value!.meaning2,
+                    example: word.value!.example,
+                  ),
+                )
+              : {};
+
           return word.value;
         }
       }

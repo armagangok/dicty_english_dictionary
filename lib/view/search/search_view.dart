@@ -8,10 +8,9 @@ class SearchResultView extends StatelessWidget {
   final DictController dictController = DictController();
   final TextController textController = TextController();
 
-  var a;
-
   @override
   Widget build(BuildContext context) {
+    var a;
     return GestureDetector(
       onTap: () => context.dismissKeyboard(),
       child: Scaffold(
@@ -29,25 +28,36 @@ class SearchResultView extends StatelessWidget {
               child: CustomTextField(
                 controller: textController.search,
                 icon: const Icon(Icons.search),
-                onTap: () async => {
+                onTap: () async {
+                  return {
                   if (textController.search.text.isEmpty)
                     {
                       Get.snackbar(
-                          "Warning", "Please enter a word to search for.")
+                        "Warning",
+                        "Please enter a word to search for.",
+                        snackPosition: SnackPosition.BOTTOM,
+                        duration: const Duration(milliseconds: 3600),
+                      )
                     }
                   else
                     {
                       a = await dictController
                           .fetchData(textController.search.text),
                       textController.search.clear(),
+                      if (a == 0)
+                        Get.snackbar(
+                          "Warning",
+                          "Not found the word that you have searched for.",
+                          snackPosition: SnackPosition.BOTTOM,
+                          duration: const Duration(milliseconds: 3600),
+                        )
                     },
+                };
                 },
               ),
             ),
-            SizedBox(
-              height: context.height(0.035),
-            ),
-            getData(),
+            SizedBox(height: context.height(0.035)),
+            getData(a),
           ],
         ),
       ),
@@ -56,19 +66,23 @@ class SearchResultView extends StatelessWidget {
 
   //
 
-  Widget getData() {
-    return Obx(() {
-      if (a == 0) {
-        return const Center(
-          child: Text("Could find the word that you've searched for."),
-        );
-      } else {
-        return dictController.word.value == null
-            ? const Center(
-                child: Text("Search for the word you want."),
-              )
-            : WordWidget(wordModel: dictController.word.value!);
-      }
-    });
+
+
+  //
+
+  Widget getData(a) {
+    return Obx(
+      () {
+        if (a == 0) {
+          return const Center();
+        } else {
+          return dictController.word.value == null
+              ? const Center(
+                  child: Text("Search for the word you want."),
+                )
+              : WordWidget(wordModel: dictController.word.value!);
+        }
+      },
+    );
   }
 }

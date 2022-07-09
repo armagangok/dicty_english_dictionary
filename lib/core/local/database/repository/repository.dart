@@ -13,7 +13,7 @@ class WordDBRepository implements HiveBaseService {
   final DatabaseDummyService _dbDummyService = DatabaseDummyService();
 
   @override
-  Future<void> addData(Word word) async {
+  Future<void> addData(HiveWord word) async {
     if (appMode == AppMode.debug) {
       await _dbDummyService.addData(word);
     } else {
@@ -31,11 +31,11 @@ class WordDBRepository implements HiveBaseService {
   }
 
   @override
-  Word getData(int index)  {
+  HiveWord getData(int index) {
     if (appMode == AppMode.debug) {
-      return  _dbDummyService.getData(index);
+      return _dbDummyService.getData(index);
     } else {
-      return  _currentDBService.getData(index);
+      return _currentDBService.getData(index);
     }
   }
 

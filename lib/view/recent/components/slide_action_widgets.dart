@@ -1,7 +1,7 @@
 import '../../../feature/export/export.dart';
 
 class SlideActionWidget extends StatelessWidget {
-  final Word? data;
+  final HiveWord? data;
   final IconData? icon;
   final Color? bgColor;
   final String? iconText;
@@ -18,14 +18,11 @@ class SlideActionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 9),
-      child: IconSlideAction(
-        caption: '$iconText',
-        color: bgColor,
-        icon: icon,
-        onTap: () => onTap!(),
-      ),
+    return IconSlideAction(
+      caption: '$iconText',
+      color: bgColor,
+      icon: icon,
+      onTap: () => onTap!(),
     );
   }
 }

@@ -16,12 +16,14 @@ class WordModel {
   factory WordModel.fromJson(List<dynamic> json) {
     return WordModel(
       word: json[0]["word"],
-      origin: json[0]["origin"] ?? "No Data",
-      meaning1: json[0]["meanings"][0]["definitions"][0]["definition"],
+      origin: json[0]["origin"] ?? "Origin not found in the search.",
+      meaning1: json[0]["meanings"][0]["definitions"][0]["definition"] ??
+          "Meaning not found.",
       meaning2: json[0]["meanings"][0]["definitions"].length > 1
           ? json[0]["meanings"][0]["definitions"][1]["definition"]
-          : "No Data",
-      example: json[0]["meanings"][0]["definitions"][0]["example"] ?? "No Data",
+          : "Alternative meaning not found.",
+      example: json[0]["meanings"][0]["definitions"][0]["example"] ??
+          "Example sentence not found in the search.",
     );
   }
 }
