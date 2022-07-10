@@ -12,14 +12,16 @@ class WordWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.symmetric(horizontal: context.width(0.05)),
+      padding: EdgeInsets.symmetric(
+        horizontal: context.width(0.05),
+      ),
       physics: const ClampingScrollPhysics(),
       shrinkWrap: true,
       children: [
         dictData(
           wordModel.word!,
           size: 25,
-          color: Colors.red,
+          textColor: Colors.red,
           fWeigth: FontWeight.w700,
         ),
         const SizedBox001(),
@@ -70,30 +72,33 @@ class SizedBox001 extends StatelessWidget {
 
 Widget dictData(
   String data, {
-  Color? color,
+  Color? textColor,
   Widget? icon,
   double? size,
   FontWeight? fWeigth,
 }) {
-  return Builder(builder: (context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.all(context.height(0.005)),
-          child: icon,
-        ),
-        Expanded(
-          child: SelectableText(
-            data,
-            style: TextStyle(
-              color: color,
-              fontSize: size,
-              fontWeight: fWeigth ?? FontWeight.w900,
+  return Builder(
+    builder: (context) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(
+            padding: icon == null
+                ? EdgeInsets.zero
+                : EdgeInsets.only(right: context.width(0.03)),
+            child: icon,
+          ),
+          Expanded(
+            child: SelectableText(
+              data,
+              style: TextStyle(
+                color: textColor,
+                fontSize: size,
+              ),
             ),
           ),
-        ),
-      ],
-    );
-  });
+        ],
+      );
+    },
+  );
 }

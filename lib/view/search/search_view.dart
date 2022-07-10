@@ -24,7 +24,7 @@ class SearchResultView extends StatelessWidget {
           children: [
             SizedBox(height: context.height(0.05)),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: context.width(0.05)),
+              padding: context.symmetric(horizontal: 0.05),
               child: CustomTextField(
                 controller: textController.search,
                 icon: const Icon(Icons.search),
@@ -35,8 +35,14 @@ class SearchResultView extends StatelessWidget {
                         Get.snackbar(
                           "Warning",
                           "Please enter a word to search for.",
+                          padding: context.symmetric(
+                            horizontal: context.width(0.025),
+                            vertical: context.width(0.025),
+                            bothVertical: true,
+                          ),
                           snackPosition: SnackPosition.BOTTOM,
                           duration: const Duration(milliseconds: 3600),
+                          margin: const EdgeInsets.all(80),
                         )
                       }
                     else

@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import '../../../feature/data/data.dart';
 
 class DataController extends GetxController {
-  Rx<WordModel?> wordModel = Rx(null);
+  Rx<dynamic> wordModel = Rx(null);
   final WordController wordController = WordController();
 
   @override
@@ -14,8 +14,14 @@ class DataController extends GetxController {
     var formatter = DateFormat('yyyy-MM-dd');
 
     wordModel.value =
-        await wordController.fetchDaiyWord(map[formatter.format(now)]);
+        await wordController.fetchDailyWord(map[formatter.format(now)]);
 
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    wordModel.value ??= 0;
+    super.onReady();
   }
 }

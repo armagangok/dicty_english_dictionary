@@ -13,7 +13,7 @@ class WordController implements Base {
 
   Rx<WordModel?> word = Rx(null);
 
-  Future<WordModel?> fetchDaiyWord(String word) async {
+  Future<WordModel?> fetchDailyWord(String word) async {
     return await _wordService.fetchWord(word);
   }
 

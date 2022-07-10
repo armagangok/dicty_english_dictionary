@@ -9,7 +9,31 @@ extension EasyContext on BuildContext {
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
   Color get primaryColor => theme.primaryColor;
   Size get size => MediaQuery.of(this).size;
-  EdgeInsets get edgeInsets => MediaQuery.of(this).padding;
+  EdgeInsets get padding => MediaQuery.of(this).padding;
+
+  EdgeInsets symmetric({
+    double horizontal = 0,
+    double vertical = 0,
+    bool bothVertical = false,
+  }) =>
+      EdgeInsets.symmetric(
+        horizontal:
+            bothVertical ? height(1) * horizontal : width(1) * horizontal,
+        vertical: bothVertical ? height(1) * horizontal : width(1) * vertical,
+      );
+
+  EdgeInsets verticalPadding({
+    double left = 0,
+    double top = 0,
+    double rigth = 0,
+    double bottom = 0,
+  }) =>
+      EdgeInsets.only(
+        left: left,
+        top: top,
+        right: rigth,
+        bottom: bottom,
+      );
 
   void dismissKeyboard() {
     FocusScopeNode currentFocus = FocusScope.of(this);

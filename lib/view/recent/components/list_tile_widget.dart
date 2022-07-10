@@ -60,7 +60,7 @@ class ListTileItem extends StatelessWidget {
               children: [
                 dictData(
                   "${data.word}",
-                  color: Colors.red,
+                  textColor: Colors.red,
                   size: 25,
                   fWeigth: FontWeight.w700,
                 ),
@@ -70,16 +70,19 @@ class ListTileItem extends StatelessWidget {
                   icon: const Icon(Icons.menu_book),
                   fWeigth: FontWeight.w400,
                 ),
+                SizedBox(height: context.height(0.02)),
                 dictData(
                   "${data.meaning2}",
                   icon: const Icon(Icons.menu_book),
                   fWeigth: FontWeight.w400,
                 ),
+                SizedBox(height: context.height(0.02)),
                 dictData(
                   "Origin: " "${data.origin}",
                   icon: const Icon(Icons.trip_origin),
                   fWeigth: FontWeight.w400,
                 ),
+                SizedBox(height: context.height(0.02)),
                 dictData(
                   "${data.example}",
                   icon: const Icon(Icons.star),
