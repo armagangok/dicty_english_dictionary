@@ -1,16 +1,15 @@
+import 'package:english_accent_dictionary/view/home/controller/data_controller.dart';
 import 'package:flutter/material.dart';
 
 import '../../feature/export/export.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+  HomeView({Key? key}) : super(key: key);
+
+  final DataController dataController = Get.put(DataController());
 
   @override
   Widget build(BuildContext context) {
-    final WordModel word = WordModel(
-        word: "Hello! or an equivalent greeting.",
-        meaning2:
-            "Heelo Mr. Johson how are you doing doing today? daljdlaksjldjkaslkjdlasjkdlkasjldjasljkdlasjkdlkajsldkjasljdlkasdjalk");
     return GestureDetector(
       onTap: () => context.dismissKeyboard(),
       child: SafeArea(
@@ -19,44 +18,74 @@ class HomeView extends StatelessWidget {
           //   ad: generateAd.ad,
           //   unitID: AdHelper.bannerAdUnitId1,
           // ),
-          body: ListView(
-            padding: EdgeInsets.all(context.width(0.025)),
-            physics: const ClampingScrollPhysics(),
-            shrinkWrap: true,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(context.width(0.025)),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Word of the day feature will be enabled soon! \n\nThank for you patience!",
-                      style: context.textTheme.headline5,
+          body: Obx(
+            () => ListView(
+              padding: EdgeInsets.all(context.width(0.025)),
+              physics: const ClampingScrollPhysics(),
+              shrinkWrap: true,
+              children: [
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: context.height(0.025)),
+                  child: Center(
+                    child: Text(
+                      "Word Of The Day!",
+                      style: context.textTheme.headline4!.copyWith(
+                        shadows: [
+                          const Shadow(
+                            offset: Offset(0, 1),
+                            blurRadius: 3,
+                            color: Color.fromARGB(255, 73, 73, 73),
+                          ),
+                        ],
+                      ),
                     ),
-                    // const SizedBox001(),
-                    // Text(word.word!),
-                    // const SizedBox001(),
-                    // Text(
-                    //   "Meaning: ${word.meaning1 ?? "Meaning not found."}",
-                    // ),
-                    // const SizedBox001(),
-                    // Text(
-                    //   "Meaning: ${word.meaning2 ?? "Alternative meaning not found."}",
-                    // ),
-                    // const SizedBox001(),
-                    // Text(
-                    //   "Origin: ${word.meaning1 ?? "Meaning not found."}",
-                    // ),
-                    // const SizedBox001(),
-                    // Text(
-                    //   "Example: ${word.meaning1 ?? "Example sentence not found."}",
-                    // ),
-                  ],
+                  ),
                 ),
-              )
-            ],
+                dataController.wordModel.value == null
+                    ? const Center(
+                        child: Text("An error occured while fetching word"),
+                      )
+                    : Padding(
+                        padding: EdgeInsets.all(context.width(0.05)),
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(
+                              context.width(0.05),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(dataController.wordModel.value!.word!,
+                                    style: context.textTheme.headline5),
+                                const SizedBox001(),
+                                Text(
+                                  "Meaning: ${dataController.wordModel.value!.meaning1 ?? "Meaning not found."}",
+                                ),
+                                const SizedBox001(),
+                                Text(
+                                  "Meaning: ${dataController.wordModel.value!.meaning2 ?? "Alternative meaning not found."}",
+                                ),
+                                const SizedBox001(),
+                                Text(
+                                  "Origin: ${dataController.wordModel.value!.origin ?? "Meaning not found."}",
+                                ),
+                                const SizedBox001(),
+                                Text(
+                                  "Example: ${dataController.wordModel.value!.example ?? "Example sentence not found."}",
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+              ],
+            ),
           ),
         ),
       ),

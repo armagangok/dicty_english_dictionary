@@ -3,7 +3,7 @@ import 'base_service.dart';
 
 class DummyApiService implements Base {
   @override
-  Future<WordModel> fetchData(String? text) async {
+  Future<WordModel> fetchWord(String? text) async {
     await Future.delayed(const Duration(seconds: 2));
     return WordModel(
       word: "test",

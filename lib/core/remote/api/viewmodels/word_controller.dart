@@ -5,22 +5,26 @@ import 'package:get/state_manager.dart';
 import '../../../../feature/export/export.dart';
 import '../../../locator/locator.dart';
 import '../services/base_service.dart';
-import '../services/current_service.dart';
+import '../services/word_service.dart';
 
-class DictController implements Base {
+class WordController implements Base {
   final WordService _wordService = locator<WordService>();
   final WordViewModel _wordViewModel = WordViewModel();
 
   Rx<WordModel?> word = Rx(null);
 
+  Future<WordModel?> fetchDaiyWord(String word) async {
+    return await _wordService.fetchWord(word);
+  }
+
   @override
-  Future<dynamic> fetchData(String text) async {
+  Future<dynamic> fetchWord(String text) async {
     int checker = 0;
     try {
       if (text.isEmpty) {
         return null;
       } else {
-        word.value = await _wordService.fetchData(text);
+        word.value = await _wordService.fetchWord(text);
 
         if (word.value == null) {
           return 0.obs;

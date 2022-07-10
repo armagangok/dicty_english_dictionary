@@ -23,7 +23,7 @@ class CustomTheme {
         borderSide: BorderSide(color: Colors.black),
       ),
     ),
-    cardColor: Colors.transparent,
+    shadowColor: const Color.fromARGB(255, 0, 0, 0),
     dividerColor: Colors.black,
     dividerTheme: const DividerThemeData(thickness: 0.2),
     scaffoldBackgroundColor: Colors.grey[200],

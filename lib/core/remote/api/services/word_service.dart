@@ -7,7 +7,7 @@ import 'base_service.dart';
 
 class WordService implements Base {
   @override
-  Future<WordModel?> fetchData(String text) async {
+  Future<WordModel?> fetchWord(String text) async {
     try {
       final response = await http.get(
         Uri.parse('https://api.dictionaryapi.dev/api/v2/entries/en/$text'),

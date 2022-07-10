@@ -5,7 +5,7 @@ import '../../feature/export/export.dart';
 class SearchResultView extends StatelessWidget {
   SearchResultView({Key? key}) : super(key: key);
 
-  final DictController dictController = DictController();
+  final WordController dictController = WordController();
   final TextController textController = TextController();
 
   @override
@@ -30,29 +30,29 @@ class SearchResultView extends StatelessWidget {
                 icon: const Icon(Icons.search),
                 onTap: () async {
                   return {
-                  if (textController.search.text.isEmpty)
-                    {
-                      Get.snackbar(
-                        "Warning",
-                        "Please enter a word to search for.",
-                        snackPosition: SnackPosition.BOTTOM,
-                        duration: const Duration(milliseconds: 3600),
-                      )
-                    }
-                  else
-                    {
-                      a = await dictController
-                          .fetchData(textController.search.text),
-                      textController.search.clear(),
-                      if (a == 0)
+                    if (textController.search.text.isEmpty)
+                      {
                         Get.snackbar(
                           "Warning",
-                          "Not found the word that you have searched for.",
+                          "Please enter a word to search for.",
                           snackPosition: SnackPosition.BOTTOM,
                           duration: const Duration(milliseconds: 3600),
                         )
-                    },
-                };
+                      }
+                    else
+                      {
+                        a = await dictController
+                            .fetchWord(textController.search.text),
+                        textController.search.clear(),
+                        if (a == 0)
+                          Get.snackbar(
+                            "Warning",
+                            "Not found the word that you have searched for.",
+                            snackPosition: SnackPosition.BOTTOM,
+                            duration: const Duration(milliseconds: 3600),
+                          )
+                      },
+                  };
                 },
               ),
             ),
@@ -65,8 +65,6 @@ class SearchResultView extends StatelessWidget {
   }
 
   //
-
-
 
   //
 

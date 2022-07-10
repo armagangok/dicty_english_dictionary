@@ -1,3 +1,3 @@
 abstract class Base {
-  Future<dynamic> fetchData(String text);
+  Future<dynamic> fetchWord(String text);
 }

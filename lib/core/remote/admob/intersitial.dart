@@ -1,92 +1,89 @@
+// import 'package:flutter/material.dart';
 
+// import '../../../feature/export/export.dart';
 
-import 'package:flutter/material.dart';
+// const int _maxFailedLoadAttempts = 3;
 
-import '../../../feature/export/export.dart';
+// class IntAdWiew extends StatefulWidget {
+//   const IntAdWiew({Key? key}) : super(key: key);
 
+//   @override
+//   State<IntAdWiew> createState() => _IntAdWiewState();
+// }
 
-const int _maxFailedLoadAttempts = 3;
+// class _IntAdWiewState extends State<IntAdWiew> {
+//   int _interstitialLoadAttempts = 0;
+//   InterstitialAd? _interstitialAd;
 
-class IntAdWidget extends StatefulWidget {
-  const IntAdWidget({Key? key}) : super(key: key);
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: InkWell(
+//         onTap: () async {
+//           await _showInterstitialAd();
+//         },
+//         child: const Center(
+//           child: Text("Press for advertisement."),
+//         ),
+//       ),
+//     );
+//   }
 
-  @override
-  State<IntAdWidget> createState() => _IntAdWidgetState();
-}
+//   //
 
-class _IntAdWidgetState extends State<IntAdWidget> {
-  int _interstitialLoadAttempts = 0;
-  InterstitialAd? _interstitialAd;
+//   void _createInterstitialAd() async {
+//     await InterstitialAd.load(
+//       adUnitId: AdHelper.interstitialAdUnitId,
+//       request: const AdRequest(),
+//       adLoadCallback: InterstitialAdLoadCallback(
+//         onAdLoaded: (InterstitialAd ad) {
+//           _interstitialAd = ad;
+//           _interstitialLoadAttempts = 0;
+//         },
+//         onAdFailedToLoad: (LoadAdError error) {
+//           _interstitialLoadAttempts += 1;
+//           _interstitialAd = null;
+//           if (_interstitialLoadAttempts <= _maxFailedLoadAttempts) {
+//             _createInterstitialAd();
+//           }
+//         },
+//       ),
+//     );
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: InkWell(
-        onTap: () async {
-          await _showInterstitialAd();
-        },
-        child: const Center(
-          child: Text("Press for advertisement."),
-        ),
-      ),
-    );
-  }
+//   //
 
-  //
+//   Future<void> _showInterstitialAd() async {
+//     if (_interstitialAd != null) {
+//       _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
+//           onAdDismissedFullScreenContent: (InterstitialAd ad) {
+//         ad.dispose();
+//         _createInterstitialAd();
+//         Get.to(RootView());
+//       }, onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
+//         ad.dispose();
+//         _createInterstitialAd();
+//       });
 
-  void _createInterstitialAd() async {
-    await InterstitialAd.load(
-      adUnitId: AdHelper.interstitialAdUnitId,
-      request: const AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (InterstitialAd ad) {
-          _interstitialAd = ad;
-          _interstitialLoadAttempts = 0;
-        },
-        onAdFailedToLoad: (LoadAdError error) {
-          _interstitialLoadAttempts += 1;
-          _interstitialAd = null;
-          if (_interstitialLoadAttempts <= _maxFailedLoadAttempts) {
-            _createInterstitialAd();
-          }
-        },
-      ),
-    );
-  }
+//       await _interstitialAd!.show();
+//     }
+//   }
 
-  //
+// //
 
-  Future<void> _showInterstitialAd() async {
-    if (_interstitialAd != null) {
-      _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
-          onAdDismissedFullScreenContent: (InterstitialAd ad) {
-        ad.dispose();
-        _createInterstitialAd();
-        Get.to(RootView());
-      }, onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
-        ad.dispose();
-        _createInterstitialAd();
-      });
+//   @override
+//   void initState() {
+//     super.initState();
+//     _createInterstitialAd();
+//   }
 
-      await _interstitialAd!.show();
-    }
-  }
+//   //
 
-//
+//   @override
+//   void dispose() {
+//     super.dispose();
+//     _interstitialAd?.dispose();
+//   }
 
-  @override
-  void initState() {
-    super.initState();
-    _createInterstitialAd();
-  }
-
-  //
-
-  @override
-  void dispose() {
-    super.dispose();
-    _interstitialAd?.dispose();
-  }
-
-  //
-}
+//   //
+// }
