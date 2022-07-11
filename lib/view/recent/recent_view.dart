@@ -21,7 +21,7 @@ class RecentView extends StatelessWidget {
                     child: FittedBox(
                       child: Text(
                         "There is no recent search you have made.",
-                       
+                        
                         style: context.textTheme.headline6,
                         maxLines: 1,
                       ),

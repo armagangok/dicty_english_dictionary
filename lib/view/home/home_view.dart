@@ -38,75 +38,94 @@ class HomeView extends StatelessWidget {
   //
 
   Widget buildtDataWidget() {
-    return Builder(builder: (context) {
-      return ListView(
-        padding: EdgeInsets.all(context.width(0.025)),
-        physics: const ClampingScrollPhysics(),
-        shrinkWrap: true,
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: context.height(0.015)),
-            child: Center(
-              child: Text(
-                "Word Of The Day!",
-                style: context.textTheme.headline5!.copyWith(
-                  shadows: [
-                    const Shadow(
-                      offset: Offset(0, 1),
-                      blurRadius: 3,
-                      color: Color.fromARGB(255, 73, 73, 73),
-                    ),
-                  ],
+    return Builder(
+      builder: (context) {
+        return ListView(
+          padding: EdgeInsets.all(context.width(0.025)),
+          physics: const ClampingScrollPhysics(),
+          shrinkWrap: true,
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: context.height(0.015)),
+              child: Center(
+                child: Text(
+                  "Word Of The Day!",
+                  style: context.textTheme.headline5!.copyWith(
+                    shadows: [
+                      const Shadow(
+                        offset: Offset(0, 1),
+                        blurRadius: 3,
+                        color: Color.fromARGB(255, 73, 73, 73),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(context.width(0.05)),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(context.width(0.05)),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    dictData(
-                      dataController.wordModel.value!.word!,
-                      size: 24,
-                      textColor: Colors.red,
-                    ),
-                    const SizedBox001(),
-                    dictData(
-                      "Meaning: ${dataController.wordModel.value!.meaning1 ?? "Meaning not found."}",
-                      icon: const Icon(Icons.menu_book),
-                    ),
-                    const SizedBox001(),
-                    dictData(
-                      "Meaning: ${dataController.wordModel.value!.meaning2 ?? "Alternative meaning not found."}",
-                      icon: const Icon(Icons.menu_book),
-                    ),
-                    const SizedBox001(),
-                    dictData(
-                      "Origin: ${dataController.wordModel.value!.origin ?? "Meaning not found."}",
-                      icon: const Icon(Icons.trip_origin),
-                    ),
-                    const SizedBox001(),
-                    dictData(
-                      "Example: ${dataController.wordModel.value!.example ?? "Example sentence not found."}",
-                      icon: const Icon(Icons.star),
-                    ),
-                  ],
+            Padding(
+              padding: EdgeInsets.all(context.width(0.05)),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(context.width(0.05)),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Container(
+                      //   color: Colors.blue,
+                      //   child: dictData(
+                      //     dataController.wordModel.value!.word!,
+                      //     size: 24,
+                      //     textColor: Colors.red,
+                      //   ),
+                      // ),
+
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            dataController.wordModel.value!.word!,
+                            style: context.textTheme.headline6!
+                                .copyWith(color: Colors.red),
+                          ),
+                          SpeakButton(
+                            data: dataController.wordModel.value!.word!,
+                          ),
+                        ],
+                      ),
+                      const SizedBox001(),
+                      dictData(
+                        "Meaning: ${dataController.wordModel.value!.meaning1 ?? "Meaning not found."}",
+                        icon: const Icon(Icons.menu_book),
+                      ),
+                      const SizedBox001(),
+                      dictData(
+                        "Meaning: ${dataController.wordModel.value!.meaning2 ?? "Alternative meaning not found."}",
+                        icon: const Icon(Icons.menu_book),
+                      ),
+                      const SizedBox001(),
+                      dictData(
+                        "Origin: ${dataController.wordModel.value!.origin ?? "Meaning not found."}",
+                        icon: const Icon(Icons.trip_origin),
+                      ),
+                      const SizedBox001(),
+                      dictData(
+                        "Example: ${dataController.wordModel.value!.example ?? "Example sentence not found."}",
+                        icon: const Icon(Icons.star),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
-      );
-    });
+          ],
+        );
+      },
+    );
   }
 
   //

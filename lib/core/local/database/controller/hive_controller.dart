@@ -5,6 +5,7 @@ import '../services/base_service.dart';
 
 class WordViewModel implements HiveBaseService {
   final WordDBRepository _dbRepository = locator<WordDBRepository>();
+
   List<HiveWord> wordList = [];
 
   @override
@@ -55,6 +56,7 @@ class WordViewModel implements HiveBaseService {
   Future<void> saveLanguage(int index) async {
     try {
       await _dbRepository.saveLanguage(index);
+      await setLanguage(index);
     } catch (e) {
       debugPrint("$e");
     }

@@ -1,9 +1,4 @@
-
-
-
-
 import '../../../feature/export/export.dart';
-
 
 class ThemePickerWidget extends StatelessWidget {
   const ThemePickerWidget({Key? key}) : super(key: key);
@@ -13,21 +8,26 @@ class ThemePickerWidget extends StatelessWidget {
     ThemeController themeController = Get.put(ThemeController());
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        const Text("Dark Mode"),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 25),
-          child: Obx(
-            () {
-              return CupertinoSwitch(
-                value: themeController.switchValue.value,
-                onChanged: (value) {
-                  themeController.change(value);
-                  ThemeService().changeTheme();
-                },
-              );
-            },
+        FittedBox(
+          child: Text(
+            "Dark Mode",
+            style: context.textTheme.headline1!
+                .copyWith(fontSize: 20, fontWeight: FontWeight.normal),
+            maxLines: 1,
           ),
+        ),
+        Obx(
+          () {
+            return CupertinoSwitch(
+              value: themeController.switchValue.value,
+              onChanged: (value) {
+                themeController.change(value);
+                ThemeService().changeTheme();
+              },
+            );
+          },
         ),
       ],
     );

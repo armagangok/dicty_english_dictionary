@@ -1,14 +1,14 @@
 import 'package:flutter_tts/flutter_tts.dart';
 
 import '../database/models/word_hive_model.dart';
-import '../database/viewmodels/word_viewmodel.dart';
+import '../database/controller/hive_controller.dart';
 
 final FlutterTts flutterTts = FlutterTts();
 
 Future<void> speakWord(HiveWord data, context) async {
   final WordViewModel _wordViewModel = WordViewModel();
   int index = await _wordViewModel.getLanguage();
-  await setLanguage(index);
+  // await setLanguage(index);
   await flutterTts.speak("Word is ready!");
   await flutterTts.speak(
     "${data.word}. First meaning; ${data.meaning1}. Second meaning is; ${data.meaning2}. Example: ${data.example}",

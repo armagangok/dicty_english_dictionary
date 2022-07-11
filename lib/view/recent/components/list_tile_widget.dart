@@ -28,13 +28,7 @@ class ListTileItem extends StatelessWidget {
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
-          IconButton(
-            onPressed: () => speakWordOneTime("${data.word}"),
-            icon: const Icon(
-              CupertinoIcons.speaker_3_fill,
-              color: Colors.blue,
-            ),
-          ),
+          SpeakButton(data: data.word!),
         ],
       ),
     );
@@ -93,6 +87,29 @@ class ListTileItem extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class SpeakButton extends StatelessWidget {
+  const SpeakButton({
+    Key? key,
+    required this.data,
+  }) : super(key: key);
+
+  final String data;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: context.width(0.025)),
+      child: GestureDetector(
+        onTap: () => speakWordOneTime(data),
+        child: const Icon(
+          CupertinoIcons.speaker_3_fill,
+          color: Color.fromARGB(255, 255, 17, 0),
+        ),
+      ),
     );
   }
 }

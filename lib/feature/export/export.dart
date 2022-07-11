@@ -13,12 +13,12 @@ export 'package:hive_flutter/hive_flutter.dart';
 
 export '../../../../../core/local/database/models/word_hive_model.dart';
 export '../../../../../core/local/database/models/word_hive_model.dart';
-export '../../../../../core/local/database/viewmodels/word_viewmodel.dart';
+export '../../core/local/database/controller/hive_controller.dart';
 export '../../../../../core/local/tts_helper/text_to_speech_helper.dart';
 export '../../../../../core/local/tts_helper/text_to_speech_helper.dart';
 export '../../../../feature/components/buttons.dart';
 export '../../../core/local/database/models/word_hive_model.dart';
-export '../../../core/local/database/viewmodels/word_viewmodel.dart';
+export '../../core/local/database/controller/hive_controller.dart';
 export '../../../core/remote/admob/ad_helper.dart';
 export '../../../core/remote/admob/generate_ad.dart';
 export '../../../core/remote/api/models/word_model.dart';

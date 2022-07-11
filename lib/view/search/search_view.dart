@@ -35,14 +35,10 @@ class SearchResultView extends StatelessWidget {
                         Get.snackbar(
                           "Warning",
                           "Please enter a word to search for.",
-                          padding: context.symmetric(
-                            horizontal: context.width(0.025),
-                            vertical: context.width(0.025),
-                            bothVertical: true,
-                          ),
+
                           snackPosition: SnackPosition.BOTTOM,
                           duration: const Duration(milliseconds: 3600),
-                          margin: const EdgeInsets.all(80),
+                          // margin: const EdgeInsets.all(80),
                         )
                       }
                     else
@@ -56,6 +52,7 @@ class SearchResultView extends StatelessWidget {
                             "Not found the word that you have searched for.",
                             snackPosition: SnackPosition.BOTTOM,
                             duration: const Duration(milliseconds: 3600),
+                            
                           )
                       },
                   };

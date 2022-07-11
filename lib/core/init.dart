@@ -6,7 +6,7 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import './local/database/models/word_hive_model.dart';
-import './local/database/viewmodels/word_viewmodel.dart';
+import 'local/database/controller/hive_controller.dart';
 import './locator/locator.dart';
 
 Future<void> initApp() async {

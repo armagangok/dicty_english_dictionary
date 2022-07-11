@@ -5,17 +5,19 @@ class CustomTheme {
   final ligthTheme =
       ThemeData.from(colorScheme: const ColorScheme.light()).copyWith(
     splashColor: Colors.transparent,
+    highlightColor: Colors.transparent,
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(90.0),
+        borderRadius: BorderRadius.circular(16.0),
         borderSide: const BorderSide(
           width: 1,
         ),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(90.0),
+        borderRadius: BorderRadius.circular(16.0),
         borderSide: const BorderSide(),
       ),
+      
       filled: true,
       fillColor: Colors.white,
       labelStyle: const TextStyle(color: Colors.black),
@@ -39,6 +41,10 @@ class CustomTheme {
       selectedItemColor: Colors.black,
       unselectedItemColor: Colors.grey,
     ),
+
+    
+
+    
   );
 
   final darkTheme =
@@ -49,14 +55,14 @@ class CustomTheme {
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: const TextStyle(fontSize: 14),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(90.0),
+        borderRadius: BorderRadius.circular(16.0),
         borderSide: const BorderSide(
           color: Colors.white,
           width: 1,
         ),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(90.0),
+        borderRadius: BorderRadius.circular(16.0),
         borderSide: const BorderSide(
           color: Colors.white,
         ),
