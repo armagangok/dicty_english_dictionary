@@ -18,11 +18,16 @@ class WordWidget extends StatelessWidget {
       physics: const ClampingScrollPhysics(),
       shrinkWrap: true,
       children: [
-        dictData(
-          wordModel.word!,
-          size: 25,
-          textColor: Colors.red,
-          fWeigth: FontWeight.w700,
+        Row(
+          children: [
+            Text(
+              wordModel.word!,
+              style: context.textTheme.headline6!.copyWith(
+                color: Colors.red,
+              ),
+            ),
+            SpeakButton(data: wordModel.word!),
+          ],
         ),
         const SizedBox001(),
         dictData(
