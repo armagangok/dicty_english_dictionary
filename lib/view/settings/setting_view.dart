@@ -19,13 +19,13 @@ class SettingView extends StatelessWidget {
       // ),
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: context.width(0.05)),
+          padding: EdgeInsets.symmetric(horizontal: context.width(0.08)),
           physics: const ClampingScrollPhysics(),
           shrinkWrap: true,
           children: [
             SettingItem(
               text: "App Theme",
-              data: "Change the theme mode of app.",
+              data: "Set the theme mode of app.",
               onTap: () {
                 Get.dialog(BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 0.9, sigmaY: 0.9),
@@ -45,7 +45,7 @@ class SettingView extends StatelessWidget {
             ),
             SettingItem(
               text: "Speaker Accent",
-              data: "Set up the English acceent of speaker.",
+              data: "Set the English accent of speaker.",
               onTap: () {
                 Get.dialog(
                   BackdropFilter(
@@ -65,9 +65,6 @@ class SettingView extends StatelessWidget {
                 );
               },
             ),
-            // const ThemePickerWidget(),
-
-            // AccentPickerWidget(),
           ],
         ),
       ),
