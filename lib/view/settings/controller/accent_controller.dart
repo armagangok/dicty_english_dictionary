@@ -1,5 +1,4 @@
 import 'package:english_accent_dictionary/feature/export/export.dart';
-import 'package:get/state_manager.dart';
 
 class AccentController extends GetxController {
   final WordViewModel _wordViewModel = WordViewModel();
@@ -14,7 +13,7 @@ class AccentController extends GetxController {
 
   @override
   void onReady() {
-    value.value == null ? value.value = 0 : {};
+    value.value == null ? value.value = -1 : {};
     super.onReady();
   }
 

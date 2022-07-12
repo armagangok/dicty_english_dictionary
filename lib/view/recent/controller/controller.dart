@@ -1,5 +1,6 @@
-import 'package:english_accent_dictionary/feature/export/export.dart';
-import 'package:get/state_manager.dart';
+
+
+import '../../../feature/export/export.dart';
 
 class RecentController extends GetxController {
   RxList<HiveWord> hiveList = RxList([]);
