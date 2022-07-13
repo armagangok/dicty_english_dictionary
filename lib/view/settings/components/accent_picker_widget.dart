@@ -21,7 +21,6 @@ class AccentPickerWidget extends StatelessWidget {
       width: double.minPositive,
       child: Obx(
         () {
-          print(accentController.value.value);
           switch (accentController.value.value) {
             case null:
               return const SizedBox();
