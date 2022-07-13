@@ -9,7 +9,7 @@ enum AppMode { debug, release }
 class WordDBRepository implements HiveBaseService {
   AppMode appMode = AppMode.release;
 
-  final CurrentDBService _currentDBService = CurrentDBService();
+  final HiveService _currentDBService = HiveService();
   final DatabaseDummyService _dbDummyService = DatabaseDummyService();
 
   @override

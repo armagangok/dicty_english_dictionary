@@ -26,27 +26,22 @@ class SettingItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(
-            height: context.height(0.08),
+          Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                FittedBox(
-                  child: Text(
-                    text,
-                    style: context.textTheme.titleSmall,
-                    maxLines: 1,
-                  ),
+                Text(
+                  text,
+                  style: context.textTheme.titleSmall,
+                  maxLines: 1,
                 ),
-                FittedBox(
-                  child: Text(
-                    data,
-                    style: context.textTheme.subtitle2!.copyWith(
-                      color: Colors.grey,
-                    ),
-                    maxLines: 1,
+                Text(
+                  data,
+                  style: context.textTheme.titleSmall!.copyWith(
+                    color: Colors.grey,
                   ),
+                  maxLines: 1,
                 ),
               ],
             ),

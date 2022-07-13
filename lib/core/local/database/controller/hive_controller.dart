@@ -5,7 +5,6 @@ import '../services/base_service.dart';
 
 class WordViewModel implements HiveBaseService {
   final WordDBRepository _dbRepository = locator<WordDBRepository>();
-
   List<HiveWord> wordList = [];
 
   @override

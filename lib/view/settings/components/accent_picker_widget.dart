@@ -21,7 +21,7 @@ class AccentPickerWidget extends StatelessWidget {
       width: double.minPositive,
       child: Obx(
         () {
-          switch (accentController.value.value) {
+          switch (accentController.accent.value) {
             case null:
               return const SizedBox();
 
@@ -31,18 +31,15 @@ class AccentPickerWidget extends StatelessWidget {
             default:
               return CupertinoPicker(
                 scrollController: FixedExtentScrollController(
-                    initialItem: accentController.value.value!),
+                    initialItem: accentController.accent.value!),
                 useMagnifier: true,
-                magnification: 1.1,
-                itemExtent: 40,
+                magnification: 1.2,
+                itemExtent: 50,
                 onSelectedItemChanged: (value) async {
                   await accentController.saveAccent(value);
                 },
-                children: items
-                    .map(
-                      (item) => Center(child: Text(item)),
-                    )
-                    .toList(),
+                children:
+                    items.map((item) => Center(child: Text(item))).toList(),
               );
           }
         },

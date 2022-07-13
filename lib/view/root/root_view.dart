@@ -45,7 +45,7 @@ class RootView extends StatelessWidget {
 
   final List<Widget> _pages = [
     HomeView(),
-    RecentView(),
+    const RecentView(),
     SearchResultView(),
     const GiftView(),
     const SettingView(),

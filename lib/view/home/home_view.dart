@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './controller/data_controller.dart';
+import '../../core/remote/admob/banner_ad.dart';
 import '../../feature/export/export.dart';
 
 class HomeView extends StatelessWidget {
@@ -14,10 +15,10 @@ class HomeView extends StatelessWidget {
       onTap: () => context.dismissKeyboard(),
       child: SafeArea(
         child: Scaffold(
-          // bottomNavigationBar: AdvertisementWidget(
-          //   ad: generateAd.ad,
-          //   unitID: AdHelper.bannerAdUnitId1,
-          // ),
+          bottomNavigationBar: AdvertisementWidget(
+            ad: generateAd.ad,
+            unitID: AdHelper.bannerAdUnitId1,
+          ),
           body: Obx(
             () {
               switch (dataController.wordModel.value) {
@@ -75,15 +76,6 @@ class HomeView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Container(
-                      //   color: Colors.blue,
-                      //   child: dictData(
-                      //     dataController.wordModel.value!.word!,
-                      //     size: 24,
-                      //     textColor: Colors.red,
-                      //   ),
-                      // ),
-
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [

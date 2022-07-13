@@ -1,10 +1,7 @@
 import '../../../../feature/export/export.dart';
 import 'base_service.dart';
 
-class CurrentDBService implements HiveBaseService {
-  String content = "String";
-
-
+class HiveService implements HiveBaseService {
   @override
   Future<void> addData(HiveWord word) async =>
       await Hive.box("words").add(word);
@@ -19,8 +16,6 @@ class CurrentDBService implements HiveBaseService {
     final int index = await box.getAt(0);
     return index;
   }
-
-  
 
   @override
   HiveWord getData(int index) => Hive.box("words").getAt(index) as HiveWord;

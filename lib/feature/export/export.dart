@@ -1,4 +1,3 @@
-export 'package:english_accent_dictionary/view/root/root_view.dart';
 export 'package:flutter/cupertino.dart';
 export 'package:flutter_slidable/flutter_slidable.dart';
 export 'package:flutter_slidable/flutter_slidable.dart';
@@ -36,11 +35,11 @@ export '../../core/theme/theme.dart';
 export '../../core/theme/theme_service.dart';
 export '../../feature/components/ad_widget.dart';
 export '../../feature/components/textfields.dart';
-export '../../view/detail/details_view.dart';
-export '../../view/detail/details_view.dart';
 export '../../view/home/components/dict_data_stack.dart';
 export '../../view/home/controller/text_controller.dart';
 export '../../view/recent/components/list_tile_widget.dart';
 export '../../view/recent/components/slide_action_widgets.dart';
+export '../../view/root/root_view.dart';
 export '../../view/settings/controller/theme_controller.dart';
 export '../../view/settings/setting_view.dart';
+export '../../core/remote/admob/banner_ad.dart';

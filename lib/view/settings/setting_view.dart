@@ -13,21 +13,23 @@ class SettingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // bottomNavigationBar: AdvertisementWidget(
-      //   unitID: AdHelper.bannerAdUnitId2,
-      //   ad: generateAd.ad,
-      // ),
+      bottomNavigationBar: AdvertisementWidget(
+        unitID: AdHelper.bannerAdUnitId2,
+        ad: generateAd.ad,
+      ),
       body: SafeArea(
         child: ListView(
           padding: EdgeInsets.symmetric(horizontal: context.width(0.08)),
           physics: const ClampingScrollPhysics(),
           shrinkWrap: true,
           children: [
+            const SizedBox001(),
             SettingItem(
               text: "App Theme",
               data: "Set the theme mode of app.",
               onTap: () => buildDialog(const ThemePickerWidget()),
             ),
+            const SizedBox001(),
             SettingItem(
               text: "Speaker Accent",
               data: "Set the English accent of speaker.",
@@ -62,38 +64,3 @@ class SettingView extends StatelessWidget {
     );
   }
 }
-
-// var now = DateTime.now();
-// var formatter = DateFormat('yyyy-MM-dd');
-// String today = formatter.format(now);
-
-// Map<String, String> words = {
-// a
-// about
-// act
-// actually
-// add
-// after
-// again
-// against
-// age
-// ago
-// air
-// all
-// also
-// always
-// am
-// among
-// an
-// and
-// animal
-// another
-// answer
-// appear
-// are
-// area
-// as
-// ask
-// at
-// };
-
