@@ -1,8 +1,9 @@
+import 'package:english_accent_dictionary/view/home/home_view.dart';
+
 import 'feature/export/export.dart';
 
 void main() async {
   await initApp();
-
   runApp(const MyApp());
 }
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const IntAdWiew(),
+      home: RootView(),
       theme: CustomTheme().ligthTheme,
       darkTheme: CustomTheme().darkTheme,
       themeMode: ThemeService().getThemeMode(),

@@ -16,18 +16,21 @@ class RootView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => Scaffold(
-        body: _pages[controller.currentIndex.value],
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: controller.currentIndex.value,
-          onTap: (int index) => controller.changeIndex(index),
-          items: [
-            bottomNavyBarItem("Home", CupertinoIcons.home),
-            bottomNavyBarItem("Recent", CupertinoIcons.time),
-            bottomNavyBarItem("Search", CupertinoIcons.search),
-            bottomNavyBarItem("Special", CupertinoIcons.gift),
-            bottomNavyBarItem("Setting", CupertinoIcons.settings),
-          ],
+      () => WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          body: _pages[controller.currentIndex.value],
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: controller.currentIndex.value,
+            onTap: (int index) => controller.changeIndex(index),
+            items: [
+              bottomNavyBarItem("Home", CupertinoIcons.home),
+              bottomNavyBarItem("Recent", CupertinoIcons.time),
+              bottomNavyBarItem("Search", CupertinoIcons.search),
+              bottomNavyBarItem("Special", CupertinoIcons.gift),
+              bottomNavyBarItem("Setting", CupertinoIcons.settings),
+            ],
+          ),
         ),
       ),
     );

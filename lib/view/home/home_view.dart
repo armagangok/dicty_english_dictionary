@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import './controller/data_controller.dart';
-import '../../core/remote/admob/banner_ad.dart';
 import '../../feature/export/export.dart';
 
 class HomeView extends StatelessWidget {
@@ -14,22 +13,25 @@ class HomeView extends StatelessWidget {
     return GestureDetector(
       onTap: () => context.dismissKeyboard(),
       child: SafeArea(
-        child: Scaffold(
-          bottomNavigationBar: AdvertisementWidget(
-            ad: generateAd.ad,
-            unitID: AdHelper.bannerAdUnitId1,
-          ),
-          body: Obx(
-            () {
-              switch (dataController.wordModel.value) {
-                case 0:
-                  return noDataWidget();
-                case null:
-                  return waitingForDataWidget();
-                default:
-                  return buildtDataWidget();
-              }
-            },
+        child: WillPopScope(
+          onWillPop: () async => false,
+          child: Scaffold(
+            // bottomNavigationBar: AdvertisementWidget(
+            //   ad: generateAd.ad,
+            //   unitID: AdHelper.bannerAdUnitId1,
+            // ),
+            body: Obx(
+              () {
+                switch (dataController.wordModel.value) {
+                  case 0:
+                    return noDataWidget();
+                  case null:
+                    return waitingForDataWidget();
+                  default:
+                    return buildtDataWidget();
+                }
+              },
+            ),
           ),
         ),
       ),
