@@ -1,3 +1,4 @@
+import 'package:english_accent_dictionary/view/search/controller/controller.dart';
 import 'package:flutter/material.dart';
 
 import '../../feature/export/export.dart';
@@ -5,12 +6,12 @@ import '../../feature/export/export.dart';
 class SearchResultView extends StatelessWidget {
   SearchResultView({Key? key}) : super(key: key);
 
-  final WordController dictController = WordController();
+  final WordController wordController = WordController();
   final TextController textController = TextController();
+  final SearchController searchController = Get.put(SearchController());
 
   @override
   Widget build(BuildContext context) {
-    var a;
     return GestureDetector(
       onTap: () => context.dismissKeyboard(),
       child: WillPopScope(
@@ -39,28 +40,21 @@ class SearchResultView extends StatelessWidget {
                             "Please enter a word to search for.",
                             snackPosition: SnackPosition.BOTTOM,
                             duration: const Duration(milliseconds: 3600),
-                          )
+                          ),
                         }
                       else
                         {
-                          
-                          a = await dictController
+                          await searchController.showInterstitialAd(),
+                          await wordController
                               .fetchWord(textController.search.text),
                           textController.search.clear(),
-                          if (a == 0)
-                            Get.snackbar(
-                              "Warning",
-                              "Not found the word that you have searched for.",
-                              snackPosition: SnackPosition.BOTTOM,
-                              duration: const Duration(milliseconds: 3600),
-                            )
                         },
                     };
                   },
                 ),
               ),
               SizedBox(height: context.height(0.035)),
-              getData(a),
+              getData(wordController.word.value),
             ],
           ),
         ),
@@ -76,11 +70,11 @@ class SearchResultView extends StatelessWidget {
         if (a == 0) {
           return const Center();
         } else {
-          return dictController.word.value == null
+          return wordController.word.value == null
               ? const Center(
                   child: Text("Search for the word you want."),
                 )
-              : WordWidget(wordModel: dictController.word.value!);
+              : WordWidget(wordModel: wordController.word.value!);
         }
       },
     );

@@ -11,6 +11,7 @@ export 'package:get_storage/get_storage.dart';
 export 'package:google_mobile_ads/google_mobile_ads.dart';
 export 'package:hive_flutter/hive_flutter.dart';
 
+
 export '../../../../../core/local/database/models/word_hive_model.dart';
 export '../../../../../core/local/database/models/word_hive_model.dart';
 export '../../../../../core/local/tts_helper/text_to_speech_helper.dart';
@@ -29,7 +30,7 @@ export '../../core/remote/admob/ad_helper.dart';
 export '../../core/remote/admob/ad_service.dart';
 export '../../core/remote/admob/banner_ad.dart';
 export '../../core/remote/admob/intersitial.dart';
-export '../../core/remote/api/viewmodels/word_controller.dart';
+export '../../core/remote/api/controller/word_controller.dart';
 export '../../core/theme/theme.dart';
 export '../../core/theme/theme_service.dart';
 export '../../feature/components/ad_widget.dart';

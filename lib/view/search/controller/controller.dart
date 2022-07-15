@@ -1,49 +1,24 @@
-import 'package:flutter/material.dart';
+import 'package:english_accent_dictionary/feature/export/export.dart';
 
-import '../../../feature/export/export.dart';
+const int _maxFailedLoadAttempts = 10;
 
-const int _maxFailedLoadAttempts = 3;
-
-class IntAdWiew extends StatefulWidget {
-  const IntAdWiew({Key? key}) : super(key: key);
-
-  @override
-  State<IntAdWiew> createState() => _IntAdWiewState();
-}
-
-class _IntAdWiewState extends State<IntAdWiew> {
+class SearchController extends GetxController {
   int _interstitialLoadAttempts = 0;
   InterstitialAd? _interstitialAd;
 
   @override
-  void initState() {
-    super.initState();
-    _createInterstitialAd();
+  void onInit() {
+    createInterstitialAd();
+    super.onInit();
   }
 
   @override
-  void dispose() {
-    super.dispose();
+  InternalFinalCallback<void> get onDelete {
     _interstitialAd?.dispose();
+    return super.onDelete;
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: InkWell(
-        onTap: () async {
-          await _showInterstitialAd();
-        },
-        child: const Center(
-          child: Text("Press for advertisement."),
-        ),
-      ),
-    );
-  }
-
-  //
-
-  void _createInterstitialAd() async {
+  void createInterstitialAd() async {
     await InterstitialAd.load(
       adUnitId: AdHelper.interstitialAdUnitId,
       request: const AdRequest(),
@@ -56,7 +31,7 @@ class _IntAdWiewState extends State<IntAdWiew> {
           _interstitialLoadAttempts += 1;
           _interstitialAd = null;
           if (_interstitialLoadAttempts <= _maxFailedLoadAttempts) {
-            _createInterstitialAd();
+            createInterstitialAd();
           }
         },
       ),
@@ -65,16 +40,16 @@ class _IntAdWiewState extends State<IntAdWiew> {
 
   //
 
-  Future<void> _showInterstitialAd() async {
+  Future<void> showInterstitialAd() async {
     if (_interstitialAd != null) {
       _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
           onAdDismissedFullScreenContent: (InterstitialAd ad) {
         ad.dispose();
-        _createInterstitialAd();
+        createInterstitialAd();
         Get.to(RootView());
       }, onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
         ad.dispose();
-        _createInterstitialAd();
+        createInterstitialAd();
         Get.to(RootView());
       });
 

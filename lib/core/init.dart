@@ -6,8 +6,8 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import './local/database/models/word_hive_model.dart';
-import 'local/database/controller/hive_controller.dart';
 import './locator/locator.dart';
+import 'local/database/controller/hive_controller.dart';
 
 Future<void> initApp() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +21,7 @@ Future<void> initApp() async {
       "05b9dcde265d903d49fbf7c74fb6dd75",
       "da067b253b37e1af91e82c50e34b74bb",
       "31E74826447186709EC324B30C8E83C8",
+      "497DCF94384BA837362099A7E9BED56E",
     ],
   );
 
