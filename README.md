@@ -4,6 +4,7 @@ This is a customised English dictionary.
 
 Google Play Store: https://play.google.com/store/apps/details?id=com.armagangok.dict
 
-![Screenshot 2021-12-28 at 12 13 29](https://user-images.githubusercontent.com/70090723/147550015-6eaafbd6-b3f7-45d4-9fcf-807a7279a9d0.png)
 
-![sdasdasd](https://play-lh.googleusercontent.com/zxVEQBSZx0FHNQkcSZAvkseKuy4SHxTqlEGz2XDlT_2v17zEREtudr9Mi_DHlnjmt2o=w526-h296)
+![ ](https://play-lh.googleusercontent.com/zxVEQBSZx0FHNQkcSZAvkseKuy4SHxTqlEGz2XDlT_2v17zEREtudr9Mi_DHlnjmt2o=w526-h296) ![](https://play-lh.googleusercontent.com/H70NP-Xky3DC9i_aNOuJNbm9B1b1dfrS0fiAG6LTdBQsOwiwdLjHrlncPjzdJz-c7BM=w526-h296) ![ ](https://play-lh.googleusercontent.com/rvXcMV-gUkuTTU1J4VJEGNGpt-5aaPwhT-9mGHS_pGh6VeFN7sNLtit_FrfZLzz8qA=w526-h296) ![ ]
+
+
