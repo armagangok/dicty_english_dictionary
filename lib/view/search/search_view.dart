@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import '../../feature/export/export.dart';
 
 class SearchResultView extends StatelessWidget {
-  SearchResultView({Key? key}) : super(key: key);
-
   final WordController wordController = WordController();
   final TextController textController = TextController();
   final SearchController searchController = Get.put(SearchController());
+
+  SearchResultView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class SearchResultView extends StatelessWidget {
                         }
                       else
                         {
-                          await searchController.showInterstitialAd(),
+                          // await searchController.showInterstitialAd(),
                           await wordController
                               .fetchWord(textController.search.text),
                           textController.search.clear(),
@@ -71,9 +71,7 @@ class SearchResultView extends StatelessWidget {
           return const Center();
         } else {
           return wordController.word.value == null
-              ? const Center(
-                  child: Text("Search for the word you want."),
-                )
+              ? const Center(child: Text("Search for the word you want."))
               : WordWidget(wordModel: wordController.word.value!);
         }
       },

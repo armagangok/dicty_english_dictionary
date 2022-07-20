@@ -6,8 +6,7 @@ class GiftView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-            onWillPop: () async => false,
-
+      onWillPop: () async => false,
       child: SafeArea(
         child: ListView(
           padding: EdgeInsets.all(context.width(0.05)),

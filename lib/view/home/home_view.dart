@@ -65,57 +65,17 @@ class HomeView extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(context.width(0.05)),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(context.width(0.05)),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            dataController.wordModel.value!.word!,
-                            style: context.textTheme.headline6!
-                                .copyWith(color: Colors.red),
-                          ),
-                          SpeakButton(
-                            data: dataController.wordModel.value!.word!,
-                          ),
-                        ],
-                      ),
-                      const SizedBox001(),
-                      dictData(
-                        "Meaning: ${dataController.wordModel.value!.meaning1 ?? "Meaning not found."}",
-                        icon: const Icon(Icons.menu_book),
-                      ),
-                      const SizedBox001(),
-                      dictData(
-                        "Meaning: ${dataController.wordModel.value!.meaning2 ?? "Alternative meaning not found."}",
-                        icon: const Icon(Icons.menu_book),
-                      ),
-                      const SizedBox001(),
-                      dictData(
-                        "Origin: ${dataController.wordModel.value!.origin ?? "Meaning not found."}",
-                        icon: const Icon(Icons.trip_origin),
-                      ),
-                      const SizedBox001(),
-                      dictData(
-                        "Example: ${dataController.wordModel.value!.example ?? "Example sentence not found."}",
-                        icon: const Icon(Icons.star),
-                      ),
-                    ],
-                  ),
+            Card(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(16),
                 ),
               ),
-            ),
+              child: Padding(
+                padding: EdgeInsets.all(context.width(0.02)),
+                child: WordWidget(wordModel: dataController.wordModel.value!),
+              ),
+            )
           ],
         );
       },

@@ -17,7 +17,6 @@ class CustomTheme {
         borderRadius: BorderRadius.circular(16.0),
         borderSide: const BorderSide(),
       ),
-      
       filled: true,
       fillColor: Colors.white,
       labelStyle: const TextStyle(color: Colors.black),
@@ -28,7 +27,7 @@ class CustomTheme {
     shadowColor: const Color.fromARGB(255, 0, 0, 0),
     dividerColor: Colors.black,
     dividerTheme: const DividerThemeData(thickness: 0.2),
-    scaffoldBackgroundColor: Colors.grey[200],
+    scaffoldBackgroundColor: Color.fromARGB(255, 214, 214, 214),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Colors.blue,
     ),
@@ -41,10 +40,6 @@ class CustomTheme {
       selectedItemColor: Colors.black,
       unselectedItemColor: Colors.grey,
     ),
-
-    
-
-    
   );
 
   final darkTheme =
@@ -80,26 +75,23 @@ class CustomTheme {
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.grey,
     ),
+    textTheme: const TextTheme(
+      bodySmall: TextStyle(
+        color: Color.fromARGB(255, 217, 217, 217),
+      ),
+    ),
   );
 }
 
-
-
-
-
-
-
-
-
-    // textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.black),
-    // scaffoldBackgroundColor: Colors.blue[100],
-    // cardColor: Colors.orange[100],
-    // dividerColor: Colors.black,
-    // dividerTheme: DividerThemeData(thickness: 0.2),
-    // textButtonTheme: TextButtonThemeData(
-    //   style: ButtonStyle(
-    //       // backgroundColor: MaterialStateProperty.all<Color>(Colors.orange[200]!),
-    //       // foregroundColor: MaterialStateProperty.all<Color>(Colors.red[600]!),
-    //       ),
-    // ),
-    // iconTheme: IconThemeData(color: Colors.purple),
+// textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.black),
+// scaffoldBackgroundColor: Colors.blue[100],
+// cardColor: Colors.orange[100],
+// dividerColor: Colors.black,
+// dividerTheme: DividerThemeData(thickness: 0.2),
+// textButtonTheme: TextButtonThemeData(
+//   style: ButtonStyle(
+//       // backgroundColor: MaterialStateProperty.all<Color>(Colors.orange[200]!),
+//       // foregroundColor: MaterialStateProperty.all<Color>(Colors.red[600]!),
+//       ),
+// ),
+// iconTheme: IconThemeData(color: Colors.purple),

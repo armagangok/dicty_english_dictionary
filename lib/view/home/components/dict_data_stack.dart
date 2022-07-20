@@ -1,13 +1,14 @@
+import 'package:english_accent_dictionary/core/remote/api/models/definition.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/remote/api/models/word_model.dart';
 import '../../../feature/export/export.dart';
 
 class WordWidget extends StatelessWidget {
   final WordModel wordModel;
   const WordWidget({
-    Key? key,
     required this.wordModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,92 +19,149 @@ class WordWidget extends StatelessWidget {
       physics: const ClampingScrollPhysics(),
       shrinkWrap: true,
       children: [
-        Row(
-          children: [
-            Text(
-              wordModel.word!,
-              style: context.textTheme.headline6!.copyWith(
-                color: Colors.red,
-              ),
-            ),
-            SpeakButton(data: wordModel.word!),
-          ],
-        ),
+        wordWidgetAndSpeakButton(),
         const SizedBox001(),
-        dictData(
-          wordModel.meaning1!,
-          size: 14,
-          fWeigth: FontWeight.w400,
-          icon: const Icon(Icons.menu_book),
+        Text(
+          "DEFINITIONS",
+          style: context.textTheme.headline6!.copyWith(),
         ),
-        const SizedBox001(),
-        dictData(
-          wordModel.meaning2!,
-          size: 14,
-          fWeigth: FontWeight.w400,
-          icon: const Icon(Icons.menu_book),
-        ),
-        const SizedBox001(),
-        dictData(
-          wordModel.origin!,
-          size: 14,
-          icon: const Icon(Icons.trip_origin),
-          fWeigth: FontWeight.w400,
-        ),
-        const SizedBox001(),
-        dictData(
-          wordModel.example!,
-          icon: const Icon(Icons.star),
-          size: 14,
-          fWeigth: FontWeight.w400,
+        ListView.separated(
+          separatorBuilder: (context, index) => const SizedBox001(),
+          physics: const ClampingScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: wordModel.definitions!.length,
+          itemBuilder: (context, index) {
+            final List<Definition> definitions =
+                wordModel.definitions![index].definitions!;
+            final partOfSpeech = wordModel.definitions![index].partOfSpeech;
+
+            return ListView.separated(
+              separatorBuilder: (context, index) => const SizedBox001(),
+              physics: const ClampingScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: definitions.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    definitions[index].definition == null
+                        ? const SizedBox()
+                        : definitionText(definitions[index]),
+                    partOfSpeech == null
+                        ? const SizedBox()
+                        : partOfSpeechText(partOfSpeech),
+                    definitions[index].example == null
+                        ? const SizedBox()
+                        : exampleText(definitions[index]),
+                  ],
+                );
+              },
+            );
+          },
         ),
       ],
     );
   }
-}
 
-class SizedBox001 extends StatelessWidget {
-  const SizedBox001({
-    Key? key,
-  }) : super(key: key);
+  //
 
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: context.height(0.02),
-    );
-  }
-}
-
-Widget dictData(
-  String data, {
-  Color? textColor,
-  Widget? icon,
-  double? size,
-  FontWeight? fWeigth,
-}) {
-  return Builder(
-    builder: (context) {
+  Widget wordWidgetAndSpeakButton() {
+    return Builder(builder: (context) {
       return Row(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Padding(
-            padding: icon == null
-                ? EdgeInsets.zero
-                : EdgeInsets.only(right: context.width(0.03)),
-            child: icon,
-          ),
-          Expanded(
-            child: SelectableText(
-              data,
-              style: TextStyle(
-                color: textColor,
-                fontSize: size,
-              ),
+          Text(
+            wordModel.word!,
+            style: context.textTheme.headline6!.copyWith(
+              color: const Color.fromARGB(255, 255, 17, 0),
             ),
           ),
+          Expanded(
+            child: ListView.builder(
+              physics: const ClampingScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: wordModel.phonetics!.length,
+              itemBuilder: (context, index) {
+                return Text(wordModel.phonetics![index].text ?? "");
+              },
+            ),
+          ),
+          // SpeakButton(data: wordModel.word!),
         ],
       );
-    },
-  );
+    });
+  }
+
+  //
+
+  Widget definitionText(Definition definition) {
+    return Builder(builder: (context) {
+      return RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: "Definition: ",
+              style: context.textTheme.bodyMedium!.copyWith(
+                color: Colors.blue,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+            TextSpan(
+              text: definition.definition,
+              style: context.textTheme.bodySmall!.copyWith(),
+            ),
+          ],
+        ),
+      );
+    });
+  }
+
+  //
+
+  Widget partOfSpeechText(String partOfSpeech) {
+    return Builder(builder: (context) {
+      return RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: "Part Of Speech: ",
+              style: context.textTheme.bodyMedium!.copyWith(
+                color: const Color.fromARGB(255, 255, 113, 19),
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            TextSpan(
+              text: partOfSpeech,
+              style: context.textTheme.bodySmall!.copyWith(),
+            ),
+          ],
+        ),
+      );
+    });
+  }
+
+  //
+
+  Widget exampleText(Definition definitions) {
+    return Builder(builder: (context) {
+      return RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: "Example: ",
+              style: context.textTheme.bodyMedium!.copyWith(
+                color: Colors.green,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+            TextSpan(
+              text: definitions.example,
+              style: context.textTheme.bodySmall!.copyWith(),
+            ),
+          ],
+        ),
+      );
+    });
+  }
 }
