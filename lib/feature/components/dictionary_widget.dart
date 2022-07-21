@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/remote/api/models/definition.dart';
-import '../../../feature/export/export.dart';
+import '../../core/remote/api/models/definition.dart';
+import '../export/export.dart';
 
 class DictionaryWidget extends StatelessWidget {
   const DictionaryWidget({

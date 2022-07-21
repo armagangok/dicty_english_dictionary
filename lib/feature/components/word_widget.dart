@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'core/remote/api/controller/x_controller.dart';
-import 'core/remote/api/models/word_model.dart';
-import 'feature/export/export.dart';
-import 'tab_controller.dart';
-import 'view/home/view/dictionary_widget.dart';
+import '../../core/remote/api/controller/x_controller.dart';
+import '../../core/remote/api/models/word_model.dart';
+import '../export/export.dart';
+import '../controller/tab_controller.dart';
+import 'dictionary_widget.dart';
 
 class NewWordWidget extends StatelessWidget {
   NewWordWidget({

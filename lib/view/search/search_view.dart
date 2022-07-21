@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../feature/export/export.dart';
-import '../../new_word_widget.dart';
+import '../../feature/components/word_widget.dart';
 import 'controller/controller.dart';
 
 class SearchResultView extends StatelessWidget {
