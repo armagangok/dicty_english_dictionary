@@ -1,4 +1,4 @@
-import 'package:english_accent_dictionary/core/remote/api/controller/x_controller.dart';
+import 'package:english_accent_dictionary/core/remote/api/controller/base_word_controller.dart';
 import 'package:english_accent_dictionary/core/remote/api/models/meaning.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -8,7 +8,7 @@ import '../../../core/remote/api/services/word_service.dart';
 import '../../../feature/data/data.dart';
 import '../../../feature/export/export.dart';
 
-class DataController extends GetxController implements XController {
+class DataController extends GetxController implements BaseWordController {
   final WordService _wordService = WordService();
   Rx<dynamic> wordModel = Rx(null);
 

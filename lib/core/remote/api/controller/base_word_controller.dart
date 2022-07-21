@@ -2,7 +2,7 @@ import 'package:english_accent_dictionary/feature/export/export.dart';
 
 import '../models/definition.dart';
 
-abstract class XController extends GetxController {
+abstract class BaseWordController extends GetxController {
   RxList<Definition>? noun;
   RxList<Definition>? verb;
   RxList<Definition>? interjection;

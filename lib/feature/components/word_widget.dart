@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../core/remote/api/controller/x_controller.dart';
+import '../../core/remote/api/controller/base_word_controller.dart';
 import '../../core/remote/api/models/word_model.dart';
-import '../export/export.dart';
 import '../controller/tab_controller.dart';
+import '../export/export.dart';
 import 'dictionary_widget.dart';
 
 class NewWordWidget extends StatelessWidget {
@@ -13,7 +13,7 @@ class NewWordWidget extends StatelessWidget {
     required this.wordModel,
   }) : super(key: key);
 
-  final XController controller;
+  final BaseWordController controller;
   final TabBarController tabBarController = Get.put(TabBarController());
   final WordModel wordModel;
 
@@ -219,11 +219,11 @@ class NewWordWidget extends StatelessWidget {
                   text,
                   textAlign: TextAlign.center,
                   maxLines: 1,
-                  style:  TextStyle(
-                      color: clickedNumber == tabBarController.currentIndex.value
-                          ? Colors.white
-                          : Color.fromARGB(255, 0, 153, 255),
-                      ),
+                  style: TextStyle(
+                    color: clickedNumber == tabBarController.currentIndex.value
+                        ? Colors.white
+                        : const Color.fromARGB(255, 0, 153, 255),
+                  ),
                 ),
               );
             },
