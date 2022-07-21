@@ -1,4 +1,4 @@
-import 'package:english_accent_dictionary/feature/export/export.dart';
+import '../../../../feature/export/export.dart';
 
 import '../models/definition.dart';
 

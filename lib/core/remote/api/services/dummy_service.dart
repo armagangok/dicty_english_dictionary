@@ -1,4 +1,4 @@
-import 'package:english_accent_dictionary/core/remote/api/models/word_model.dart';
+import '../models/word_model.dart';
 
 class DummyApiService {
   Future<WordModel> fetchWord(String? text) async {

@@ -1,4 +1,4 @@
-import 'package:english_accent_dictionary/feature/components/word_widget.dart';
+import 'feature/components/word_widget.dart';
 
 import 'feature/export/export.dart';
 

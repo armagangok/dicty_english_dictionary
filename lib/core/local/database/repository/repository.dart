@@ -1,5 +1,5 @@
-import 'package:english_accent_dictionary/core/local/database/services/current_service.dart';
-import 'package:english_accent_dictionary/core/local/database/services/dummy_service.dart';
+import '../services/current_service.dart';
+import '../services/dummy_service.dart';
 
 import '../models/word_hive_model.dart';
 import '../services/base_service.dart';

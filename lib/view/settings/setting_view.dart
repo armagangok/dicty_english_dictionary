@@ -2,9 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import './components/accent_picker_widget.dart';
-import './components/setting_item.dart';
-import './components/theme_picker_widget.dart';
+import 'components/accent_picker_widget.dart';
+import 'components/setting_item.dart';
+import 'components/theme_picker_widget.dart';
 import '../../feature/export/export.dart';
 
 class SettingView extends StatelessWidget {

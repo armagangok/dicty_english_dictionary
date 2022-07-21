@@ -1,4 +1,4 @@
-import 'package:english_accent_dictionary/core/local/database/models/word_hive_model.dart';
+import '../models/word_hive_model.dart';
 
 import 'base_service.dart';
 

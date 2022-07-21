@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import './controller/bottom_navy_controller.dart';
+import 'controller/bottom_navy_controller.dart';
 import '../gift/gift_view.dart';
 import '../home/home_view.dart';
 import '../recent/recent_view.dart';

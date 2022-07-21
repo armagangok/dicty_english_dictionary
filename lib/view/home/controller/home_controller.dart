@@ -1,5 +1,5 @@
-import 'package:english_accent_dictionary/core/remote/api/controller/base_word_controller.dart';
-import 'package:english_accent_dictionary/core/remote/api/models/meaning.dart';
+import '../../../core/remote/api/controller/base_word_controller.dart';
+import '../../../core/remote/api/models/meaning.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
