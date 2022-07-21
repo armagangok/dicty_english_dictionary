@@ -1,5 +1,6 @@
-import 'package:english_accent_dictionary/core/remote/api/models/definition.dart';
 import 'package:flutter/material.dart';
+
+import 'package:english_accent_dictionary/core/remote/api/models/definition.dart';
 
 import '../../../core/remote/api/models/word_model.dart';
 import '../../../feature/export/export.dart';
@@ -7,8 +8,9 @@ import '../../../feature/export/export.dart';
 class WordWidget extends StatelessWidget {
   final WordModel wordModel;
   const WordWidget({
+    Key? key,
     required this.wordModel,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +31,11 @@ class WordWidget extends StatelessWidget {
           separatorBuilder: (context, index) => const SizedBox001(),
           physics: const ClampingScrollPhysics(),
           shrinkWrap: true,
-          itemCount: wordModel.definitions!.length,
+          itemCount: wordModel.meanings!.length,
           itemBuilder: (context, index) {
             final List<Definition> definitions =
-                wordModel.definitions![index].definitions!;
-            final partOfSpeech = wordModel.definitions![index].partOfSpeech;
+                wordModel.meanings![index].definitions!;
+            final partOfSpeech = wordModel.meanings![index].partOfSpeech;
 
             return ListView.separated(
               separatorBuilder: (context, index) => const SizedBox001(),

@@ -34,7 +34,7 @@ export '../../core/theme/theme.dart';
 export '../../core/theme/theme_service.dart';
 export '../../feature/components/ad_widget.dart';
 export '../../feature/components/textfields.dart';
-export '../../view/home/components/dict_data_stack.dart';
+export '../../view/home/components/word_widget.dart';
 export '../../view/home/controller/text_controller.dart';
 export '../../view/recent/components/list_tile_widget.dart';
 export '../../view/recent/components/slide_action_widgets.dart';

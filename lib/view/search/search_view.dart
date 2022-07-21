@@ -1,7 +1,8 @@
-import 'package:english_accent_dictionary/view/search/controller/controller.dart';
 import 'package:flutter/material.dart';
 
 import '../../feature/export/export.dart';
+import '../../new_word_widget.dart';
+import 'controller/controller.dart';
 
 class SearchResultView extends StatelessWidget {
   final WordController wordController = WordController();
@@ -17,10 +18,6 @@ class SearchResultView extends StatelessWidget {
       child: WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
-          // bottomNavigationBar: AdvertisementWidget(
-          //   ad: generateAd.ad,
-          //   unitID: AdHelper.bannerAdUnitId3,
-          // ),
           body: ListView(
             shrinkWrap: true,
             physics: const ClampingScrollPhysics(),
@@ -54,7 +51,7 @@ class SearchResultView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: context.height(0.035)),
-              getData(wordController.word.value),
+              getData(wordController.wordModel.value),
             ],
           ),
         ),
@@ -70,11 +67,22 @@ class SearchResultView extends StatelessWidget {
         if (a == 0) {
           return const Center();
         } else {
-          return wordController.word.value == null
+          return wordController.wordModel.value == null
               ? const Center(child: Text("Search for the word you want."))
-              : WordWidget(wordModel: wordController.word.value!);
+              : NewWordWidget(
+                  wordModel: wordController.wordModel.value,
+                  controller: wordController,
+                );
+          // WordWidget(wordModel: wordController.wordModel.value!);
         }
       },
     );
   }
 }
+
+
+
+          // bottomNavigationBar: AdvertisementWidget(
+          //   ad: generateAd.ad,
+          //   unitID: AdHelper.bannerAdUnitId3,
+          // ),

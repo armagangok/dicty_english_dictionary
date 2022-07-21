@@ -2,7 +2,7 @@ import '../../../feature/export/export.dart';
 
 class SlideActionWidget extends StatelessWidget {
   final HiveWord? data;
-  final IconData? icon;
+  final IconData? iconData;
   final Color? bgColor;
   final String? iconText;
   final Function? onTap;
@@ -10,7 +10,7 @@ class SlideActionWidget extends StatelessWidget {
   const SlideActionWidget({
     Key? key,
     this.data,
-    this.icon,
+    this.iconData,
     this.bgColor,
     this.iconText,
     required this.onTap,
@@ -21,7 +21,7 @@ class SlideActionWidget extends StatelessWidget {
     return IconSlideAction(
       caption: '$iconText',
       color: bgColor,
-      icon: icon,
+      icon: iconData,
       onTap: () => onTap!(),
     );
   }

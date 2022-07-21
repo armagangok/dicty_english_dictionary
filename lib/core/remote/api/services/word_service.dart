@@ -12,17 +12,6 @@ class WordService {
     );
     if (response.statusCode == 200) {
       var a = (WordModel.fromMap(jsonDecode(response.body)[0]));
-      // List<Meaning>? meanings = a.meanings;
-      // List<Definition>? definitions = [];
-      // for (var element in meanings!) {
-      //   definitions = element.definitions;
-      // }
-
-      // for (var element in definitions!) {
-      //   print(element.definition);
-      // }
-
-      // MyModel.fromJson(response.body);
 
       return a;
     } else {

@@ -1,14 +1,12 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import '../../../feature/export/export.dart';
 
-class ListTileItem extends StatelessWidget {
+class RecentItem extends StatelessWidget {
   final HiveWord data;
   final int index;
 
-  const ListTileItem({
+  const RecentItem({
     Key? key,
     required this.data,
     required this.index,
@@ -16,21 +14,16 @@ class ListTileItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      // onTap: () => Get.dialog(buildDialog()),
-      onLongPress: () {},
-      tileColor: Colors.transparent,
-      title: Row(
-        children: [
-          Expanded(
-            child: Text(
-              "${data.word}",
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            "${data.word}",
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          SpeakButton(data: data.word!),
-        ],
-      ),
+        ),
+        SpeakButton(data: data.word!),
+      ],
     );
   }
 
@@ -102,12 +95,13 @@ class SpeakButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: context.width(0.025)),
+      padding: EdgeInsets.symmetric(horizontal: context.width(0.02)),
       child: GestureDetector(
         onTap: () => speakWordOneTime(data),
         child: const Icon(
           CupertinoIcons.speaker_3_fill,
-          color: Color.fromARGB(255, 255, 17, 0),
+          color: Colors.blue,
+          size: 17,
         ),
       ),
     );
