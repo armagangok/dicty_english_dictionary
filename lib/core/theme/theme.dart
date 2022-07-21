@@ -8,13 +8,14 @@ class CustomTheme {
     highlightColor: Colors.transparent,
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(16.0),
+
+        borderRadius: BorderRadius.circular(0.0),
         borderSide: const BorderSide(
           width: 1,
         ),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(16.0),
+        borderRadius: BorderRadius.circular(0.0),
         borderSide: const BorderSide(),
       ),
       filled: true,
@@ -27,7 +28,7 @@ class CustomTheme {
     shadowColor: const Color.fromARGB(255, 0, 0, 0),
     dividerColor: Colors.black,
     dividerTheme: const DividerThemeData(thickness: 0.2),
-    scaffoldBackgroundColor: Color.fromARGB(255, 214, 214, 214),
+    scaffoldBackgroundColor: const Color.fromARGB(255, 214, 214, 214),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Colors.blue,
     ),
@@ -40,9 +41,12 @@ class CustomTheme {
       selectedItemColor: Colors.black,
       unselectedItemColor: Colors.grey,
     ),
-
-
-    
+    appBarTheme: const AppBarTheme(
+      color: Colors.blue,
+      // titleTextStyle: TextStyle(
+      //   color: Colors.white,
+      // ),
+    ),
   );
 
   final darkTheme =

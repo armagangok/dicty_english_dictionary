@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/components/data_loading_widgets.dart';
-import '../../feature/export/export.dart';
 import '../../feature/components/word_widget.dart';
+import '../../feature/export/export.dart';
 import 'controller/home_controller.dart';
 
 class HomeView extends StatelessWidget {
@@ -14,26 +14,45 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.dismissKeyboard(),
-      child: SafeArea(
-        child: WillPopScope(
-          onWillPop: () async => false,
-          child: Scaffold(
-            body: Obx(
-              () {
-                switch (dataController.wordModel.value) {
-                  case 0:
-                    return const NoDataWidget();
-                  case null:
-                    return const WaitingForDataWidget();
-                  default:
-                    return NewWordWidget(
-                      wordModel: dataController.wordModel.value,
-                      controller: dataController,
-                    );
-                }
-              },
-            ),
+      child: WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          appBar: buildAppBar(context),
+          body: Obx(
+            () {
+              switch (dataController.wordModel.value) {
+                case 0:
+                  return const NoDataWidget();
+                case null:
+                  return const WaitingForDataWidget();
+                default:
+                  return ListView(
+                    shrinkWrap: true,
+                    physics: const ClampingScrollPhysics(),
+                    children: [
+                      NewWordWidget(
+                        wordModel: dataController.wordModel.value,
+                        controller: dataController,
+                      ),
+                    ],
+                  );
+              }
+            },
           ),
+        ),
+      ),
+    );
+  }
+
+  //
+
+  AppBar buildAppBar(BuildContext context) {
+    return AppBar(
+      title: Text(
+        "Word Of The Day!",
+        style: context.textTheme.headline5!.copyWith(
+          color: Colors.white,
+          fontWeight: FontWeight.w800,
         ),
       ),
     );

@@ -1,12 +1,11 @@
 // ignore_for_file: avoid_print
 
-import 'package:english_accent_dictionary/core/remote/api/controller/base_word_controller.dart';
-import 'package:english_accent_dictionary/core/remote/api/models/meaning.dart';
-
 import '../../../../feature/export/export.dart';
 import '../../../locator/locator.dart';
 import '../models/definition.dart';
+import '../models/meaning.dart';
 import '../services/word_service.dart';
+import 'base_word_controller.dart';
 
 class WordController extends GetxController implements BaseWordController {
   Rx<dynamic> wordModel = Rx(null);

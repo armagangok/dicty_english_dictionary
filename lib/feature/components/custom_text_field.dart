@@ -26,7 +26,7 @@ class CustomTextField extends StatelessWidget {
         controller: controller,
         textAlign: TextAlign.justify,
         decoration: InputDecoration(
-          labelText: label,
+          // labelText: label,
           label: const Text("search"),
           suffixIcon: InkWell(
             child: icon ?? const Text(""),

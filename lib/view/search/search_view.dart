@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../feature/export/export.dart';
 import '../../feature/components/word_widget.dart';
+import '../../feature/export/export.dart';
 import 'controller/controller.dart';
 
 class SearchResultView extends StatelessWidget {
@@ -18,45 +18,46 @@ class SearchResultView extends StatelessWidget {
       child: WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            title: CustomTextField(
+              controller: textController.search,
+              icon: const Icon(Icons.search),
+              onTap: () async => await newMethod,
+            ),
+          ),
           body: ListView(
             shrinkWrap: true,
             physics: const ClampingScrollPhysics(),
             children: [
-              SizedBox(height: context.height(0.05)),
-              Padding(
-                padding: context.symmetric(horizontal: 0.05),
-                child: CustomTextField(
-                  controller: textController.search,
-                  icon: const Icon(Icons.search),
-                  onTap: () async {
-                    return {
-                      if (textController.search.text.isEmpty)
-                        {
-                          Get.snackbar(
-                            "Warning",
-                            "Please enter a word to search for.",
-                            snackPosition: SnackPosition.BOTTOM,
-                            duration: const Duration(milliseconds: 3600),
-                          ),
-                        }
-                      else
-                        {
-                          // await searchController.showInterstitialAd(),
-                          await wordController
-                              .fetchWord(textController.search.text),
-                          textController.search.clear(),
-                        },
-                    };
-                  },
-                ),
-              ),
-              SizedBox(height: context.height(0.035)),
               getData(wordController.wordModel.value),
             ],
           ),
         ),
       ),
     );
+  }
+
+  //
+
+  get newMethod async {
+    return {
+      if (textController.search.text.isEmpty)
+        {
+          Get.snackbar(
+            "Warning",
+            "Please enter a word to search for.",
+            snackPosition: SnackPosition.BOTTOM,
+            duration: const Duration(milliseconds: 3600),
+          ),
+        }
+      else
+        {
+          // await searchController.showInterstitialAd(),
+          await wordController.fetchWord(textController.search.text),
+          textController.search.clear(),
+        },
+    };
   }
 
   //
