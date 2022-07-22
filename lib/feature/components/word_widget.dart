@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../core/remote/api/controller/base_word_controller.dart';
 import '../../core/remote/api/models/word_model.dart';
 import '../controller/tab_controller.dart';
 import '../export/export.dart';
@@ -32,6 +31,7 @@ class NewWordWidget extends StatelessWidget {
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 wordModel.word!,
@@ -39,19 +39,8 @@ class NewWordWidget extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              Row(
-                children: [
-                  const Text(
-                    "/həˈləʊ/",
-                    style: TextStyle(color: Colors.blue),
-                  ),
-                  const Text(
-                    "/həˈləʊ/",
-                    style: TextStyle(color: Colors.blue),
-                  ),
-                  SpeakButton(data: wordModel.word!),
-                ],
-              ),
+              const SizedBox001(),
+              phonetics(),
               const SizedBox001(),
               Container(
                 decoration: BoxDecoration(
@@ -67,25 +56,25 @@ class NewWordWidget extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       expandedItem(
-                        "Noun",
-                        0,
-                        () => tabBarController.changeIndex(0),
-                      ),
+                          "Noun",
+                          0,
+                          () => tabBarController.changeIndex(0),
+                          controller.noun!.length),
                       expandedItem(
-                        "Pronoun",
-                        1,
-                        () => tabBarController.changeIndex(1),
-                      ),
+                          "Pronoun",
+                          1,
+                          () => tabBarController.changeIndex(1),
+                          controller.pronoun!.length),
                       expandedItem(
-                        "Articles",
-                        2,
-                        () => tabBarController.changeIndex(2),
-                      ),
+                          "Articles",
+                          2,
+                          () => tabBarController.changeIndex(2),
+                          controller.articles!.length),
                       expandedItem(
-                        "Interjection",
-                        3,
-                        () => tabBarController.changeIndex(3),
-                      ),
+                          "Interjection",
+                          3,
+                          () => tabBarController.changeIndex(3),
+                          controller.interjection!.length),
                     ],
                   ),
                 ),
@@ -105,24 +94,25 @@ class NewWordWidget extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       expandedItem(
-                        "Verb",
-                        4,
-                        () => tabBarController.changeIndex(4),
-                      ),
+                          "Verb",
+                          4,
+                          () => tabBarController.changeIndex(4),
+                          controller.verb!.length),
                       expandedItem(
-                        "Adverb",
-                        5,
-                        () => tabBarController.changeIndex(5),
-                      ),
+                          "Adverb",
+                          5,
+                          () => tabBarController.changeIndex(5),
+                          controller.adverb!.length),
                       expandedItem(
-                        "Preposition",
-                        6,
-                        () => tabBarController.changeIndex(6),
-                      ),
+                          "Preposition",
+                          6,
+                          () => tabBarController.changeIndex(6),
+                          controller.preposition!.length),
                       expandedItem(
                         "Adjecive",
                         7,
                         () => tabBarController.changeIndex(7),
+                        controller.adjective!.length,
                       ),
                     ],
                   ),
@@ -133,6 +123,31 @@ class NewWordWidget extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  //
+
+  SizedBox phonetics() {
+    return SizedBox(
+      width: double.infinity,
+      height: 18,
+      child: ListView.separated(
+        separatorBuilder: (context, index) => SizedBox(
+          width: context.width(0.015),
+        ),
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        itemCount: wordModel.phonetics!.length,
+        itemBuilder: (context, index) {
+          return wordModel.phonetics![index].text == null
+              ? const SizedBox()
+              : Text(
+                  wordModel.phonetics![index].text!,
+                  style: const TextStyle(color: Colors.blue),
+                );
+        },
+      ),
     );
   }
 
@@ -197,6 +212,7 @@ class NewWordWidget extends StatelessWidget {
     String text,
     int clickedNumber,
     final Function onTap,
+    int amount,
   ) {
     return Builder(
       builder: (context) {
@@ -215,15 +231,27 @@ class NewWordWidget extends StatelessWidget {
                 padding: EdgeInsets.symmetric(
                     horizontal: context.width(0.01),
                     vertical: context.width(0.006)),
-                child: Text(
-                  text,
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
-                  style: TextStyle(
-                    color: clickedNumber == tabBarController.currentIndex.value
-                        ? Colors.white
-                        : const Color.fromARGB(255, 0, 153, 255),
-                  ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      text,
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      style:  TextStyle(color: clickedNumber == tabBarController.currentIndex.value
+                      ? Colors.white
+                      : null,),
+                    ),
+                    Text(
+                      "($amount)",
+                      style: const TextStyle(
+                          // color:
+                          // clickedNumber == tabBarController.currentIndex.value
+                          // Colors.white
+
+                          ),
+                    )
+                  ],
                 ),
               );
             },

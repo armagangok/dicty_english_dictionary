@@ -50,9 +50,10 @@ class HomeView extends StatelessWidget {
     return AppBar(
       title: Text(
         "Word Of The Day!",
-        style: context.textTheme.headline5!.copyWith(
-          color: Colors.white,
-          fontWeight: FontWeight.w800,
+        style: context.textTheme.labelLarge!.copyWith(
+          // color: Colors.white,
+          // fontWeight: FontWeight.w800,
+          fontSize: 20
         ),
       ),
     );
