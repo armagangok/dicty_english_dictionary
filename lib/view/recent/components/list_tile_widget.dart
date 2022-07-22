@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/remote/api/models/word_model.dart';
 import '../../../feature/export/export.dart';
 
 class RecentItem extends StatelessWidget {
-  final HiveWord data;
-  final int index;
+  final WordModel data;
+  
 
   const RecentItem({
     Key? key,
     required this.data,
-    required this.index,
+    
   }) : super(key: key);
 
   @override
@@ -22,7 +23,7 @@ class RecentItem extends StatelessWidget {
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-        SpeakButton(data: data.word!),
+        SpeakButton(data: data.word ?? "hello"),
       ],
     );
   }

@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'local/database/models/word_hive_model.dart';
-import 'locator/locator.dart';
-import 'local/database/controller/hive_controller.dart';
+import 'local/database/services/hive_service.dart';
 
 Future<void> initApp() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,22 +23,14 @@ Future<void> initApp() async {
 
   MobileAds.instance.updateRequestConfiguration(configuration);
 
-  final directory = await path_provider.getApplicationDocumentsDirectory();
-  await Hive.initFlutter(directory.path);
-  Hive.registerAdapter(WordAdapter());
-  await Hive.openBox("countryBox");
-  await Hive.openBox("words");
-  await Hive.openBox("theme");
-
-  setupLocator();
+  await HiveService.instance.initializeHive();
 
   await GetStorage.init();
+
   var _prefs = await SharedPreferences.getInstance();
 
-  final WordViewModel _wordViewModel = WordViewModel();
-
   if (_prefs.getInt("firstRun") == null) {
-    await _wordViewModel.setupLanguage();
+    await HiveService.instance.setupLanguage();
     await _prefs.setInt("firstRun", 1);
   }
 }

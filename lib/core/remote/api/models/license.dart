@@ -1,7 +1,13 @@
 import 'dart:convert';
 
+import 'package:hive/hive.dart';
+part 'license.g.dart';
+
+@HiveType(typeId: 2)
 class License {
+  @HiveField(0)
   final String? name;
+  @HiveField(1)
   final String? url;
 
   const License({this.name, this.url});

@@ -1,9 +1,18 @@
 import 'dart:convert';
 
+import 'package:hive/hive.dart';
+
+part 'definition.g.dart';
+
+@HiveType(typeId: 4)
 class Definition {
+  @HiveField(0)
   final String? definition;
+  @HiveField(1)
   final List<dynamic>? synonyms;
+  @HiveField(2)
   final List<dynamic>? antonyms;
+  @HiveField(3)
   final String? example;
 
   const Definition(

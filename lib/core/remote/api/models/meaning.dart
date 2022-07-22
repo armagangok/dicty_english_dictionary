@@ -1,11 +1,20 @@
 import 'dart:convert';
 
+import 'package:hive/hive.dart';
+
 import 'definition.dart';
 
+part 'meaning.g.dart';
+
+@HiveType(typeId: 3)
 class Meaning {
+  @HiveField(0)
   final String? partOfSpeech;
+  @HiveField(1)
   final List<Definition>? definitions;
+  @HiveField(2)
   final List<dynamic>? synonyms;
+  @HiveField(3)
   final List<dynamic>? antonyms;
 
   const Meaning({

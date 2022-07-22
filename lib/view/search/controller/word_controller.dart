@@ -1,12 +1,16 @@
 // ignore_for_file: avoid_print
 
+import '../../../core/local/database/services/hive_service.dart';
+import '../../../core/remote/api/models/word_model.dart';
 import '../../../feature/export/export.dart';
 
-
 class WordController extends GetxController implements BaseWordController {
+  WordController._();
+  static final instance = WordController._();
+
   Rx<dynamic> wordModel = Rx(null);
 
-  final WordService _wordService = locator<WordService>();
+  final WordService _wordService = WordService();
 
   @override
   RxList<Definition>? noun = RxList([]);
@@ -26,7 +30,7 @@ class WordController extends GetxController implements BaseWordController {
   RxList<Definition>? adjective = RxList([]);
 
   Future<dynamic> fetchWord(String text) async {
-    // int checker = 0;
+    int checker = 0;
 
     if (text.isEmpty) {
       return null;
@@ -38,48 +42,56 @@ class WordController extends GetxController implements BaseWordController {
           for (Meaning element in wordModel.value!.meanings!) {
             switch (element.partOfSpeech) {
               case "noun":
+                noun!.clear();
                 for (var element in element.definitions!) {
-                  noun!.value.add(element);
+                  noun!.add(element);
                 }
                 break;
 
               case "verb":
+                verb!.clear();
                 for (var element in element.definitions!) {
-                  verb!.value.add(element);
+                  verb!.add(element);
                 }
                 break;
 
               case "interjection":
+                interjection!.clear();
                 for (var element in element.definitions!) {
-                  interjection!.value.add(element);
+                  interjection!.add(element);
                 }
                 break;
 
               case "pronoun":
+                pronoun!.clear();
                 for (var element in element.definitions!) {
-                  pronoun!.value.add(element);
+                  pronoun!.add(element);
                 }
                 break;
 
               case "articles":
+                articles!.clear();
                 for (var element in element.definitions!) {
-                  articles!.value.add(element);
+                  articles!.add(element);
                 }
                 break;
 
               case "adverb":
+                adverb!.clear();
                 for (var element in element.definitions!) {
-                  adverb!.value.add(element);
+                  adverb!.add(element);
                 }
                 break;
 
               case "preposition":
+                preposition!.clear();
                 for (var element in element.definitions!) {
                   preposition!.value.add(element);
                 }
                 break;
 
               case "adjective":
+                adjective!.clear();
                 for (var element in element.definitions!) {
                   adjective!.value.add(element);
                 }
@@ -89,6 +101,28 @@ class WordController extends GetxController implements BaseWordController {
             }
           }
         }
+
+        if (wordModel.value != null) {
+          for (var element in HiveService.instance.getAll()) {
+            print("hiveWord.license");
+            print("hiveWord.license");
+            if (element.word == wordModel.value!.word) {
+              checker++;
+            }
+          }
+
+          if (checker == 0) {
+            final WordModel hiveWord = WordModel(
+              word: wordModel.value.word,
+              meanings: wordModel.value.meanings,
+              origin: wordModel.value.origin,
+              phonetics: wordModel.value.phonetics,
+              license: wordModel.value.license,
+            );
+
+            await HiveService.instance.addData(hiveWord);
+          } else {}
+        }
       } catch (e) {
         print(e);
       }
@@ -97,27 +131,3 @@ class WordController extends GetxController implements BaseWordController {
     }
   }
 }
-
-
-
-      // if (word.value != null) {
-      //   for (var element in _wordViewModel.getAll()) {
-      //     if (element.word == word.value!.word) {
-      //       checker++;
-      //     }
-      //   }
-
-      //   checker == 0
-      //       ? {
-      //           // await _wordViewModel.addData(
-      //           //   HiveWord(
-      //           //     word: word.value!.word,
-      //           //     origin: word.value!.origin,
-      //           //     meaning1: word.value!.meaning1,
-      //           //     meaning2: word.value!.meaning2,
-      //           //     example: word.value!.example,
-      //           //   ),
-      //           // )
-      //         }
-      //       : {};
-      // }

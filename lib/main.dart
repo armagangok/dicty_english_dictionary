@@ -1,5 +1,3 @@
-import 'feature/components/word_widget.dart';
-
 import 'feature/export/export.dart';
 
 void main() async {

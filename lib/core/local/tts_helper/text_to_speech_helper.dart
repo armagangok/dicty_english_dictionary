@@ -1,23 +1,26 @@
+import 'package:english_accent_dictionary/core/local/database/services/hive_service.dart';
+import 'package:english_accent_dictionary/core/remote/api/models/word_model.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-
-import '../database/models/word_hive_model.dart';
-import '../database/controller/hive_controller.dart';
 
 final FlutterTts flutterTts = FlutterTts();
 
-Future<void> speakWord(HiveWord data, context) async {
-  final WordViewModel _wordViewModel = WordViewModel();
-  int index = await _wordViewModel.getLanguage();
+Future<void> speakWord(WordModel data, context) async {
+  // int index = await HiveService.instance.getLanguage();
   // await setLanguage(index);
+  String willBeSpoken = "";
   await flutterTts.speak("Word is ready!");
+  for (var element in data.meanings!) {
+    for (var definition in element.definitions!) {
+      willBeSpoken += "." + definition.definition!;
+    }
+  }
   await flutterTts.speak(
-    "${data.word}. First meaning; ${data.meaning1}. Second meaning is; ${data.meaning2}. Example: ${data.example}",
+    "${data.word}.  $willBeSpoken",
   );
 }
 
 Future<void> speakWordOneTime(String phrase) async {
-  final WordViewModel _wordViewModel = WordViewModel();
-  int index = await _wordViewModel.getLanguage();
+  int index = await HiveService.instance.getLanguage();
   await setLanguage(index);
   await flutterTts.speak(phrase);
 }

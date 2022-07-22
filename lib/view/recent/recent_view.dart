@@ -1,13 +1,15 @@
+import 'package:english_accent_dictionary/core/local/database/services/hive_service.dart';
 import 'package:flutter/material.dart';
 
 import '../../../feature/export/export.dart';
+import '../../core/remote/api/models/word_model.dart';
 
 class RecentView extends StatelessWidget {
-  RecentView({
+  const RecentView({
     Key? key,
   }) : super(key: key);
 
-  final WordViewModel _wordViewModel = Get.put(WordViewModel());
+  // final HiveController _wordViewModel = Get.put(HiveController());
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -17,11 +19,17 @@ class RecentView extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: context.width(0.04)),
             child: ValueListenableBuilder(
-              valueListenable: Hive.box("words").listenable(),
-              builder: (context, Box wordBox, _) {
+              valueListenable: Hive.box<WordModel>("hiveWords").listenable(),
+              builder: (context, Box<WordModel> wordBox, _) {
+                List<WordModel> wordList = [];
+
+                for (var element in wordBox.values) {
+                  print(element.word);
+                  wordList.add(element);
+                }
                 return wordBox.isEmpty
                     ? noRecentSearch()
-                    : recentSearchBuilder(wordBox);
+                    : recentSearchBuilder(wordList);
               },
             ),
           ),
@@ -39,33 +47,34 @@ class RecentView extends StatelessWidget {
 
   //
 
-  ListView recentSearchBuilder(Box<dynamic> wordBox) {
+  ListView recentSearchBuilder(List<WordModel> wordList) {
     return ListView.separated(
       separatorBuilder: (context, index) {
         return const SizedBox001();
       },
       shrinkWrap: true,
       physics: const ClampingScrollPhysics(),
-      itemCount: wordBox.length,
+      itemCount: wordList.length,
       itemBuilder: (context, index) {
-        final data = _wordViewModel.getData(index);
+        // final data = HiveController.instance.getData(index);
 
         return Slidable(
           actionPane: const SlidableScrollActionPane(),
           actionExtentRatio: 0.15,
           actions: <Widget>[
             SlideActionWidget(
-              data: data,
+              data: wordList[index],
               iconData: CupertinoIcons.speaker_3_fill,
               iconText: "",
               bgColor: Colors.blue,
-              onTap: () async => await speakWord(data, context),
+              onTap: () async => await speakWord(wordList[index], context),
             ),
             SlideActionWidget(
               bgColor: Colors.red,
               iconData: CupertinoIcons.trash,
               iconText: "",
-              onTap: () async => await _wordViewModel.deleteData(index),
+              onTap: () async =>
+                  await HiveService.instance.deleteData(index),
             ),
           ],
           // secondaryActions: <Widget>[
@@ -78,10 +87,7 @@ class RecentView extends StatelessWidget {
           // ],
           child: Padding(
             padding: EdgeInsets.all(context.width(0.015)),
-            child: RecentItem(
-              data: data,
-              index: index,
-            ),
+            child: RecentItem(data: wordList[index]),
           ),
         );
       },

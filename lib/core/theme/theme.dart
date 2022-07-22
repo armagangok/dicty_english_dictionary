@@ -8,13 +8,13 @@ class CustomTheme {
     highlightColor: Colors.transparent,
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(0.0),
+        borderRadius: BorderRadius.circular(6.0),
         borderSide: const BorderSide(
           width: 1,
         ),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(0.0),
+        borderRadius: BorderRadius.circular(6.0),
         borderSide: const BorderSide(),
       ),
       filled: true,
@@ -57,14 +57,14 @@ class CustomTheme {
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: const TextStyle(fontSize: 14),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(16.0),
+        borderRadius: BorderRadius.circular(6.0),
         borderSide: const BorderSide(
           color: Colors.white,
           width: 1,
         ),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(16.0),
+        borderRadius: BorderRadius.circular(6.0),
         borderSide: const BorderSide(
           color: Colors.white,
         ),

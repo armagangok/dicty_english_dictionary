@@ -1,7 +1,9 @@
+import 'package:english_accent_dictionary/core/remote/api/models/word_model.dart';
+
 import '../../../feature/export/export.dart';
 
 class SlideActionWidget extends StatelessWidget {
-  final HiveWord? data;
+  final WordModel? data;
   final IconData? iconData;
   final Color? bgColor;
   final String? iconText;

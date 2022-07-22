@@ -5,7 +5,7 @@ import '../../feature/export/export.dart';
 import 'controller/controller.dart';
 
 class SearchResultView extends StatelessWidget {
-  final WordController wordController = WordController();
+  
   final TextController textController = TextController();
   final SearchController searchController = Get.put(SearchController());
 
@@ -19,18 +19,17 @@ class SearchResultView extends StatelessWidget {
         onWillPop: () async => false,
         child: Scaffold(
           appBar: AppBar(
-            
             title: CustomTextField(
               controller: textController.search,
               icon: const Icon(Icons.search),
-              onTap: () async => await newMethod,
+              onTap: () async => await newMethod(),
             ),
           ),
           body: ListView(
             shrinkWrap: true,
             physics: const ClampingScrollPhysics(),
             children: [
-              getData(wordController.wordModel.value),
+              getData(WordController.instance.wordModel.value),
             ],
           ),
         ),
@@ -40,7 +39,7 @@ class SearchResultView extends StatelessWidget {
 
   //
 
-  get newMethod async {
+   newMethod() async {
     return {
       if (textController.search.text.isEmpty)
         {
@@ -54,7 +53,7 @@ class SearchResultView extends StatelessWidget {
       else
         {
           // await searchController.showInterstitialAd(),
-          await wordController.fetchWord(textController.search.text),
+          await WordController.instance.fetchWord(textController.search.text),
           textController.search.clear(),
         },
     };
@@ -68,13 +67,13 @@ class SearchResultView extends StatelessWidget {
         if (a == 0) {
           return const Center();
         } else {
-          return wordController.wordModel.value == null
+          return WordController.instance.wordModel.value == null
               ? const Center(child: Text("Search for the word you want."))
               : NewWordWidget(
-                  wordModel: wordController.wordModel.value,
-                  controller: wordController,
+                  wordModel: WordController.instance.wordModel.value,
+                  controller: WordController.instance,
                 );
-          // WordWidget(wordModel: wordController.wordModel.value!);
+          // WordWidget(wordModel: WordController.instance.wordModel.value!);
         }
       },
     );

@@ -1,11 +1,19 @@
 import 'dart:convert';
 
-import 'license.dart';
+import 'package:hive/hive.dart';
 
+import 'license.dart';
+part 'phonetic.g.dart';
+
+@HiveType(typeId: 5)
 class Phonetic {
+  @HiveField( 0)
   final String? audio;
+  @HiveField( 1)
   final String? sourceUrl;
+  @HiveField( 2)
   final License? license;
+  @HiveField( 3)
   final String? text;
 
   const Phonetic({this.audio, this.sourceUrl, this.license, this.text});

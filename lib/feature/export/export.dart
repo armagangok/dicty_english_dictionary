@@ -1,4 +1,5 @@
 export 'package:flutter/cupertino.dart';
+export 'package:flutter/services.dart';
 export 'package:flutter_slidable/flutter_slidable.dart';
 export 'package:flutter_slidable/flutter_slidable.dart';
 export 'package:get/get_navigation/get_navigation.dart';
@@ -11,12 +12,8 @@ export 'package:get_storage/get_storage.dart';
 export 'package:google_mobile_ads/google_mobile_ads.dart';
 export 'package:hive_flutter/hive_flutter.dart';
 
-export '../../../../../core/local/database/models/word_hive_model.dart';
-export '../../../../../core/local/database/models/word_hive_model.dart';
 export '../../../../../core/local/tts_helper/text_to_speech_helper.dart';
 export '../../../../../core/local/tts_helper/text_to_speech_helper.dart';
-export '../../../core/local/database/models/word_hive_model.dart';
-export '../../../core/locator/locator.dart';
 export '../../../core/remote/admob/ad_helper.dart';
 export '../../../core/remote/admob/generate_ad.dart';
 export '../../../core/remote/api/controller/base_word_controller.dart';
@@ -24,6 +21,7 @@ export '../../../core/remote/api/models/definition.dart';
 export '../../../core/remote/api/models/meaning.dart';
 export '../../../core/remote/api/services/word_service.dart';
 export '../../../feature/components/texts.dart';
+export '../../../feature/data/data.dart';
 export '../../../feature/export/export.dart';
 export '../../core/components/sized_box.dart';
 export '../../core/extension/context_extension.dart';
@@ -47,7 +45,3 @@ export '../../view/search/controller/word_controller.dart';
 export '../../view/settings/controller/theme_controller.dart';
 export '../../view/settings/setting_view.dart';
 export '../components/custom_text_field.dart';
-export 'package:flutter/services.dart';
-
-
-export '../../../feature/data/data.dart';

@@ -51,10 +51,9 @@ class HomeView extends StatelessWidget {
       title: Text(
         "Word Of The Day!",
         style: context.textTheme.labelLarge!.copyWith(
-          // color: Colors.white,
-          // fontWeight: FontWeight.w800,
-          fontSize: 20
-        ),
+            // color: Colors.white,
+            // fontWeight: FontWeight.w800,
+            fontSize: 20),
       ),
     );
   }

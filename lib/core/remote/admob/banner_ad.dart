@@ -37,6 +37,7 @@
 
 //   @override
 //   Widget build(BuildContext context) {
+// 
 //     return checkForAd(generateAd.getbool, generateAd.ad1, context);
 //   }
 // }

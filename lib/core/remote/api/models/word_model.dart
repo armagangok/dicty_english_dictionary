@@ -1,16 +1,28 @@
 import 'dart:convert';
 
+import 'package:hive/hive.dart';
+
 import 'license.dart';
 import 'meaning.dart';
 import 'phonetic.dart';
 
+part 'word_model.g.dart';
+
+@HiveType(typeId: 1)
 class WordModel {
+  @HiveField(0)
   final String? word;
+  @HiveField(1)
   final String? origin;
+  @HiveField(2)
   final List<Phonetic>? phonetics;
+  @HiveField(3)
   final List<Meaning>? meanings;
+  @HiveField(4)
   final License? license;
+  @HiveField(5)
   final List<dynamic>? sourceUrls;
+
   WordModel({
     this.word,
     this.origin,

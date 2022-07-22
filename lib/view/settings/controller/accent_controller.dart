@@ -1,13 +1,13 @@
+import '../../../core/local/database/services/hive_service.dart';
 import '../../../feature/export/export.dart';
 
 class AccentController extends GetxController {
-  final WordViewModel _wordViewModel = WordViewModel();
 
   Rx<dynamic> accent = Rx(null);
 
   @override
   void onInit() async {
-    accent.value = await _wordViewModel.getLanguage();
+    accent.value = await HiveService.instance.getLanguage();
     super.onInit();
   }
 
@@ -18,6 +18,6 @@ class AccentController extends GetxController {
   }
 
   Future<void> saveAccent(int index) async {
-    await _wordViewModel.saveLanguage(index);
+    await HiveService.instance.saveLanguage(index);
   }
 }

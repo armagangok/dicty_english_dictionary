@@ -26,8 +26,8 @@ class NewWordWidget extends StatelessWidget {
       builder: (context) {
         return Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: context.height(0.025),
-            vertical: context.height(0.025),
+            horizontal: context.width(0.05),
+            vertical: context.width(0.025),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -238,9 +238,12 @@ class NewWordWidget extends StatelessWidget {
                       text,
                       textAlign: TextAlign.center,
                       maxLines: 1,
-                      style:  TextStyle(color: clickedNumber == tabBarController.currentIndex.value
-                      ? Colors.white
-                      : null,),
+                      style: TextStyle(
+                        color:
+                            clickedNumber == tabBarController.currentIndex.value
+                                ? Colors.white
+                                : null,
+                      ),
                     ),
                     Text(
                       "($amount)",

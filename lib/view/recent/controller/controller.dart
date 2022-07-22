@@ -1,10 +1,12 @@
+import 'package:english_accent_dictionary/core/remote/api/models/word_model.dart';
+
 import '../../../feature/export/export.dart';
 
 class RecentController extends GetxController {
-  RxList<HiveWord> hiveList = RxList([]);
+  RxList<WordModel> hiveList = RxList([]);
 
   fetchHiveWords() async {
-    for (var element in Hive.box('words').values) {
+    for (var element in Hive.box<WordModel>('hiveWords').values) {
       hiveList.add(element);
     }
   }

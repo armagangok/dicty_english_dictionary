@@ -1,44 +1,41 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'models/word_hive_model.dart';
+part of 'meaning.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class WordAdapter extends TypeAdapter<HiveWord> {
+class MeaningAdapter extends TypeAdapter<Meaning> {
   @override
-  final int typeId = 1;
+  final int typeId = 3;
 
   @override
-  HiveWord read(BinaryReader reader) {
+  Meaning read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return HiveWord(
-      word: fields[0] as String?,
-      origin: fields[1] as String?,
-      meaning1: fields[2] as String?,
-      meaning2: fields[3] as String?,
-      example: fields[4] as String?,
+    return Meaning(
+      partOfSpeech: fields[0] as String?,
+      definitions: (fields[1] as List?)?.cast<Definition>(),
+      synonyms: (fields[2] as List?)?.cast<dynamic>(),
+      antonyms: (fields[3] as List?)?.cast<dynamic>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, HiveWord obj) {
+  void write(BinaryWriter writer, Meaning obj) {
     writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.word)
-      ..writeByte(1)
-      ..write(obj.origin)
-      ..writeByte(2)
-      ..write(obj.meaning1)
-      ..writeByte(3)
-      ..write(obj.meaning2)
       ..writeByte(4)
-      ..write(obj.example);
+      ..writeByte(0)
+      ..write(obj.partOfSpeech)
+      ..writeByte(1)
+      ..write(obj.definitions)
+      ..writeByte(2)
+      ..write(obj.synonyms)
+      ..writeByte(3)
+      ..write(obj.antonyms);
   }
 
   @override
@@ -47,7 +44,7 @@ class WordAdapter extends TypeAdapter<HiveWord> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is WordAdapter &&
+      other is MeaningAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
