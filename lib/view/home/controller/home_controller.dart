@@ -1,11 +1,5 @@
-import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
-import '../../../core/remote/api/controller/base_word_controller.dart';
-import '../../../core/remote/api/models/definition.dart';
-import '../../../core/remote/api/models/meaning.dart';
-import '../../../core/remote/api/services/word_service.dart';
-import '../../../feature/data/data.dart';
 import '../../../feature/export/export.dart';
 
 class DataController extends GetxController implements BaseWordController {

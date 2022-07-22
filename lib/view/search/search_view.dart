@@ -19,7 +19,7 @@ class SearchResultView extends StatelessWidget {
         onWillPop: () async => false,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.transparent,
+            
             title: CustomTextField(
               controller: textController.search,
               icon: const Icon(Icons.search),

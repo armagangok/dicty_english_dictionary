@@ -7,19 +7,28 @@ import '../models/word_model.dart';
 
 class WordService {
   Future<WordModel?> fetchWord(String text) async {
-    final response = await http.get(
-      Uri.parse('https://api.dictionaryapi.dev/api/v2/entries/en/$text'),
-    );
-    if (response.statusCode == 200) {
-      var a = (WordModel.fromMap(jsonDecode(response.body)[0]));
+    try {
+      print(text);
 
-      return a;
-    } else {
-      Get.snackbar(
-        "",
-        jsonDecode(response.body)["message"],
+      final response = await http.get(
+        Uri.parse('https://api.dictionaryapi.dev/api/v2/entries/en/$text'),
       );
-      return null;
+
+      print(response);
+      if (response.statusCode == 200) {
+        var a = (WordModel.fromMap(jsonDecode(response.body)[0]));
+
+        return a;
+      } else {
+        Get.snackbar(
+          "",
+          jsonDecode(response.body)["message"],
+        );
+        return null;
+      }
+    } catch (e) {
+      print(e);
     }
+    return null;
   }
 }

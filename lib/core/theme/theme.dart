@@ -8,7 +8,6 @@ class CustomTheme {
     highlightColor: Colors.transparent,
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: OutlineInputBorder(
-
         borderRadius: BorderRadius.circular(0.0),
         borderSide: const BorderSide(
           width: 1,
@@ -42,7 +41,8 @@ class CustomTheme {
       unselectedItemColor: Colors.grey,
     ),
     appBarTheme: const AppBarTheme(
-      color: Colors.blue,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
       // titleTextStyle: TextStyle(
       //   color: Colors.white,
       // ),
@@ -86,6 +86,13 @@ class CustomTheme {
       bodySmall: TextStyle(
         color: Color.fromARGB(255, 217, 217, 217),
       ),
+    ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      // titleTextStyle: TextStyle(
+      //   color: Colors.white,
+      // ),
     ),
   );
 }
