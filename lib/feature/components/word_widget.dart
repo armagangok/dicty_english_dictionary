@@ -18,6 +18,7 @@ class NewWordWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return body();
   }
 
@@ -33,11 +34,16 @@ class NewWordWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                wordModel.word!,
-                style: context.textTheme.headline4!.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
+              Row(
+                children: [
+                  Text(
+                    wordModel.word!,
+                    style: context.textTheme.headline4!.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SpeakButton(data: wordModel.word!)
+                ],
               ),
               const SizedBox001(),
               phonetics(),

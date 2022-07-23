@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/components/data_loading_widgets.dart';
 import '../../feature/components/word_widget.dart';
 import '../../feature/export/export.dart';
-import 'controller/home_controller.dart';
+import 'controller/data_controller.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);

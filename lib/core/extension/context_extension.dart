@@ -11,29 +11,26 @@ extension EasyContext on BuildContext {
   Size get size => MediaQuery.of(this).size;
   EdgeInsets get padding => MediaQuery.of(this).padding;
 
-  EdgeInsets symmetric({
-    double horizontal = 0,
-    double vertical = 0,
-    bool bothVertical = false,
-  }) =>
-      EdgeInsets.symmetric(
-        horizontal:
-            bothVertical ? height(1) * horizontal : width(1) * horizontal,
-        vertical: bothVertical ? height(1) * horizontal : width(1) * vertical,
-      );
+  EdgeInsets symmetric({double horizontal = 0.0, double vertical = 0.0}) {
+    return EdgeInsets.symmetric(
+      horizontal: width(1.0) * horizontal,
+      vertical: height(1.0) * vertical,
+    );
+  }
 
-  EdgeInsets verticalPadding({
-    double left = 0,
-    double top = 0,
-    double rigth = 0,
-    double bottom = 0,
-  }) =>
-      EdgeInsets.only(
-        left: left,
-        top: top,
-        right: rigth,
-        bottom: bottom,
-      );
+  EdgeInsets vertical({
+    double left = 0.0,
+    double top = 0.0,
+    double rigth = 0.0,
+    double bottom = 0.0,
+  }) {
+    return EdgeInsets.only(
+      left: left * width(1.0),
+      top: top * height(1.0),
+      right: rigth * width(1.0),
+      bottom: bottom * height(1.0),
+    );
+  }
 
   void dismissKeyboard() {
     FocusScopeNode currentFocus = FocusScope.of(this);

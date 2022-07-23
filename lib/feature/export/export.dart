@@ -38,7 +38,7 @@ export '../../core/theme/theme_service.dart';
 export '../../feature/components/ad_widget.dart';
 export '../../view/home/components/word_widget.dart';
 export '../../view/home/controller/text_controller.dart';
-export '../../view/recent/components/list_tile_widget.dart';
+export '../../view/recent/components/recent_item.dart';
 export '../../view/recent/components/slide_action_widgets.dart';
 export '../../view/root/root_view.dart';
 export '../../view/search/controller/word_controller.dart';

@@ -42,56 +42,56 @@ class WordController extends GetxController implements BaseWordController {
           for (Meaning element in wordModel.value!.meanings!) {
             switch (element.partOfSpeech) {
               case "noun":
-                noun!.clear();
+                noun!.value.clear();
                 for (var element in element.definitions!) {
-                  noun!.add(element);
+                  noun!.value.add(element);
                 }
                 break;
 
               case "verb":
-                verb!.clear();
+                verb!.value.clear();
                 for (var element in element.definitions!) {
-                  verb!.add(element);
+                  verb!.value.add(element);
                 }
                 break;
 
               case "interjection":
-                interjection!.clear();
+                interjection!.value.clear();
                 for (var element in element.definitions!) {
-                  interjection!.add(element);
+                  interjection!.value.add(element);
                 }
                 break;
 
               case "pronoun":
-                pronoun!.clear();
+                pronoun!.value.clear();
                 for (var element in element.definitions!) {
-                  pronoun!.add(element);
+                  pronoun!.value.add(element);
                 }
                 break;
 
               case "articles":
-                articles!.clear();
+                articles!.value.clear();
                 for (var element in element.definitions!) {
-                  articles!.add(element);
+                  articles!.value.add(element);
                 }
                 break;
 
               case "adverb":
-                adverb!.clear();
+                adverb!.value.clear();
                 for (var element in element.definitions!) {
-                  adverb!.add(element);
+                  adverb!.value.add(element);
                 }
                 break;
 
               case "preposition":
-                preposition!.clear();
+                preposition!.value.clear();
                 for (var element in element.definitions!) {
                   preposition!.value.add(element);
                 }
                 break;
 
               case "adjective":
-                adjective!.clear();
+                adjective!.value.clear();
                 for (var element in element.definitions!) {
                   adjective!.value.add(element);
                 }
