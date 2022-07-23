@@ -2,7 +2,7 @@ import '../../../feature/export/export.dart';
 
 const int _maxFailedLoadAttempts = 10;
 
-class SearchController extends GetxController {
+class AdController extends GetxController {
   int _interstitialLoadAttempts = 0;
   InterstitialAd? _interstitialAd;
 
@@ -10,6 +10,12 @@ class SearchController extends GetxController {
   void onInit() {
     createInterstitialAd();
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    
+    super.onReady();
   }
 
   @override
@@ -46,11 +52,11 @@ class SearchController extends GetxController {
           onAdDismissedFullScreenContent: (InterstitialAd ad) {
         ad.dispose();
         createInterstitialAd();
-        Get.to(RootView());
+        Get.back();
       }, onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
         ad.dispose();
         createInterstitialAd();
-        Get.to(RootView());
+        Get.back();
       });
 
       await _interstitialAd!.show();

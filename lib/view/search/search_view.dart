@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../feature/components/word_widget.dart';
 import '../../feature/export/export.dart';
-import 'controller/controller.dart';
+import 'controller/ad_controller.dart';
 
 class SearchResultView extends StatelessWidget {
-  
   final TextController textController = TextController();
-  final SearchController searchController = Get.put(SearchController());
+  final AdController searchController = Get.put(AdController());
+
+  final SearchWordController searchWordController =
+      SearchWordController.instance;
 
   SearchResultView({Key? key}) : super(key: key);
 
@@ -22,14 +24,14 @@ class SearchResultView extends StatelessWidget {
             title: CustomTextField(
               controller: textController.search,
               icon: const Icon(Icons.search),
-              onTap: () async => await newMethod(),
+              onTap: () async => newMethod(),
             ),
           ),
           body: ListView(
             shrinkWrap: true,
             physics: const ClampingScrollPhysics(),
             children: [
-              getData(WordController.instance.wordModel.value),
+              getData(searchWordController.wordModel.value),
             ],
           ),
         ),
@@ -39,24 +41,21 @@ class SearchResultView extends StatelessWidget {
 
   //
 
-   newMethod() async {
-    return {
-      if (textController.search.text.isEmpty)
-        {
-          Get.snackbar(
-            "Warning",
-            "Please enter a word to search for.",
-            snackPosition: SnackPosition.BOTTOM,
-            duration: const Duration(milliseconds: 3600),
-          ),
-        }
-      else
-        {
-          // await searchController.showInterstitialAd(),
-          await WordController.instance.fetchWord(textController.search.text),
-          textController.search.clear(),
-        },
-    };
+  void newMethod() async {
+    if (textController.search.text.isEmpty) {
+      Get.snackbar(
+        "Warning",
+        "Please enter a text to search for!",
+        snackPosition: SnackPosition.TOP,
+        duration: const Duration(milliseconds: 3000),
+      );
+    } else {
+      await searchController.showInterstitialAd();
+      await searchWordController.fetchWord(textController.search.text);
+      textController.search.clear();
+
+      
+    }
   }
 
   //
@@ -67,13 +66,12 @@ class SearchResultView extends StatelessWidget {
         if (a == 0) {
           return const Center();
         } else {
-          return WordController.instance.wordModel.value == null
+          return searchWordController.wordModel.value == null
               ? const Center(child: Text("Search for the word you want."))
               : NewWordWidget(
-                  wordModel: WordController.instance.wordModel.value,
-                  controller: WordController.instance,
+                  wordModel: searchWordController.wordModel.value,
+                  controller: searchWordController,
                 );
-          // WordWidget(wordModel: WordController.instance.wordModel.value!);
         }
       },
     );
@@ -86,3 +84,6 @@ class SearchResultView extends StatelessWidget {
           //   ad: generateAd.ad,
           //   unitID: AdHelper.bannerAdUnitId3,
           // ),
+
+
+       

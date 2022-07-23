@@ -40,7 +40,7 @@ export '../../view/home/controller/text_controller.dart';
 export '../../view/recent/components/recent_item.dart';
 export '../../view/recent/components/slide_action_widgets.dart';
 export '../../view/root/root_view.dart';
-export '../../view/search/controller/word_controller.dart';
+export '../../view/search/controller/search_word_controller.dart';
 export '../../view/settings/controller/theme_controller.dart';
 export '../../view/settings/setting_view.dart';
 export '../components/custom_text_field.dart';
