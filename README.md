@@ -5,15 +5,6 @@ This is a customised English dictionary.
 Google Play Store: https://play.google.com/store/apps/details?id=com.armagangok.dict
 
 
-![  ](https://play-lh.googleusercontent.com/zxVEQBSZx0FHNQkcSZAvkseKuy4SHxTqlEGz2XDlT_2v17zEREtudr9Mi_DHlnjmt2o=w2560-h1440)
-
-
-![  ](https://play-lh.googleusercontent.com/H70NP-Xky3DC9i_aNOuJNbm9B1b1dfrS0fiAG6LTdBQsOwiwdLjHrlncPjzdJz-c7BM=w2560-h1440)
-
-
-![  ](https://play-lh.googleusercontent.com/rvXcMV-gUkuTTU1J4VJEGNGpt-5aaPwhT-9mGHS_pGh6VeFN7sNLtit_FrfZLzz8qA=w2560-h1440)
-
-
-![  ](https://play-lh.googleusercontent.com/JEWFtxDOMxb-KZ5ilVJVXCT6Xo0Hhdq9ltI1Zbpq3eLz1g8Zd_AeNjOdwSrlPoM=w2560-h1440)
+![  ](https://play-lh.googleusercontent.com/dWXOByUz6BKNlsc-ccZfTA5dYGKst-F9fokbxRw5tZ4AQ-ExGBVri1aQE8Sf-SuEhlw=w526-h296)  ![  ](https://play-lh.googleusercontent.com/It2dttWRq0wrTnUe8pF1-Dx4jAshOUbZEVKfu5OWQcEdtzbriixCpVT9JFbxBeFCi0Q=w526-h296) ![  ](https://play-lh.googleusercontent.com/t-_J6H5fb5GrSua8_GLJWMaDqia4dTtIyrwPN57I0_1C41hRbImTnPsTxjSuqaiwu1s=w526-h296) ![  ](https://play-lh.googleusercontent.com/Y_JEvZIVLHjyiRGDimOMFoI52gFfMoc1M4th1lTYM39wl0Ic0dJfbkVHtuxmM8-EwO0=w526-h296) ![  ](https://play-lh.googleusercontent.com/ETpnkKHMvKcZlzr-yt1sTjZJ6gVmucZLtuu_AEV93px3LFUp_Oxd62R5mnY9IR676Q=w526-h296)
 
 
