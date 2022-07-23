@@ -1,5 +1,5 @@
-import 'package:english_accent_dictionary/core/local/database/services/hive_service.dart';
-import 'package:english_accent_dictionary/core/remote/api/models/word_model.dart';
+import '../database/services/hive_service.dart';
+import '../../remote/api/models/word_model.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 final FlutterTts flutterTts = FlutterTts();

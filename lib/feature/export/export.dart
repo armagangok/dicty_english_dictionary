@@ -29,7 +29,6 @@ export '../../core/init.dart';
 export '../../core/local/database/controller/hive_controller.dart';
 export '../../core/local/database/controller/hive_controller.dart';
 export '../../core/remote/admob/ad_helper.dart';
-export '../../core/remote/admob/ad_service.dart';
 export '../../core/remote/admob/banner_ad.dart';
 export '../../core/remote/admob/intersitial.dart';
 export '../../core/remote/api/models/x.dart';

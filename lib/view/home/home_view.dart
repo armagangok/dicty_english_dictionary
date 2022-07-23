@@ -62,10 +62,7 @@ class HomeView extends StatelessWidget {
 
 
 
-            // bottomNavigationBar: AdvertisementWidget(
-            //   ad: generateAd.ad,
-            //   unitID: AdHelper.bannerAdUnitId1,
-            // ),
+            
 
 
 

@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
+import '../../feature/export/export.dart';
 import '../gift/gift_view.dart';
 import '../home/home_view.dart';
 import '../recent/recent_view.dart';
 import '../search/search_view.dart';
-import '../settings/setting_view.dart';
 import 'controller/bottom_navy_controller.dart';
 
 class RootView extends StatelessWidget {
@@ -20,15 +18,25 @@ class RootView extends StatelessWidget {
         onWillPop: () async => false,
         child: Scaffold(
           body: _pages[controller.currentIndex.value],
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: controller.currentIndex.value,
-            onTap: (int index) => controller.changeIndex(index),
-            items: [
-              bottomNavyBarItem("Home", CupertinoIcons.home),
-              bottomNavyBarItem("Recent", CupertinoIcons.time),
-              bottomNavyBarItem("Search", CupertinoIcons.search),
-              bottomNavyBarItem("Special", CupertinoIcons.gift),
-              bottomNavyBarItem("Setting", CupertinoIcons.settings),
+          bottomNavigationBar: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              AdvertisementWidget(
+                ad: generateAd.ad,
+                unitID: AdHelper.bannerAdUnitId1,
+              ),
+              BottomNavigationBar(
+                currentIndex: controller.currentIndex.value,
+                onTap: (int index) => controller.changeIndex(index),
+                items: [
+                  bottomNavyBarItem("Home", CupertinoIcons.home),
+                  bottomNavyBarItem("Recent", CupertinoIcons.time),
+                  bottomNavyBarItem("Search", CupertinoIcons.search),
+                  bottomNavyBarItem("Special", CupertinoIcons.gift),
+                  bottomNavyBarItem("Setting", CupertinoIcons.settings),
+                ],
+              ),
             ],
           ),
         ),
@@ -46,7 +54,7 @@ class RootView extends StatelessWidget {
     );
   }
 
-  final List<Widget> _pages = [
+  static final List<Widget> _pages = [
     HomeView(),
     const RecentView(),
     SearchResultView(),

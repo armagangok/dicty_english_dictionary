@@ -3,15 +3,15 @@ import 'dart:io';
 class AdHelper {
   AdHelper._();
 
-  // static String get bannerAdUnitId1 {
-  //   if (Platform.isAndroid) {
-  //     return "ca-app-pub-7691613791089480/2780704918";
-  //   } else if (Platform.isIOS) {
-  //     return "ca-app-pub-3940256099942544/2934735716";
-  //   } else {
-  //     throw UnsupportedError("Unsupported platform");
-  //   }
-  // }
+  static String get bannerAdUnitId1 {
+    if (Platform.isAndroid) {
+      return "ca-app-pub-7691613791089480/2780704918";
+    } else if (Platform.isIOS) {
+      return "ca-app-pub-3940256099942544/2934735716";
+    } else {
+      throw UnsupportedError("Unsupported platform");
+    }
+  }
 
   // static String get bannerAdUnitId2 {
   //   if (Platform.isAndroid) {

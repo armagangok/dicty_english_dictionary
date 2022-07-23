@@ -1,5 +1,4 @@
-import 'package:english_accent_dictionary/core/remote/api/models/word_model.dart';
-
+import '../../../core/remote/api/models/word_model.dart';
 import '../../../feature/export/export.dart';
 
 class SlideActionWidget extends StatelessWidget {
