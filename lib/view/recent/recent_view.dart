@@ -36,44 +36,28 @@ class RecentView extends StatelessWidget {
   //
 
   Widget recentSearchBuilder(List<WordModel> wordList) {
-    return Builder(builder: (context) {
-      return ListView.separated(
-        separatorBuilder: (context, index) {
-          return const SizedBox001();
-        },
-        padding: EdgeInsets.only(top: context.height(0.015)),
-        shrinkWrap: true,
-        physics: const ClampingScrollPhysics(),
-        itemCount: wordList.length,
-        itemBuilder: (context, index) {
-          return Slidable(
-            actionPane: const SlidableScrollActionPane(),
-            actionExtentRatio: 0.12,
-            actions: <Widget>[
-              SlideActionWidget(
-                data: wordList[index],
-                iconData: CupertinoIcons.speaker_3_fill,
-                iconText: "",
-                bgColor: Colors.blue,
-                onTap: () async {
-                  await textToSpeech.speakWord(wordList[index]);
-                },
-              ),
-              SlideActionWidget(
-                bgColor: Colors.red,
-                iconData: CupertinoIcons.trash,
-                iconText: "",
-                onTap: () async => await HiveService.instance.deleteData(index),
-              ),
-            ],
-            child: Padding(
+    return Builder(
+      builder: (context) {
+        return ListView.separated(
+          separatorBuilder: (context, index) {
+            return const SizedBox001();
+          },
+          padding: EdgeInsets.only(top: context.height(0.015)),
+          shrinkWrap: true,
+          physics: const ClampingScrollPhysics(),
+          itemCount: wordList.length,
+          itemBuilder: (context, index) {
+            return Padding(
               padding: EdgeInsets.all(context.width(0.013)),
-              child: RecentItem(wordModel: wordList[index]),
-            ),
-          );
-        },
-      );
-    });
+              child: RecentItem(
+                wordModel: wordList[index],
+                index: index,
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 
   //
@@ -92,22 +76,3 @@ class RecentView extends StatelessWidget {
     });
   }
 }
-
-
-
-
-          // secondaryActions: <Widget>[
-          //   SlideActionWidget(
-          //     onTap: () => Get.to(DetailsView(data: data)),
-          //     icon: Icons.info,
-          //     iconText: "Details",
-          //     bgColor: Colors.green,
-          //   ),
-          // ],
-
-                  //
-
-        // bottomNavigationBar: AdvertisementWidget(
-        //   ad: generateAd.ad,
-        //   unitID: AdHelper.bannerAdUnitId4,
-        // ),

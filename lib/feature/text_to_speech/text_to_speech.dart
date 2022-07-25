@@ -15,19 +15,19 @@ class TextToSpeech {
     await setLanguage(index);
   }
 
-  Future<void> speakWord(WordModel data) async {
-    await initTTS();
-    String willBeSpoken = "";
-    await flutterTts.speak("Word is ready!");
-    for (var element in data.meanings!) {
-      for (var definition in element.definitions!) {
-        willBeSpoken += "." + definition.definition!;
-      }
-    }
-    await flutterTts.speak(
-      "${data.word}.  $willBeSpoken",
-    );
-  }
+  // Future<void> speakWord(WordModel data) async {
+  //   await initTTS();
+  //   String willBeSpoken = "";
+  //   await flutterTts.speak("Word is ready!");
+  //   for (var element in data.meanings!) {
+  //     for (var definition in element.definitions!) {
+  //       willBeSpoken += "." + definition.definition!;
+  //     }
+  //   }
+  //   await flutterTts.speak(
+  //     "${data.word}.  $willBeSpoken",
+  //   );
+  // }
 
   Future<void> speakWordOneTime(String phrase) async {
     await initTTS();

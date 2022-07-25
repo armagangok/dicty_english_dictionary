@@ -9,10 +9,12 @@ import '../../../feature/export/export.dart';
 
 class RecentItem extends StatelessWidget {
   final WordModel wordModel;
+  final int index;
 
   const RecentItem({
     Key? key,
     required this.wordModel,
+    required this.index,
   }) : super(key: key);
 
   @override
@@ -24,13 +26,14 @@ class RecentItem extends StatelessWidget {
       },
       child: Row(
         children: [
+          SpeakButton(data: wordModel.word ?? "No data"),
           Expanded(
             child: Text(
               "${wordModel.word}",
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
-          SpeakButton(data: wordModel.word ?? "hello"),
+           DeleteButton(index: index,),
         ],
       ),
     );
@@ -95,33 +98,22 @@ class SpeakButton extends StatelessWidget {
   }
 }
 
-// dictData(
-//   "${data.word}",
-//   textColor: Colors.red,
-//   size: 25,
-//   fWeigth: FontWeight.w700,
-// ),
-// SizedBox(height: context.height(0.02)),
-// dictData(
-//   "Meaning ${data.meaning1}",
-//   icon: const Icon(Icons.menu_book),
-//   fWeigth: FontWeight.w400,
-// ),
-// SizedBox(height: context.height(0.02)),
-// dictData(
-//   "${data.meaning2}",
-//   icon: const Icon(Icons.menu_book),
-//   fWeigth: FontWeight.w400,
-// ),
-// SizedBox(height: context.height(0.02)),
-// dictData(
-//   "Origin: " "${data.origin}",
-//   icon: const Icon(Icons.trip_origin),
-//   fWeigth: FontWeight.w400,
-// ),
-// SizedBox(height: context.height(0.02)),
-// dictData(
-//   "${data.example}",
-//   icon: const Icon(Icons.star),
-//   fWeigth: FontWeight.w400,
-// ),
+class DeleteButton extends StatelessWidget {
+  const DeleteButton({
+    Key? key,
+    required this.index,
+  }) : super(key: key);
+
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () async => await HiveService.instance.deleteData(index),
+      child: const Icon(
+        CupertinoIcons.trash,
+        color: Colors.red,
+      ),
+    );
+  }
+}
