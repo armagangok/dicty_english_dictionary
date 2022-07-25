@@ -1,10 +1,7 @@
 export 'package:flutter/cupertino.dart';
 export 'package:flutter/services.dart';
-export 'package:flutter_slidable/flutter_slidable.dart';
-export 'package:flutter_slidable/flutter_slidable.dart';
 export 'package:get/get_navigation/get_navigation.dart';
 export 'package:get/get_state_manager/get_state_manager.dart';
-export 'package:get/instance_manager.dart';
 export 'package:get/instance_manager.dart';
 export 'package:get/route_manager.dart';
 export 'package:get/state_manager.dart';
