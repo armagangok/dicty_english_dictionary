@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-class LanguageManager {
-  LanguageManager._();
-  static final instance = LanguageManager._();
-  final enLocale = const Locale("en");
+// class LanguageManager {
+//   LanguageManager._();
+//   static final instance = LanguageManager._();
+//   final enLocale = const Locale("en");
 
-  List<Locale> get supportedLocales => [enLocale];
-}
+//   List<Locale> get supportedLocales => [enLocale];
+// }
