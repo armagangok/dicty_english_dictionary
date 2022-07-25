@@ -80,10 +80,11 @@ class SpeakButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextToSpeech textToSpeech = TextToSpeech.instance;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: context.width(0.02)),
       child: GestureDetector(
-        onTap: () => speakWordOneTime(data),
+        onTap: () => textToSpeech.speakWordOneTime(data),
         child: const Icon(
           CupertinoIcons.speaker_3_fill,
           color: Colors.blue,

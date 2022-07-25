@@ -2,12 +2,13 @@ import '../../../core/local/database/services/hive_service.dart';
 import '../../../feature/export/export.dart';
 
 class AccentController extends GetxController {
+  final HiveService _hiveService = HiveService.instance;
 
   Rx<dynamic> accent = Rx(null);
 
   @override
   void onInit() async {
-    accent.value = await HiveService.instance.getLanguage();
+    accent.value = await _hiveService.getLanguage();
     super.onInit();
   }
 
@@ -18,6 +19,6 @@ class AccentController extends GetxController {
   }
 
   Future<void> saveAccent(int index) async {
-    await HiveService.instance.saveLanguage(index);
+    await _hiveService.saveLanguage(index);
   }
 }

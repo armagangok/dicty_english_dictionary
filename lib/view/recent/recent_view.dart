@@ -5,9 +5,9 @@ import '../../core/local/database/services/hive_service.dart';
 import '../../core/remote/api/models/word_model.dart';
 
 class RecentView extends StatelessWidget {
-  const RecentView({
-    Key? key,
-  }) : super(key: key);
+  RecentView({Key? key}) : super(key: key);
+
+  final TextToSpeech textToSpeech = TextToSpeech.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -36,44 +36,44 @@ class RecentView extends StatelessWidget {
   //
 
   Widget recentSearchBuilder(List<WordModel> wordList) {
-    return Builder(
-      builder: (context) {
-        return ListView.separated(
-          separatorBuilder: (context, index) {
-            return const SizedBox001();
-          },
-          padding: EdgeInsets.only(top:context.height(0.015)),
-          shrinkWrap: true,
-          physics: const ClampingScrollPhysics(),
-          itemCount: wordList.length,
-          itemBuilder: (context, index) {
-            return Slidable(
-              actionPane: const SlidableScrollActionPane(),
-              actionExtentRatio: 0.12,
-              actions: <Widget>[
-                SlideActionWidget(
-                  data: wordList[index],
-                  iconData: CupertinoIcons.speaker_3_fill,
-                  iconText: "",
-                  bgColor: Colors.blue,
-                  onTap: () async => await speakWord(wordList[index], context),
-                ),
-                SlideActionWidget(
-                  bgColor: Colors.red,
-                  iconData: CupertinoIcons.trash,
-                  iconText: "",
-                  onTap: () async => await HiveService.instance.deleteData(index),
-                ),
-              ],
-              child: Padding(
-                padding: EdgeInsets.all(context.width(0.013)),
-                child: RecentItem(wordModel: wordList[index]),
+    return Builder(builder: (context) {
+      return ListView.separated(
+        separatorBuilder: (context, index) {
+          return const SizedBox001();
+        },
+        padding: EdgeInsets.only(top: context.height(0.015)),
+        shrinkWrap: true,
+        physics: const ClampingScrollPhysics(),
+        itemCount: wordList.length,
+        itemBuilder: (context, index) {
+          return Slidable(
+            actionPane: const SlidableScrollActionPane(),
+            actionExtentRatio: 0.12,
+            actions: <Widget>[
+              SlideActionWidget(
+                data: wordList[index],
+                iconData: CupertinoIcons.speaker_3_fill,
+                iconText: "",
+                bgColor: Colors.blue,
+                onTap: () async {
+                  await textToSpeech.speakWord(wordList[index]);
+                },
               ),
-            );
-          },
-        );
-      }
-    );
+              SlideActionWidget(
+                bgColor: Colors.red,
+                iconData: CupertinoIcons.trash,
+                iconText: "",
+                onTap: () async => await HiveService.instance.deleteData(index),
+              ),
+            ],
+            child: Padding(
+              padding: EdgeInsets.all(context.width(0.013)),
+              child: RecentItem(wordModel: wordList[index]),
+            ),
+          );
+        },
+      );
+    });
   }
 
   //

@@ -1,8 +1,7 @@
 import 'feature/export/export.dart';
 
 void main() async {
-  
-  await initApp();
+  await Initialization.instance.initApp();
   runApp(const MyApp());
 }
 

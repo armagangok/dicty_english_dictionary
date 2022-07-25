@@ -15,10 +15,6 @@ class SettingView extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-        // bottomNavigationBar: AdvertisementWidget(
-        //   unitID: AdHelper.bannerAdUnitId2,
-        //   ad: generateAd.ad,
-        // ),
         body: SafeArea(
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: context.width(0.08)),
