@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:intl/intl.dart';
 
 import '../../../feature/export/export.dart';
@@ -26,7 +28,7 @@ class DataController extends GetxController implements BaseWordController {
   @override
   void onInit() async {
     try {
-      wordModel.value = await fetchWord(getDatedWord());
+      wordModel.value = await fetchWord(await getDatedWord());
     } on PlatformException catch (e) {
       Get.showSnackbar(GetSnackBar(messageText: Text("${e.message}")));
     }
@@ -104,9 +106,20 @@ class DataController extends GetxController implements BaseWordController {
     }
   }
 
-  String getDatedWord() {
+  // String getDatedWord() {
+  //   var now = DateTime.now();
+  //   var formatter = DateFormat('yyyy-MM-dd');
+  //   return map[formatter.format(now)]!;
+  // }
+
+  Future<String> getDatedWord() async {
+    final String response =
+        await rootBundle.loadString('assets/data/data.json');
+    final data = await json.decode(response);
+
     var now = DateTime.now();
     var formatter = DateFormat('yyyy-MM-dd');
-    return map[formatter.format(now)]!;
+
+    return data[formatter.format(now)];
   }
 }
