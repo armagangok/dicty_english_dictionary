@@ -19,7 +19,6 @@ export '../../../core/remote/api/models/definition.dart';
 export '../../../core/remote/api/models/meaning.dart';
 export '../../../core/remote/api/services/word_service.dart';
 export '../../../feature/components/texts.dart';
-export '../../../feature/data/data.dart';
 export '../../../feature/export/export.dart';
 export '../../core/components/sized_box.dart';
 export '../../core/extension/context_extension.dart';
