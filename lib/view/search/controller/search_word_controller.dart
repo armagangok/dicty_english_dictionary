@@ -11,7 +11,7 @@ class SearchWordController extends GetxController
 
   Rx<dynamic> wordModel = Rx(null);
 
-  final WordService _wordService = WordService();
+  final WordService _wordService = WordService.instance;
 
   @override
   RxList<Definition>? noun = RxList([]);

@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomTheme {
+  CustomTheme._();
+  static final instance = CustomTheme._();
   final ligthTheme =
       ThemeData.from(colorScheme: const ColorScheme.light()).copyWith(
     splashColor: Colors.transparent,

@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import '../../feature/export/export.dart';
 
 class ThemeService {
+
+ThemeService._();
+static final instance = ThemeService._();
+
+
   final _getStorage = GetStorage();
   final String storageKey = "isDarkMode";
 

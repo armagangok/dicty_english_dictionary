@@ -6,6 +6,8 @@ import '../../../../feature/export/export.dart';
 import '../models/word_model.dart';
 
 class WordService {
+  WordService._();
+  static final instance = WordService._();
   Future<WordModel?> fetchWord(String text) async {
     try {
       final response = await http.get(

@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: RootView(),
-      theme: CustomTheme().ligthTheme,
-      darkTheme: CustomTheme().darkTheme,
-      themeMode: ThemeService().getThemeMode(),
+      theme: CustomTheme.instance.ligthTheme,
+      darkTheme: CustomTheme.instance.darkTheme,
+      themeMode: ThemeService.instance.getThemeMode(),
     );
   }
 }

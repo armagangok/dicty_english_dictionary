@@ -24,7 +24,7 @@ class ThemePickerWidget extends StatelessWidget {
               value: themeController.switchValue.value,
               onChanged: (value) {
                 themeController.change(value);
-                ThemeService().changeTheme();
+                ThemeService.instance.changeTheme();
               },
             );
           },

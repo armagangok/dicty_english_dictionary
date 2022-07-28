@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import '../../../feature/export/export.dart';
 
 class DataController extends GetxController implements BaseWordController {
-  final WordService _wordService = WordService();
+  final WordService _wordService = WordService.instance;
   Rx<dynamic> wordModel = Rx(null);
 
   @override

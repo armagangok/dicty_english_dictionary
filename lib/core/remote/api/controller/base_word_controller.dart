@@ -1,7 +1,5 @@
 import '../../../../feature/export/export.dart';
 
-
-
 abstract class BaseWordController extends GetxController {
   RxList<Definition>? noun;
   RxList<Definition>? verb;
