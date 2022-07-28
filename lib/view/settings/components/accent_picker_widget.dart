@@ -16,8 +16,6 @@ class AccentPickerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final AccentController accentController = Get.put(AccentController());
 
-    print(items.indexOf("${accentController.accent.value}"));
-
     return SizedBox(
       height: context.height(0.2),
       width: double.minPositive,
