@@ -18,7 +18,7 @@ class AccentController extends GetxController {
     super.onReady();
   }
 
-  Future<void> saveAccent(int index) async {
-    await _hiveService.saveLanguage(index);
+  Future<void> saveAccent(String lang) async {
+    await _hiveService.saveLanguage(lang);
   }
 }

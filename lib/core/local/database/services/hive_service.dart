@@ -76,9 +76,13 @@ class HiveService extends BaseWordController {
 
   //
 
-  Future<int> getLanguage() async {
+  Future<String> getLanguage() async {
     final Box box = Hive.box("countryBox");
-    final int index = await box.getAt(0);
+    print(await box.getAt(0));
+
+
+    final String index = await box.getAt(0);
+
     return index;
   }
 
@@ -89,9 +93,9 @@ class HiveService extends BaseWordController {
 
   //
 
-  Future<void> saveLanguage(int index) async {
+  Future<void> saveLanguage(String lang) async {
     await Hive.box("countryBox").clear();
-    await Hive.box("countryBox").add(index);
+    await Hive.box("countryBox").add(lang);
   }
 
   //

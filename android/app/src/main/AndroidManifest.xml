@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.english_accent_dictionary">
    <application
-        android:label="English Accent Dictionary"
+        android:label="Dicty Dictionary"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:exported="true"

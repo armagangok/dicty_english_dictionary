@@ -1,7 +1,6 @@
 import 'package:flutter_tts/flutter_tts.dart';
 
 import '../../core/local/database/services/hive_service.dart';
-import '../../core/remote/api/models/word_model.dart';
 
 class TextToSpeech {
   TextToSpeech._();
@@ -11,65 +10,55 @@ class TextToSpeech {
   final HiveService _hiveService = HiveService.instance;
 
   Future<void> initTTS() async {
-    int index = await _hiveService.getLanguage();
-    await setLanguage(index);
+    String lang = await _hiveService.getLanguage();
+    await setLanguage(lang);
   }
-
-  // Future<void> speakWord(WordModel data) async {
-  //   await initTTS();
-  //   String willBeSpoken = "";
-  //   await flutterTts.speak("Word is ready!");
-  //   for (var element in data.meanings!) {
-  //     for (var definition in element.definitions!) {
-  //       willBeSpoken += "." + definition.definition!;
-  //     }
-  //   }
-  //   await flutterTts.speak(
-  //     "${data.word}.  $willBeSpoken",
-  //   );
-  // }
 
   Future<void> speakWordOneTime(String phrase) async {
     await initTTS();
     await flutterTts.speak(phrase);
   }
 
-  // Future<void> pause() async {
-  //   await flutterTts.pause();
-  // }
-
-  Future<void> setLanguage(int index) async {
-    switch (index) {
-      case 0:
+  Future<void> setLanguage(String language) async {
+    switch (language) {
+      case "en-GB":
         await flutterTts.setLanguage("en-GB");
         break;
 
-      case 1:
+      case "en-US":
         await flutterTts.setLanguage("en-US");
         break;
 
-      case 2:
+      case "en-AU":
         await flutterTts.setLanguage("en-AU");
         break;
 
-      case 3:
-        await flutterTts.setLanguage("en-IE");
-        break;
-
-      case 4:
+      case "en-IN":
         await flutterTts.setLanguage("en-IN");
         break;
 
-      case 5:
+      case "en-ZA":
         await flutterTts.setLanguage("en-ZA");
         break;
 
+        case "en-IE":
+        await flutterTts.setLanguage("en-IE");
+        break;
+
       default:
-        await flutterTts.setLanguage("en-US");
+        await flutterTts.setLanguage("en-GB");
         break;
     }
   }
 }
+
+
+    // 'English-GB',
+    // 'English-US',
+    // 'English-IE',
+    // 'English-AU',
+    // 'English-IN',
+    // 'English-ZA',
 
 
 // ["fr-FR",

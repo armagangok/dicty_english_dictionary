@@ -16,6 +16,8 @@ class AccentPickerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final AccentController accentController = Get.put(AccentController());
 
+    print(items.indexOf("${accentController.accent.value}"));
+
     return SizedBox(
       height: context.height(0.2),
       width: double.minPositive,
@@ -31,12 +33,14 @@ class AccentPickerWidget extends StatelessWidget {
             default:
               return CupertinoPicker(
                 scrollController: FixedExtentScrollController(
-                    initialItem: accentController.accent.value!),
+                  initialItem:
+                      items.indexOf("${accentController.accent.value}"),
+                ),
                 useMagnifier: true,
                 magnification: 1.2,
                 itemExtent: 50,
                 onSelectedItemChanged: (value) async {
-                  await accentController.saveAccent(value);
+                  await accentController.saveAccent(items[value]);
                 },
                 children:
                     items.map((item) => Center(child: Text(item))).toList(),
