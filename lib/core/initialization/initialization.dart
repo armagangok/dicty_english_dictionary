@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../feature/export/export.dart';
-import '../local/database/services/hive_service.dart';
+import '../../feature/controller/hive_controller.dart';
 
 class Initialization {
   Initialization._();

@@ -1,6 +1,6 @@
 import 'package:flutter_tts/flutter_tts.dart';
 
-import '../../core/local/database/services/hive_service.dart';
+import '../controller/hive_controller.dart';
 
 class TextToSpeech {
   TextToSpeech._();

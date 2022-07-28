@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../export/export.dart';
-import '../model/definition.dart';
 
 class DictionaryWidget extends StatelessWidget {
   const DictionaryWidget({

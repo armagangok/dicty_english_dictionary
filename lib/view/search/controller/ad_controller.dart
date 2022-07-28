@@ -13,12 +13,6 @@ class AdController extends GetxController {
   }
 
   @override
-  void onReady() {
-    
-    super.onReady();
-  }
-
-  @override
   InternalFinalCallback<void> get onDelete {
     _interstitialAd?.dispose();
     return super.onDelete;

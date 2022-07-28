@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../view/recent/components/speak_button.dart';
 import '../controller/tab_controller.dart';
 import '../export/export.dart';
-import '../model/word_model.dart';
 import 'dictionary_widget.dart';
 
 class WordWidget extends StatelessWidget {

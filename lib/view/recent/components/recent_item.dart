@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../../../core/local/database/services/hive_service.dart';
+import '../../../feature/controller/hive_controller.dart';
 
 import '../../../feature/components/word_widget.dart';
 import '../../../feature/export/export.dart';

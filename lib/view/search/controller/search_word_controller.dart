@@ -1,4 +1,4 @@
-import '../../../core/local/database/services/hive_service.dart';
+import '../../../feature/controller/hive_controller.dart';
 
 import '../../../feature/export/export.dart';
 import '../../../feature/model/definition.dart';
