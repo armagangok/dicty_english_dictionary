@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/remote/api/models/word_model.dart';
+import '../../view/recent/components/speak_button.dart';
 import '../controller/tab_controller.dart';
 import '../export/export.dart';
 import 'dictionary_widget.dart';

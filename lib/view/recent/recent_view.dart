@@ -11,8 +11,6 @@ class RecentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HiveService hiveService = HiveService.instance;
-
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -20,12 +18,10 @@ class RecentView extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: context.width(0.04)),
             child: ValueListenableBuilder(
-              valueListenable: hiveService.getHiveBox.listenable(),
-              builder: (context, Box<WordModel> wordBox, _) {
-                return wordBox.isEmpty
-                    ? noRecentSearch()
-                    : recentSearchBuilder(hiveService.getAll());
-              },
+              valueListenable: HiveService.instance.getHiveBox.listenable(),
+              builder: (context, Box<WordModel> wordBox, _) => wordBox.isEmpty
+                  ? noRecentSearch()
+                  : recentSearchBuilder(HiveService.instance.getAll()),
             ),
           ),
         ),
@@ -39,22 +35,18 @@ class RecentView extends StatelessWidget {
     return Builder(
       builder: (context) {
         return ListView.separated(
-          separatorBuilder: (context, index) {
-            return const SizedBox001();
-          },
+          separatorBuilder: (context, index) => const SizedBox001(),
           padding: EdgeInsets.only(top: context.height(0.015)),
           shrinkWrap: true,
           physics: const ClampingScrollPhysics(),
           itemCount: wordList.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: EdgeInsets.all(context.width(0.013)),
-              child: RecentItem(
-                wordModel: wordList[index],
-                index: index,
-              ),
-            );
-          },
+          itemBuilder: (context, index) => Padding(
+            padding: EdgeInsets.all(context.width(0.013)),
+            child: RecentItem(
+              wordModel: wordList[index],
+              index: index,
+            ),
+          ),
         );
       },
     );
@@ -63,16 +55,18 @@ class RecentView extends StatelessWidget {
   //
 
   Widget noRecentSearch() {
-    return Builder(builder: (context) {
-      return Center(
-        child: FittedBox(
-          child: Text(
-            "There is no recent search you have made.",
-            style: context.textTheme.headline6,
-            maxLines: 1,
+    return Builder(
+      builder: (context) {
+        return Center(
+          child: FittedBox(
+            child: Text(
+              "There is no recent search you have made.",
+              style: context.textTheme.headline6,
+              maxLines: 1,
+            ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 }
