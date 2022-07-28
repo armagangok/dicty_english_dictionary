@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:intl/intl.dart';
 
 import '../../../feature/export/export.dart';
+import '../../../feature/model/definition.dart';
+import '../../../feature/model/meaning.dart';
 
 class DataController extends GetxController implements BaseWordController {
   final WordService _wordService = WordService.instance;

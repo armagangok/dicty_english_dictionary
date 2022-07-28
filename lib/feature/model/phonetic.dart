@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:hive/hive.dart';
 
 import 'license.dart';
+
 part 'phonetic.g.dart';
 
 @HiveType(typeId: 5)

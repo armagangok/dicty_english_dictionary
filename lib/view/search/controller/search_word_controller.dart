@@ -1,6 +1,9 @@
 import '../../../core/local/database/services/hive_service.dart';
-import '../../../core/remote/api/models/word_model.dart';
+
 import '../../../feature/export/export.dart';
+import '../../../feature/model/definition.dart';
+import '../../../feature/model/meaning.dart';
+import '../../../feature/model/word_model.dart';
 
 class SearchWordController extends GetxController
     implements BaseWordController {

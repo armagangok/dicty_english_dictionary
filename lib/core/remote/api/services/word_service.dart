@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../../../feature/export/export.dart';
-import '../models/word_model.dart';
+import '../../../../feature/model/word_model.dart';
+
 
 class WordService {
   WordService._();

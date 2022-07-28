@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../feature/export/export.dart';
 import '../../core/local/database/services/hive_service.dart';
-import '../../core/remote/api/models/word_model.dart';
+import '../../feature/model/word_model.dart';
+
 
 class RecentView extends StatelessWidget {
   RecentView({Key? key}) : super(key: key);

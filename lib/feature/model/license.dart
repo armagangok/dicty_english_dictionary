@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:hive/hive.dart';
+
 part 'license.g.dart';
 
 @HiveType(typeId: 2)

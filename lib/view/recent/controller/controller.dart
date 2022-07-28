@@ -1,5 +1,6 @@
-import '../../../core/remote/api/models/word_model.dart';
+
 import '../../../feature/export/export.dart';
+import '../../../feature/model/word_model.dart';
 
 class RecentController extends GetxController {
   RxList<WordModel> hiveList = RxList([]);

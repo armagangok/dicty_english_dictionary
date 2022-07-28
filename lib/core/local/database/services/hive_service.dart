@@ -1,9 +1,7 @@
 // ignore_for_file: overridden_fields
 
 import '../../../../feature/export/export.dart';
-import '../../../remote/api/models/license.dart';
-import '../../../remote/api/models/phonetic.dart';
-import '../../../remote/api/models/word_model.dart';
+
 
 class HiveService extends BaseWordController {
   HiveService._();
