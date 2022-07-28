@@ -53,8 +53,6 @@ class SearchResultView extends StatelessWidget {
       await searchController.showInterstitialAd();
       await searchWordController.fetchWord(textController.search.text);
       textController.search.clear();
-
-      
     }
   }
 
@@ -68,7 +66,7 @@ class SearchResultView extends StatelessWidget {
         } else {
           return searchWordController.wordModel.value == null
               ? const Center(child: Text("Search for the word you want."))
-              : NewWordWidget(
+              : WordWidget(
                   wordModel: searchWordController.wordModel.value,
                   controller: searchWordController,
                 );

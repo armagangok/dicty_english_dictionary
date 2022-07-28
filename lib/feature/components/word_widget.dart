@@ -5,8 +5,8 @@ import '../controller/tab_controller.dart';
 import '../export/export.dart';
 import 'dictionary_widget.dart';
 
-class NewWordWidget extends StatelessWidget {
-  NewWordWidget({
+class WordWidget extends StatelessWidget {
+  WordWidget({
     Key? key,
     required this.controller,
     required this.wordModel,
@@ -18,118 +18,112 @@ class NewWordWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return body();
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: context.width(0.05),
+        vertical: context.width(0.025),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          wordTextSpeakButton(),
+          const SizedBox001(),
+          phonetics(),
+          const SizedBox001(),
+          expandedItems1(),
+          SizedBox(height: context.height(0.0075)),
+          expandedItems2(),
+          wordKindWidget()
+        ],
+      ),
+    );
   }
 
-  Widget body() {
-    return Builder(
-      builder: (context) {
-        return Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: context.width(0.05),
-            vertical: context.width(0.025),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                children: [
-                  Text(
-                    wordModel.word!,
-                    style: context.textTheme.headline4!.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  SpeakButton(data: wordModel.word!)
-                ],
-              ),
-              const SizedBox001(),
-              phonetics(),
-              const SizedBox001(),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.blue),
-                  borderRadius: const BorderRadius.all(Radius.circular(6)),
-                ),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  physics: const ClampingScrollPhysics(),
-                  child: Row(
-                    // scrollDirection: Axis.horizontal,
+  //
 
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      expandedItem(
-                          "Noun",
-                          0,
-                          () => tabBarController.changeIndex(0),
-                          controller.noun!.length),
-                      expandedItem(
-                          "Pronoun",
-                          1,
-                          () => tabBarController.changeIndex(1),
-                          controller.pronoun!.length),
-                      expandedItem(
-                          "Articles",
-                          2,
-                          () => tabBarController.changeIndex(2),
-                          controller.articles!.length),
-                      expandedItem(
-                          "Interjection",
-                          3,
-                          () => tabBarController.changeIndex(3),
-                          controller.interjection!.length),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: context.height(0.0075),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.blue),
-                  borderRadius: const BorderRadius.all(Radius.circular(6)),
-                ),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  physics: const ClampingScrollPhysics(),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      expandedItem(
-                          "Verb",
-                          4,
-                          () => tabBarController.changeIndex(4),
-                          controller.verb!.length),
-                      expandedItem(
-                          "Adverb",
-                          5,
-                          () => tabBarController.changeIndex(5),
-                          controller.adverb!.length),
-                      expandedItem(
-                          "Preposition",
-                          6,
-                          () => tabBarController.changeIndex(6),
-                          controller.preposition!.length),
-                      expandedItem(
-                        "Adjecive",
-                        7,
-                        () => tabBarController.changeIndex(7),
-                        controller.adjective!.length,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              wordKindWidget()
-            ],
-          ),
-        );
-      },
+  Container expandedItems2() {
+    return Container(
+      // decoration: BoxDecoration(
+      //   border: Border.all(color: Colors.blue),
+      //   borderRadius: const BorderRadius.all(
+      //     Radius.circular(6),
+      //   ),
+      // ),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        physics: const ClampingScrollPhysics(),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            expandedItem("Verb", 4, () => tabBarController.changeIndex(4),
+                controller.verb!.length),
+            expandedItem("Adverb", 5, () => tabBarController.changeIndex(5),
+                controller.adverb!.length),
+            expandedItem(
+                "Preposition",
+                6,
+                () => tabBarController.changeIndex(6),
+                controller.preposition!.length),
+            expandedItem(
+              "Adjecive",
+              7,
+              () => tabBarController.changeIndex(7),
+              controller.adjective!.length,
+            ),
+          ],
+        ),
+      ),
     );
+  }
+
+  //
+
+  Container expandedItems1() {
+    return Container(
+      // decoration: BoxDecoration(
+      //   border: Border.all(color: Colors.blue),
+      //   borderRadius: const BorderRadius.all(Radius.circular(6)),
+      // ),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        physics: const ClampingScrollPhysics(),
+        child: Row(
+          // scrollDirection: Axis.horizontal,
+
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            expandedItem("Noun", 0, () => tabBarController.changeIndex(0),
+                controller.noun!.length),
+            expandedItem("Pronoun", 1, () => tabBarController.changeIndex(1),
+                controller.pronoun!.length),
+            expandedItem("Articles", 2, () => tabBarController.changeIndex(2),
+                controller.articles!.length),
+            expandedItem(
+                "Interjection",
+                3,
+                () => tabBarController.changeIndex(3),
+                controller.interjection!.length),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget wordTextSpeakButton() {
+    return Builder(builder: (context) {
+      return Row(
+        children: [
+          Text(
+            wordModel.word!,
+            style: context.textTheme.headline4!.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          SpeakButton(data: wordModel.word!)
+        ],
+      );
+    });
   }
 
   //
@@ -270,35 +264,3 @@ class NewWordWidget extends StatelessWidget {
     );
   }
 }
-
-
-
-
-// Widget waitingForDataWidget() {
-//     return Builder(builder: (context) {
-//       return Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             FittedBox(
-//               child: Text(
-//                 "Fetching data from source...",
-//                 style: context.textTheme.headline6,
-//                 maxLines: 1,
-//               ),
-//             ),
-//             // const SizedBox001(),
-//             // const CircularProgressIndicator()
-//           ],
-//         ),
-//       );
-//     });
-//   }
-
-//   //
-
-//   Center noDataWidget() {
-//     return const Center(
-//       child: Text("An error occured while fetching data."),
-//     );
-//   }

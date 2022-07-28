@@ -33,7 +33,9 @@ class RecentItem extends StatelessWidget {
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
-           DeleteButton(index: index,),
+          DeleteButton(
+            index: index,
+          ),
         ],
       ),
     );
@@ -58,7 +60,7 @@ class RecentItem extends StatelessWidget {
                   shrinkWrap: true,
                   physics: const ClampingScrollPhysics(),
                   children: [
-                    NewWordWidget(
+                    WordWidget(
                       controller: HiveService.instance,
                       wordModel: wordModel,
                     ),

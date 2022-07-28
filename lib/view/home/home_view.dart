@@ -30,7 +30,7 @@ class HomeView extends StatelessWidget {
                     shrinkWrap: true,
                     physics: const ClampingScrollPhysics(),
                     children: [
-                      NewWordWidget(
+                      WordWidget(
                         wordModel: dataController.wordModel.value,
                         controller: dataController,
                       ),
