@@ -2,27 +2,26 @@
 
 import '../export/export.dart';
 
-
 class HiveService extends BaseWordController {
   HiveService._();
   static final instance = HiveService._();
 
   @override
-  RxList<Definition>? adjective = RxList([]);
+  late RxList<Definition> adjective = RxList([]);
   @override
-  RxList<Definition>? adverb = RxList([]);
+  RxList<Definition> adverb = RxList([]);
   @override
-  RxList<Definition>? articles = RxList([]);
+  RxList<Definition> articles = RxList([]);
   @override
-  RxList<Definition>? interjection = RxList([]);
+  RxList<Definition> interjection = RxList([]);
   @override
-  RxList<Definition>? noun = RxList([]);
+  RxList<Definition> noun = RxList([]);
   @override
-  RxList<Definition>? preposition = RxList([]);
+  RxList<Definition> preposition = RxList([]);
   @override
-  RxList<Definition>? pronoun = RxList([]);
+  RxList<Definition> pronoun = RxList([]);
   @override
-  RxList<Definition>? verb = RxList([]);
+  RxList<Definition> verb = RxList([]);
 
   List<WordModel> wordList = [];
   late final Box<WordModel> _hiveWords;
@@ -101,49 +100,49 @@ class HiveService extends BaseWordController {
       switch (element.partOfSpeech) {
         case "noun":
           for (var element in element.definitions!) {
-            noun!.add(element);
+            noun.add(element);
           }
           break;
 
         case "verb":
           for (var element in element.definitions!) {
-            verb!.add(element);
+            verb.add(element);
           }
           break;
 
         case "interjection":
           for (var element in element.definitions!) {
-            interjection!.add(element);
+            interjection.add(element);
           }
           break;
 
         case "pronoun":
           for (var element in element.definitions!) {
-            pronoun!.add(element);
+            pronoun.add(element);
           }
           break;
 
         case "articles":
           for (var element in element.definitions!) {
-            articles!.add(element);
+            articles.add(element);
           }
           break;
 
         case "adverb":
           for (var element in element.definitions!) {
-            adverb!.add(element);
+            adverb.add(element);
           }
           break;
 
         case "preposition":
           for (var element in element.definitions!) {
-            preposition!.add(element);
+            preposition.add(element);
           }
           break;
 
         case "adjective":
           for (var element in element.definitions!) {
-            adjective!.add(element);
+            adjective.add(element);
           }
           break;
 
@@ -153,13 +152,13 @@ class HiveService extends BaseWordController {
   }
 
   void _clearList() {
-    noun!.clear();
-    verb!.clear();
-    interjection!.clear();
-    pronoun!.clear();
-    articles!.clear();
-    adverb!.clear();
-    preposition!.clear();
-    adjective!.clear();
+    noun.clear();
+    verb.clear();
+    interjection.clear();
+    pronoun.clear();
+    articles.clear();
+    adverb.clear();
+    preposition.clear();
+    adjective.clear();
   }
 }

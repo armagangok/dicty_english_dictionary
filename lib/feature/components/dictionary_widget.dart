@@ -22,8 +22,6 @@ class DictionaryWidget extends StatelessWidget {
     );
   }
 
-  //
-
   Widget buildDefinitions() {
     return Builder(
       builder: (context) {
@@ -44,8 +42,6 @@ class DictionaryWidget extends StatelessWidget {
       },
     );
   }
-
-  //
 
   Widget definitionBuilder() {
     return ListView.separated(
@@ -71,8 +67,6 @@ class DictionaryWidget extends StatelessWidget {
     );
   }
 
-  //
-
   Widget buildDefinitonText(int index) {
     return Builder(builder: (context) {
       return Text.rich(
@@ -91,8 +85,6 @@ class DictionaryWidget extends StatelessWidget {
       );
     });
   }
-
-  //
 
   Widget buildExampleText(int index) {
     return Builder(builder: (context) {
@@ -113,110 +105,3 @@ class DictionaryWidget extends StatelessWidget {
     });
   }
 }
-  // Widget etimology() {
-  //   return Builder(
-  //     builder: (context) {
-  //       return ListView(
-  //         physics: const NeverScrollableScrollPhysics(),
-  //         shrinkWrap: true,
-  //         children: [
-  //           Text(
-  //             "ETIMOLOGY",
-  //             style: context.textTheme.bodyLarge!.copyWith(
-  //               fontWeight: FontWeight.w600,
-  //             ),
-  //           ),
-  //           const Text(
-  //               "etimology is important. etimology is important. etimology is important. etimology is important."),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
-
-
- // Widget synonymAndAntonyms() {
-  //   return Builder(builder: (context) {
-  //     return Row(
-  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //       children: [
-  //         Expanded(
-  //           child: SizedBox(
-  //             height: context.height(0.1),
-  //             child: ListView.builder(
-  //               shrinkWrap: true,
-  //               itemCount: partOfSpeech.length,
-  //               itemBuilder: (context, index) {
-  //                 List item = partOfSpeech[index].synonyms!;
-
-  //                 return ListView.builder(
-  //                   shrinkWrap: true,
-  //                   itemCount: item.length,
-  //                   physics: const ClampingScrollPhysics(),
-  //                   itemBuilder: (context, index) {
-  //                     return Text(
-  //                       item[index],
-  //                       style: context.textTheme.bodySmall!
-  //                           .copyWith(color: Colors.blue),
-  //                     );
-  //                   },
-  //                 );
-  //               },
-  //               physics: const NeverScrollableScrollPhysics(),
-  //               // children: [
-  //               // Text(
-  //               //   "SYNONYMS",
-  //               //   style: context.textTheme.bodyLarge!.copyWith(
-  //               //     fontWeight: FontWeight.w600,
-  //               //   ),
-  //               // ),
-  //               //   ListView.builder(
-  //               //     shrinkWrap: true,
-  //               //     itemCount: partOfSpeech[index].synonyms.length,
-  //               //     physics: const ClampingScrollPhysics(),
-  //               //     itemBuilder: (context, index) {
-  //               //       return Text(
-  //               //         ,
-  //               //         style: context.textTheme.bodySmall!
-  //               //             .copyWith(color: Colors.blue),
-  //               //       );
-  //               //     },
-  //               //   )
-  //               // ],
-  //             ),
-  //           ),
-  //         ),
-  //         // Expanded(
-  //         //   child: SizedBox(
-  //         //     height: context.height(0.1),
-  //         //     child: ListView(
-  //         //       physics: const NeverScrollableScrollPhysics(),
-  //         //       children: [
-  //         //         Text(
-  //         //           "ANTONYMS",
-  //         //           style: context.textTheme.bodyLarge!.copyWith(
-  //         //             fontWeight: FontWeight.w600,
-  //         //           ),
-  //         //         ),
-  //         //         ListView.builder(
-  //         //           physics: const ClampingScrollPhysics(),
-  //         //           shrinkWrap: true,
-  //         //           itemCount: 5,
-  //         //           itemBuilder: (context, index) {
-  //         //             return Text(
-  //         //               "data",
-  //         //               style: context.textTheme.bodySmall!
-  //         //                   .copyWith(color: Colors.blue),
-  //         //             );
-  //         //           },
-  //         //         )
-  //         //       ],
-  //         //     ),
-  //         //   ),
-  //         // ),
-  //       ],
-  //     );
-  //   });
-  // }
-
-  //

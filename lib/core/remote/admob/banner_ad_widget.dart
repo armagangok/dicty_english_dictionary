@@ -3,19 +3,19 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../../../core/remote/admob/generate_ad.dart';
 
-class AdvertisementWidget extends StatefulWidget {
+class BannerAdWidget extends StatefulWidget {
   final BannerAd? ad;
   final String? unitID;
-  const AdvertisementWidget({
+  const BannerAdWidget({
     Key? key,
     this.ad,
     this.unitID,
   }) : super(key: key);
   @override
-  State<AdvertisementWidget> createState() => _AdvertisementWidgetState();
+  State<BannerAdWidget> createState() => _BannerAdWidgetState();
 }
 
-class _AdvertisementWidgetState extends State<AdvertisementWidget> {
+class _BannerAdWidgetState extends State<BannerAdWidget> {
   @override
   void initState() {
     super.initState();

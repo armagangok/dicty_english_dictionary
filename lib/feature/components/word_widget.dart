@@ -42,70 +42,48 @@ class WordWidget extends StatelessWidget {
 
   //
 
-  Container expandedItems2() {
-    return Container(
-      // decoration: BoxDecoration(
-      //   border: Border.all(color: Colors.blue),
-      //   borderRadius: const BorderRadius.all(
-      //     Radius.circular(6),
-      //   ),
-      // ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        physics: const ClampingScrollPhysics(),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            expandedItem("Verb", 4, () => tabBarController.changeIndex(4),
-                controller.verb!.length),
-            expandedItem("Adverb", 5, () => tabBarController.changeIndex(5),
-                controller.adverb!.length),
-            expandedItem(
-                "Preposition",
-                6,
-                () => tabBarController.changeIndex(6),
-                controller.preposition!.length),
-            expandedItem(
-              "Adjecive",
-              7,
-              () => tabBarController.changeIndex(7),
-              controller.adjective!.length,
-            ),
-          ],
-        ),
+  Widget expandedItems2() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      physics: const ClampingScrollPhysics(),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          expandedItem("Verb", 4, () => tabBarController.changeIndex(4),
+              controller.verb.length),
+          expandedItem("Adverb", 5, () => tabBarController.changeIndex(5),
+              controller.adverb.length),
+          expandedItem("Preposition", 6, () => tabBarController.changeIndex(6),
+              controller.preposition.length),
+          expandedItem(
+            "Adjecive",
+            7,
+            () => tabBarController.changeIndex(7),
+            controller.adjective.length,
+          ),
+        ],
       ),
     );
   }
 
   //
 
-  Container expandedItems1() {
-    return Container(
-      // decoration: BoxDecoration(
-      //   border: Border.all(color: Colors.blue),
-      //   borderRadius: const BorderRadius.all(Radius.circular(6)),
-      // ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        physics: const ClampingScrollPhysics(),
-        child: Row(
-          // scrollDirection: Axis.horizontal,
-
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            expandedItem("Noun", 0, () => tabBarController.changeIndex(0),
-                controller.noun!.length),
-            expandedItem("Pronoun", 1, () => tabBarController.changeIndex(1),
-                controller.pronoun!.length),
-            expandedItem("Articles", 2, () => tabBarController.changeIndex(2),
-                controller.articles!.length),
-            expandedItem(
-                "Interjection",
-                3,
-                () => tabBarController.changeIndex(3),
-                controller.interjection!.length),
-          ],
-        ),
+  Widget expandedItems1() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      physics: const ClampingScrollPhysics(),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          expandedItem("Noun", 0, () => tabBarController.changeIndex(0),
+              controller.noun.length),
+          expandedItem("Pronoun", 1, () => tabBarController.changeIndex(1),
+              controller.pronoun.length),
+          expandedItem("Articles", 2, () => tabBarController.changeIndex(2),
+              controller.articles.length),
+          expandedItem("Interjection", 3, () => tabBarController.changeIndex(3),
+              controller.interjection.length),
+        ],
       ),
     );
   }
@@ -162,42 +140,42 @@ class WordWidget extends StatelessWidget {
             const SizedBox001(),
             tabBarController.currentIndex.value == 0
                 ? DictionaryWidget(
-                    definitions: controller.noun!,
+                    definitions: controller.noun,
                   )
                 : const SizedBox(),
             tabBarController.currentIndex.value == 1
                 ? DictionaryWidget(
-                    definitions: controller.pronoun!,
+                    definitions: controller.pronoun,
                   )
                 : const SizedBox(),
             tabBarController.currentIndex.value == 2
                 ? DictionaryWidget(
-                    definitions: controller.articles!,
+                    definitions: controller.articles,
                   )
                 : const SizedBox(),
             tabBarController.currentIndex.value == 3
                 ? DictionaryWidget(
-                    definitions: controller.interjection!,
+                    definitions: controller.interjection,
                   )
                 : const SizedBox(),
             tabBarController.currentIndex.value == 4
                 ? DictionaryWidget(
-                    definitions: controller.verb!,
+                    definitions: controller.verb,
                   )
                 : const SizedBox(),
             tabBarController.currentIndex.value == 5
                 ? DictionaryWidget(
-                    definitions: controller.adverb!,
+                    definitions: controller.adverb,
                   )
                 : const SizedBox(),
             tabBarController.currentIndex.value == 6
                 ? DictionaryWidget(
-                    definitions: controller.preposition!,
+                    definitions: controller.preposition,
                   )
                 : const SizedBox(),
             tabBarController.currentIndex.value == 7
                 ? DictionaryWidget(
-                    definitions: controller.adjective!,
+                    definitions: controller.adjective,
                   )
                 : const SizedBox(),
           ],
@@ -245,15 +223,7 @@ class WordWidget extends StatelessWidget {
                                 : null,
                       ),
                     ),
-                    Text(
-                      "($amount)",
-                      style: const TextStyle(
-                          // color:
-                          // clickedNumber == tabBarController.currentIndex.value
-                          // Colors.white
-
-                          ),
-                    )
+                    Text("($amount)")
                   ],
                 ),
               );

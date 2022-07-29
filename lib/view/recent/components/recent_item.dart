@@ -2,11 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../../../feature/controller/hive_controller.dart';
-
 import '../../../feature/components/word_widget.dart';
 import '../../../feature/export/export.dart';
-import '../../../feature/model/word_model.dart';
 import 'delete_button.dart';
 import 'speak_button.dart';
 

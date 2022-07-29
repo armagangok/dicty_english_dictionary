@@ -8,7 +8,7 @@ import 'controller/data_controller.dart';
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
 
-  final DataController dataController = Get.put(DataController());
+  final DataController dataController = Get.put(DataController.instance);
 
   @override
   Widget build(BuildContext context) {

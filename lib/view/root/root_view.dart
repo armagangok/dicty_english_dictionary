@@ -22,7 +22,7 @@ class RootView extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              AdvertisementWidget(
+              BannerAdWidget(
                 ad: generateAd.ad,
                 unitID: AdHelper.bannerAdUnitId1,
               ),

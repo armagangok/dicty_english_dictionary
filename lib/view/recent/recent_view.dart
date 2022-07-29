@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../feature/export/export.dart';
-import '../../feature/controller/hive_controller.dart';
-import '../../feature/model/word_model.dart';
-
 
 class RecentView extends StatelessWidget {
   RecentView({Key? key}) : super(key: key);
@@ -21,8 +18,8 @@ class RecentView extends StatelessWidget {
             child: ValueListenableBuilder(
               valueListenable: HiveService.instance.getHiveBox.listenable(),
               builder: (context, Box<WordModel> wordBox, _) => wordBox.isEmpty
-                  ? noRecentSearch()
-                  : recentSearchBuilder(HiveService.instance.getAll()),
+                  ? _noRecentSearch()
+                  : _recentSearchBuilder(HiveService.instance.getAll()),
             ),
           ),
         ),
@@ -32,7 +29,7 @@ class RecentView extends StatelessWidget {
 
   //
 
-  Widget recentSearchBuilder(List<WordModel> wordList) {
+  Widget _recentSearchBuilder(List<WordModel> wordList) {
     return Builder(
       builder: (context) {
         return ListView.separated(
@@ -55,7 +52,7 @@ class RecentView extends StatelessWidget {
 
   //
 
-  Widget noRecentSearch() {
+  Widget _noRecentSearch() {
     return Builder(
       builder: (context) {
         return Center(

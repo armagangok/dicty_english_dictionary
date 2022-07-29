@@ -11,8 +11,6 @@ class CreateAd {
   get getbool => isLoad;
   get ad1 => ad;
 
-  //
-
   Future<void> createAd1(f, {required String unitID}) async {
     ad = BannerAd(
       size: AdSize.banner,

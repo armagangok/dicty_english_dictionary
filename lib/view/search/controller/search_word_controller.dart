@@ -1,9 +1,4 @@
-import '../../../feature/controller/hive_controller.dart';
-
 import '../../../feature/export/export.dart';
-import '../../../feature/model/definition.dart';
-import '../../../feature/model/meaning.dart';
-import '../../../feature/model/word_model.dart';
 
 class SearchWordController extends GetxController
     implements BaseWordController {
@@ -17,21 +12,21 @@ class SearchWordController extends GetxController
   final WordService _wordService = WordService.instance;
 
   @override
-  RxList<Definition>? noun = RxList([]);
+  RxList<Definition> noun = RxList([]);
   @override
-  RxList<Definition>? verb = RxList([]);
+  RxList<Definition> verb = RxList([]);
   @override
-  RxList<Definition>? interjection = RxList([]);
+  RxList<Definition> interjection = RxList([]);
   @override
-  RxList<Definition>? pronoun = RxList([]);
+  RxList<Definition> pronoun = RxList([]);
   @override
-  RxList<Definition>? articles = RxList([]);
+  RxList<Definition> articles = RxList([]);
   @override
-  RxList<Definition>? adverb = RxList([]);
+  RxList<Definition> adverb = RxList([]);
   @override
-  RxList<Definition>? preposition = RxList([]);
+  RxList<Definition> preposition = RxList([]);
   @override
-  RxList<Definition>? adjective = RxList([]);
+  RxList<Definition> adjective = RxList([]);
 
   Future<dynamic> fetchWord(String text) async {
     int checker = 0;
@@ -42,65 +37,65 @@ class SearchWordController extends GetxController
       for (Meaning element in wordModel.value!.meanings!) {
         switch (element.partOfSpeech) {
           case "noun":
-            noun!.clear();
+            noun.clear();
             for (var element in element.definitions!) {
-              noun!.add(element);
+              noun.add(element);
             }
             break;
 
           case "verb":
-            verb!.clear();
+            verb.clear();
             for (var element in element.definitions!) {
-              verb!.add(element);
+              verb.add(element);
             }
             break;
 
           case "interjection":
-            interjection!.clear();
+            interjection.clear();
             for (var element in element.definitions!) {
-              interjection!.add(element);
+              interjection.add(element);
             }
             break;
 
           case "pronoun":
-            pronoun!.clear();
+            pronoun.clear();
             for (var element in element.definitions!) {
-              pronoun!.add(element);
+              pronoun.add(element);
             }
             break;
 
           case "articles":
-            articles!.clear();
+            articles.clear();
             for (var element in element.definitions!) {
-              articles!.add(element);
+              articles.add(element);
             }
             break;
 
           case "adverb":
-            adverb!.clear();
+            adverb.clear();
             for (var element in element.definitions!) {
-              adverb!.add(element);
+              adverb.add(element);
             }
             break;
 
           case "preposition":
-            preposition!.clear();
+            preposition.clear();
             for (var element in element.definitions!) {
-              preposition!.add(element);
+              preposition.add(element);
             }
             break;
 
           case "adjective":
-            adjective!.clear();
+            adjective.clear();
             for (var element in element.definitions!) {
-              adjective!.add(element);
+              adjective.add(element);
             }
             break;
 
           default:
         }
       }
-    } 
+    }
 
     if (wordModel.value != null) {
       for (var element in hiveService.getAll()) {
@@ -125,3 +120,14 @@ class SearchWordController extends GetxController
     return wordModel.value;
   }
 }
+
+// enum PartOfSpeech {
+//   noun,
+//   verb,
+//   interjection,
+//   pronoun,
+//   articles,
+//   adverb,
+//   preposition,
+//   adjective,
+// }

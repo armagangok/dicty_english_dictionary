@@ -24,7 +24,7 @@ class SearchResultView extends StatelessWidget {
             title: CustomTextField(
               controller: textController.search,
               icon: const Icon(Icons.search),
-              onTap: () async => newMethod(),
+              onTap: () async => searchForTheWord(),
             ),
           ),
           body: ListView(
@@ -41,7 +41,7 @@ class SearchResultView extends StatelessWidget {
 
   //
 
-  void newMethod() async {
+  void searchForTheWord() async {
     if (textController.search.text.isEmpty) {
       Get.snackbar(
         "Warning",
@@ -75,13 +75,3 @@ class SearchResultView extends StatelessWidget {
     );
   }
 }
-
-
-
-          // bottomNavigationBar: AdvertisementWidget(
-          //   ad: generateAd.ad,
-          //   unitID: AdHelper.bannerAdUnitId3,
-          // ),
-
-
-       

@@ -3,34 +3,35 @@ import 'dart:convert';
 import 'package:intl/intl.dart';
 
 import '../../../feature/export/export.dart';
-import '../../../feature/model/definition.dart';
-import '../../../feature/model/meaning.dart';
 
 class DataController extends GetxController implements BaseWordController {
+  DataController._();
+  static final instance = DataController._();
+  
   final WordService _wordService = WordService.instance;
   Rx<dynamic> wordModel = Rx(null);
 
   @override
-  RxList<Definition>? noun = RxList([]);
+  RxList<Definition> noun = RxList([]);
   @override
-  RxList<Definition>? verb = RxList([]);
+  RxList<Definition> verb = RxList([]);
   @override
-  RxList<Definition>? interjection = RxList([]);
+  RxList<Definition> interjection = RxList([]);
   @override
-  RxList<Definition>? pronoun = RxList([]);
+  RxList<Definition> pronoun = RxList([]);
   @override
-  RxList<Definition>? articles = RxList([]);
+  RxList<Definition> articles = RxList([]);
   @override
-  RxList<Definition>? adverb = RxList([]);
+  RxList<Definition> adverb = RxList([]);
   @override
-  RxList<Definition>? preposition = RxList([]);
+  RxList<Definition> preposition = RxList([]);
   @override
-  RxList<Definition>? adjective = RxList([]);
+  RxList<Definition> adjective = RxList([]);
 
   @override
   void onInit() async {
     try {
-      wordModel.value = await fetchWord(await getDatedWord());
+      wordModel.value = await _fetchWord(await getDatedWord());
     } on PlatformException catch (e) {
       Get.showSnackbar(GetSnackBar(messageText: Text("${e.message}")));
     }
@@ -44,7 +45,7 @@ class DataController extends GetxController implements BaseWordController {
     super.onReady();
   }
 
-  Future<dynamic> fetchWord(String text) async {
+  Future<dynamic> _fetchWord(String text) async {
     if (text.isEmpty) {
       return null;
     } else {
@@ -54,49 +55,49 @@ class DataController extends GetxController implements BaseWordController {
         switch (element.partOfSpeech) {
           case "noun":
             for (var element in element.definitions!) {
-              noun!.add(element);
+              noun.add(element);
             }
             break;
 
           case "verb":
             for (var element in element.definitions!) {
-              verb!.add(element);
+              verb.add(element);
             }
             break;
 
           case "interjection":
             for (var element in element.definitions!) {
-              interjection!.add(element);
+              interjection.add(element);
             }
             break;
 
           case "pronoun":
             for (var element in element.definitions!) {
-              pronoun!.add(element);
+              pronoun.add(element);
             }
             break;
 
           case "articles":
             for (var element in element.definitions!) {
-              articles!.add(element);
+              articles.add(element);
             }
             break;
 
           case "adverb":
             for (var element in element.definitions!) {
-              adverb!.add(element);
+              adverb.add(element);
             }
             break;
 
           case "preposition":
             for (var element in element.definitions!) {
-              preposition!.add(element);
+              preposition.add(element);
             }
             break;
 
           case "adjective":
             for (var element in element.definitions!) {
-              adjective!.add(element);
+              adjective.add(element);
             }
             break;
 
@@ -107,12 +108,6 @@ class DataController extends GetxController implements BaseWordController {
       return wordModel.value;
     }
   }
-
-  // String getDatedWord() {
-  //   var now = DateTime.now();
-  //   var formatter = DateFormat('yyyy-MM-dd');
-  //   return map[formatter.format(now)]!;
-  // }
 
   Future<String> getDatedWord() async {
     final String response =
