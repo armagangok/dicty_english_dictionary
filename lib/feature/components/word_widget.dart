@@ -20,8 +20,8 @@ class WordWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: context.width(0.05),
-        vertical: context.width(0.025),
+        horizontal: context.bigWidth,
+        vertical: context.normalWidth,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -124,7 +124,7 @@ class WordWidget extends StatelessWidget {
       height: 18,
       child: ListView.separated(
         separatorBuilder: (context, index) => SizedBox(
-          width: context.width(0.015),
+          width: context.lowWidth,
         ),
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
@@ -213,14 +213,16 @@ class WordWidget extends StatelessWidget {
               return Container(
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.blue),
-                  borderRadius: const BorderRadius.all(Radius.circular(2)),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(90),
+                  ),
                   color: clickedNumber == tabBarController.currentIndex.value
                       ? Colors.blue
                       : Colors.transparent,
                 ),
                 padding: EdgeInsets.symmetric(
                     horizontal: context.width(0.01),
-                    vertical: context.width(0.006)),
+                    vertical: context.height(0.006)),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

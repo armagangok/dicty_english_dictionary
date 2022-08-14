@@ -9,7 +9,7 @@ class GiftView extends StatelessWidget {
       onWillPop: () async => false,
       child: SafeArea(
         child: ListView(
-          padding: EdgeInsets.all(context.width(0.05)),
+          padding: context.bigPadding,
           children: [
             Center(
               child: Text(

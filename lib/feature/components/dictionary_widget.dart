@@ -1,14 +1,17 @@
+import 'package:english_accent_dictionary/feature/controller/list_controller.dart';
 import 'package:flutter/material.dart';
 
 import '../export/export.dart';
 
 class DictionaryWidget extends StatelessWidget {
-  const DictionaryWidget({
+  DictionaryWidget({
     Key? key,
     required this.definitions,
   }) : super(key: key);
 
   final List<Definition> definitions;
+
+  final ListController _listController = Get.put(ListController());
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +31,33 @@ class DictionaryWidget extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "DEFINITIONS",
-              style: context.textTheme.bodyLarge!.copyWith(
-                fontWeight: FontWeight.w600,
+            GestureDetector(
+              onTap: () => _listController.exrend(),
+              child: Row(
+                children: [
+                  Text(
+                    "DEFINITIONS",
+                    style: context.textTheme.bodyLarge!.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Obx(() => _listController.isExtended
+                      ? const Icon(
+                          Icons.arrow_downward,
+                          color: Colors.blue,
+                        )
+                      : const Icon(
+                          Icons.arrow_upward,
+                          color: Colors.blue,
+                        ))
+                ],
               ),
             ),
             definitions.isEmpty
                 ? const Text("No definition.")
-                : definitionBuilder()
+                : Obx(() => _listController.isExtended
+                    ? definitionBuilder()
+                    : const Text(". . . ."))
           ],
         );
       },
