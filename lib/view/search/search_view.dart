@@ -6,7 +6,7 @@ import 'controller/ad_controller.dart';
 
 class SearchResultView extends StatelessWidget {
   final TextController textController = TextController();
-  final AdController searchController = Get.put(AdController());
+  // final AdController searchController = Get.put(AdController());
 
   final SearchWordController searchWordController =
       SearchWordController.instance;
@@ -50,7 +50,7 @@ class SearchResultView extends StatelessWidget {
         duration: const Duration(milliseconds: 3000),
       );
     } else {
-      await searchController.showInterstitialAd();
+      // await searchController.showInterstitialAd();
       await searchWordController.fetchWord(textController.search.text);
       textController.search.clear();
     }

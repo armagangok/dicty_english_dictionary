@@ -22,10 +22,10 @@ class RootView extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              BannerAdWidget(
-                ad: generateAd.ad,
-                unitID: AdHelper.bannerAdUnitId1,
-              ),
+              // BannerAdWidget(
+              //   ad: generateAd.ad,
+              //   unitID: AdHelper.bannerAdUnitId1,
+              // ),
               BottomNavigationBar(
                 currentIndex: controller.currentIndex.value,
                 onTap: (int index) => controller.changeIndex(index),

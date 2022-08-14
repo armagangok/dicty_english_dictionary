@@ -1,4 +1,5 @@
 import 'feature/export/export.dart';
+import 'feature/workmanager/test_view.dart';
 
 void main() async {
   await Initialization.instance.initApp();
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: RootView(),
+      home:  RootView(),
       theme: CustomTheme.instance.ligthTheme,
       darkTheme: CustomTheme.instance.darkTheme,
       themeMode: ThemeService.instance.getThemeMode(),

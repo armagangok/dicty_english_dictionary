@@ -49,12 +49,24 @@ class WordWidget extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          expandedItem("Verb", 4, () => tabBarController.changeIndex(4),
-              controller.verb.length),
-          expandedItem("Adverb", 5, () => tabBarController.changeIndex(5),
-              controller.adverb.length),
-          expandedItem("Preposition", 6, () => tabBarController.changeIndex(6),
-              controller.preposition.length),
+          expandedItem(
+            "Verb",
+            4,
+            () => tabBarController.changeIndex(4),
+            controller.verb.length,
+          ),
+          expandedItem(
+            "Adverb",
+            5,
+            () => tabBarController.changeIndex(5),
+            controller.adverb.length,
+          ),
+          expandedItem(
+            "Preposition",
+            6,
+            () => tabBarController.changeIndex(6),
+            controller.preposition.length,
+          ),
           expandedItem(
             "Adjecive",
             7,

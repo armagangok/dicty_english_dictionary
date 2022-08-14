@@ -19,6 +19,10 @@ class TextToSpeech {
     await flutterTts.speak(phrase);
   }
 
+  Future<void> speak(String phrase) async {
+    await flutterTts.speak(phrase);
+  }
+
   Future<void> setLanguage(String language) async {
     switch (language) {
       case "English-GB":

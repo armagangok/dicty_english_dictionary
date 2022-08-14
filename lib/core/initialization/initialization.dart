@@ -1,7 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../feature/export/export.dart';
-import '../../feature/controller/hive_controller.dart';
 
 class Initialization {
   Initialization._();
@@ -9,6 +8,8 @@ class Initialization {
 
   Future<void> initApp() async {
     WidgetsFlutterBinding.ensureInitialized();
+
+    // await Get.put(TaskController.instance).initWorkmanager();
 
     MobileAds.instance.initialize();
 
