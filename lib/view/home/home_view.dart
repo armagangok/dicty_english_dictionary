@@ -1,3 +1,4 @@
+import 'package:english_accent_dictionary/view/search/search_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/components/data_loading_widgets.dart';
@@ -9,6 +10,9 @@ class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
 
   final DataController dataController = Get.put(DataController.instance);
+  final TextController textController = Get.put(TextController());
+  final SearchWordController searchController =
+      Get.put(SearchWordController.instance);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,13 @@ class HomeView extends StatelessWidget {
       child: WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
-          appBar: buildAppBar(context),
+          appBar: AppBar(
+            title: CustomTextField(
+              controller: textController.search,
+              icon: const Icon(Icons.search),
+              onTap: () async => searchForTheWord(),
+            ),
+          ),
           body: Obx(
             () {
               switch (dataController.wordModel.value) {
@@ -42,6 +52,22 @@ class HomeView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void searchForTheWord() async {
+    if (textController.search.text.isEmpty) {
+      Get.snackbar(
+        "Warning",
+        "Please enter a text to search for!",
+        snackPosition: SnackPosition.TOP,
+        duration: const Duration(milliseconds: 3000),
+      );
+    } else {
+      // await searchController.showInterstitialAd();
+      Get.to(SearchResultView());
+      await searchController.fetchWord(textController.search.text);
+      textController.search.clear();
+    }
   }
 
   //

@@ -101,19 +101,21 @@ class WordWidget extends StatelessWidget {
   }
 
   Widget wordTextSpeakButton() {
-    return Builder(builder: (context) {
-      return Row(
-        children: [
-          Text(
-            wordModel.word!,
-            style: context.textTheme.headline4!.copyWith(
-              fontWeight: FontWeight.w600,
+    return Builder(
+      builder: (context) {
+        return Row(
+          children: [
+            Text(
+              wordModel.word!,
+              style: context.textTheme.headline5!.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
             ),
-          ),
-          SpeakButton(data: wordModel.word!)
-        ],
-      );
-    });
+            SpeakButton(data: wordModel.word!)
+          ],
+        );
+      },
+    );
   }
 
   //
