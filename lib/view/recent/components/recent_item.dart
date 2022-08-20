@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../../../feature/components/word_widget.dart';
 import '../../../feature/export/export.dart';
-import 'delete_button.dart';
-import 'speak_button.dart';
 
 class RecentItem extends StatelessWidget {
   final WordModel wordModel;
@@ -21,19 +19,21 @@ class RecentItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        HiveService.instance.fetchWord(wordModel);
+        HiveController.instance.fetchWord(wordModel);
         Get.dialog(buildDialog());
       },
       child: Row(
         children: [
-          SpeakButton(data: wordModel.word ?? "No data"),
+          // RadioWidget(
+          //   radioController: RadioController(),
+          //   index: index,
+          // ),
           Expanded(
             child: Text(
               "${wordModel.word}",
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
-          DeleteButton(index: index),
         ],
       ),
     );
@@ -59,7 +59,7 @@ class RecentItem extends StatelessWidget {
                   physics: const ClampingScrollPhysics(),
                   children: [
                     WordWidget(
-                      controller: HiveService.instance,
+                      controller: HiveController.instance,
                       wordModel: wordModel,
                     ),
                   ],

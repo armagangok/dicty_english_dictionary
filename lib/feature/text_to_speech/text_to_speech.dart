@@ -7,7 +7,7 @@ class TextToSpeech {
   static final instance = TextToSpeech._();
 
   final FlutterTts flutterTts = FlutterTts();
-  final HiveService _hiveService = HiveService.instance;
+  final HiveController _hiveService = HiveController.instance;
 
   Future<void> initTTS() async {
     String lang = await _hiveService.getLanguage();

@@ -1,6 +1,12 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+
+import '../../feature/controller/tab_controller.dart';
 import '../../feature/export/export.dart';
+import '../../view/home/controller/accent_controller.dart';
+import '../../view/home/controller/theme_controller.dart';
+import '../../view/recent/controller/recent_controller.dart';
+import '../../view/word_of_the_day/controller/word_of_the_day_controller.dart';
 
 class Initialization {
   Initialization._();
@@ -26,16 +32,26 @@ class Initialization {
 
     MobileAds.instance.updateRequestConfiguration(configuration);
 
-    await HiveService.instance.initializeHive();
+    await HiveController.instance.initializeHive();
     await GetStorage.init();
 
     var _prefs = await SharedPreferences.getInstance();
 
     if (_prefs.getInt("firstRun") == null) {
-      await HiveService.instance.setupLanguage();
+      await HiveController.instance.setupLanguage();
       await _prefs.setInt("firstRun", 1);
     }
 
     await TextToSpeech.instance.initTTS();
+
+    Get.lazyPut<TabBarController>(() => TabBarController());
+    Get.lazyPut<AccentController>(() => AccentController());
+    Get.lazyPut<TextController>(() => TextController.instance);
+    Get.lazyPut<WordOfTheDayController>(() => WordOfTheDayController.instance);
+    Get.lazyPut<SearchController>(() => SearchController.instance);
+    Get.lazyPut<ThemeController>(() => ThemeController());
+
+    Get.lazyPut<HiveController>(() => HiveController.instance);
+    Get.lazyPut<RecentController>(() => RecentController.instance);
   }
 }

@@ -4,12 +4,13 @@ import 'package:intl/intl.dart';
 
 import '../../../feature/export/export.dart';
 
-class DataController extends GetxController implements BaseWordController {
-  DataController._();
-  static final instance = DataController._();
-  
+class WordOfTheDayController extends GetxController
+    implements BaseWordController {
+  WordOfTheDayController._();
+  static final instance = WordOfTheDayController._();
+
   final WordService _wordService = WordService.instance;
-  Rx<dynamic> wordModel = Rx(null);
+  final Rx<dynamic> _wordModel = Rx(null);
 
   @override
   RxList<Definition> noun = RxList([]);
@@ -28,10 +29,12 @@ class DataController extends GetxController implements BaseWordController {
   @override
   RxList<Definition> adjective = RxList([]);
 
+  get wordModel => _wordModel.value;
+
   @override
   void onInit() async {
     try {
-      wordModel.value = await _fetchWord(await getDatedWord());
+      _wordModel.value = await _fetchWord(await getDatedWord());
     } on PlatformException catch (e) {
       Get.showSnackbar(GetSnackBar(messageText: Text("${e.message}")));
     }
@@ -39,19 +42,13 @@ class DataController extends GetxController implements BaseWordController {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    wordModel.value ??= 0;
-    super.onReady();
-  }
-
   Future<dynamic> _fetchWord(String text) async {
     if (text.isEmpty) {
       return null;
     } else {
-      wordModel.value = await _wordService.fetchWord(text);
+      _wordModel.value = await _wordService.fetchWord(text);
 
-      for (Meaning element in wordModel.value!.meanings!) {
+      for (Meaning element in _wordModel.value!.meanings!) {
         switch (element.partOfSpeech) {
           case "noun":
             for (var element in element.definitions!) {
@@ -105,7 +102,7 @@ class DataController extends GetxController implements BaseWordController {
         }
       }
 
-      return wordModel.value;
+      return _wordModel.value;
     }
   }
 

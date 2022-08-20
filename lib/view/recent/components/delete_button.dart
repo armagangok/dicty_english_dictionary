@@ -13,7 +13,7 @@ class DeleteButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async => await HiveService.instance.deleteData(index),
+      onTap: () async => await HiveController.instance.deleteData(index),
       child: const Icon(
         CupertinoIcons.trash,
         color: Colors.red,

@@ -1,3 +1,4 @@
+import 'package:english_accent_dictionary/global/constant/app_color/app_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,25 +12,24 @@ class CustomTheme {
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(6.0),
-        borderSide: const BorderSide(
-          width: 1,
-        ),
+        borderSide: const BorderSide(width: 1),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(6.0),
         borderSide: const BorderSide(),
       ),
       filled: true,
-      fillColor: Colors.white,
+      fillColor: AppColor.scaffoldBacground,
       labelStyle: const TextStyle(color: Colors.black),
       border: const OutlineInputBorder(
         borderSide: BorderSide(color: Colors.black),
       ),
+      suffixIconColor: AppColor.primaryColor,
     ),
     shadowColor: const Color.fromARGB(255, 0, 0, 0),
     dividerColor: Colors.black,
     dividerTheme: const DividerThemeData(thickness: 0.2),
-    scaffoldBackgroundColor: const Color.fromARGB(255, 214, 214, 214),
+    scaffoldBackgroundColor: AppColor.scaffoldBacground,
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Colors.blue,
     ),
@@ -43,12 +43,20 @@ class CustomTheme {
       unselectedItemColor: Colors.grey,
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      // titleTextStyle: TextStyle(
-      //   color: Colors.white,
-      // ),
+      backgroundColor: AppColor.primaryColor,
+      titleTextStyle: TextStyle(
+        color: Colors.white,
+        fontSize: 18,
+      ),
     ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        primary: Colors.transparent,
+        elevation: 0,
+      ),
+    ),
+    progressIndicatorTheme:
+        const ProgressIndicatorThemeData(color: AppColor.primaryColor),
   );
 
   final darkTheme =

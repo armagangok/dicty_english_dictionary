@@ -1,6 +1,5 @@
-import 'package:english_accent_dictionary/feature/controller/list_controller.dart';
-import 'package:flutter/material.dart';
-
+import '../../global/constant/app_color/app_color.dart';
+import '../../view/recent/controller/recent_controller.dart';
 import '../export/export.dart';
 
 class DictionaryWidget extends StatelessWidget {
@@ -11,7 +10,7 @@ class DictionaryWidget extends StatelessWidget {
 
   final List<Definition> definitions;
 
-  final ListController _listController = Get.put(ListController());
+  final RecentController _listController = Get.put(RecentController.instance);
 
   @override
   Widget build(BuildContext context) {
@@ -19,61 +18,46 @@ class DictionaryWidget extends StatelessWidget {
       physics: const ClampingScrollPhysics(),
       shrinkWrap: true,
       children: [
+        SizedBox(height: context.normalHeight),
         buildDefinitions(),
-        const SizedBox001(),
       ],
     );
   }
 
-  Widget buildDefinitions() {
-    return Builder(
-      builder: (context) {
-        return Column(
+  Widget buildDefinitions() => Builder(
+        builder: (context) => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             GestureDetector(
-              onTap: () => _listController.exrend(),
+              onTap: () => _listController.extend(),
               child: Row(
                 children: [
                   Text(
                     "DEFINITIONS",
-                    style: context.textTheme.bodyLarge!.copyWith(
-                      fontWeight: FontWeight.w600,
+                    style: context.textTheme.labelLarge!.copyWith(
+                      fontWeight: FontWeight.w900,
+                      fontStyle: FontStyle.italic,
+                      decoration: TextDecoration.underline,
+                      color: AppColor.primaryColor,
                     ),
                   ),
-                  Obx(() => _listController.isExtended
-                      ? const Icon(
-                          Icons.arrow_downward,
-                          color: Colors.blue,
-                        )
-                      : const Icon(
-                          Icons.arrow_upward,
-                          color: Colors.blue,
-                        ))
                 ],
               ),
             ),
             definitions.isEmpty
                 ? const Text("No definition.")
-                : Obx(() => _listController.isExtended
-                    ? definitionBuilder()
-                    : const Text(". . . ."))
+                : definitionBuilder()
           ],
-        );
-      },
-    );
-  }
+        ),
+      );
 
-  Widget definitionBuilder() {
-    return ListView.separated(
-      separatorBuilder: (context, index) => SizedBox(
-        height: context.height(0.01),
-      ),
-      physics: const ClampingScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: definitions.length,
-      itemBuilder: (context, index) {
-        return Column(
+  Widget definitionBuilder() => ListView.separated(
+        separatorBuilder: (context, index) =>
+            SizedBox(height: context.height(0.01)),
+        physics: const ClampingScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: definitions.length,
+        itemBuilder: (context, index) => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             definitions[index].definition == null
@@ -83,46 +67,42 @@ class DictionaryWidget extends StatelessWidget {
                 ? const SizedBox()
                 : buildExampleText(index),
           ],
-        );
-      },
-    );
-  }
-
-  Widget buildDefinitonText(int index) {
-    return Builder(builder: (context) {
-      return Text.rich(
-        TextSpan(
-          children: [
-            TextSpan(
-              text: "${index + 1}.",
-              style: context.textTheme.bodyMedium!.copyWith(
-                color: Colors.blue,
-                fontWeight: FontWeight.w800,
-              ),
-            ),
-            TextSpan(text: definitions[index].definition),
-          ],
         ),
       );
-    });
-  }
 
-  Widget buildExampleText(int index) {
-    return Builder(builder: (context) {
-      return Text.rich(
-        TextSpan(
-          children: [
-            TextSpan(
-              text: "Example: ",
-              style: context.textTheme.bodyMedium!.copyWith(
-                color: Colors.blue,
-                fontWeight: FontWeight.w700,
+  Widget buildDefinitonText(int index) => Builder(
+        builder: (context) => Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: "${index + 1}.",
+                style: context.textTheme.bodyMedium!.copyWith(
+                  color: AppColor.deepOrange,
+                  fontWeight: FontWeight.w800,
+                  fontStyle: FontStyle.italic,
+                ),
               ),
-            ),
-            TextSpan(text: definitions[index].example),
-          ],
+              TextSpan(text: " " "${definitions[index].definition}"),
+            ],
+          ),
         ),
       );
-    });
-  }
+
+  Widget buildExampleText(int index) => Builder(
+      builder: (context) => Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: "Example.",
+                  style: context.textTheme.bodyMedium!.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: AppColor.primaryColor,
+                    fontStyle: FontStyle.italic,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+                TextSpan(text: " " "${definitions[index].example}"),
+              ],
+            ),
+          ));
 }

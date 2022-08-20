@@ -22,6 +22,8 @@ class WordModel {
   final License? license;
   @HiveField(5)
   final List<dynamic>? sourceUrls;
+  @HiveField(6)
+  bool isSelected;
 
   WordModel({
     this.word,
@@ -30,25 +32,8 @@ class WordModel {
     this.meanings,
     this.license,
     this.sourceUrls,
+    this.isSelected = false,
   });
-
-  WordModel copyWith({
-    String? word,
-    String? origin,
-    List<Phonetic>? phonetics,
-    List<Meaning>? meanings,
-    License? license,
-    List<dynamic>? sourceUrls,
-  }) {
-    return WordModel(
-      word: word ?? this.word,
-      origin: origin ?? this.origin,
-      phonetics: phonetics ?? this.phonetics,
-      meanings: meanings ?? this.meanings,
-      license: license ?? this.license,
-      sourceUrls: sourceUrls ?? this.sourceUrls,
-    );
-  }
 
   Map<String, dynamic> toMap() {
     return {
@@ -58,6 +43,7 @@ class WordModel {
       'meanings': meanings?.map((x) => x.toMap()).toList(),
       'license': license?.toMap(),
       'sourceUrls': sourceUrls,
+      'isSelected': isSelected,
     };
   }
 
@@ -74,6 +60,7 @@ class WordModel {
           : null,
       license: map['license'] != null ? License.fromMap(map['license']) : null,
       sourceUrls: List<dynamic>.from(map['sourceUrls']),
+      isSelected: map['isSelected'] ?? false,
     );
   }
 

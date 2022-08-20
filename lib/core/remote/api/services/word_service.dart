@@ -3,24 +3,30 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../../../feature/export/export.dart';
-import '../../../../feature/model/word_model.dart';
-
+import '../model/model.dart';
 
 class WordService {
   WordService._();
   static final instance = WordService._();
-  Future<WordModel?> fetchWord(String text) async {
+
+  Future<dynamic> fetchWord(String text) async {
     try {
       final response = await http.get(
         Uri.parse('https://api.dictionaryapi.dev/api/v2/entries/en/$text'),
       );
 
       if (response.statusCode == 200) {
-        var a = (WordModel.fromMap(jsonDecode(response.body)[0]));
+        var model = (WordModel.fromMap(jsonDecode(response.body)[0]));
 
-        return a;
-      } else {
-        return null;
+        return model;
+      } else if (response.statusCode == 404) {
+        var decodedErrorMessage = (jsonDecode(response.body));
+        final ErrorModel errorModel = ErrorModel(
+          title: decodedErrorMessage["title"],
+          message: decodedErrorMessage["message"],
+        );
+
+        return errorModel;
       }
     } on PlatformException catch (e) {
       Get.snackbar(
@@ -32,3 +38,4 @@ class WordService {
     return null;
   }
 }
+

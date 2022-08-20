@@ -1,7 +1,7 @@
 import '../../../feature/export/export.dart';
 
 class AccentController extends GetxController {
-  final HiveService _hiveService = HiveService.instance;
+  final HiveController _hiveService = HiveController.instance;
 
   Rx<dynamic> accent = Rx(null);
 

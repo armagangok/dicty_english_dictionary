@@ -1,5 +1,4 @@
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import '../export/export.dart';
 
 class TabBarController extends GetxController {
   final RxInt currentIndex = RxInt(0);

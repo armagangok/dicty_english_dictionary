@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../core/extension/context_extension.dart';
+import '../../global/constant/app_color/app_color.dart';
+
 class CustomTextField extends StatelessWidget {
   final Function? onTap;
   final double? textFieldH;
@@ -23,15 +26,20 @@ class CustomTextField extends StatelessWidget {
     return SizedBox(
       height: textFieldH ?? 30,
       child: TextFormField(
+        cursorColor: AppColor.primaryColor,
         controller: controller,
         textAlign: TextAlign.justify,
         decoration: InputDecoration(
-          // labelText: label,
-          label: const Text("search"),
+          label: Text(
+            "Search",
+            style: context.textTheme.bodyMedium!
+                .copyWith(color: AppColor.primaryColorBright),
+          ),
           suffixIcon: InkWell(
             child: icon ?? const Text(""),
             onTap: () => onTap!(),
             splashColor: null,
+            focusColor: AppColor.primaryColor,
           ),
         ),
       ),

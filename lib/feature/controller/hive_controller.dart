@@ -1,10 +1,8 @@
-// ignore_for_file: overridden_fields
-
 import '../export/export.dart';
 
-class HiveService extends BaseWordController {
-  HiveService._();
-  static final instance = HiveService._();
+class HiveController extends BaseWordController {
+  HiveController._();
+  static final instance = HiveController._();
 
   @override
   late RxList<Definition> adjective = RxList([]);
@@ -20,10 +18,11 @@ class HiveService extends BaseWordController {
   RxList<Definition> preposition = RxList([]);
   @override
   RxList<Definition> pronoun = RxList([]);
+
   @override
   RxList<Definition> verb = RxList([]);
 
-  List<WordModel> wordList = [];
+  RxList<WordModel> wordList = RxList([]);
   late final Box<WordModel> _hiveWords;
 
   Box<WordModel> get getHiveBox => _hiveWords;
@@ -90,6 +89,25 @@ class HiveService extends BaseWordController {
   Future<void> saveLanguage(String lang) async {
     await Hive.box("countryBox").clear();
     await Hive.box("countryBox").add(lang);
+  }
+
+  Future<void> deleteByName(WordModel wordModel) async {
+    final Map<dynamic, WordModel> deliveriesMap = _hiveWords.toMap();
+    dynamic desiredKey;
+    deliveriesMap.forEach((key, value) {
+      if (value.isSelected) {
+        desiredKey = key;
+      }
+    });
+    await _hiveWords.delete(desiredKey);
+  }
+
+  Future<void> save(int index, WordModel value) async {
+    await _hiveWords.putAt(index, value);
+  }
+
+  Future<void> deleteAllWords() async {
+    await _hiveWords.clear();
   }
 
   //

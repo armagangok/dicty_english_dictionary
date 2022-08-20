@@ -8,7 +8,7 @@ part of 'word_model.dart';
 
 class WordModelAdapter extends TypeAdapter<WordModel> {
   @override
-  final int typeId = 20;
+  final int typeId = 1;
 
   @override
   WordModel read(BinaryReader reader) {
@@ -23,13 +23,14 @@ class WordModelAdapter extends TypeAdapter<WordModel> {
       meanings: (fields[3] as List?)?.cast<Meaning>(),
       license: fields[4] as License?,
       sourceUrls: (fields[5] as List?)?.cast<dynamic>(),
+      isSelected: fields[6] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, WordModel obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.word)
       ..writeByte(1)
@@ -41,7 +42,9 @@ class WordModelAdapter extends TypeAdapter<WordModel> {
       ..writeByte(4)
       ..write(obj.license)
       ..writeByte(5)
-      ..write(obj.sourceUrls);
+      ..write(obj.sourceUrls)
+      ..writeByte(6)
+      ..write(obj.isSelected);
   }
 
   @override

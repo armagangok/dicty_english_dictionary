@@ -9,13 +9,10 @@ export 'package:get_storage/get_storage.dart';
 export 'package:google_mobile_ads/google_mobile_ads.dart';
 export 'package:hive_flutter/hive_flutter.dart';
 
-
-
 export '../../../core/remote/admob/ad_helper.dart';
 export '../../../core/remote/admob/generate_ad.dart';
 export '../../../core/remote/api/services/word_service.dart';
 export '../../../feature/export/export.dart';
-export '../../core/components/sized_box.dart';
 export '../../core/extension/context_extension.dart';
 export '../../core/initialization/initialization.dart';
 export '../../core/remote/admob/ad_helper.dart';
@@ -24,10 +21,7 @@ export '../../core/theme/theme.dart';
 export '../../core/theme/theme_service.dart';
 export '../../view/home/controller/text_controller.dart';
 export '../../view/recent/components/recent_item.dart';
-export '../../view/root/root_view.dart';
-export '../../view/search/controller/search_word_controller.dart';
-export '../../view/settings/controller/theme_controller.dart';
-export '../../view/settings/setting_view.dart';
+export '../../view/search_result/search_controller.dart/search_controller.dart';
 export '../components/custom_text_field.dart';
 export '../controller/base_word_controller.dart';
 export '../controller/hive_controller.dart';

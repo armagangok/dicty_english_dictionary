@@ -1,5 +1,6 @@
+import 'core/navigation/app_pages.dart';
 import 'feature/export/export.dart';
-import 'feature/workmanager/test_view.dart';
+import 'view/home/home_view.dart';
 
 void main() async {
   await Initialization.instance.initApp();
@@ -13,10 +14,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  RootView(),
+      home: HomeView(),
       theme: CustomTheme.instance.ligthTheme,
       darkTheme: CustomTheme.instance.darkTheme,
       themeMode: ThemeService.instance.getThemeMode(),
+      initialRoute: AppPages.initial,
+      getPages: AppPages.routes,
     );
   }
 }

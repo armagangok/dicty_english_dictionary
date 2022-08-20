@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../feature/export/export.dart';
+import '../export/export.dart';
 
 class SpeakButton extends StatelessWidget {
   const SpeakButton({
@@ -19,7 +19,7 @@ class SpeakButton extends StatelessWidget {
         onTap: () => textToSpeech.speakWordOneTime(data),
         child: const Icon(
           CupertinoIcons.speaker_3_fill,
-          color: Colors.blue,
+          color: Colors.white,
         ),
       ),
     );

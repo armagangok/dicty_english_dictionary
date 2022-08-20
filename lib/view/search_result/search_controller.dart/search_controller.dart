@@ -1,15 +1,15 @@
+import 'package:english_accent_dictionary/core/remote/api/model/model.dart';
+
 import '../../../feature/export/export.dart';
 
-class SearchWordController extends GetxController
-    implements BaseWordController {
-  SearchWordController._();
-  static final instance = SearchWordController._();
+class SearchController extends GetxController implements BaseWordController {
+  SearchController._();
+  static final instance = SearchController._();
 
-  HiveService hiveService = HiveService.instance;
-
-  Rx<dynamic> wordModel = Rx(null);
-
+  final HiveController hiveService = Get.find();
   final WordService _wordService = WordService.instance;
+
+  final Rx<dynamic> _wordModel = Rx(null);
 
   @override
   RxList<Definition> noun = RxList([]);
@@ -28,65 +28,67 @@ class SearchWordController extends GetxController
   @override
   RxList<Definition> adjective = RxList([]);
 
+  get getWord => _wordModel.value;
+
+  // @override
+  // void onReady() {
+  //   _wordModel.value ??= 0;
+  //   super.onReady();
+  // }
+
   Future<dynamic> fetchWord(String text) async {
     int checker = 0;
+    _wordModel.value = null;
+    _wordModel.value = await _wordService.fetchWord(text);
 
-    wordModel.value = await _wordService.fetchWord(text);
+    clearAllList();
 
-    if (wordModel.value != null) {
-      for (Meaning element in wordModel.value!.meanings!) {
+    if (_wordModel.value.runtimeType == WordModel) {
+      for (Meaning element in _wordModel.value!.meanings!) {
         switch (element.partOfSpeech) {
           case "noun":
-            noun.clear();
             for (var element in element.definitions!) {
               noun.add(element);
             }
             break;
 
           case "verb":
-            verb.clear();
             for (var element in element.definitions!) {
               verb.add(element);
             }
             break;
 
           case "interjection":
-            interjection.clear();
             for (var element in element.definitions!) {
               interjection.add(element);
             }
             break;
 
           case "pronoun":
-            pronoun.clear();
             for (var element in element.definitions!) {
               pronoun.add(element);
             }
             break;
 
           case "articles":
-            articles.clear();
             for (var element in element.definitions!) {
               articles.add(element);
             }
             break;
 
           case "adverb":
-            adverb.clear();
             for (var element in element.definitions!) {
               adverb.add(element);
             }
             break;
 
           case "preposition":
-            preposition.clear();
             for (var element in element.definitions!) {
               preposition.add(element);
             }
             break;
 
           case "adjective":
-            adjective.clear();
             for (var element in element.definitions!) {
               adjective.add(element);
             }
@@ -94,40 +96,45 @@ class SearchWordController extends GetxController
 
           default:
         }
+        await saveToHiveDatabase(checker);
       }
+    } else if (_wordModel.value.runtimeType == ErrorModel) {
+      return _wordModel.value;
     }
 
-    if (wordModel.value != null) {
+    return _wordModel.value ?? (_wordModel.value = 0);
+  }
+
+  void clearAllList() {
+    noun.clear();
+    verb.clear();
+    interjection.clear();
+    pronoun.clear();
+    articles.clear();
+    adverb.clear();
+    preposition.clear();
+    adjective.clear();
+  }
+
+  Future<void> saveToHiveDatabase(checker) async {
+    if (_wordModel.value != null) {
       for (var element in hiveService.getAll()) {
-        if (element.word == wordModel.value!.word) {
+        if (element.word == _wordModel.value!.word) {
           checker++;
         }
       }
 
       if (checker == 0) {
         final WordModel hiveWord = WordModel(
-          word: wordModel.value.word,
-          meanings: wordModel.value.meanings,
-          origin: wordModel.value.origin,
-          phonetics: wordModel.value.phonetics,
-          license: wordModel.value.license,
+          word: _wordModel.value.word,
+          meanings: _wordModel.value.meanings,
+          origin: _wordModel.value.origin,
+          phonetics: _wordModel.value.phonetics,
+          license: _wordModel.value.license,
         );
 
         await hiveService.addData(hiveWord);
       }
     }
-
-    return wordModel.value;
   }
 }
-
-// enum PartOfSpeech {
-//   noun,
-//   verb,
-//   interjection,
-//   pronoun,
-//   articles,
-//   adverb,
-//   preposition,
-//   adjective,
-// }
