@@ -27,6 +27,8 @@ class WordService {
         );
 
         return errorModel;
+      } else {
+        return null;
       }
     } on PlatformException catch (e) {
       Get.snackbar(
@@ -38,4 +40,3 @@ class WordService {
     return null;
   }
 }
-

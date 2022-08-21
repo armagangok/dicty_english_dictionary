@@ -1,7 +1,5 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-import '../../global/constant/app_color/app_color.dart';
 import '../controller/tab_controller.dart';
 import '../export/export.dart';
 import 'dictionary_widget.dart';
@@ -257,18 +255,19 @@ class WordWidget extends StatelessWidget {
             () => Container(
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: AppColor.myBlue,
+                  color: context.colors.onBackground,
                 ),
                 borderRadius: const BorderRadius.all(
                   Radius.circular(90),
                 ),
                 color: clickedNumber == tabBarController.currentIndex.value
-                    ? AppColor.myBlue
+                    ? context.colors.onBackground
                     : Colors.transparent,
               ),
               padding: EdgeInsets.symmetric(
-                  horizontal: context.width(0.01),
-                  vertical: context.height(0.006)),
+                horizontal: context.width(0.01),
+                vertical: context.height(0.006),
+              ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -280,7 +279,7 @@ class WordWidget extends StatelessWidget {
                       color:
                           clickedNumber == tabBarController.currentIndex.value
                               ? Colors.white
-                              : null,
+                              : context.primary,
                     ),
                   ),
                   Text(
@@ -289,7 +288,7 @@ class WordWidget extends StatelessWidget {
                       color:
                           clickedNumber == tabBarController.currentIndex.value
                               ? Colors.white
-                              : null,
+                              : context.primary,
                     ),
                   )
                 ],

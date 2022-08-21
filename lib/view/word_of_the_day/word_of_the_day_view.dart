@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/components/custom_app_bar.dart';
-import '../../core/components/data_loading_widgets.dart';
+import '../../core/components/error_widget.dart';
+import '../../core/components/loading_widget.dart';
 import '../../core/remote/api/model/model.dart';
 import '../../feature/components/word_widget.dart';
 import '../../feature/export/export.dart';
@@ -20,14 +21,14 @@ class WordOfTheDayView extends StatelessWidget {
           switch (dataController.wordModel.runtimeType) {
             case ErrorModel:
               final ErrorModel errorModel = dataController.wordModel;
-              return NoDataWidget(
+              return MyErrorWidget(
                 errorModel: ErrorModel(
                   title: errorModel.title,
                   message: errorModel.message,
                 ),
               );
             case Null:
-              return const Center(child: CircularProgressIndicator());
+              return const LoadingWidget();
 
             default:
               return WordWidget(
@@ -40,3 +41,4 @@ class WordOfTheDayView extends StatelessWidget {
     );
   }
 }
+

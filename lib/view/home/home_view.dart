@@ -1,17 +1,9 @@
 import 'dart:ui';
 
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../core/helpers/rating/rating_helper.dart';
 import '../../feature/export/export.dart';
-import '../../global/constant/app_color/app_color.dart';
-import '../about_us/about_us_view.dart';
-import '../recent/recent_view.dart';
-import '../search_result/search_result_view.dart';
-import '../word_of_the_day/word_of_the_day_view.dart';
-import 'components/accent_picker_widget.dart';
-import 'components/theme_picker_widget.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
@@ -30,27 +22,57 @@ class HomeView extends StatelessWidget {
           appBar: _buildAppBar(),
           body: Padding(
             padding: EdgeInsets.all(context.normalWidth),
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Text("Dicty English Dictionary"),
-                  Column(
-                    children: [
-                      Row(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Spacer(),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    AutoSizeText(
+                      AppString.dictyText,
+                      style: context.textTheme.headline4!.copyWith(
+                        color: context.colors.primary,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w800,
+                      ),
+                      maxLines: 1,
+                    ),
+                    SizedBox(height: context.normalHeight),
+                    GestureDetector(
+                      onTap: () async => await UrlLauncherHelper.shared
+                          .openUrl(NetworkConstants.appUrl),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          IconButton(
-                            onPressed: () {
-                              
-                            },
-                            icon: const FaIcon(FontAwesomeIcons.twitter),
+                          Text(
+                            AppString.followUs,
+                            style: context.textTheme.bodyLarge!.copyWith(
+                              color: AppColor.twitterBlue,
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                          const FaIcon(
+                            FontAwesomeIcons.twitter,
+                            color: AppColor.twitterBlue,
                           ),
                         ],
                       ),
-                    ],
-                  )
-                ],
-              ),
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                // Align(
+                //   alignment: Alignment.bottomRight,
+                //   child: MyBlinkingButton(
+                //     onTap: () async => await UrlLauncherHelper.shared
+                //         .openUrl(NetworkConstants.myUrl),
+                //     text: AppString.madeBy,
+                //   ),
+                // ),
+              ],
             ),
           ),
         ),
@@ -60,7 +82,7 @@ class HomeView extends StatelessWidget {
 
   Widget _buildDrawer() => Builder(
         builder: (context) => Drawer(
-          backgroundColor: AppColor.drawerBackground,
+          backgroundColor: context.colors.background,
           width: context.width(0.8),
           child: Center(
             child: ListView(
@@ -93,7 +115,7 @@ class HomeView extends StatelessWidget {
                     Icon(
                       iconData,
                       size: 28,
-                      color: AppColor.primaryColor.withOpacity(0.66),
+                      color: context.colors.primary.withOpacity(0.8),
                     ),
                     SizedBox(width: context.mediumWidth),
                     AutoSizeText(
@@ -101,7 +123,7 @@ class HomeView extends StatelessWidget {
                       style: context.textTheme.bodySmall!.copyWith(
                         fontSize: 17,
                         fontWeight: FontWeight.w300,
-                        color: AppColor.primaryColor,
+                        color: context.colors.primary.withOpacity(0.8),
                       ),
                       maxLines: 1,
                     ),
@@ -110,7 +132,7 @@ class HomeView extends StatelessWidget {
                 Icon(
                   CupertinoIcons.forward,
                   size: 28,
-                  color: AppColor.primaryColor.withOpacity(0.66),
+                  color: context.colors.primary.withOpacity(0.8),
                 )
               ],
             ),
@@ -123,7 +145,10 @@ class HomeView extends StatelessWidget {
           children: [
             CustomTextField(
               controller: textController.search,
-              icon: const Icon(Icons.search),
+              icon: const Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
               onTap: () async => searchForTheWord(),
             ),
           ],
@@ -176,44 +201,39 @@ class HomeView extends StatelessWidget {
 
   List<Widget> get _getDrawerItems => [
         _drawerItem(
-          text: "Recent",
+          text: AppString.recent,
           iconData: CupertinoIcons.time,
           onPressed: () => Get.to(() => RecentView()),
         ),
         _divider(),
         _drawerItem(
-          text: "Word of the day",
+          text: AppString.wordOfTheDay,
           iconData: CupertinoIcons.calendar_today,
           onPressed: () => Get.to(() => const WordOfTheDayView()),
         ),
         _divider(),
         _drawerItem(
-          text: "Speaker accent",
+          text: AppString.accent,
           iconData: CupertinoIcons.speaker_3,
-          onPressed: () {
-            Get.back();
-            buildDialog(const AccentPickerWidget());
-          },
+          onPressed: () => buildDialog(const AccentPickerWidget()),
         ),
         _divider(),
         _drawerItem(
-            text: "Dark mode",
-            iconData: CupertinoIcons.moon,
-            onPressed: () {
-              Get.back();
-              buildDialog(const ThemePickerWidget());
-            }),
+          text: AppString.darkMode,
+          iconData: CupertinoIcons.moon,
+          onPressed: () => buildDialog(const ThemePickerWidget()),
+        ),
         _divider(),
         _drawerItem(
-          text: "About us",
+          text: AppString.aboutMe,
           iconData: CupertinoIcons.info,
-          onPressed: () => Get.to(() => const AboutUsView()),
+          onPressed: () => Get.to(() => const AboutMeView()),
         ),
         _divider(),
         _drawerItem(
-          text: "Rate us",
+          text: AppString.rateUS,
           iconData: CupertinoIcons.star,
-          onPressed: () => Get.to(() => const AboutUsView()),
+          onPressed: () async => await RatingHelper.shared.requestReview(),
         ),
       ];
 }

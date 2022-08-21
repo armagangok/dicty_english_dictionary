@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../core/components/data_loading_widgets.dart';
+import '../../core/components/custom_app_bar.dart';
+import '../../core/components/error_widget.dart';
+import '../../core/components/loading_widget.dart';
 import '../../core/remote/api/model/model.dart';
 import '../../feature/components/word_widget.dart';
 import '../../feature/export/export.dart';
@@ -15,19 +17,25 @@ class SearchResultView extends StatelessWidget {
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => context.dismissKeyboard(),
         child: Scaffold(
-          appBar: AppBar(
-            title: const Text("Result"),
-          ),
-          body: getData(),
+          appBar: _buildAppBar,
+          body: _getData,
         ),
       );
 
-  Widget getData() => Obx(
+  CustomAppBar get _buildAppBar => CustomAppBar(
+        title: const Text("Result"),
+        onTap: () {
+          searchWordController.clearAllList();
+          Get.back();
+        },
+      );
+
+  Widget get _getData => Obx(
         () {
           switch (searchWordController.getWord.runtimeType) {
             case ErrorModel:
               final ErrorModel errorModel = searchWordController.getWord;
-              return NoDataWidget(
+              return MyErrorWidget(
                 errorModel: ErrorModel(
                   title: errorModel.title,
                   message: errorModel.message,
@@ -35,14 +43,7 @@ class SearchResultView extends StatelessWidget {
               );
 
             case Null:
-              return Center(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text("Waiting for the data..."),
-                  CircularProgressIndicator(),
-                ],
-              ));
+              return const LoadingWidget();
 
             default:
               return WordWidget(

@@ -1,9 +1,5 @@
 import '../../feature/export/export.dart';
-import '../../view/about_us/about_us_view.dart';
 import '../../view/home/home_view.dart';
-import '../../view/recent/recent_view.dart';
-import '../../view/search_result/search_result_view.dart';
-import '../../view/word_of_the_day/word_of_the_day_view.dart';
 
 part 'routes.dart';
 
@@ -30,7 +26,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ABOUT_US,
-      page: () => const AboutUsView(),
+      page: () => const AboutMeView(),
     ),
   ];
 }

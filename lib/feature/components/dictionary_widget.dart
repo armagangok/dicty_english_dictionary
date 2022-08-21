@@ -1,4 +1,3 @@
-import '../../global/constant/app_color/app_color.dart';
 import '../../view/recent/controller/recent_controller.dart';
 import '../export/export.dart';
 
@@ -38,7 +37,7 @@ class DictionaryWidget extends StatelessWidget {
                       fontWeight: FontWeight.w900,
                       fontStyle: FontStyle.italic,
                       decoration: TextDecoration.underline,
-                      color: AppColor.primaryColor,
+                      color: context.colors.onSurface,
                     ),
                   ),
                 ],
@@ -77,32 +76,41 @@ class DictionaryWidget extends StatelessWidget {
               TextSpan(
                 text: "${index + 1}.",
                 style: context.textTheme.bodyMedium!.copyWith(
-                  color: AppColor.deepOrange,
+                  color: context.colors.onSurface,
                   fontWeight: FontWeight.w800,
                   fontStyle: FontStyle.italic,
                 ),
               ),
-              TextSpan(text: " " "${definitions[index].definition}"),
+              TextSpan(
+                text: " " "${definitions[index].definition}",
+                style: context.textTheme.bodyMedium!
+                    .copyWith(color: context.primary),
+              ),
             ],
           ),
         ),
       );
 
   Widget buildExampleText(int index) => Builder(
-      builder: (context) => Text.rich(
-            TextSpan(
-              children: [
-                TextSpan(
-                  text: "Example.",
-                  style: context.textTheme.bodyMedium!.copyWith(
-                    fontWeight: FontWeight.w700,
-                    color: AppColor.primaryColor,
-                    fontStyle: FontStyle.italic,
-                    decoration: TextDecoration.underline,
-                  ),
+        builder: (context) => Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: "Example.",
+                style: context.textTheme.bodyMedium!.copyWith(
+                  fontWeight: FontWeight.w700,
+                  color: context.colors.onSurface,
+                  fontStyle: FontStyle.italic,
+                  decoration: TextDecoration.underline,
                 ),
-                TextSpan(text: " " "${definitions[index].example}"),
-              ],
-            ),
-          ));
+              ),
+              TextSpan(
+                text: " " "${definitions[index].example}",
+                style: context.textTheme.bodyMedium!
+                    .copyWith(color: context.primary),
+              ),
+            ],
+          ),
+        ),
+      );
 }

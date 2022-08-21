@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_function_literals_in_foreach_calls
 
+import 'package:english_accent_dictionary/core/components/error_widget.dart';
+import 'package:english_accent_dictionary/core/remote/api/model/model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../feature/export/export.dart';
@@ -57,7 +59,7 @@ class RecentView extends StatelessWidget {
   TextButton get _deleteAllButton => TextButton(
         onPressed: () async => await HiveController.instance.deleteAllWords(),
         child: const Text(
-          "DELETE ALL",
+          AppString.deleteAll,
           style: TextStyle(color: Colors.red),
         ),
       );
@@ -69,13 +71,13 @@ class RecentView extends StatelessWidget {
           ),
         ),
         child: const Text(
-          "DELETE",
+          AppString.delete,
           style: TextStyle(color: Colors.red),
         ),
       );
 
   AppBar _buildAppBar() => AppBar(
-        title: const Text("Recent"),
+        title: const Text(AppString.recent),
         centerTitle: true,
         actions: [
           Builder(
@@ -84,7 +86,7 @@ class RecentView extends StatelessWidget {
                   padding: MaterialStateProperty.all(EdgeInsets.zero)),
               onPressed: () => _recentController.edit(),
               child: Text(
-                "EDIT",
+                AppString.edit,
                 style: context.textTheme.bodyMedium!.copyWith(
                   color: Colors.white,
                 ),
@@ -112,7 +114,13 @@ class RecentView extends StatelessWidget {
         itemCount: wordList.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(wordList[index].word!),
+            // onTap: ()=> Get.to(SearchResultView()),
+            title: Text(
+              wordList[index].word!,
+              style: context.textTheme.bodyMedium!.copyWith(
+                color: context.primary,
+              ),
+            ),
           );
         },
       );
@@ -124,23 +132,36 @@ class RecentView extends StatelessWidget {
         physics: const ClampingScrollPhysics(),
         itemCount: wordList.length,
         itemBuilder: (context, index) => CheckboxListTile(
+          activeColor: AppColor.deepOrange,
           value: wordList[index].isSelected,
           onChanged: (val) async {
             wordList[index].isSelected = val!;
             await HiveController.instance.save(index, wordList[index]);
           },
-          title: Text(wordList[index].word!),
+          title: Text(
+            wordList[index].word!,
+            style: context.textTheme.bodyMedium!.copyWith(
+              color: context.primary,
+            ),
+          ),
         ),
       );
 
   //
   Widget _noRecentSearch() => Builder(
         builder: (context) => Center(
-          child: FittedBox(
-            child: Text(
-              "There is no recent search you have made.",
-              style: context.textTheme.headline6,
-              maxLines: 1,
+          child: Padding(
+            padding: context.lowPadding,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MyErrorWidget(
+                  errorModel: ErrorModel(
+                    title: AppString.resultViewSearchTitle,
+                    message: AppString.resultViewResultMessage,
+                  ),
+                ),
+              ],
             ),
           ),
         ),

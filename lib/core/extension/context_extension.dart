@@ -32,7 +32,7 @@ extension EasySize on BuildContext {
 extension EasyTheme on BuildContext {
   ThemeData get theme => Theme.of(this);
   TextTheme get textTheme => theme.textTheme;
-  Color get primaryColor => theme.primaryColor;
+  Color get primary => colors.primary;
   ColorScheme get colors => theme.colorScheme;
 }
 

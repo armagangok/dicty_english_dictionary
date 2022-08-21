@@ -28,20 +28,12 @@ class SearchController extends GetxController implements BaseWordController {
   @override
   RxList<Definition> adjective = RxList([]);
 
-  get getWord => _wordModel.value;
-
-  // @override
-  // void onReady() {
-  //   _wordModel.value ??= 0;
-  //   super.onReady();
-  // }
+  dynamic get getWord => _wordModel.value;
 
   Future<dynamic> fetchWord(String text) async {
     int checker = 0;
     _wordModel.value = null;
     _wordModel.value = await _wordService.fetchWord(text);
-
-    clearAllList();
 
     if (_wordModel.value.runtimeType == WordModel) {
       for (Meaning element in _wordModel.value!.meanings!) {
