@@ -40,8 +40,13 @@ class AccentPickerWidget extends StatelessWidget {
                 onSelectedItemChanged: (value) async {
                   await accentController.saveAccent(items[value]);
                 },
-                children:
-                    items.map((item) => Center(child: Text(item))).toList(),
+                children: items
+                    .map((item) => Center(
+                            child: Text(
+                          item,
+                          style: context.textTheme.bodyText1,
+                        )))
+                    .toList(),
               );
           }
         },

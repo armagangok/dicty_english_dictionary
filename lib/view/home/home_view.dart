@@ -163,6 +163,8 @@ class HomeView extends StatelessWidget {
             onPressed: () {},
           ),
         ],
+
+        
       );
 
   void searchForTheWord() async {
