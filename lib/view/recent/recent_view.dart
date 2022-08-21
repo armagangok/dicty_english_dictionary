@@ -59,7 +59,7 @@ class RecentView extends StatelessWidget {
   TextButton get _deleteAllButton => TextButton(
         onPressed: () async => await HiveController.instance.deleteAllWords(),
         child: const Text(
-          AppString.deleteAll,
+          KString.deleteAll,
           style: TextStyle(color: Colors.red),
         ),
       );
@@ -71,13 +71,13 @@ class RecentView extends StatelessWidget {
           ),
         ),
         child: const Text(
-          AppString.delete,
+          KString.delete,
           style: TextStyle(color: Colors.red),
         ),
       );
 
   AppBar _buildAppBar() => AppBar(
-        title: const Text(AppString.recent),
+        title: const Text(KString.recent),
         centerTitle: true,
         actions: [
           Builder(
@@ -86,7 +86,7 @@ class RecentView extends StatelessWidget {
                   padding: MaterialStateProperty.all(EdgeInsets.zero)),
               onPressed: () => _recentController.edit(),
               child: Text(
-                AppString.edit,
+                KString.edit,
                 style: context.textTheme.bodyMedium!.copyWith(
                   color: Colors.white,
                 ),
@@ -132,7 +132,7 @@ class RecentView extends StatelessWidget {
         physics: const ClampingScrollPhysics(),
         itemCount: wordList.length,
         itemBuilder: (context, index) => CheckboxListTile(
-          activeColor: AppColor.deepOrange,
+          activeColor: KColor.deepOrange,
           value: wordList[index].isSelected,
           onChanged: (val) async {
             wordList[index].isSelected = val!;
@@ -157,8 +157,8 @@ class RecentView extends StatelessWidget {
               children: [
                 MyErrorWidget(
                   errorModel: ErrorModel(
-                    title: AppString.resultViewSearchTitle,
-                    message: AppString.resultViewResultMessage,
+                    title: KString.resultViewSearchTitle,
+                    message: KString.resultViewResultMessage,
                   ),
                 ),
               ],

@@ -149,8 +149,8 @@ class WordWidget extends StatelessWidget {
 
   LinearGradient get _gradientDecoration => const LinearGradient(
         colors: [
-          AppColor.primaryColorBright,
-          AppColor.primaryColor,
+          KColor.primaryColorBright,
+          KColor.primaryColor,
         ],
         begin: FractionalOffset(0.0, 0.0),
         end: FractionalOffset(1.0, 0.0),

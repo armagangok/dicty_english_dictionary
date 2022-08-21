@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AppColor {
-  AppColor._();
+class KColor {
+  KColor._();
   static const primaryColor = Color(0xff0f3750);
   static const primaryColorBright = Color(0xff365567);
   static const scaffoldBacground = Color(0xfff4f4f4);

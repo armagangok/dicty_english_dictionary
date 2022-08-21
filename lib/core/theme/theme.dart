@@ -28,7 +28,7 @@ class CustomTheme {
     shadowColor: const Color.fromARGB(255, 0, 0, 0),
     dividerColor: Colors.black,
     dividerTheme: const DividerThemeData(thickness: 0.2),
-    scaffoldBackgroundColor: AppColor.scaffoldBacground,
+    scaffoldBackgroundColor: KColor.scaffoldBacground,
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Colors.blue,
     ),
@@ -44,7 +44,7 @@ class CustomTheme {
       unselectedItemColor: Colors.grey,
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColor.primaryColor,
+      backgroundColor: KColor.primaryColor,
       titleTextStyle: TextStyle(
         color: Colors.white,
         fontSize: 18,
@@ -57,21 +57,21 @@ class CustomTheme {
       ),
     ),
     progressIndicatorTheme: const ProgressIndicatorThemeData(
-      color: AppColor.primaryColor,
+      color: KColor.primaryColor,
     ),
     colorScheme: const ColorScheme(
-      primary: AppColor.primaryColor,
-      secondary: AppColor.scaffoldBacground,
+      primary: KColor.primaryColor,
+      secondary: KColor.scaffoldBacground,
       surface: Color(0xffffffff),
-      background: AppColor.scaffoldBacground,
+      background: KColor.scaffoldBacground,
       error: Color(0xffd32f2f),
       onPrimary: Color(0xffffffff),
       onSecondary: Color(0xffffffff),
-      onSurface: AppColor.primaryColor,
-      onBackground: AppColor.primaryColor,
+      onSurface: KColor.primaryColor,
+      onBackground: KColor.primaryColor,
       onError: Color(0xffffffff),
       brightness: Brightness.light,
-      primaryContainer: AppColor.primaryColor,
+      primaryContainer: KColor.primaryColor,
     ),
     textSelectionTheme: TextSelectionThemeData(
       selectionColor: Colors.white.withOpacity(0.2),

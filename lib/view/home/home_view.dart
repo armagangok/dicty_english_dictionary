@@ -18,8 +18,8 @@ class HomeView extends StatelessWidget {
       child: WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
-          drawer: _buildDrawer(),
-          appBar: _buildAppBar(),
+          drawer: _buildDrawer,
+          appBar: _buildAppBar,
           body: Padding(
             padding: EdgeInsets.all(context.normalWidth),
             child: Column(
@@ -30,48 +30,20 @@ class HomeView extends StatelessWidget {
                 Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    AutoSizeText(
-                      AppString.dictyText,
-                      style: context.textTheme.headline4!.copyWith(
-                        color: context.colors.primary,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.w800,
-                      ),
-                      maxLines: 1,
-                    ),
+                    _dictyText,
                     SizedBox(height: context.normalHeight),
-                    GestureDetector(
-                      onTap: () async => await UrlLauncherHelper.shared
-                          .openUrl(NetworkConstants.appUrl),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            AppString.followUs,
-                            style: context.textTheme.bodyLarge!.copyWith(
-                              color: AppColor.twitterBlue,
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                          const FaIcon(
-                            FontAwesomeIcons.twitter,
-                            color: AppColor.twitterBlue,
-                          ),
-                        ],
-                      ),
-                    ),
+                    followButton,
                   ],
                 ),
                 const Spacer(),
-                // Align(
-                //   alignment: Alignment.bottomRight,
-                //   child: MyBlinkingButton(
-                //     onTap: () async => await UrlLauncherHelper.shared
-                //         .openUrl(NetworkConstants.myUrl),
-                //     text: AppString.madeBy,
-                //   ),
-                // ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: MyBlinkingButton(
+                    onTap: () async =>
+                        await UrlLauncherHelper.shared.openUrl(KNetwork.myUrl),
+                    text: KString.madeBy,
+                  ),
+                ),
               ],
             ),
           ),
@@ -80,22 +52,54 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Widget _buildDrawer() => Builder(
-        builder: (context) => Drawer(
-          backgroundColor: context.colors.background,
-          width: context.width(0.8),
-          child: Center(
-            child: ListView(
-              shrinkWrap: true,
-              physics: const ClampingScrollPhysics(),
-              padding: context.mediumPadding,
-              children: _getDrawerItems,
-            ),
+  Widget get followButton => Builder(
+        builder: (context) => GestureDetector(
+          onTap: () async =>
+              await UrlLauncherHelper.shared.openUrl(KNetwork.appUrl),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                KString.followUs,
+                style: context.textTheme.bodyLarge!.copyWith(
+                  color: KColor.twitterBlue,
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+              const FaIcon(
+                FontAwesomeIcons.twitter,
+                color: KColor.twitterBlue,
+              ),
+            ],
           ),
         ),
       );
 
-  Widget _divider() => const Divider(thickness: 0.1);
+  Widget get _dictyText => Builder(
+      builder: (context) => AutoSizeText(
+            KString.dictyText,
+            style: context.textTheme.headline4!.copyWith(
+              color: context.colors.primary,
+              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.w800,
+            ),
+            maxLines: 1,
+          ));
+
+  Widget get _buildDrawer => Builder(
+      builder: (context) => Drawer(
+          backgroundColor: context.colors.background,
+          width: context.width(0.8),
+          child: Center(
+              child: ListView(
+            shrinkWrap: true,
+            physics: const ClampingScrollPhysics(),
+            padding: context.mediumPadding,
+            children: _getDrawerItems,
+          ))));
+
+  Widget get _divider => const Divider(thickness: 0.1);
 
   Widget _drawerItem({
     final String? text,
@@ -103,44 +107,40 @@ class HomeView extends StatelessWidget {
     final Function? onPressed,
   }) =>
       Builder(
-        builder: (context) => GestureDetector(
-          onTap: () => onPressed!(),
-          child: Container(
-            color: Colors.transparent,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      iconData,
-                      size: 28,
-                      color: context.colors.primary.withOpacity(0.8),
-                    ),
-                    SizedBox(width: context.mediumWidth),
-                    AutoSizeText(
-                      text!,
-                      style: context.textTheme.bodySmall!.copyWith(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w300,
-                        color: context.colors.primary.withOpacity(0.8),
-                      ),
-                      maxLines: 1,
-                    ),
-                  ],
-                ),
-                Icon(
-                  CupertinoIcons.forward,
-                  size: 28,
-                  color: context.colors.primary.withOpacity(0.8),
-                )
-              ],
-            ),
-          ),
-        ),
-      );
+          builder: (context) => GestureDetector(
+              onTap: () => onPressed!(),
+              child: Container(
+                  color: Colors.transparent,
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              iconData,
+                              size: 28,
+                              color: context.colors.primary.withOpacity(0.8),
+                            ),
+                            SizedBox(width: context.mediumWidth),
+                            AutoSizeText(
+                              text!,
+                              style: context.textTheme.bodySmall!.copyWith(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w300,
+                                color: context.colors.primary.withOpacity(0.8),
+                              ),
+                              maxLines: 1,
+                            ),
+                          ],
+                        ),
+                        Icon(
+                          CupertinoIcons.forward,
+                          size: 28,
+                          color: context.colors.primary.withOpacity(0.8),
+                        )
+                      ]))));
 
-  AppBar _buildAppBar() => AppBar(
+  AppBar get _buildAppBar => AppBar(
         title: Column(
           children: [
             CustomTextField(
@@ -149,7 +149,7 @@ class HomeView extends StatelessWidget {
                 Icons.search,
                 color: Colors.white,
               ),
-              onTap: () async => searchForTheWord(),
+              onTap: () async => searchForTheWord,
             ),
           ],
         ),
@@ -163,11 +163,9 @@ class HomeView extends StatelessWidget {
             onPressed: () {},
           ),
         ],
-
-        
       );
 
-  void searchForTheWord() async {
+  void get searchForTheWord async {
     if (textController.search.text.isEmpty) {
       Get.snackbar(
         "Warning",
@@ -203,37 +201,37 @@ class HomeView extends StatelessWidget {
 
   List<Widget> get _getDrawerItems => [
         _drawerItem(
-          text: AppString.recent,
+          text: KString.recent,
           iconData: CupertinoIcons.time,
           onPressed: () => Get.to(() => RecentView()),
         ),
-        _divider(),
+        _divider,
         _drawerItem(
-          text: AppString.wordOfTheDay,
+          text: KString.wordOfTheDay,
           iconData: CupertinoIcons.calendar_today,
           onPressed: () => Get.to(() => const WordOfTheDayView()),
         ),
-        _divider(),
+        _divider,
         _drawerItem(
-          text: AppString.accent,
+          text: KString.accent,
           iconData: CupertinoIcons.speaker_3,
           onPressed: () => buildDialog(const AccentPickerWidget()),
         ),
-        _divider(),
+        _divider,
         _drawerItem(
-          text: AppString.darkMode,
+          text: KString.darkMode,
           iconData: CupertinoIcons.moon,
           onPressed: () => buildDialog(const ThemePickerWidget()),
         ),
-        _divider(),
+        _divider,
         _drawerItem(
-          text: AppString.aboutMe,
+          text: KString.aboutMe,
           iconData: CupertinoIcons.info,
           onPressed: () => Get.to(() => const AboutMeView()),
         ),
-        _divider(),
+        _divider,
         _drawerItem(
-          text: AppString.rateUS,
+          text: KString.rateUS,
           iconData: CupertinoIcons.star,
           onPressed: () async => await RatingHelper.shared.requestReview(),
         ),

@@ -49,10 +49,10 @@ class MyErrorWidget extends StatelessWidget {
         return Text(
           errorModel.title,
           style: context.textTheme.titleLarge!.copyWith(
-            color: AppColor.deepOrange,
+            color: KColor.deepOrange,
           ),
         );
       });
 
-  Image get _errorIcon => Image.asset(AssetConstant.searchIcon);
+  Image get _errorIcon => Image.asset(KAsset.searchIcon);
 }

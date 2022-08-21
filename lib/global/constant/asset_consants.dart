@@ -1,5 +1,5 @@
-class AssetConstant {
-  AssetConstant._();
+class KAsset {
+  KAsset._();
 
   static const searchIcon = "assets/search.png";
 }

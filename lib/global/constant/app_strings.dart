@@ -1,5 +1,5 @@
-class AppString {
-  AppString._();
+class KString {
+  KString._();
   static const dictyText = "Dicty English Dictionary";
   static const followUs = "Follow on Twitter!";
   static const madeBy = "Made by Armağan Gök";
