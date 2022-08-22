@@ -1,12 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-
-import '../../feature/controller/tab_controller.dart';
 import '../../feature/export/export.dart';
-import '../../view/home/controller/accent_controller.dart';
-import '../../view/home/controller/theme_controller.dart';
-import '../../view/recent/controller/recent_controller.dart';
-import '../../view/word_of_the_day/controller/word_of_the_day_controller.dart';
+import 'injection/injection.dart';
 
 class Initialization {
   Initialization._();
@@ -14,9 +9,7 @@ class Initialization {
 
   Future<void> initApp() async {
     WidgetsFlutterBinding.ensureInitialized();
-
-    // await Get.put(TaskController.instance).initWorkmanager();
-
+    Injection.instance.setupLocator();
     MobileAds.instance.initialize();
 
     RequestConfiguration configuration = RequestConfiguration(
@@ -43,15 +36,5 @@ class Initialization {
     }
 
     await TextToSpeech.instance.initTTS();
-
-    Get.lazyPut<TabBarController>(() => TabBarController());
-    Get.lazyPut<AccentController>(() => AccentController());
-    Get.lazyPut<TextController>(() => TextController.instance);
-    Get.lazyPut<WordOfTheDayController>(() => WordOfTheDayController.instance);
-    Get.lazyPut<SearchController>(() => SearchController.instance);
-    Get.lazyPut<ThemeController>(() => ThemeController());
-
-    Get.lazyPut<HiveController>(() => HiveController.instance);
-    Get.lazyPut<RecentController>(() => RecentController.instance);
   }
 }

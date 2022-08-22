@@ -1,15 +1,17 @@
+
 import 'package:flutter/material.dart';
 
 import '../../core/components/custom_app_bar.dart';
 import '../../core/components/error_widget.dart';
 import '../../core/components/loading_widget.dart';
+import '../../core/initialization/injection/injection.dart';
 import '../../core/remote/api/model/model.dart';
 import '../../feature/components/word_widget.dart';
 import '../../feature/export/export.dart';
 
 class SearchResultView extends StatelessWidget {
-  final TextController textController = Get.find();
-  final SearchController searchWordController = Get.find();
+  final TextController textController = Injection.instance.locator.get<TextController>();
+  final SearchController searchWordController = Injection.instance.locator.get<SearchController>();
 
   SearchResultView({Key? key}) : super(key: key);
 

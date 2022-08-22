@@ -1,3 +1,4 @@
+import '../../../core/initialization/injection/injection.dart';
 import '../../../feature/export/export.dart';
 import '../controller/theme_controller.dart';
 
@@ -6,7 +7,7 @@ class ThemePickerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeController themeController = Get.put(ThemeController());
+    ThemeController themeController = Injection.instance.locator.get<ThemeController>();
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.min,

@@ -1,3 +1,5 @@
+import 'package:english_accent_dictionary/core/initialization/injection/injection.dart';
+
 import '../../../feature/export/export.dart';
 import '../controller/accent_controller.dart';
 
@@ -14,7 +16,7 @@ class AccentPickerWidget extends StatelessWidget {
   const AccentPickerWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final AccentController accentController = Get.put(AccentController());
+    final AccentController accentController = Injection.instance.locator.get<AccentController>();
 
     return SizedBox(
       height: context.height(0.2),

@@ -1,13 +1,15 @@
-import 'package:english_accent_dictionary/core/remote/api/model/model.dart';
 
+
+import '../../../core/initialization/injection/injection.dart';
+import '../../../core/remote/api/model/model.dart';
 import '../../../feature/export/export.dart';
 
 class SearchController extends GetxController implements BaseWordController {
   SearchController._();
   static final instance = SearchController._();
 
-  final HiveController hiveService = Get.find();
-  final WordService _wordService = WordService.instance;
+  final HiveController hiveService = Injection.instance.locator.get<HiveController>();
+  final WordService _wordService = Injection.instance.locator.get<WordService>();
 
   final Rx<dynamic> _wordModel = Rx(null);
 

@@ -1,80 +1,73 @@
 import 'dart:ui';
 
+
 import 'package:flutter/material.dart';
 
 import '../../core/helpers/rating/rating_helper.dart';
+import '../../core/initialization/injection/injection.dart';
 import '../../feature/export/export.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
 
-  final TextController textController = Get.find();
-  final SearchController searchController = Get.find();
+  final TextController textController = Injection.instance.locator.get<TextController>();
+  final SearchController searchController = Injection.instance.locator.get<SearchController>();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.dismissKeyboard(),
-      child: WillPopScope(
-        onWillPop: () async => false,
-        child: Scaffold(
-          drawer: _buildDrawer,
-          appBar: _buildAppBar,
-          body: Padding(
-            padding: EdgeInsets.all(context.normalWidth),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Spacer(),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _dictyText,
-                    SizedBox(height: context.normalHeight),
-                    followButton,
-                  ],
-                ),
-                const Spacer(),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: MyBlinkingButton(
-                    onTap: () async =>
-                        await UrlLauncherHelper.shared.openUrl(KNetwork.myUrl),
-                    text: KString.madeBy,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+        onTap: () => context.dismissKeyboard(),
+        child: WillPopScope(
+            onWillPop: () async => false,
+            child: Scaffold(
+                drawer: _buildDrawer,
+                appBar: _buildAppBar,
+                body: Padding(
+                    padding: EdgeInsets.all(context.normalWidth),
+                    child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Spacer(),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              _dictyText,
+                              SizedBox(height: context.normalHeight),
+                              _followButton,
+                            ],
+                          ),
+                          const Spacer(),
+                          // _blinkingButton,
+                        ])))));
   }
 
-  Widget get followButton => Builder(
-        builder: (context) => GestureDetector(
+  Widget get _blinkingButton => Align(
+      alignment: Alignment.bottomRight,
+      child: MyBlinkingButton(
+        onTap: () async =>
+            await UrlLauncherHelper.shared.openUrl(KNetwork.myUrl),
+        text: KString.madeBy,
+      ));
+
+  Widget get _followButton => Builder(
+      builder: (context) => GestureDetector(
           onTap: () async =>
               await UrlLauncherHelper.shared.openUrl(KNetwork.appUrl),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                KString.followUs,
-                style: context.textTheme.bodyLarge!.copyWith(
-                  color: KColor.twitterBlue,
-                  fontWeight: FontWeight.bold,
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-              const FaIcon(
-                FontAwesomeIcons.twitter,
+          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text(
+              KString.followUs,
+              style: context.textTheme.bodyLarge!.copyWith(
                 color: KColor.twitterBlue,
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.underline,
               ),
-            ],
-          ),
-        ),
-      );
+            ),
+            const FaIcon(
+              FontAwesomeIcons.twitter,
+              color: KColor.twitterBlue,
+            )
+          ])));
 
   Widget get _dictyText => Builder(
       builder: (context) => AutoSizeText(
@@ -141,29 +134,28 @@ class HomeView extends StatelessWidget {
                       ]))));
 
   AppBar get _buildAppBar => AppBar(
-        title: Column(
-          children: [
-            CustomTextField(
-              controller: textController.search,
-              icon: const Icon(
-                Icons.search,
-                color: Colors.white,
+          title: Column(
+            children: [
+              CustomTextField(
+                controller: textController.search,
+                icon: const Icon(
+                  Icons.search,
+                  color: Colors.white,
+                ),
+                onTap: () async => searchForTheWord,
               ),
-              onTap: () async => searchForTheWord,
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            splashRadius: 0.1,
-            icon: const Icon(
-              CupertinoIcons.settings,
-              color: Colors.transparent,
-            ),
-            onPressed: () {},
+            ],
           ),
-        ],
-      );
+          actions: [
+            IconButton(
+              splashRadius: 0.1,
+              icon: const Icon(
+                CupertinoIcons.settings,
+                color: Colors.transparent,
+              ),
+              onPressed: () {},
+            )
+          ]);
 
   void get searchForTheWord async {
     if (textController.search.text.isEmpty) {
@@ -180,11 +172,10 @@ class HomeView extends StatelessWidget {
     }
   }
 
-  buildDialog(Widget child) => Get.dialog(
-        Builder(
-          builder: (context) => BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 0.9, sigmaY: 0.9),
-            child: Dialog(
+  buildDialog(Widget child) => Get.dialog(Builder(
+      builder: (context) => BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 0.9, sigmaY: 0.9),
+          child: Dialog(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16)),
               child: Padding(
@@ -193,11 +184,7 @@ class HomeView extends StatelessWidget {
                   vertical: context.width(0.05),
                 ),
                 child: child,
-              ),
-            ),
-          ),
-        ),
-      );
+              )))));
 
   List<Widget> get _getDrawerItems => [
         _drawerItem(
@@ -234,6 +221,6 @@ class HomeView extends StatelessWidget {
           text: KString.rateUS,
           iconData: CupertinoIcons.star,
           onPressed: () async => await RatingHelper.shared.requestReview(),
-        ),
+        )
       ];
 }
