@@ -42,13 +42,13 @@ class HomeView extends StatelessWidget {
                         ])))));
   }
 
-  Widget get _blinkingButton => Align(
-      alignment: Alignment.bottomRight,
-      child: MyBlinkingButton(
-        onTap: () async =>
-            await UrlLauncherHelper.shared.openUrl(KNetwork.myUrl),
-        text: KString.madeBy,
-      ));
+  // Widget get _blinkingButton => Align(
+  //     alignment: Alignment.bottomRight,
+  //     child: MyBlinkingButton(
+  //       onTap: () async =>
+  //           await UrlLauncherHelper.shared.openUrl(KNetwork.myUrl),
+  //       text: KString.madeBy,
+  //     ));
 
   Widget get _followButton => Builder(
       builder: (context) => GestureDetector(
