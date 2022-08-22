@@ -5,7 +5,5 @@ import '../../../core/theme/theme_service.dart';
 class ThemeController extends GetxController {
   RxBool switchValue = RxBool(ThemeService.instance.isSavedDarkMode());
 
-  void change(bool value) {
-    switchValue.value = value;
-  }
+  void change(bool value) => switchValue.value = value;
 }

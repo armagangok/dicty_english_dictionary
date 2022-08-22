@@ -1,4 +1,6 @@
-import '../../view/recent/controller/recent_controller.dart';
+
+
+
 import '../export/export.dart';
 
 class DictionaryWidget extends StatelessWidget {
@@ -9,7 +11,7 @@ class DictionaryWidget extends StatelessWidget {
 
   final List<Definition> definitions;
 
-  final RecentController _listController = Get.put(RecentController.instance);
+  final _listController = Injection.instance.locator.get<RecentController>();
 
   @override
   Widget build(BuildContext context) {

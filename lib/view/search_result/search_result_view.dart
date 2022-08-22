@@ -5,7 +5,7 @@ import '../../core/components/custom_app_bar.dart';
 import '../../core/components/error_widget.dart';
 import '../../core/components/loading_widget.dart';
 import '../../core/initialization/injection/injection.dart';
-import '../../core/remote/api/model/model.dart';
+import '../../core/model/error_model.dart';
 import '../../feature/components/word_widget.dart';
 import '../../feature/export/export.dart';
 

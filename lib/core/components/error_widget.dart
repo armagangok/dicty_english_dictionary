@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../feature/export/export.dart';
-import '../remote/api/model/model.dart';
+import '../model/error_model.dart';
 
 class MyErrorWidget extends StatelessWidget {
   const MyErrorWidget({

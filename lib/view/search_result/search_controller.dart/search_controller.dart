@@ -1,15 +1,15 @@
 
 
 import '../../../core/initialization/injection/injection.dart';
-import '../../../core/remote/api/model/model.dart';
+import '../../../core/model/error_model.dart';
 import '../../../feature/export/export.dart';
 
 class SearchController extends GetxController implements BaseWordController {
   SearchController._();
   static final instance = SearchController._();
 
-  final HiveController hiveService = Injection.instance.locator.get<HiveController>();
-  final WordService _wordService = Injection.instance.locator.get<WordService>();
+  final  _hiveService = Injection.instance.locator.get<HiveController>();
+  final  _wordService = Injection.instance.locator.get<WordService>();
 
   final Rx<dynamic> _wordModel = Rx(null);
 
@@ -112,7 +112,7 @@ class SearchController extends GetxController implements BaseWordController {
 
   Future<void> saveToHiveDatabase(checker) async {
     if (_wordModel.value != null) {
-      for (var element in hiveService.getAll()) {
+      for (var element in _hiveService.getAll()) {
         if (element.word == _wordModel.value!.word) {
           checker++;
         }
@@ -127,7 +127,7 @@ class SearchController extends GetxController implements BaseWordController {
           license: _wordModel.value.license,
         );
 
-        await hiveService.addData(hiveWord);
+        await _hiveService.addData(hiveWord);
       }
     }
   }

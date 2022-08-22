@@ -1,23 +1,22 @@
 // ignore_for_file: avoid_function_literals_in_foreach_calls
 
-import 'package:english_accent_dictionary/core/components/error_widget.dart';
-import 'package:english_accent_dictionary/core/remote/api/model/model.dart';
+
 import 'package:flutter/material.dart';
 
 import '../../../feature/export/export.dart';
-import 'controller/recent_controller.dart';
+
 
 class RecentView extends StatelessWidget {
   RecentView({Key? key}) : super(key: key);
 
-  // final TextToSpeech _textToSpeech = Get.put(TextToSpeech.instance);
-  final RecentController _recentController = Get.put(RecentController.instance);
 
+  final _recentController = Injection.instance.locator.get<RecentController>();
+  final _hiveController = Injection.instance.locator.get<HiveController>();
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: _buildAppBar(),
         body: ValueListenableBuilder(
-          valueListenable: HiveController.instance.getHiveBox.listenable(),
+          valueListenable: _hiveController.getHiveBox.listenable(),
           builder: (context, Box<WordModel> wordBox, _) => wordBox.isEmpty
               ? _noRecentSearch()
               : Column(
@@ -28,7 +27,7 @@ class RecentView extends StatelessWidget {
                         shrinkWrap: true,
                         physics: const ClampingScrollPhysics(),
                         children: [
-                          _recentBuilder(HiveController.instance.getAll()),
+                          _recentBuilder(_hiveController.getAll()),
                         ],
                       ),
                     ),
@@ -57,7 +56,7 @@ class RecentView extends StatelessWidget {
       );
 
   TextButton get _deleteAllButton => TextButton(
-        onPressed: () async => await HiveController.instance.deleteAllWords(),
+        onPressed: () async => await _hiveController.deleteAllWords(),
         child: const Text(
           KString.deleteAll,
           style: TextStyle(color: Colors.red),
@@ -65,8 +64,8 @@ class RecentView extends StatelessWidget {
       );
 
   Widget get _deleteButton => TextButton(
-        onPressed: () async => HiveController.instance.wordList.forEach(
-          (element) async => await HiveController.instance.deleteByName(
+        onPressed: () async => _hiveController.wordList.forEach(
+          (element) async => await _hiveController.deleteByName(
             element,
           ),
         ),

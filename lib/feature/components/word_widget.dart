@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../controller/tab_controller.dart';
 import '../export/export.dart';
 import 'dictionary_widget.dart';
 import 'speak_button.dart';
@@ -13,8 +12,9 @@ class WordWidget extends StatelessWidget {
   }) : super(key: key);
 
   final BaseWordController controller;
-  final TabBarController tabBarController = Get.put(TabBarController());
   final WordModel wordModel;
+  final tabBarController = Injection.instance.locator.get<TabBarController>();
+  
 
   @override
   Widget build(BuildContext context) => Column(

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../../../feature/export/export.dart';
-import '../model/model.dart';
+import '../../../model/error_model.dart';
 
 class WordService {
   WordService._();

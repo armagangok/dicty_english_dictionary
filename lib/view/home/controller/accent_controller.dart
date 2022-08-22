@@ -1,9 +1,11 @@
+import 'package:english_accent_dictionary/core/initialization/injection/injection.dart';
+
 import '../../../feature/export/export.dart';
 
 class AccentController extends GetxController {
-  final HiveController _hiveService = HiveController.instance;
+  final _hiveService = Injection.instance.locator.get<HiveController>();
 
-  Rx<dynamic> accent = Rx(null);
+  final Rx<dynamic> accent = Rx(null);
 
   @override
   void onInit() async {
