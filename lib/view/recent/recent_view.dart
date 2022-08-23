@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../../core/components/ios_delete_dialog.dart';
 import '../../global/export/export.dart';
 import 'recent_detail_view.dart';
 
@@ -54,7 +55,14 @@ class RecentView extends StatelessWidget {
       );
 
   TextButton get _deleteAllButton => TextButton(
-        onPressed: () async => await _hiveController.deleteAllWords(),
+        onPressed: () async {
+          Get.dialog(IosDeleteDialog(
+              title: "Warning",
+              message: "Do you want to delete all items?",
+              dialogAction: () async {
+                await _hiveController.deleteAllWords();
+              }));
+        },
         child: const Text(
           KString.deleteAll,
           style: TextStyle(color: Colors.red),
@@ -62,11 +70,17 @@ class RecentView extends StatelessWidget {
       );
 
   Widget get _deleteButton => TextButton(
-        onPressed: () async => _hiveController.wordList.forEach(
-          (element) async => await _hiveController.deleteByName(
-            element,
-          ),
-        ),
+        onPressed: () async {
+          Get.dialog(IosDeleteDialog(
+            title: "Warning",
+            message: "Do you want to delete selected items?",
+            dialogAction: () => _hiveController.wordList.forEach(
+              (element) async => await _hiveController.deleteByName(
+                element,
+              ),
+            ),
+          ));
+        },
         child: const Text(
           KString.delete,
           style: TextStyle(color: Colors.red),
@@ -77,7 +91,7 @@ class RecentView extends StatelessWidget {
         title: const Text(KString.recent),
         centerTitle: true,
         actions: [
-          Builder(
+           Builder(
             builder: (context) => TextButton(
               style: ButtonStyle(
                   padding: MaterialStateProperty.all(EdgeInsets.zero)),

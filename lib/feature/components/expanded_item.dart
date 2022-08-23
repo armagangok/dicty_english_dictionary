@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../global/export/export.dart';
 
 class ExpandedItem extends StatelessWidget {
-   ExpandedItem({
+  ExpandedItem({
     Key? key,
     required this.clickedNumber,
     required this.text,
@@ -53,14 +53,15 @@ class ExpandedItem extends StatelessWidget {
                         : context.primary,
                   ),
                 ),
-                Text(
-                  "($amount)",
-                  style: TextStyle(
-                    color: clickedNumber == tabBarController.currentIndex.value
-                        ? Colors.white
-                        : context.primary,
-                  ),
-                )
+                Obx(() => Text(
+                      "($amount)",
+                      style: TextStyle(
+                        color:
+                            clickedNumber == tabBarController.currentIndex.value
+                                ? Colors.white
+                                : context.primary,
+                      ),
+                    ))
               ],
             ),
           ),

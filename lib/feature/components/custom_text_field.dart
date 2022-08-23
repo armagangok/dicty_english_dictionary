@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../global/export/export.dart';
 
-
-
 class CustomTextField extends StatelessWidget {
   final Function? onTap;
   final double? textFieldH;
@@ -12,7 +10,7 @@ class CustomTextField extends StatelessWidget {
   final String? labelText;
   final Icon? icon;
 
-  const CustomTextField({
+  CustomTextField({
     Key? key,
     this.onTap,
     this.textFieldH,
@@ -21,6 +19,8 @@ class CustomTextField extends StatelessWidget {
     this.labelText,
     this.icon,
   }) : super(key: key);
+
+  final searchController = Injection.instance.locator.get<SearchController>();
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +42,28 @@ class CustomTextField extends StatelessWidget {
             child: icon ?? const Text(""),
             onTap: () => onTap!(),
             splashColor: null,
-
           ),
         ),
+        textInputAction: TextInputAction.done,
+        onFieldSubmitted: (value) => searchForTheWord,
+          
+        
       ),
     );
+  }
+
+  void get searchForTheWord async {
+    if (controller!.text.isEmpty) {
+      Get.snackbar(
+        "Warning",
+        "Please enter a text to search for!",
+        snackPosition: SnackPosition.TOP,
+        duration: const Duration(milliseconds: 3000),
+      );
+    } else {
+      Get.to(SearchResultView());
+      await searchController.fetchWord(controller!.text);
+      controller!.text = "";
+    }
   }
 }

@@ -118,56 +118,51 @@ class WordWidget extends StatelessWidget {
 
   //
 
-  Obx wordKindWidget() => Obx(
-        () {
-
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              tabBarController.currentIndex.value == 0
-                  ? DictionaryWidget(
-                      definitions: controller.noun,
-                    )
-                  : const SizedBox(),
-              tabBarController.currentIndex.value == 1
-                  ? DictionaryWidget(
-                      definitions: controller.pronoun,
-                    )
-                  : const SizedBox(),
-              tabBarController.currentIndex.value == 2
-                  ? DictionaryWidget(
-                      definitions: controller.articles,
-                    )
-                  : const SizedBox(),
-              tabBarController.currentIndex.value == 3
-                  ? DictionaryWidget(
-                      definitions: controller.interjection,
-                    )
-                  : const SizedBox(),
-              tabBarController.currentIndex.value == 4
-                  ? DictionaryWidget(
-                      definitions: controller.verb,
-                    )
-                  : const SizedBox(),
-              tabBarController.currentIndex.value == 5
-                  ? DictionaryWidget(
-                      definitions: controller.adverb,
-                    )
-                  : const SizedBox(),
-              tabBarController.currentIndex.value == 6
-                  ? DictionaryWidget(
-                      definitions: controller.preposition,
-                    )
-                  : const SizedBox(),
-              tabBarController.currentIndex.value == 7
-                  ? DictionaryWidget(
-                      definitions: controller.adjective,
-                    )
-                  : const SizedBox(),
-            ],
-          );
-        },
-      );
+  Obx wordKindWidget() => Obx(() => Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          tabBarController.currentIndex.value == 0
+              ? DictionaryWidget(
+                  definitions: controller.noun,
+                )
+              : const SizedBox(),
+          tabBarController.currentIndex.value == 1
+              ? DictionaryWidget(
+                  definitions: controller.pronoun,
+                )
+              : const SizedBox(),
+          tabBarController.currentIndex.value == 2
+              ? DictionaryWidget(
+                  definitions: controller.articles,
+                )
+              : const SizedBox(),
+          tabBarController.currentIndex.value == 3
+              ? DictionaryWidget(
+                  definitions: controller.interjection,
+                )
+              : const SizedBox(),
+          tabBarController.currentIndex.value == 4
+              ? DictionaryWidget(
+                  definitions: controller.verb,
+                )
+              : const SizedBox(),
+          tabBarController.currentIndex.value == 5
+              ? DictionaryWidget(
+                  definitions: controller.adverb,
+                )
+              : const SizedBox(),
+          tabBarController.currentIndex.value == 6
+              ? DictionaryWidget(
+                  definitions: controller.preposition,
+                )
+              : const SizedBox(),
+          tabBarController.currentIndex.value == 7
+              ? DictionaryWidget(
+                  definitions: controller.adjective,
+                )
+              : const SizedBox(),
+        ],
+      ));
 
   //
 
