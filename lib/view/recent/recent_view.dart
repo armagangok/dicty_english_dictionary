@@ -111,7 +111,10 @@ class RecentView extends StatelessWidget {
         itemCount: wordList.length,
         itemBuilder: (context, index) {
           return ListTile(
-            onTap: () => Get.to(RecentDetailWiew(wordModel: wordList[index])),
+            onTap: () {
+              _hiveController.fetchWord(wordList[index]);
+              Get.to(RecentDetailWiew(wordModel: wordList[index]));
+            },
             title: Text(
               wordList[index].word!,
               style: context.textTheme.bodyMedium!.copyWith(

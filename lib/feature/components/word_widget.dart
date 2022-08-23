@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../global/export/export.dart';
 import 'dictionary_widget.dart';
+import 'expanded_item.dart';
 import 'speak_button.dart';
 
 class WordWidget extends StatelessWidget {
@@ -14,106 +15,32 @@ class WordWidget extends StatelessWidget {
   final BaseWordController controller;
   final WordModel wordModel;
   final tabBarController = Injection.instance.locator.get<TabBarController>();
-  
 
   @override
-  Widget build(BuildContext context) => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          wordTextSpeakButton(),
-          Expanded(
-            child: ListView(
-              padding: context.symmetricPadding(horizontal: 0.025),
-              physics: const ClampingScrollPhysics(),
-              shrinkWrap: true,
-              children: [
-                expandedItems1(),
-                SizedBox(height: context.height(0.0075)),
-                expandedItems2(),
-                wordKindWidget(),
-              ],
-            ),
-          )
-        ],
-      );
-
-  //
-
-  Widget expandedItems2() => SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        physics: const ClampingScrollPhysics(),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            expandedItem(
-              "Verb",
-              4,
-              () => tabBarController.changeIndex(4),
-              controller.verb.length,
-            ),
-            expandedItem(
-              "Adverb",
-              5,
-              () => tabBarController.changeIndex(5),
-              controller.adverb.length,
-            ),
-            expandedItem(
-              "Preposition",
-              6,
-              () => tabBarController.changeIndex(6),
-              controller.preposition.length,
-            ),
-            expandedItem(
-              "Adjecive",
-              7,
-              () => tabBarController.changeIndex(7),
-              controller.adjective.length,
-            ),
-          ],
-        ),
-      );
-
-  //
-
-  Widget expandedItems1() => Builder(builder: (context) {
-        return Padding(
-          padding: EdgeInsets.only(top: context.normalHeight),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        wordTextSpeakButton(),
+        Expanded(
+          child: ListView(
+            padding: context.symmetricPadding(horizontal: 0.025),
             physics: const ClampingScrollPhysics(),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                expandedItem(
-                  "Noun",
-                  0,
-                  () => tabBarController.changeIndex(0),
-                  controller.noun.length,
-                ),
-                expandedItem(
-                  "Pronoun",
-                  1,
-                  () => tabBarController.changeIndex(1),
-                  controller.pronoun.length,
-                ),
-                expandedItem(
-                  "Articles",
-                  2,
-                  () => tabBarController.changeIndex(2),
-                  controller.articles.length,
-                ),
-                expandedItem(
-                  "Interjection",
-                  3,
-                  () => tabBarController.changeIndex(3),
-                  controller.interjection.length,
-                ),
-              ],
-            ),
+            shrinkWrap: true,
+            children: [
+              expandedItems1(),
+              SizedBox(height: context.height(0.0075)),
+              expandedItems2(),
+              wordKindWidget(),
+            ],
           ),
-        );
-      });
+        )
+      ],
+    );
+  }
+
+  //
 
   Widget wordTextSpeakButton() => Builder(
         builder: (context) => Container(
@@ -192,109 +119,130 @@ class WordWidget extends StatelessWidget {
   //
 
   Obx wordKindWidget() => Obx(
-        () => Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        () {
+
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              tabBarController.currentIndex.value == 0
+                  ? DictionaryWidget(
+                      definitions: controller.noun,
+                    )
+                  : const SizedBox(),
+              tabBarController.currentIndex.value == 1
+                  ? DictionaryWidget(
+                      definitions: controller.pronoun,
+                    )
+                  : const SizedBox(),
+              tabBarController.currentIndex.value == 2
+                  ? DictionaryWidget(
+                      definitions: controller.articles,
+                    )
+                  : const SizedBox(),
+              tabBarController.currentIndex.value == 3
+                  ? DictionaryWidget(
+                      definitions: controller.interjection,
+                    )
+                  : const SizedBox(),
+              tabBarController.currentIndex.value == 4
+                  ? DictionaryWidget(
+                      definitions: controller.verb,
+                    )
+                  : const SizedBox(),
+              tabBarController.currentIndex.value == 5
+                  ? DictionaryWidget(
+                      definitions: controller.adverb,
+                    )
+                  : const SizedBox(),
+              tabBarController.currentIndex.value == 6
+                  ? DictionaryWidget(
+                      definitions: controller.preposition,
+                    )
+                  : const SizedBox(),
+              tabBarController.currentIndex.value == 7
+                  ? DictionaryWidget(
+                      definitions: controller.adjective,
+                    )
+                  : const SizedBox(),
+            ],
+          );
+        },
+      );
+
+  //
+
+  Widget expandedItems2() => SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        physics: const ClampingScrollPhysics(),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            // SizedBox(height: context.lowHeight),
-            tabBarController.currentIndex.value == 0
-                ? DictionaryWidget(
-                    definitions: controller.noun,
-                  )
-                : const SizedBox(),
-            tabBarController.currentIndex.value == 1
-                ? DictionaryWidget(
-                    definitions: controller.pronoun,
-                  )
-                : const SizedBox(),
-            tabBarController.currentIndex.value == 2
-                ? DictionaryWidget(
-                    definitions: controller.articles,
-                  )
-                : const SizedBox(),
-            tabBarController.currentIndex.value == 3
-                ? DictionaryWidget(
-                    definitions: controller.interjection,
-                  )
-                : const SizedBox(),
-            tabBarController.currentIndex.value == 4
-                ? DictionaryWidget(
-                    definitions: controller.verb,
-                  )
-                : const SizedBox(),
-            tabBarController.currentIndex.value == 5
-                ? DictionaryWidget(
-                    definitions: controller.adverb,
-                  )
-                : const SizedBox(),
-            tabBarController.currentIndex.value == 6
-                ? DictionaryWidget(
-                    definitions: controller.preposition,
-                  )
-                : const SizedBox(),
-            tabBarController.currentIndex.value == 7
-                ? DictionaryWidget(
-                    definitions: controller.adjective,
-                  )
-                : const SizedBox(),
+            ExpandedItem(
+              text: "Verb",
+              clickedNumber: 4,
+              onTap: () => tabBarController.changeIndex(4),
+              amount: controller.verb.length,
+            ),
+            ExpandedItem(
+              text: "Adverb",
+              clickedNumber: 5,
+              onTap: () => tabBarController.changeIndex(5),
+              amount: controller.adverb.length,
+            ),
+            ExpandedItem(
+              text: "Preposition",
+              clickedNumber: 6,
+              onTap: () => tabBarController.changeIndex(6),
+              amount: controller.preposition.length,
+            ),
+            ExpandedItem(
+              text: "Adjecive",
+              clickedNumber: 7,
+              onTap: () => tabBarController.changeIndex(7),
+              amount: controller.adjective.length,
+            ),
           ],
         ),
       );
 
   //
 
-  Widget expandedItem(
-    String text,
-    int clickedNumber,
-    final Function onTap,
-    int amount,
-  ) =>
-      Builder(
-        builder: (context) => InkWell(
-          onTap: () => onTap(),
-          child: Obx(
-            () => Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: context.colors.onBackground,
+  Widget expandedItems1() => Builder(builder: (context) {
+        return Padding(
+          padding: EdgeInsets.only(top: context.normalHeight),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            physics: const ClampingScrollPhysics(),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ExpandedItem(
+                  text: "Noun",
+                  clickedNumber: 0,
+                  onTap: () => tabBarController.changeIndex(0),
+                  amount: controller.noun.length,
                 ),
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(90),
+                ExpandedItem(
+                  text: "Pronoun",
+                  clickedNumber: 1,
+                  onTap: () => tabBarController.changeIndex(1),
+                  amount: controller.pronoun.length,
                 ),
-                color: clickedNumber == tabBarController.currentIndex.value
-                    ? context.colors.onBackground
-                    : Colors.transparent,
-              ),
-              padding: EdgeInsets.symmetric(
-                horizontal: context.width(0.01),
-                vertical: context.height(0.006),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    text,
-                    textAlign: TextAlign.center,
-                    maxLines: 1,
-                    style: TextStyle(
-                      color:
-                          clickedNumber == tabBarController.currentIndex.value
-                              ? Colors.white
-                              : context.primary,
-                    ),
-                  ),
-                  Text(
-                    "($amount)",
-                    style: TextStyle(
-                      color:
-                          clickedNumber == tabBarController.currentIndex.value
-                              ? Colors.white
-                              : context.primary,
-                    ),
-                  )
-                ],
-              ),
+                ExpandedItem(
+                  text: "Articles",
+                  clickedNumber: 2,
+                  onTap: () => tabBarController.changeIndex(2),
+                  amount: controller.articles.length,
+                ),
+                ExpandedItem(
+                  text: "Interjection",
+                  clickedNumber: 3,
+                  onTap: () => tabBarController.changeIndex(3),
+                  amount: controller.interjection.length,
+                ),
+              ],
             ),
           ),
-        ),
-      );
+        );
+      });
 }

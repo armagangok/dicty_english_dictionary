@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get_instance/get_instance.dart';
 
 import '../../../global/export/export.dart';

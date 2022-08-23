@@ -1,3 +1,5 @@
+// ignore_for_file: overridden_fields
+
 import '../../global/export/export.dart';
 
 class HiveController extends BaseWordController {
@@ -18,7 +20,6 @@ class HiveController extends BaseWordController {
   RxList<Definition> preposition = RxList([]);
   @override
   RxList<Definition> pronoun = RxList([]);
-
   @override
   RxList<Definition> verb = RxList([]);
 
@@ -26,8 +27,6 @@ class HiveController extends BaseWordController {
   late final Box<WordModel> _hiveWords;
 
   Box<WordModel> get getHiveBox => _hiveWords;
-
-  //
 
   Future<void> initializeHive() async {
     await Hive.initFlutter();
@@ -41,13 +40,9 @@ class HiveController extends BaseWordController {
     await Hive.openBox("countryBox");
   }
 
-  //
-
   Future<void> addData(WordModel word) async {
     await _hiveWords.add(word);
   }
-
-  //
 
   List<WordModel> getAll() {
     wordList.clear();
@@ -58,19 +53,13 @@ class HiveController extends BaseWordController {
     return wordList;
   }
 
-  //
-
   Future<void> deleteData(index) async {
     await _hiveWords.deleteAt(index);
   }
 
-  //
-
   WordModel getData(int index) {
     return _hiveWords.getAt(index) as WordModel;
   }
-
-  //
 
   Future<String> getLanguage() async {
     final Box box = Hive.box("countryBox");
@@ -79,12 +68,8 @@ class HiveController extends BaseWordController {
     return index;
   }
 
-  //
-
   Future<void> setupLanguage() async =>
       await Hive.box("countryBox").add("English-GB");
-
-  //
 
   Future<void> saveLanguage(String lang) async {
     await Hive.box("countryBox").clear();
@@ -109,8 +94,6 @@ class HiveController extends BaseWordController {
   Future<void> deleteAllWords() async {
     await _hiveWords.clear();
   }
-
-  //
 
   void fetchWord(WordModel wordModel) {
     _clearList();
