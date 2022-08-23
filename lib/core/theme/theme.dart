@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../feature/export/export.dart';
+import '../../global/export/export.dart';
 
 class CustomTheme {
   CustomTheme._();

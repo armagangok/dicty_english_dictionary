@@ -15,11 +15,12 @@ class KString {
   static const resultViewSearchTitle = "No search found";
   static const resultViewResultMessage =
       "Sorry pal, we could not find any recent search you have made.";
+  static const done = "DONE";
   static const aboutMeContent = """Hi there!
 
-I am an eager university student who chases his dreams to get happier and turn the world into a more beautiful place, that's why I have been learning and developing Flutter applications for building an app business. 
+I am an eager university student who chases his dreams to get happier and turn the world into a more beautiful place, that's why I have been learning mobile app development with the Flutter framework for the last year. 
 
-I've been learning Flutter for the last year and getting better at it day by day. I strongly believe that I will make my dreams come true.
+I've been learning Flutter and getting better at it day by day. I strongly believe that I will make my dreams come true.
 
-If you wish to contact for any reason feel free to reach out!""";
+If you wish to contact for any reason feel free to reach out.""";
 }

@@ -1,7 +1,7 @@
 
 
 
-import '../../../feature/export/export.dart';
+import '../../../global/export/export.dart';
 
 
 class Injection {

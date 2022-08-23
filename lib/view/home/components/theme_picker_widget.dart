@@ -1,5 +1,5 @@
 import '../../../core/initialization/injection/injection.dart';
-import '../../../feature/export/export.dart';
+import '../../../global/export/export.dart';
 import '../controller/theme_controller.dart';
 
 class ThemePickerWidget extends StatelessWidget {

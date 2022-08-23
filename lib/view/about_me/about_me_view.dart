@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/components/custom_app_bar.dart';
-import '../../feature/export/export.dart';
+import '../../global/export/export.dart';
 
 class AboutMeView extends StatelessWidget {
   const AboutMeView({Key? key}) : super(key: key);
@@ -30,7 +29,7 @@ class AboutMeView extends StatelessWidget {
           onTap: () => UrlLauncherHelper.shared.openUrl(KNetwork.myUrl),
           child: Row(mainAxisSize: MainAxisSize.min, children: [
             Text(
-              "Contact with me!",
+              "Contact with me ",
               style: context.textTheme.bodyLarge!.copyWith(
                 color: KColor.twitterBlue,
                 fontWeight: FontWeight.bold,

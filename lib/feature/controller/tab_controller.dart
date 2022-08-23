@@ -1,4 +1,4 @@
-import '../export/export.dart';
+import '../../global/export/export.dart';
 
 class TabBarController extends GetxController {
   final RxInt currentIndex = RxInt(0);

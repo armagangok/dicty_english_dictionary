@@ -1,4 +1,4 @@
-import '../export/export.dart';
+import '../../global/export/export.dart';
 
 abstract class BaseWordController extends GetxController {
   late RxList<Definition> noun;

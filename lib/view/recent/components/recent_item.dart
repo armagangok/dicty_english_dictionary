@@ -2,24 +2,26 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../../../feature/components/word_widget.dart';
-import '../../../feature/export/export.dart';
+import '../../../global/export/export.dart';
 
 class RecentItem extends StatelessWidget {
   final WordModel wordModel;
   final int index;
 
-  const RecentItem({
+  RecentItem({
     Key? key,
     required this.wordModel,
     required this.index,
   }) : super(key: key);
 
+  final _hiveController = Injection.instance.locator.get<HiveController>();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        HiveController.instance.fetchWord(wordModel);
+        _hiveController.fetchWord(wordModel);
+
         Get.dialog(buildDialog());
       },
       child: Row(
@@ -59,7 +61,7 @@ class RecentItem extends StatelessWidget {
                   physics: const ClampingScrollPhysics(),
                   children: [
                     WordWidget(
-                      controller: HiveController.instance,
+                      controller: _hiveController,
                       wordModel: wordModel,
                     ),
                   ],

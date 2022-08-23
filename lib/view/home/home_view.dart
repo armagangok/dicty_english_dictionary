@@ -1,17 +1,16 @@
 import 'dart:ui';
 
-
 import 'package:flutter/material.dart';
 
-import '../../core/helpers/rating/rating_helper.dart';
-import '../../core/initialization/injection/injection.dart';
-import '../../feature/export/export.dart';
+import '../../global/export/export.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
 
-  final TextController textController = Injection.instance.locator.get<TextController>();
-  final SearchController searchController = Injection.instance.locator.get<SearchController>();
+  final TextController textController =
+      Injection.instance.locator.get<TextController>();
+  final SearchController searchController =
+      Injection.instance.locator.get<SearchController>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class HomeView extends StatelessWidget {
                 drawer: _buildDrawer,
                 appBar: _buildAppBar,
                 body: Padding(
-                    padding: EdgeInsets.all(context.normalWidth),
+                    padding: context.normalPadding,
                     child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -176,6 +175,7 @@ class HomeView extends StatelessWidget {
       builder: (context) => BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 0.9, sigmaY: 0.9),
           child: Dialog(
+            
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16)),
               child: Padding(
@@ -190,13 +190,13 @@ class HomeView extends StatelessWidget {
         _drawerItem(
           text: KString.recent,
           iconData: CupertinoIcons.time,
-          onPressed: () => Get.to(() => RecentView()),
+          onPressed: () => Get.toNamed(Routes.recent),
         ),
         _divider,
         _drawerItem(
           text: KString.wordOfTheDay,
           iconData: CupertinoIcons.calendar_today,
-          onPressed: () => Get.to(() => const WordOfTheDayView()),
+          onPressed: () => Get.toNamed(Routes.wordOfTheDay),
         ),
         _divider,
         _drawerItem(
@@ -214,7 +214,7 @@ class HomeView extends StatelessWidget {
         _drawerItem(
           text: KString.aboutMe,
           iconData: CupertinoIcons.info,
-          onPressed: () => Get.to(() => const AboutMeView()),
+          onPressed: () => Get.toNamed(Routes.aboutMe),
         ),
         _divider,
         _drawerItem(

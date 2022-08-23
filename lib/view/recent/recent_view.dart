@@ -1,14 +1,12 @@
 // ignore_for_file: avoid_function_literals_in_foreach_calls
 
-
 import 'package:flutter/material.dart';
 
-import '../../../feature/export/export.dart';
-
+import '../../global/export/export.dart';
+import 'recent_detail_view.dart';
 
 class RecentView extends StatelessWidget {
   RecentView({Key? key}) : super(key: key);
-
 
   final _recentController = Injection.instance.locator.get<RecentController>();
   final _hiveController = Injection.instance.locator.get<HiveController>();
@@ -84,18 +82,18 @@ class RecentView extends StatelessWidget {
               style: ButtonStyle(
                   padding: MaterialStateProperty.all(EdgeInsets.zero)),
               onPressed: () => _recentController.edit(),
-              child: Text(
-                KString.edit,
-                style: context.textTheme.bodyMedium!.copyWith(
-                  color: Colors.white,
-                ),
-              ),
+              child: Obx(() => Text(
+                    _recentController.isEditting ? KString.done : KString.edit,
+                    style: context.textTheme.bodyMedium!.copyWith(
+                      color: Colors.white,
+                    ),
+                  )),
             ),
           ),
         ],
       );
 
-  //
+//
   Widget _recentBuilder(List<WordModel> wordList) => Builder(
         builder: (context) {
           return Obx(() {
@@ -113,7 +111,7 @@ class RecentView extends StatelessWidget {
         itemCount: wordList.length,
         itemBuilder: (context, index) {
           return ListTile(
-            // onTap: ()=> Get.to(SearchResultView()),
+            onTap: () => Get.to(RecentDetailWiew(wordModel: wordList[index])),
             title: Text(
               wordList[index].word!,
               style: context.textTheme.bodyMedium!.copyWith(
@@ -146,7 +144,7 @@ class RecentView extends StatelessWidget {
         ),
       );
 
-  //
+//
   Widget _noRecentSearch() => Builder(
         builder: (context) => Center(
           child: Padding(

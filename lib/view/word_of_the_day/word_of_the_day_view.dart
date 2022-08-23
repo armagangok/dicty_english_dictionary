@@ -1,32 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_instance/get_instance.dart';
 
-import '../../core/components/custom_app_bar.dart';
-import '../../core/components/error_widget.dart';
-import '../../core/components/loading_widget.dart';
-import '../../core/initialization/injection/injection.dart';
-import '../../core/model/error_model.dart';
-import '../../feature/components/word_widget.dart';
-import '../../feature/export/export.dart';
-import 'controller/word_of_the_day_controller.dart';
+import '../../global/export/export.dart';
 
 class WordOfTheDayView extends StatelessWidget {
-  const WordOfTheDayView({Key? key}) : super(key: key);
+  WordOfTheDayView({Key? key}) : super(key: key);
+  final dataController = Get.put(WordOfTheDayController.instance);
   @override
   Widget build(BuildContext context) {
-    final  dataController = Injection.instance.locator.get<WordOfTheDayController>();
     return Scaffold(
-      appBar: const CustomAppBar(title: Text("Word Of The Day")),
+      appBar: const CustomAppBar(title: Text(KString.wordOfTheDay)),
       body: Obx(
         () {
           switch (dataController.wordModel.runtimeType) {
             case ErrorModel:
               final ErrorModel errorModel = dataController.wordModel;
-              return MyErrorWidget(
-                errorModel: ErrorModel(
-                  title: errorModel.title,
-                  message: errorModel.message,
-                ),
-              );
+              return errorWidget(errorModel);
             case Null:
               return const LoadingWidget();
 
@@ -40,5 +29,9 @@ class WordOfTheDayView extends StatelessWidget {
       ),
     );
   }
-}
 
+  Widget errorWidget(ErrorModel errorModel) => MyErrorWidget(
+        errorModel:
+            ErrorModel(title: errorModel.title, message: errorModel.message),
+      );
+}

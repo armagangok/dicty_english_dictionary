@@ -1,4 +1,4 @@
-import '../export/export.dart';
+import '../../global/export/export.dart';
 
 class HiveController extends BaseWordController {
   HiveController._();

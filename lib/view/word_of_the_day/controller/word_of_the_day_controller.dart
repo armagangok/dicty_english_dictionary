@@ -2,14 +2,14 @@ import 'dart:convert';
 
 import 'package:intl/intl.dart';
 
-import '../../../feature/export/export.dart';
+import '../../../global/export/export.dart';
 
 class WordOfTheDayController extends GetxController
     implements BaseWordController {
   WordOfTheDayController._();
   static final instance = WordOfTheDayController._();
 
-  final WordService _wordService = WordService.instance;
+  final _wordService = Injection.instance.locator.get<WordService>();
   final Rx<dynamic> _wordModel = Rx(null);
 
   @override
@@ -34,11 +34,12 @@ class WordOfTheDayController extends GetxController
   @override
   void onInit() async {
     try {
+      
+      
       _wordModel.value = await _fetchWord(await getDatedWord());
     } on PlatformException catch (e) {
       Get.showSnackbar(GetSnackBar(messageText: Text("${e.message}")));
     }
-
     super.onInit();
   }
 

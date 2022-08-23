@@ -1,31 +1,31 @@
-import '../../feature/export/export.dart';
+import '../../global/export/export.dart';
 import '../../view/home/home_view.dart';
 
 part 'routes.dart';
 
 class AppPages {
   AppPages._();
-  static const initial = Routes.HOME;
+  static const initial = Routes.home;
 
   static final routes = [
     GetPage(
-      name: _Paths.HOME,
+      name: _Paths.home,
       page: () => HomeView(),
     ),
     GetPage(
-      name: _Paths.RECENT,
+      name: _Paths.recent,
       page: () => RecentView(),
     ),
     GetPage(
-      name: _Paths.WORD_OF_DAY,
-      page: () => const WordOfTheDayView(),
+      name: _Paths.wordOfTheDay,
+      page: () => WordOfTheDayView(),
     ),
     GetPage(
-      name: _Paths.SEARCH_RESULT,
+      name: _Paths.searchResult,
       page: () => SearchResultView(),
     ),
     GetPage(
-      name: _Paths.ABOUT_US,
+      name: _Paths.aboutMe,
       page: () => const AboutMeView(),
     ),
   ];

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../export/export.dart';
+import '../../global/export/export.dart';
 
 class SpeakButton extends StatelessWidget {
   const SpeakButton({

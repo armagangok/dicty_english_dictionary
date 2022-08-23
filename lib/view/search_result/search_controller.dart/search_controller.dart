@@ -1,15 +1,11 @@
-
-
-import '../../../core/initialization/injection/injection.dart';
-import '../../../core/model/error_model.dart';
-import '../../../feature/export/export.dart';
+import '../../../global/export/export.dart';
 
 class SearchController extends GetxController implements BaseWordController {
   SearchController._();
   static final instance = SearchController._();
 
-  final  _hiveService = Injection.instance.locator.get<HiveController>();
-  final  _wordService = Injection.instance.locator.get<WordService>();
+  final _hiveService = Injection.instance.locator.get<HiveController>();
+  final _wordService = Injection.instance.locator.get<WordService>();
 
   final Rx<dynamic> _wordModel = Rx(null);
 

@@ -1,7 +1,7 @@
-import 'package:english_accent_dictionary/core/initialization/injection/injection.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get_instance/get_instance.dart';
 
-import '../../../feature/export/export.dart';
-import '../controller/accent_controller.dart';
+import '../../../global/export/export.dart';
 
 class AccentPickerWidget extends StatelessWidget {
   final List<String> items = const [
@@ -16,7 +16,7 @@ class AccentPickerWidget extends StatelessWidget {
   const AccentPickerWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final AccentController accentController = Injection.instance.locator.get<AccentController>();
+    final AccentController accentController = Get.put(AccentController());
 
     return SizedBox(
       height: context.height(0.2),
@@ -32,6 +32,7 @@ class AccentPickerWidget extends StatelessWidget {
 
             default:
               return CupertinoPicker(
+                
                 scrollController: FixedExtentScrollController(
                   initialItem:
                       items.indexOf("${accentController.accent.value}"),

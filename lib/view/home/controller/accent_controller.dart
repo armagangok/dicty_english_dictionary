@@ -1,6 +1,4 @@
-import 'package:english_accent_dictionary/core/initialization/injection/injection.dart';
-
-import '../../../feature/export/export.dart';
+import '../../../global/export/export.dart';
 
 class AccentController extends GetxController {
   final _hiveService = Injection.instance.locator.get<HiveController>();

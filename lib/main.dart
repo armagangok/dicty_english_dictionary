@@ -1,5 +1,4 @@
-import 'core/navigation/app_pages.dart';
-import 'feature/export/export.dart';
+import 'global/export/export.dart';
 import 'view/home/home_view.dart';
 
 void main() async {
