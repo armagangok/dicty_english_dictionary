@@ -7,7 +7,7 @@ class ThemePickerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeController themeController = Injection.instance.locator.get<ThemeController>();
+    ThemeController themeController = ThemeController.instance;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.min,

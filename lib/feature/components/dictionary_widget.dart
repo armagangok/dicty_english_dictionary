@@ -1,6 +1,3 @@
-
-
-
 import '../../global/export/export.dart';
 
 class DictionaryWidget extends StatelessWidget {
@@ -11,7 +8,7 @@ class DictionaryWidget extends StatelessWidget {
 
   final List<Definition> definitions;
 
-  final _listController = Injection.instance.locator.get<RecentController>();
+  final _listController = RecentController.instance;
 
   @override
   Widget build(BuildContext context) {

@@ -9,7 +9,7 @@ class WordOfTheDayController extends GetxController
   WordOfTheDayController._();
   static final instance = WordOfTheDayController._();
 
-  final _wordService = Injection.instance.locator.get<WordService>();
+  final _wordService = WordService.instance;
   final Rx<dynamic> _wordModel = Rx(null);
 
   @override
@@ -34,8 +34,6 @@ class WordOfTheDayController extends GetxController
   @override
   void onInit() async {
     try {
-      
-      
       _wordModel.value = await _fetchWord(await getDatedWord());
     } on PlatformException catch (e) {
       Get.showSnackbar(GetSnackBar(messageText: Text("${e.message}")));

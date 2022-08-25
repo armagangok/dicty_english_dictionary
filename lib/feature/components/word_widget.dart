@@ -14,7 +14,7 @@ class WordWidget extends StatelessWidget {
 
   final BaseWordController controller;
   final WordModel wordModel;
-  final tabBarController = Injection.instance.locator.get<TabBarController>();
+  final tabBarController = TabBarController.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class WordWidget extends StatelessWidget {
         wordTextSpeakButton(),
         Expanded(
           child: ListView(
-            padding: context.symmetricPadding(horizontal: 0.025),
+            padding: context.mediumPadding,
             physics: const ClampingScrollPhysics(),
             shrinkWrap: true,
             children: [
@@ -202,10 +202,9 @@ class WordWidget extends StatelessWidget {
 
   //
 
-  Widget expandedItems1() => Builder(builder: (context) {
-        return Padding(
-          padding: EdgeInsets.only(top: context.normalHeight),
-          child: SingleChildScrollView(
+  Widget expandedItems1() => Builder(
+        builder: (context) {
+          return SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             physics: const ClampingScrollPhysics(),
             child: Row(
@@ -237,7 +236,7 @@ class WordWidget extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-        );
-      });
+          );
+        },
+      );
 }

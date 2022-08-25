@@ -7,10 +7,8 @@ import '../../global/export/export.dart';
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
 
-  final TextController textController =
-      Injection.instance.locator.get<TextController>();
-  final SearchController searchController =
-      Injection.instance.locator.get<SearchController>();
+  final textController = TextController.instance;
+  final searchController = SearchController.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,7 @@ class HomeView extends StatelessWidget {
                 drawer: _buildDrawer,
                 appBar: _buildAppBar,
                 body: Padding(
-                    padding: context.normalPadding,
+                    padding: context.bigPadding,
                     child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -175,7 +173,6 @@ class HomeView extends StatelessWidget {
       builder: (context) => BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 0.9, sigmaY: 0.9),
           child: Dialog(
-            
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16)),
               child: Padding(

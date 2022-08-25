@@ -14,7 +14,7 @@ class RecentItem extends StatelessWidget {
     required this.index,
   }) : super(key: key);
 
-  final _hiveController = Injection.instance.locator.get<HiveController>();
+  final _hiveController = HiveController.instance;
 
   @override
   Widget build(BuildContext context) {

@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
-
 import '../../global/export/export.dart';
 
 class SearchResultView extends StatelessWidget {
-  // final TextController textController =
-  //     Injection.instance.locator.get<TextController>();
-  final SearchController searchWordController =
-      Injection.instance.locator.get<SearchController>();
+  final searchWordController = SearchController.instance;
 
   SearchResultView({Key? key}) : super(key: key);
 
@@ -23,7 +19,6 @@ class SearchResultView extends StatelessWidget {
   CustomAppBar get _buildAppBar => CustomAppBar(
         title: const Text("Result"),
         onTap: () {
-          searchWordController.clearAllList();
           Get.back();
         },
       );

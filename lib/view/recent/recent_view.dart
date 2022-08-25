@@ -2,15 +2,15 @@
 
 import 'package:flutter/material.dart';
 
-import '../../core/components/ios_delete_dialog.dart';
+import '../../core/components/ios_dialog.dart';
 import '../../global/export/export.dart';
 import 'recent_detail_view.dart';
 
 class RecentView extends StatelessWidget {
   RecentView({Key? key}) : super(key: key);
 
-  final _recentController = Injection.instance.locator.get<RecentController>();
-  final _hiveController = Injection.instance.locator.get<HiveController>();
+  final _recentController = RecentController.instance;
+  final _hiveController = HiveController.instance;
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: _buildAppBar(),
@@ -56,12 +56,15 @@ class RecentView extends StatelessWidget {
 
   TextButton get _deleteAllButton => TextButton(
         onPressed: () async {
-          Get.dialog(IosDeleteDialog(
+          Get.dialog(
+            IosDeleteDialog(
               title: "Warning",
               message: "Do you want to delete all items?",
               dialogAction: () async {
                 await _hiveController.deleteAllWords();
-              }));
+              },
+            ),
+          );
         },
         child: const Text(
           KString.deleteAll,
@@ -87,24 +90,25 @@ class RecentView extends StatelessWidget {
         ),
       );
 
-  AppBar _buildAppBar() => AppBar(
+  CustomAppBar _buildAppBar() => CustomAppBar(
         title: const Text(KString.recent),
-        centerTitle: true,
-        actions: [
-           Builder(
-            builder: (context) => TextButton(
-              style: ButtonStyle(
-                  padding: MaterialStateProperty.all(EdgeInsets.zero)),
-              onPressed: () => _recentController.edit(),
-              child: Obx(() => Text(
-                    _recentController.isEditting ? KString.done : KString.edit,
-                    style: context.textTheme.bodyMedium!.copyWith(
-                      color: Colors.white,
-                    ),
-                  )),
+        widget: Builder(
+          builder: (context) => TextButton(
+            style: ButtonStyle(
+                padding: MaterialStateProperty.all(EdgeInsets.zero)),
+            onPressed: () {
+              _recentController.edit();
+            },
+            child: Obx(
+              () => Text(
+                _recentController.isEditting ? KString.done : KString.edit,
+                style: context.textTheme.bodyMedium!.copyWith(
+                  color: Colors.white,
+                ),
+              ),
             ),
           ),
-        ],
+        ),
       );
 
 //

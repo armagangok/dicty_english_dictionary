@@ -4,8 +4,8 @@ class SearchController extends GetxController implements BaseWordController {
   SearchController._();
   static final instance = SearchController._();
 
-  final _hiveService = Injection.instance.locator.get<HiveController>();
-  final _wordService = Injection.instance.locator.get<WordService>();
+  final _hiveService = HiveController.instance;
+  final _wordService = WordService.instance;
 
   final Rx<dynamic> _wordModel = Rx(null);
 
@@ -29,56 +29,65 @@ class SearchController extends GetxController implements BaseWordController {
   dynamic get getWord => _wordModel.value;
 
   Future<dynamic> fetchWord(String text) async {
+    clearAllList();
     int checker = 0;
     _wordModel.value = null;
     _wordModel.value = await _wordService.fetchWord(text);
 
     if (_wordModel.value.runtimeType == WordModel) {
-      for (Meaning element in _wordModel.value!.meanings!) {
+      _wordModel.value!.meanings!.forEach((Meaning element) async {
         switch (element.partOfSpeech) {
           case "noun":
             for (var element in element.definitions!) {
               noun.add(element);
             }
+            print(noun);
             break;
 
           case "verb":
+            print(verb);
             for (var element in element.definitions!) {
               verb.add(element);
             }
             break;
 
           case "interjection":
+            print(interjection);
             for (var element in element.definitions!) {
               interjection.add(element);
             }
             break;
 
           case "pronoun":
+            print(pronoun);
             for (var element in element.definitions!) {
               pronoun.add(element);
             }
             break;
 
           case "articles":
+            print(articles);
             for (var element in element.definitions!) {
               articles.add(element);
             }
             break;
 
           case "adverb":
+            print(adverb);
             for (var element in element.definitions!) {
               adverb.add(element);
             }
             break;
 
           case "preposition":
+            print(preposition);
             for (var element in element.definitions!) {
               preposition.add(element);
             }
             break;
 
           case "adjective":
+            print(adjective);
             for (var element in element.definitions!) {
               adjective.add(element);
             }
@@ -87,7 +96,7 @@ class SearchController extends GetxController implements BaseWordController {
           default:
         }
         await saveToHiveDatabase(checker);
-      }
+      });
     } else if (_wordModel.value.runtimeType == ErrorModel) {
       return _wordModel.value;
     }
@@ -127,4 +136,6 @@ class SearchController extends GetxController implements BaseWordController {
       }
     }
   }
+
+  void a() {}
 }

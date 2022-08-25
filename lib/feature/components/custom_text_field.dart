@@ -20,7 +20,7 @@ class CustomTextField extends StatelessWidget {
     this.icon,
   }) : super(key: key);
 
-  final searchController = Injection.instance.locator.get<SearchController>();
+  final searchController = SearchController.instance;
 
   @override
   Widget build(BuildContext context) {

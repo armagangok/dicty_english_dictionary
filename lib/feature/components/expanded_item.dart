@@ -16,7 +16,7 @@ class ExpandedItem extends StatelessWidget {
   final String text;
   final int amount;
 
-  final tabBarController = Injection.instance.locator.get<TabBarController>();
+  final tabBarController = TabBarController.instance;
 
   @override
   Widget build(BuildContext context) {

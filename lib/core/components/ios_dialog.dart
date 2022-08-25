@@ -25,23 +25,10 @@ class IosDeleteDialog extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Padding(
-            padding: EdgeInsets.only(top: context.normalHeight),
-            child: Text(
-              title,
-              style: context.textTheme.titleLarge!.copyWith(),
-            ),
-          ),
-          Padding(
-            padding: context.normalPadding,
-            child: Text(
-              message,
-              style: context.textTheme.bodyText2!.copyWith(),
-            ),
-          ),
-          const Divider(
-            height: 0,
-          ),
+          warningText(context),
+          SizedBox(height: context.height(0.02)),
+          messageText(context),
+          const Divider(height: 0),
           IntrinsicHeight(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -68,24 +55,47 @@ class IosDeleteDialog extends StatelessWidget {
     );
   }
 
+  Padding messageText(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: context.height(0.02)),
+      child: Text(
+        message,
+        style: context.textTheme.bodyText2!.copyWith(),
+      ),
+    );
+  }
+
+  Padding warningText(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: context.height(0.02)),
+      child: Text(
+        title,
+        style: context.textTheme.titleLarge!.copyWith(),
+      ),
+    );
+  }
+
   Widget _dialogButton(String text, Function onTap) {
     return Builder(builder: (context) {
       return Padding(
-        padding: context.normalPadding,
+        padding: EdgeInsets.symmetric(
+          vertical: context.height(0.02),
+        ),
         child: SizedBox(
           width: context.width(0.18),
           child: GestureDetector(
-              onTap: () => onTap(),
-              child: FittedBox(
-                child: Text(
-                  text,
-                  maxLines: 1,
-                  style: context.textTheme.bodyMedium!.copyWith(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
-                  ),
+            onTap: () => onTap(),
+            child: FittedBox(
+              child: Text(
+                text,
+                maxLines: 1,
+                style: context.textTheme.bodyMedium!.copyWith(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
                 ),
-              )),
+              ),
+            ),
+          ),
         ),
       );
     });

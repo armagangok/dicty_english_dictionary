@@ -8,7 +8,7 @@ class Initialization {
 
   Future<void> initApp() async {
     WidgetsFlutterBinding.ensureInitialized();
-    Injection.instance.setupLocator();
+    
 
     await HiveController.instance.initializeHive();
     await GetStorage.init();

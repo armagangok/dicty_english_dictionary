@@ -10,7 +10,7 @@ class AboutMeView extends StatelessWidget {
           title: Text(KString.aboutMe),
         ),
         body: Padding(
-          padding: context.normalPadding,
+          padding: context.mediumPadding,
           child: SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
             child: Column(
