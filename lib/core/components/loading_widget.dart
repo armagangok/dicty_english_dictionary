@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../global/export/export.dart';
+import '../../../global/export/export.dart';
 
 class LoadingWidget extends StatelessWidget {
   const LoadingWidget({

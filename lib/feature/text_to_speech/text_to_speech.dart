@@ -1,6 +1,8 @@
-import 'package:flutter_tts/flutter_tts.dart';
 
-import '../controller/hive_controller.dart';
+
+import '../../global/export/export.dart';
+
+
 
 class TextToSpeech {
   TextToSpeech._();

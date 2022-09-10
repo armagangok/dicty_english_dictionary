@@ -1,6 +1,4 @@
-
-
-import '../../global/export/export.dart';
+import '../../../global/export/export.dart';
 
 class Initialization {
   Initialization._();
@@ -8,7 +6,6 @@ class Initialization {
 
   Future<void> initApp() async {
     WidgetsFlutterBinding.ensureInitialized();
-    
 
     await HiveController.instance.initializeHive();
     await GetStorage.init();

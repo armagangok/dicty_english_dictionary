@@ -1,5 +1,6 @@
 import 'global/export/export.dart';
-import 'view/home/home_view.dart';
+import 'presentation/view/home/home_view.dart';
+
 
 void main() async {
   await Initialization.instance.initApp();

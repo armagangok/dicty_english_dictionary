@@ -1,5 +1,6 @@
-import '../../global/export/export.dart';
-import '../../view/home/home_view.dart';
+import '../../../global/export/export.dart';
+import '../../presentation/view/home/home_view.dart';
+
 
 part 'routes.dart';
 
