@@ -41,53 +41,46 @@ class SearchController extends GetxController implements BaseWordController {
             for (var element in element.definitions!) {
               noun.add(element);
             }
-            print(noun);
+
             break;
 
           case "verb":
-            print(verb);
             for (var element in element.definitions!) {
               verb.add(element);
             }
             break;
 
           case "interjection":
-            print(interjection);
             for (var element in element.definitions!) {
               interjection.add(element);
             }
             break;
 
           case "pronoun":
-            print(pronoun);
             for (var element in element.definitions!) {
               pronoun.add(element);
             }
             break;
 
           case "articles":
-            print(articles);
             for (var element in element.definitions!) {
               articles.add(element);
             }
             break;
 
           case "adverb":
-            print(adverb);
             for (var element in element.definitions!) {
               adverb.add(element);
             }
             break;
 
           case "preposition":
-            print(preposition);
             for (var element in element.definitions!) {
               preposition.add(element);
             }
             break;
 
           case "adjective":
-            print(adjective);
             for (var element in element.definitions!) {
               adjective.add(element);
             }
@@ -136,6 +129,4 @@ class SearchController extends GetxController implements BaseWordController {
       }
     }
   }
-
-  void a() {}
 }
