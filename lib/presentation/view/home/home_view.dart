@@ -13,58 +13,69 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () => context.dismissKeyboard(),
-        child: WillPopScope(
-            onWillPop: () async => false,
-            child: Scaffold(
-                drawer: _buildDrawer,
-                appBar: _buildAppBar,
-                body: Padding(
-                    padding: context.bigPadding,
-                    child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Spacer(),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              _dictyText,
-                              SizedBox(height: context.normalHeight),
-                              _followButton,
-                            ],
-                          ),
-                          const Spacer(),
-                          // _blinkingButton,
-                        ])))));
+      onTap: () => context.dismissKeyboard(),
+      child: WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          drawer: _buildDrawer,
+          appBar: _buildAppBar,
+          body: Padding(
+            padding: context.bigPadding,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Spacer(),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _dictyText,
+                    SizedBox(height: context.normalHeight),
+                    _followButton,
+                  ],
+                ),
+                const Spacer(),
+                _blinkingButton,
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
-  // Widget get _blinkingButton => Align(
-  //     alignment: Alignment.bottomRight,
-  //     child: MyBlinkingButton(
-  //       onTap: () async =>
-  //           await UrlLauncherHelper.shared.openUrl(KNetwork.myUrl),
-  //       text: KString.madeBy,
-  //     ));
+  Widget get _blinkingButton => Align(
+        alignment: Alignment.bottomRight,
+        child: MyBlinkingButton(
+          onTap: () async =>
+              await UrlLauncherHelper.shared.openUrl(KNetwork.myUrl),
+          text: KString.madeBy,
+        ),
+      );
 
   Widget get _followButton => Builder(
-      builder: (context) => GestureDetector(
+        builder: (context) => GestureDetector(
           onTap: () async =>
               await UrlLauncherHelper.shared.openUrl(KNetwork.appUrl),
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text(
-              KString.followUs,
-              style: context.textTheme.bodyLarge!.copyWith(
-                color: KColor.twitterBlue,
-                fontWeight: FontWeight.bold,
-                decoration: TextDecoration.underline,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                KString.followUs,
+                style: context.textTheme.bodyLarge!.copyWith(
+                  color: KColor.twitterBlue,
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.underline,
+                ),
               ),
-            ),
-            const FaIcon(
-              FontAwesomeIcons.twitter,
-              color: KColor.twitterBlue,
-            )
-          ])));
+              const FaIcon(
+                FontAwesomeIcons.twitter,
+                color: KColor.twitterBlue,
+              )
+            ],
+          ),
+        ),
+      );
 
   Widget get _dictyText => Builder(
       builder: (context) => AutoSizeText(
@@ -173,8 +184,8 @@ class HomeView extends StatelessWidget {
 
   buildDialog(Widget child) => Get.dialog(Builder(
       builder: (context) => BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 0.9, sigmaY: 0.9),
-          child: Dialog(
+            filter: ImageFilter.blur(sigmaX: 0.9, sigmaY: 0.9),
+            child: Dialog(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16)),
               child: Padding(
@@ -183,7 +194,9 @@ class HomeView extends StatelessWidget {
                   vertical: context.width(0.05),
                 ),
                 child: child,
-              )))));
+              ),
+            ),
+          )));
 
   List<Widget> get _getDrawerItems => [
         _drawerItem(
