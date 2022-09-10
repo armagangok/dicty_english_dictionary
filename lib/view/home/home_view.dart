@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 import '../../global/export/export.dart';
 
@@ -131,18 +132,20 @@ class HomeView extends StatelessWidget {
                       ]))));
 
   AppBar get _buildAppBar => AppBar(
-          title: Column(
-            children: [
-              CustomTextField(
-                controller: textController.search,
-                icon: const Icon(
-                  Icons.search,
-                  color: Colors.white,
+          title: Builder(builder: (context) {
+            return Column(
+              children: [
+                CustomTextField(
+                  controller: textController.search,
+                  icon: const Icon(
+                    Icons.search,
+                    color: Colors.white,
+                  ),
+                  onTap: () async => searchForTheWord,
                 ),
-                onTap: () async => searchForTheWord,
-              ),
-            ],
-          ),
+              ],
+            );
+          }),
           actions: [
             IconButton(
               splashRadius: 0.1,

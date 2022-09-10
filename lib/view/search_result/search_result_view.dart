@@ -18,9 +18,7 @@ class SearchResultView extends StatelessWidget {
 
   CustomAppBar get _buildAppBar => CustomAppBar(
         title: const Text("Result"),
-        onTap: () {
-          Get.back();
-        },
+        onTap: () => Get.back(),
       );
 
   Widget get _getData => Obx(
@@ -47,3 +45,4 @@ class SearchResultView extends StatelessWidget {
         },
       );
 }
+

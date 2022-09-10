@@ -48,6 +48,7 @@ dependencies:
   get: ^4.6.5
   get_storage: ^2.0.3
   flutter_launcher_icons: ^0.10.0
+  flutter_typeahead: ^4.1.0
   
 
   
