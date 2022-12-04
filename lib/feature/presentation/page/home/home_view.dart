@@ -78,27 +78,31 @@ class HomeView extends StatelessWidget {
       );
 
   Widget get _dictyText => Builder(
-      builder: (context) => AutoSizeText(
-            KString.dictyText,
-            style: context.textTheme.headline4!.copyWith(
-              color: context.colors.primary,
-              fontStyle: FontStyle.italic,
-              fontWeight: FontWeight.w800,
-            ),
-            maxLines: 1,
-          ));
+        builder: (context) => AutoSizeText(
+          KString.dictyText,
+          style: context.textTheme.headline4!.copyWith(
+            color: context.colors.primary,
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.w800,
+          ),
+          maxLines: 1,
+        ),
+      );
 
   Widget get _buildDrawer => Builder(
-      builder: (context) => Drawer(
+        builder: (context) => Drawer(
           backgroundColor: context.colors.background,
           width: context.width(0.8),
           child: Center(
-              child: ListView(
-            shrinkWrap: true,
-            physics: const ClampingScrollPhysics(),
-            padding: context.mediumPadding,
-            children: _getDrawerItems,
-          ))));
+            child: ListView(
+              shrinkWrap: true,
+              physics: const ClampingScrollPhysics(),
+              padding: context.mediumPadding,
+              children: _getDrawerItems,
+            ),
+          ),
+        ),
+      );
 
   Widget get _divider => const Divider(thickness: 0.1);
 
@@ -108,64 +112,69 @@ class HomeView extends StatelessWidget {
     final Function? onPressed,
   }) =>
       Builder(
-          builder: (context) => GestureDetector(
-              onTap: () => onPressed!(),
-              child: Container(
-                  color: Colors.transparent,
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(
-                              iconData,
-                              size: 28,
-                              color: context.colors.primary.withOpacity(0.8),
-                            ),
-                            SizedBox(width: context.mediumWidth),
-                            AutoSizeText(
-                              text!,
-                              style: context.textTheme.bodySmall!.copyWith(
-                                fontSize: 17,
-                                fontWeight: FontWeight.w300,
-                                color: context.colors.primary.withOpacity(0.8),
-                              ),
-                              maxLines: 1,
-                            ),
-                          ],
-                        ),
-                        Icon(
-                          CupertinoIcons.forward,
-                          size: 28,
-                          color: context.colors.primary.withOpacity(0.8),
-                        )
-                      ]))));
+        builder: (context) => GestureDetector(
+          onTap: () => onPressed!(),
+          child: Container(
+            color: Colors.transparent,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      iconData,
+                      size: 28,
+                      color: context.colors.primary.withOpacity(0.8),
+                    ),
+                    SizedBox(width: context.mediumWidth),
+                    AutoSizeText(
+                      text!,
+                      style: context.textTheme.bodySmall!.copyWith(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w300,
+                        color: context.colors.primary.withOpacity(0.8),
+                      ),
+                      maxLines: 1,
+                    ),
+                  ],
+                ),
+                Icon(
+                  CupertinoIcons.forward,
+                  size: 28,
+                  color: context.colors.primary.withOpacity(0.8),
+                )
+              ],
+            ),
+          ),
+        ),
+      );
 
   AppBar get _buildAppBar => AppBar(
-          title: Builder(builder: (context) {
-            return Column(
-              children: [
-                CustomTextField(
-                  controller: textController.search,
-                  icon: const Icon(
-                    Icons.search,
-                    color: Colors.white,
-                  ),
-                  onTap: () async => searchForTheWord,
+        title: Builder(builder: (context) {
+          return Column(
+            children: [
+              CustomTextField(
+                controller: textController.search,
+                icon: const Icon(
+                  Icons.search,
+                  color: Colors.white,
                 ),
-              ],
-            );
-          }),
-          actions: [
-            IconButton(
-              splashRadius: 0.1,
-              icon: const Icon(
-                CupertinoIcons.settings,
-                color: Colors.transparent,
+                onTap: () async => searchForTheWord,
               ),
-              onPressed: () {},
-            )
-          ]);
+            ],
+          );
+        }),
+        actions: [
+          IconButton(
+            splashRadius: 0.1,
+            icon: const Icon(
+              CupertinoIcons.settings,
+              color: Colors.transparent,
+            ),
+            onPressed: () {},
+          ),
+        ],
+      );
 
   void get searchForTheWord async {
     if (textController.search.text.isEmpty) {
@@ -182,8 +191,9 @@ class HomeView extends StatelessWidget {
     }
   }
 
-  buildDialog(Widget child) => Get.dialog(Builder(
-      builder: (context) => BackdropFilter(
+  buildDialog(Widget child) => Get.dialog(
+        Builder(
+          builder: (context) => BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 0.9, sigmaY: 0.9),
             child: Dialog(
               shape: RoundedRectangleBorder(
@@ -196,7 +206,9 @@ class HomeView extends StatelessWidget {
                 child: child,
               ),
             ),
-          )));
+          ),
+        ),
+      );
 
   List<Widget> get _getDrawerItems => [
         _drawerItem(
