@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 import '../../../../global/export/export.dart';
 
@@ -26,29 +25,26 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SizedBox(
         height: textFieldH ?? 30,
-        child: TypeAheadField(
-          textFieldConfiguration: TextFieldConfiguration(
-            controller: controller,
-            autofocus: false,
-            style: context.textTheme.bodyText1!
-                .copyWith(fontStyle: FontStyle.italic),
-            decoration: _inputDecoration,
+        child: TextFormField(
+          cursorColor: Colors.white,
+          controller: controller,
+          style: context.textTheme.bodyLarge!.copyWith(color: Colors.white),
+          textAlign: TextAlign.justify,
+          decoration: InputDecoration(
+            label: Text(
+              "Search",
+              style: context.textTheme.bodyLarge!.copyWith(
+                color: Colors.white,
+              ),
+            ),
+            suffixIcon: InkWell(
+              child: icon ?? const Text(""),
+              onTap: () => onTap!(),
+              splashColor: null,
+            ),
           ),
-          suggestionsCallback: (pattern) async => [
-            "hello",
-            "hello1",
-            "hello2",
-            "hello3",
-            "hello4",
-            "hello5",
-            "hello"
-          ],
-          itemBuilder: (context, suggestion) => const ListTile(
-            leading: Icon(Icons.shopping_cart),
-            title: Text("suggestion['name']"),
-            subtitle: Text("hellohello"),
-          ),
-          onSuggestionSelected: (suggestion) => Get.to(SearchResultView()),
+          textInputAction: TextInputAction.done,
+          onFieldSubmitted: (value) => searchForTheWord,
         ),
       );
 
@@ -81,27 +77,3 @@ class CustomTextField extends StatelessWidget {
     controller.text = "";
   }
 }
-
-
-    //  TextFormField(
-      //   cursorColor: Colors.white,
-      //   controller: controller,
-      //   style: context.textTheme.bodyLarge!.copyWith(color: Colors.white),
-      //   textAlign: TextAlign.justify,
-      //   decoration: InputDecoration(
-      //     label: Text(
-      //       "Search",
-      //       style: context.textTheme.bodyLarge!.copyWith(
-      //         color: Colors.white,
-      //       ),
-      //     ),
-      //     suffixIcon: InkWell(
-      //       child: icon ?? const Text(""),
-      //       onTap: () => onTap!(),
-      //       splashColor: null,
-      //     ),
-      //   ),
-      //   textInputAction: TextInputAction.done,
-      //   onFieldSubmitted: (value) => searchForTheWord,
-
-      // ),
