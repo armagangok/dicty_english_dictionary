@@ -1,4 +1,4 @@
-import '../../../../feature/model/word_model.dart';
+import '../../../../global/export/export.dart';
 
 class DummyApiService {
   Future<WordModel> fetchWord(String? text) async {

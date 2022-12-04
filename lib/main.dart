@@ -1,5 +1,5 @@
 import 'global/export/export.dart';
-import 'presentation/view/home/home_view.dart';
+import 'feature/presentation/page/home/home_view.dart';
 
 
 void main() async {
