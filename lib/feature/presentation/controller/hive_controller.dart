@@ -7,23 +7,23 @@ class HiveController extends BaseWordController {
   static final instance = HiveController._();
 
   @override
-  late RxList<Definition> adjective = RxList([]);
+  late List<Definition> adjective = [];
   @override
-  RxList<Definition> adverb = RxList([]);
+  List<Definition> adverb = [];
   @override
-  RxList<Definition> articles = RxList([]);
+  List<Definition> articles = [];
   @override
-  RxList<Definition> interjection = RxList([]);
+  List<Definition> interjection = [];
   @override
-  RxList<Definition> noun = RxList([]);
+  List<Definition> noun = [];
   @override
-  RxList<Definition> preposition = RxList([]);
+  List<Definition> preposition = [];
   @override
-  RxList<Definition> pronoun = RxList([]);
+  List<Definition> pronoun = [];
   @override
-  RxList<Definition> verb = RxList([]);
+  List<Definition> verb = [];
 
-  RxList<WordModel> wordList = RxList([]);
+  List<WordModel> wordList = [];
   late final Box<WordModel> _hiveWords;
 
   Box<WordModel> get getHiveBox => _hiveWords;
@@ -62,7 +62,8 @@ class HiveController extends BaseWordController {
     return index;
   }
 
-  Future<void> setupLanguage() async =>await Hive.box("countryBox").add("English-GB");
+  Future<void> setupLanguage() async =>
+      await Hive.box("countryBox").add("English-GB");
 
   Future<void> saveLanguage(String lang) async {
     await Hive.box("countryBox").clear();
@@ -80,7 +81,8 @@ class HiveController extends BaseWordController {
     await _hiveWords.delete(desiredKey);
   }
 
-  Future<void> save(int index, WordModel value) async => await _hiveWords.putAt(index, value);
+  Future<void> save(int index, WordModel value) async =>
+      await _hiveWords.putAt(index, value);
 
   Future<void> deleteAllWords() async => await _hiveWords.clear();
 

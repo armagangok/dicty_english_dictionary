@@ -1,12 +1,10 @@
-import '../../../../global/export/export.dart';
-
-class TabBarController extends GetxController {
+class TabBarController {
   TabBarController._();
   static final instance = TabBarController._();
-  final RxInt currentIndex = RxInt(0);
+
+  int currentIndex = 0;
 
   changeIndex(newIndex) {
-    currentIndex.value = newIndex;
-    notifyChildrens();
+    currentIndex = newIndex;
   }
 }

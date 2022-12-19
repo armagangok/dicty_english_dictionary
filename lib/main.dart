@@ -1,9 +1,13 @@
+import 'package:flutter/material.dart';
+
+import 'core/navigation/navigation_route.dart';
+import 'core/navigation/navigation_service.dart';
 import 'global/export/export.dart';
 import 'feature/presentation/page/home/home_view.dart';
 
-
 void main() async {
   await Initialization.instance.initApp();
+  initDependencies();
   runApp(const MyApp());
 }
 
@@ -12,14 +16,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeView(),
+      home: const HomeView(),
       theme: CustomTheme.instance.ligthTheme,
       darkTheme: CustomTheme.instance.darkTheme,
-      themeMode: ThemeService.instance.getThemeMode(),
-      initialRoute: AppPages.initial,
-      getPages: AppPages.routes,
+      // themeMode: ThemeService.instance.getThemeMode(),
+      // initialRoute: '/onboard',
+      onGenerateRoute: NavigationRoute.instance.generateRoute,
+      navigatorKey: NavigationService.instance.navigatorKey,
     );
   }
 }

@@ -1,24 +1,24 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-import '../../../global/export/export.dart';
+// import '../../../global/export/export.dart';
 
-class ThemeService {
-  ThemeService._();
-  static final instance = ThemeService._();
+// class ThemeService {
+//   ThemeService._();
+//   static final instance = ThemeService._();
 
-  final _getStorage = GetStorage();
-  final String storageKey = "isDarkMode";
+//   final _getStorage = GetStorage();
+//   final String storageKey = "isDarkMode";
 
-  ThemeMode getThemeMode() =>
-      isSavedDarkMode() ? ThemeMode.dark : ThemeMode.light;
+//   ThemeMode getThemeMode() =>
+//       isSavedDarkMode() ? ThemeMode.dark : ThemeMode.light;
 
-  bool isSavedDarkMode() => _getStorage.read(storageKey) ?? false;
+//   bool isSavedDarkMode() => _getStorage.read(storageKey) ?? false;
 
-  void saveThemeMode(bool isDarkMode) =>
-      _getStorage.write(storageKey, isDarkMode);
+//   void saveThemeMode(bool isDarkMode) =>
+//       _getStorage.write(storageKey, isDarkMode);
 
-  void changeTheme() {
-    Get.changeThemeMode(isSavedDarkMode() ? ThemeMode.light : ThemeMode.dark);
-    saveThemeMode(!isSavedDarkMode());
-  }
-}
+//   void changeTheme() {
+//     Get.changeThemeMode(isSavedDarkMode() ? ThemeMode.light : ThemeMode.dark);
+//     saveThemeMode(!isSavedDarkMode());
+//   }
+// }

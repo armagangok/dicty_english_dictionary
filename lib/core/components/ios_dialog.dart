@@ -1,8 +1,9 @@
+import 'package:english_accent_dictionary/core/navigation/contract/base_navigation_service.dart';
 import 'package:flutter/material.dart';
 
 import '../../../global/export/export.dart';
 
-class IosDeleteDialog extends StatelessWidget {
+class IosDeleteDialog extends StatefulWidget {
   const IosDeleteDialog({
     Key? key,
     required this.title,
@@ -14,6 +15,12 @@ class IosDeleteDialog extends StatelessWidget {
   final String message;
   final Function dialogAction;
 
+  @override
+  State<IosDeleteDialog> createState() => _IosDeleteDialogState();
+}
+
+class _IosDeleteDialogState extends State<IosDeleteDialog> {
+  final navigator = getIt.call<NavigationServiceContract>();
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -36,15 +43,15 @@ class IosDeleteDialog extends StatelessWidget {
                 _dialogButton(
                   "Cancel",
                   () {
-                    Get.back();
+                    navigator.getBack();
                   },
                 ),
                 const VerticalDivider(width: 0),
                 _dialogButton(
                   "Okey",
                   () {
-                    dialogAction();
-                    Get.back();
+                    widget.dialogAction();
+                    navigator.getBack();
                   },
                 ),
               ],
@@ -59,7 +66,7 @@ class IosDeleteDialog extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: context.height(0.02)),
       child: Text(
-        message,
+        widget.message,
         style: context.textTheme.bodyText2!.copyWith(),
       ),
     );
@@ -69,7 +76,7 @@ class IosDeleteDialog extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: context.height(0.02)),
       child: Text(
-        title,
+        widget.title,
         style: context.textTheme.titleLarge!.copyWith(),
       ),
     );

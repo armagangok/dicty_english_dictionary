@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:english_accent_dictionary/feature/data/entity/word_entity.dart';
 import 'package:hive/hive.dart';
 
 import 'definition.dart';
@@ -7,13 +8,17 @@ import 'definition.dart';
 part 'meaning.g.dart';
 
 @HiveType(typeId: 3)
-class Meaning {
+class Meaning extends WordEntity {
+  @override
   @HiveField(0)
   final String? partOfSpeech;
+  @override
   @HiveField(1)
   final List<Definition>? definitions;
+  @override
   @HiveField(2)
   final List<dynamic>? synonyms;
+  @override
   @HiveField(3)
   final List<dynamic>? antonyms;
 

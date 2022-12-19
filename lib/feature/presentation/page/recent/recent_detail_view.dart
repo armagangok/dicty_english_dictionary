@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
 
-
-
 class RecentDetailWiew extends StatelessWidget {
   const RecentDetailWiew({
     Key? key,
@@ -12,7 +10,7 @@ class RecentDetailWiew extends StatelessWidget {
   final WordModel wordModel;
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: CustomAppBar(),
         body: WordWidget(
           controller: HiveController.instance,
           wordModel: wordModel,

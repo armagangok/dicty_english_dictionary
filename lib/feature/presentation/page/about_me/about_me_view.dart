@@ -6,7 +6,7 @@ class AboutMeView extends StatelessWidget {
   const AboutMeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: const CustomAppBar(
+        appBar:  CustomAppBar(
           title: Text(KString.aboutMe),
         ),
         body: Padding(

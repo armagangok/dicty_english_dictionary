@@ -1,18 +1,15 @@
-import '../../../../../global/export/export.dart';
-
-
-class RecentController extends GetxController {
+class RecentController {
   RecentController._();
   static final instance = RecentController._();
 
-  final RxBool _isEditting = RxBool(false);
-  final RxBool _isExtended = true.obs;
-  final RxList<bool> _choosenItemList = RxList();
+  bool _isEditting = false;
+  bool _isExtended = true;
+  final List<bool> _choosenItemList = [];
 
-  bool get isEditting => _isEditting.value;
-  bool get isExtended => _isExtended.value;
+  bool get isEditting => _isEditting;
+  bool get isExtended => _isExtended;
   List<bool> get choosenItemList => _choosenItemList;
 
-  void edit() => _isEditting.value = !_isEditting.value;
-  void extend() => _isExtended.value = !_isExtended.value;
+  void edit() => _isEditting = !_isEditting;
+  void extend() => _isExtended = !_isExtended;
 }

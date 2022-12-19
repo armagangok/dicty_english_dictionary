@@ -65,14 +65,14 @@ class CustomTextField extends StatelessWidget {
       );
 
   void get searchForTheWord async {
-    controller.text.isEmpty
-        ? Get.snackbar(
-            "Warning",
-            "Please enter a text to search for!",
-            snackPosition: SnackPosition.TOP,
-            duration: const Duration(milliseconds: 3000),
-          )
-        : Get.to(SearchResultView());
+    // controller.text.isEmpty
+    // ? Get.snackbar(
+    //     "Warning",
+    //     "Please enter a text to search for!",
+    //     snackPosition: SnackPosition.TOP,
+    //     duration: const Duration(milliseconds: 3000),
+    //   )
+    // : Get.to(SearchResultView());
     await searchController.fetchWord(controller.text);
     controller.text = "";
   }

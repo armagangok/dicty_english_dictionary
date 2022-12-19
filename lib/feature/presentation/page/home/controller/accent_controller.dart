@@ -1,21 +1,22 @@
 import '../../../../../global/export/export.dart';
 
+class AccentController {
+  AccentController._() {
+    onInit();
+    onReady();
+  }
+  static final instance = AccentController._();
 
-class AccentController extends GetxController {
   final _hiveService = HiveController.instance;
 
-  final Rx<dynamic> accent = Rx(null);
+  dynamic accent;
 
-  @override
   void onInit() async {
     accent.value = await _hiveService.getLanguage();
-    super.onInit();
   }
 
-  @override
   void onReady() {
-    accent.value == null ? accent.value = -1 : {};
-    super.onReady();
+    accent == null ? accent = -1 : {};
   }
 
   Future<void> saveAccent(String lang) async {

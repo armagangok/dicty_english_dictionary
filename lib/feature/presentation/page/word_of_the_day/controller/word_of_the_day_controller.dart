@@ -1,53 +1,51 @@
 import 'dart:convert';
 
+import 'package:english_accent_dictionary/core/helpers/utils/log_helper.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../global/export/export.dart';
 
-
-
-class WordOfTheDayController extends GetxController
-    implements BaseWordController {
-  WordOfTheDayController._();
+class WordOfTheDayController implements BaseWordController {
+  WordOfTheDayController._() {
+    onInit();
+  }
   static final instance = WordOfTheDayController._();
 
-  final _wordService = WordService.instance;
-  final Rx<dynamic> _wordModel = Rx(null);
+  final _wordService = WordRepositoryImp.instance;
+  final dynamic _wordModel = null;
 
   @override
-  RxList<Definition> noun = RxList([]);
+  List<Definition> noun = [];
   @override
-  RxList<Definition> verb = RxList([]);
+  List<Definition> verb = [];
   @override
-  RxList<Definition> interjection = RxList([]);
+  List<Definition> interjection = [];
   @override
-  RxList<Definition> pronoun = RxList([]);
+  List<Definition> pronoun = [];
   @override
-  RxList<Definition> articles = RxList([]);
+  List<Definition> articles = [];
   @override
-  RxList<Definition> adverb = RxList([]);
+  List<Definition> adverb = [];
   @override
-  RxList<Definition> preposition = RxList([]);
+  List<Definition> preposition = [];
   @override
-  RxList<Definition> adjective = RxList([]);
+  List<Definition> adjective = [];
 
   get wordModel => _wordModel.value;
 
-  @override
-  void onInit() async {
+  Future<void> onInit() async {
     try {
       _wordModel.value = await _fetchWord(await getDatedWord());
     } on PlatformException catch (e) {
-      Get.showSnackbar(GetSnackBar(messageText: Text("${e.message}")));
+      LogHelper.shared.debugPrint("$e");
     }
-    super.onInit();
   }
 
-  Future<dynamic> _fetchWord(String text) async {
-    if (text.isEmpty) {
+  Future<dynamic> _fetchWord(String word) async {
+    if (word.isEmpty) {
       return null;
     } else {
-      _wordModel.value = await _wordService.fetchWord(text);
+      _wordModel.value = await _wordService.fetchWord(word: word);
 
       for (Meaning element in _wordModel.value!.meanings!) {
         switch (element.partOfSpeech) {

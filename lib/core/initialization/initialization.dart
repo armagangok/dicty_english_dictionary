@@ -8,7 +8,7 @@ class Initialization {
     WidgetsFlutterBinding.ensureInitialized();
 
     await HiveController.instance.initializeHive();
-    await GetStorage.init();
+    // await GetStorage.init();
 
     var _prefs = await SharedPreferences.getInstance();
 

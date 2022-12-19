@@ -1,22 +1,31 @@
 import 'dart:convert';
 
+import '../entity/word_entity.dart';
 import 'package:hive/hive.dart';
 
 part 'definition.g.dart';
 
 @HiveType(typeId: 4)
-class Definition {
+class Definition extends WordEntity {
+  @override
   @HiveField(0)
   final String? definition;
+  @override
   @HiveField(1)
   final List<dynamic>? synonyms;
+  @override
   @HiveField(2)
   final List<dynamic>? antonyms;
+  @override
   @HiveField(3)
   final String? example;
 
-  const Definition(
-      {this.definition, this.synonyms, this.antonyms, this.example});
+  const Definition({
+    this.definition,
+    this.synonyms,
+    this.antonyms,
+    this.example,
+  });
 
   factory Definition.fromMap(Map<String, dynamic> data) => Definition(
         definition: data['definition'] as String?,

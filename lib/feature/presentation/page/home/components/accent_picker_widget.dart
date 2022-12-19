@@ -1,9 +1,3 @@
-
-
-
-
-import 'package:get/get_instance/get_instance.dart';
-
 import '../../../../../global/export/export.dart';
 
 class AccentPickerWidget extends StatelessWidget {
@@ -19,13 +13,13 @@ class AccentPickerWidget extends StatelessWidget {
   const AccentPickerWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final AccentController accentController = Get.put(AccentController());
+    final AccentController accentController = getIt<AccentController>.call();
 
     return SizedBox(
       height: context.height(0.2),
       width: double.minPositive,
-      child: Obx(
-        () {
+      child: Builder(
+        builder: ((context) {
           switch (accentController.accent.value) {
             case null:
               return const SizedBox();
@@ -35,7 +29,6 @@ class AccentPickerWidget extends StatelessWidget {
 
             default:
               return CupertinoPicker(
-                
                 scrollController: FixedExtentScrollController(
                   initialItem:
                       items.indexOf("${accentController.accent.value}"),
@@ -55,7 +48,7 @@ class AccentPickerWidget extends StatelessWidget {
                     .toList(),
               );
           }
-        },
+        }),
       ),
     );
   }

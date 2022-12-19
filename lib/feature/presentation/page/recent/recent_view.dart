@@ -1,17 +1,26 @@
 // ignore_for_file: avoid_function_literals_in_foreach_calls
 
+import 'package:english_accent_dictionary/core/navigation/constant/routes.dart';
+import 'package:english_accent_dictionary/core/navigation/contract/base_navigation_service.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/components/ios_dialog.dart';
 import '../../../../global/export/export.dart';
 
-import 'recent_detail_view.dart';
+class RecentView extends StatefulWidget {
+  const RecentView({Key? key}) : super(key: key);
 
-class RecentView extends StatelessWidget {
-  RecentView({Key? key}) : super(key: key);
+  @override
+  State<RecentView> createState() => _RecentViewState();
+}
 
+class _RecentViewState extends State<RecentView> {
   final _recentController = RecentController.instance;
+
   final _hiveController = HiveController.instance;
+
+  final navigator = getIt<NavigationServiceContract>.call();
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: _buildAppBar(),
@@ -38,18 +47,16 @@ class RecentView extends StatelessWidget {
 
   Widget _deleteWidget() => Builder(
         builder: (context) {
-          return Obx(
-            () => AnimatedContainer(
-              height: _recentController.isEditting ? context.height(0.07) : 0,
-              color: const Color.fromARGB(255, 141, 160, 255).withOpacity(0.2),
-              duration: const Duration(milliseconds: 300),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _deleteButton,
-                  _deleteAllButton,
-                ],
-              ),
+          return AnimatedContainer(
+            height: _recentController.isEditting ? context.height(0.07) : 0,
+            color: const Color.fromARGB(255, 141, 160, 255).withOpacity(0.2),
+            duration: const Duration(milliseconds: 300),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _deleteButton,
+                _deleteAllButton,
+              ],
             ),
           );
         },
@@ -57,15 +64,17 @@ class RecentView extends StatelessWidget {
 
   TextButton get _deleteAllButton => TextButton(
         onPressed: () async {
-          Get.dialog(
-            IosDeleteDialog(
-              title: "Warning",
-              message: "Do you want to delete all items?",
-              dialogAction: () async {
-                await _hiveController.deleteAllWords();
-              },
-            ),
-          );
+          showDialog(
+              context: context,
+              builder: (context) {
+                return IosDeleteDialog(
+                  title: "Warning",
+                  message: "Do you want to delete all items?",
+                  dialogAction: () async {
+                    await _hiveController.deleteAllWords();
+                  },
+                );
+              });
         },
         child: const Text(
           KString.deleteAll,
@@ -75,15 +84,20 @@ class RecentView extends StatelessWidget {
 
   Widget get _deleteButton => TextButton(
         onPressed: () async {
-          Get.dialog(IosDeleteDialog(
-            title: "Warning",
-            message: "Do you want to delete selected items?",
-            dialogAction: () => _hiveController.wordList.forEach(
-              (element) async => await _hiveController.deleteByName(
-                element,
-              ),
-            ),
-          ));
+          showDialog(
+            context: context,
+            builder: (context) {
+              return IosDeleteDialog(
+                title: "Warning",
+                message: "Do you want to delete selected items?",
+                dialogAction: () => _hiveController.wordList.forEach(
+                  (element) async => await _hiveController.deleteByName(
+                    element,
+                  ),
+                ),
+              );
+            },
+          );
         },
         child: const Text(
           KString.delete,
@@ -100,12 +114,10 @@ class RecentView extends StatelessWidget {
             onPressed: () {
               _recentController.edit();
             },
-            child: Obx(
-              () => Text(
-                _recentController.isEditting ? KString.done : KString.edit,
-                style: context.textTheme.bodyMedium!.copyWith(
-                  color: Colors.white,
-                ),
+            child: Text(
+              _recentController.isEditting ? KString.done : KString.edit,
+              style: context.textTheme.bodyMedium!.copyWith(
+                color: Colors.white,
               ),
             ),
           ),
@@ -115,11 +127,9 @@ class RecentView extends StatelessWidget {
 //
   Widget _recentBuilder(List<WordModel> wordList) => Builder(
         builder: (context) {
-          return Obx(() {
-            return _recentController.isEditting
-                ? buildEditListView(wordList)
-                : buildListView(wordList);
-          });
+          return _recentController.isEditting
+              ? buildEditListView(wordList)
+              : buildListView(wordList);
         },
       );
 
@@ -132,7 +142,11 @@ class RecentView extends StatelessWidget {
           return ListTile(
             onTap: () {
               _hiveController.fetchWord(wordList[index]);
-              Get.to(RecentDetailWiew(wordModel: wordList[index]));
+              navigator.navigateTo(
+                path: KRoute.RECENT_DETAIL_PAGE,
+              );
+
+              // Get.to(RecentDetailWiew(wordModel: wordList[index]));
             },
             title: Text(
               wordList[index].word!,

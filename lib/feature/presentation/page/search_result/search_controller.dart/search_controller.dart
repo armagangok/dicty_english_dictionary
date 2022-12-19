@@ -1,100 +1,98 @@
 import '../../../../../global/export/export.dart';
 
-class SearchController extends GetxController implements BaseWordController {
+class SearchController implements BaseWordController {
   SearchController._();
+
   static final instance = SearchController._();
 
   final _hiveService = HiveController.instance;
-  final _wordService = WordService.instance;
+  final _wordService = WordRepositoryImp.instance;
 
-  final Rx<dynamic> _wordModel = Rx(null);
+  late final WordModel _wordModel;
+  WordModel get getWord => _wordModel;
 
   @override
-  RxList<Definition> noun = RxList([]);
+  List<Definition> noun = [];
   @override
-  RxList<Definition> verb = RxList([]);
+  List<Definition> verb = [];
   @override
-  RxList<Definition> interjection = RxList([]);
+  List<Definition> interjection = [];
   @override
-  RxList<Definition> pronoun = RxList([]);
+  List<Definition> pronoun = [];
   @override
-  RxList<Definition> articles = RxList([]);
+  List<Definition> articles = [];
   @override
-  RxList<Definition> adverb = RxList([]);
+  List<Definition> adverb = [];
   @override
-  RxList<Definition> preposition = RxList([]);
+  List<Definition> preposition = [];
   @override
-  RxList<Definition> adjective = RxList([]);
+  List<Definition> adjective = [];
 
-  dynamic get getWord => _wordModel.value;
-
-  Future<dynamic> fetchWord(String text) async {
+  Future<dynamic> fetchWord(String word) async {
     clearAllList();
     int checker = 0;
-    _wordModel.value = null;
-    _wordModel.value = await _wordService.fetchWord(text);
 
-    if (_wordModel.value.runtimeType == WordModel) {
-      _wordModel.value!.meanings!.forEach((Meaning element) async {
-        switch (element.partOfSpeech) {
-          case "noun":
-            for (var element in element.definitions!) {
-              noun.add(element);
+    var response = await _wordService.fetchWord(word: word);
+
+    response.fold(
+      (l) => null,
+      (data) async {
+        if (data.meanings != null) {
+          for (var element in data.meanings!) {
+            switch (element.partOfSpeech) {
+              case "noun":
+                for (var element in element.definitions!) {
+                  noun.add(element);
+                }
+                break;
+
+              case "verb":
+                for (var element in element.definitions!) {
+                  verb.add(element);
+                }
+                break;
+
+              case "interjection":
+                for (var element in element.definitions!) {
+                  interjection.add(element);
+                }
+                break;
+
+              case "pronoun":
+                for (var element in element.definitions!) {
+                  pronoun.add(element);
+                }
+                break;
+
+              case "articles":
+                for (var element in element.definitions!) {
+                  articles.add(element);
+                }
+                break;
+
+              case "adverb":
+                for (var element in element.definitions!) {
+                  adverb.add(element);
+                }
+                break;
+
+              case "preposition":
+                for (var element in element.definitions!) {
+                  preposition.add(element);
+                }
+                break;
+
+              case "adjective":
+                for (var element in element.definitions!) {
+                  adjective.add(element);
+                }
+                break;
             }
-
-            break;
-
-          case "verb":
-            for (var element in element.definitions!) {
-              verb.add(element);
-            }
-            break;
-
-          case "interjection":
-            for (var element in element.definitions!) {
-              interjection.add(element);
-            }
-            break;
-
-          case "pronoun":
-            for (var element in element.definitions!) {
-              pronoun.add(element);
-            }
-            break;
-
-          case "articles":
-            for (var element in element.definitions!) {
-              articles.add(element);
-            }
-            break;
-
-          case "adverb":
-            for (var element in element.definitions!) {
-              adverb.add(element);
-            }
-            break;
-
-          case "preposition":
-            for (var element in element.definitions!) {
-              preposition.add(element);
-            }
-            break;
-
-          case "adjective":
-            for (var element in element.definitions!) {
-              adjective.add(element);
-            }
-            break;
-
-          default:
+            await saveToHiveDatabase(checker);
+          }
         }
-        await saveToHiveDatabase(checker);
-      });
-    } else if (_wordModel.value.runtimeType == ErrorModel) {
-      return _wordModel.value;
-    }
-
-    return _wordModel.value ?? (_wordModel.value = 0);
+      },
+    );
   }
 
   void clearAllList() {
@@ -109,24 +107,20 @@ class SearchController extends GetxController implements BaseWordController {
   }
 
   Future<void> saveToHiveDatabase(checker) async {
-    if (_wordModel.value != null) {
-      for (var element in _hiveService.getAll()) {
-        if (element.word == _wordModel.value!.word) {
-          checker++;
-        }
+    for (var element in _hiveService.getAll()) {
+      if (element.word == _wordModel.word) {
+        checker++;
       }
+    }
 
-      if (checker == 0) {
-        final WordModel hiveWord = WordModel(
-          word: _wordModel.value.word,
-          meanings: _wordModel.value.meanings,
-          origin: _wordModel.value.origin,
-          phonetics: _wordModel.value.phonetics,
-          license: _wordModel.value.license,
-        );
+    if (checker == 0) {
+      final WordModel hiveWord = WordModel(
+        word: _wordModel.word,
+        phonetics: _wordModel.phonetics,
+        license: _wordModel.license,
+      );
 
-        await _hiveService.addData(hiveWord);
-      }
+      await _hiveService.addData(hiveWord);
     }
   }
 }

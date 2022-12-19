@@ -118,51 +118,51 @@ class WordWidget extends StatelessWidget {
 
   //
 
-  Obx wordKindWidget() => Obx(() => Column(
+  Widget wordKindWidget() => Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          tabBarController.currentIndex.value == 0
+          tabBarController.currentIndex == 0
               ? DictionaryWidget(
                   definitions: controller.noun,
                 )
               : const SizedBox(),
-          tabBarController.currentIndex.value == 1
+          tabBarController.currentIndex == 1
               ? DictionaryWidget(
                   definitions: controller.pronoun,
                 )
               : const SizedBox(),
-          tabBarController.currentIndex.value == 2
+          tabBarController.currentIndex == 2
               ? DictionaryWidget(
                   definitions: controller.articles,
                 )
               : const SizedBox(),
-          tabBarController.currentIndex.value == 3
+          tabBarController.currentIndex == 3
               ? DictionaryWidget(
                   definitions: controller.interjection,
                 )
               : const SizedBox(),
-          tabBarController.currentIndex.value == 4
+          tabBarController.currentIndex == 4
               ? DictionaryWidget(
                   definitions: controller.verb,
                 )
               : const SizedBox(),
-          tabBarController.currentIndex.value == 5
+          tabBarController.currentIndex == 5
               ? DictionaryWidget(
                   definitions: controller.adverb,
                 )
               : const SizedBox(),
-          tabBarController.currentIndex.value == 6
+          tabBarController.currentIndex == 6
               ? DictionaryWidget(
                   definitions: controller.preposition,
                 )
               : const SizedBox(),
-          tabBarController.currentIndex.value == 7
+          tabBarController.currentIndex == 7
               ? DictionaryWidget(
                   definitions: controller.adjective,
                 )
               : const SizedBox(),
         ],
-      ));
+      );
 
   //
 

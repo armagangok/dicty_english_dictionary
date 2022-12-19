@@ -2,6 +2,9 @@ import 'dart:convert';
 
 import 'package:hive/hive.dart';
 
+import '../../../core/network/contracts/base_network_model.dart';
+import '../entity/word_entity.dart';
+import 'definition.dart';
 import 'license.dart';
 import 'meaning.dart';
 import 'phonetic.dart';
@@ -9,17 +12,23 @@ import 'phonetic.dart';
 part 'word_model.g.dart';
 
 @HiveType(typeId: 1)
-class WordModel {
+class WordModel extends BaseNetworkModel implements WordEntity {
+  @override
   @HiveField(0)
   final String? word;
+  @override
   @HiveField(1)
   final String? origin;
+  @override
   @HiveField(2)
   final List<Phonetic>? phonetics;
+  @override
   @HiveField(3)
   final List<Meaning>? meanings;
+  @override
   @HiveField(4)
   final License? license;
+  @override
   @HiveField(5)
   final List<dynamic>? sourceUrls;
   @HiveField(6)
@@ -68,4 +77,42 @@ class WordModel {
 
   factory WordModel.fromJson(String source) =>
       WordModel.fromMap(json.decode(source));
+
+  @override
+  // TODO: implement antonyms
+  List? get antonyms => throw UnimplementedError();
+
+  @override
+  // TODO: implement definition
+  String? get definition => throw UnimplementedError();
+
+  @override
+  // TODO: implement definitions
+  List<Definition>? get definitions => throw UnimplementedError();
+
+  @override
+  // TODO: implement example
+  String? get example => throw UnimplementedError();
+
+  @override
+  fromJson(Map<String, dynamic> json) {
+    // TODO: implement fromJson
+    throw UnimplementedError();
+  }
+
+  @override
+  // TODO: implement name
+  String? get name => throw UnimplementedError();
+
+  @override
+  // TODO: implement partOfSpeech
+  String? get partOfSpeech => throw UnimplementedError();
+
+  @override
+  // TODO: implement synonyms
+  List? get synonyms => throw UnimplementedError();
+
+  @override
+  // TODO: implement url
+  String? get url => throw UnimplementedError();
 }

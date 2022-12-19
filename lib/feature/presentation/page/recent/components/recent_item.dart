@@ -22,7 +22,10 @@ class RecentItem extends StatelessWidget {
       onTap: () async {
         _hiveController.fetchWord(wordModel);
 
-        Get.dialog(buildDialog());
+        showDialog(
+          context: context,
+          builder: ((context) => buildDialog()),
+        );
       },
       child: Row(
         children: [

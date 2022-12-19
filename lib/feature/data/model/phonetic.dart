@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:english_accent_dictionary/feature/data/entity/word_entity.dart';
 import 'package:hive/hive.dart';
 
 import 'license.dart';
@@ -7,14 +8,15 @@ import 'license.dart';
 part 'phonetic.g.dart';
 
 @HiveType(typeId: 5)
-class Phonetic {
-  @HiveField( 0)
+class Phonetic extends WordEntity {
+  @HiveField(0)
   final String? audio;
-  @HiveField( 1)
+  @HiveField(1)
   final String? sourceUrl;
-  @HiveField( 2)
+  @override
+  @HiveField(2)
   final License? license;
-  @HiveField( 3)
+  @HiveField(3)
   final String? text;
 
   const Phonetic({this.audio, this.sourceUrl, this.license, this.text});

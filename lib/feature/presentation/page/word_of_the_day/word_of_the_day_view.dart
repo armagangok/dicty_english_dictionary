@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_instance/get_instance.dart';
 
 import '../../../../global/export/export.dart';
 
 class WordOfTheDayView extends StatelessWidget {
   WordOfTheDayView({Key? key}) : super(key: key);
-  final dataController = Get.put(WordOfTheDayController.instance);
+  final dataController = getIt<WordOfTheDayController>.call();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: Text(KString.wordOfTheDay)),
-      body: Obx(
-        () {
+      appBar: CustomAppBar(title: const Text(KString.wordOfTheDay)),
+      body: Builder(
+        builder: (context) {
           switch (dataController.wordModel.runtimeType) {
             case ErrorModel:
               final ErrorModel errorModel = dataController.wordModel;

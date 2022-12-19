@@ -1,12 +1,12 @@
 import '../../../../global/export/export.dart';
 
-abstract class BaseWordController extends GetxController {
-  late RxList<Definition> noun;
-  late RxList<Definition> verb;
-  late RxList<Definition> interjection;
-  late RxList<Definition> pronoun;
-  late RxList<Definition> articles;
-  late RxList<Definition> adverb;
-  late RxList<Definition> preposition;
-  late RxList<Definition> adjective;
+abstract class BaseWordController {
+  late List<Definition> noun;
+  late List<Definition> verb;
+  late List<Definition> interjection;
+  late List<Definition> pronoun;
+  late List<Definition> articles;
+  late List<Definition> adverb;
+  late List<Definition> preposition;
+  late List<Definition> adjective;
 }

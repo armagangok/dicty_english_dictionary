@@ -2,13 +2,28 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+import '../../../../core/navigation/constant/routes.dart';
+import '../../../../core/navigation/contract/base_navigation_service.dart';
 import '../../../../global/export/export.dart';
 
-class HomeView extends StatelessWidget {
-  HomeView({Key? key}) : super(key: key);
+class HomeView extends StatefulWidget {
+  const HomeView({Key? key}) : super(key: key);
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  @override
+  void initState() {
+    navigator = getIt<NavigationServiceContract>.call();
+    super.initState();
+  }
 
   final textController = TextController.instance;
+
   final searchController = SearchController.instance;
+  late final NavigationServiceContract navigator;
 
   @override
   Widget build(BuildContext context) {
@@ -159,7 +174,7 @@ class HomeView extends StatelessWidget {
                   Icons.search,
                   color: Colors.white,
                 ),
-                onTap: () async => searchForTheWord,
+                onTap: () async => _searchForTheWord,
               ),
             ],
           );
@@ -176,35 +191,42 @@ class HomeView extends StatelessWidget {
         ],
       );
 
-  void get searchForTheWord async {
+  void get _searchForTheWord async {
     if (textController.search.text.isEmpty) {
-      Get.snackbar(
-        "Warning",
-        "Please enter a text to search for!",
-        snackPosition: SnackPosition.TOP,
-        duration: const Duration(milliseconds: 3000),
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: SizedBox(
+            height: context.height(0.06),
+            child: Column(
+              children: const [
+                Text(
+                  "Warning",
+                ),
+                Text("Please enter a text to search for!"),
+              ],
+            ),
+          ),
+        ),
       );
     } else {
-      Get.to(SearchResultView());
+      navigator.navigateTo(path: KRoute.SEARCH_RESULT_PAGE);
       await searchController.fetchWord(textController.search.text);
       textController.search.clear();
     }
   }
 
-  buildDialog(Widget child) => Get.dialog(
-        Builder(
-          builder: (context) => BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 0.9, sigmaY: 0.9),
-            child: Dialog(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16)),
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: context.width(0.05),
-                  vertical: context.width(0.05),
-                ),
-                child: child,
+  buildDialog(Widget child) => Builder(
+        builder: (context) => BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 0.9, sigmaY: 0.9),
+          child: Dialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: context.width(0.05),
+                vertical: context.width(0.05),
               ),
+              child: child,
             ),
           ),
         ),
@@ -214,13 +236,14 @@ class HomeView extends StatelessWidget {
         _drawerItem(
           text: KString.recent,
           iconData: CupertinoIcons.time,
-          onPressed: () => Get.toNamed(Routes.recent),
+          onPressed: () => navigator.navigateTo(path: KRoute.RECENT_PAGE),
         ),
         _divider,
         _drawerItem(
           text: KString.wordOfTheDay,
           iconData: CupertinoIcons.calendar_today,
-          onPressed: () => Get.toNamed(Routes.wordOfTheDay),
+          onPressed: () =>
+              navigator.navigateTo(path: KRoute.WORD_OF_THE_DAY_PAGE),
         ),
         _divider,
         _drawerItem(
@@ -228,17 +251,17 @@ class HomeView extends StatelessWidget {
           iconData: CupertinoIcons.speaker_3,
           onPressed: () => buildDialog(const AccentPickerWidget()),
         ),
-        _divider,
-        _drawerItem(
-          text: KString.darkMode,
-          iconData: CupertinoIcons.moon,
-          onPressed: () => buildDialog(const ThemePickerWidget()),
-        ),
+        // _divider,
+        // _drawerItem(
+        //   text: KString.darkMode,
+        //   iconData: CupertinoIcons.moon,
+        //   onPressed: () => buildDialog(const ThemePickerWidget()),
+        // ),
         _divider,
         _drawerItem(
           text: KString.aboutMe,
           iconData: CupertinoIcons.info,
-          onPressed: () => Get.toNamed(Routes.aboutMe),
+          onPressed: () => navigator.navigateTo(path: KRoute.ABOUT_ME_PAGE),
         ),
         _divider,
         _drawerItem(
