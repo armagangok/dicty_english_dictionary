@@ -8,7 +8,7 @@ export 'package:shared_preferences/shared_preferences.dart';
 
 export '../../../core/remote/admob/ad_helper.dart';
 export '../../../core/remote/admob/generate_ad.dart';
-export '../../feature/data/repository/word_repository_imp.dart';
+export '../../feature/data/service/word_service_imp.dart';
 export '../../core/components/custom_app_bar.dart';
 export '../../core/components/error_widget.dart';
 export '../../core/components/loading_widget.dart';
@@ -21,7 +21,7 @@ export '../../core/initialization/initialization.dart';
 export '../../core/model/error_model.dart';
 export '../../core/remote/admob/ad_helper.dart';
 export '../../core/remote/admob/banner_ad_widget.dart';
-export '../../feature/data/repository/word_repository_imp.dart';
+export '../../feature/data/service/word_service_imp.dart';
 export '../../core/theme/theme.dart';
 export '../../core/theme/theme_service.dart';
 export '../../feature/data/model/definition.dart';

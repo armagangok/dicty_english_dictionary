@@ -11,7 +11,7 @@ class WordOfTheDayController implements BaseWordController {
   }
   static final instance = WordOfTheDayController._();
 
-  final _wordService = WordRepositoryImp.instance;
+  final _wordService = WordServiceImp.instance;
   final dynamic _wordModel = null;
 
   @override

@@ -6,7 +6,7 @@ class SearchController implements BaseWordController {
   static final instance = SearchController._();
 
   final _hiveService = HiveController.instance;
-  final _wordService = WordRepositoryImp.instance;
+  final _wordService = WordServiceImp.instance;
 
   late final WordModel _wordModel;
   WordModel get getWord => _wordModel;
