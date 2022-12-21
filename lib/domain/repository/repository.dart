@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import '../../../core/error/failure.dart';
 import '../../../global/export/export.dart';
 import '../../data/contract/word_service.dart';
+import '../../data/service/word_service_imp.dart';
 
 class WordRepository {
   WordRepository._({required this.service});

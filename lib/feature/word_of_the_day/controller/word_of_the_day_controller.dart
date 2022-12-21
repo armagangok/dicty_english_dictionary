@@ -1,10 +1,11 @@
 import 'dart:convert';
 
 import 'package:english_accent_dictionary/core/helpers/utils/log_helper.dart';
-import 'package:english_accent_dictionary/feature/domain/usecase/word_usecase.dart';
+
 import 'package:intl/intl.dart';
 
 import '../../../../../global/export/export.dart';
+import '../../../domain/usecase/word_usecase.dart';
 
 class WordOfTheDayController implements BaseWordController {
   WordOfTheDayController._() {

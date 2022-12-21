@@ -1,9 +1,9 @@
-import 'package:english_accent_dictionary/core/error/failure.dart';
-import 'package:english_accent_dictionary/feature/data/model/word_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../domain/usecase/word_usecase.dart';
 import '../../../../../injection_container.dart';
+import '../../../../domain/usecase/word_usecase.dart';
+import '../../../core/error/failure.dart';
+import '../../../data/model/word_model.dart';
 
 part 'search_state.dart';
 

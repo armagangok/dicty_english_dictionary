@@ -1,4 +1,5 @@
 import '../../../../global/export/export.dart';
+import '../../recent/controller/recent_controller.dart';
 
 class DictionaryWidget extends StatelessWidget {
   DictionaryWidget({

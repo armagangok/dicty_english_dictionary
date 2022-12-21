@@ -6,6 +6,8 @@ import '../../../../core/navigation/constant/routes.dart';
 import '../../../../core/navigation/contract/base_navigation_service.dart';
 import '../../../../global/export/export.dart';
 import '../search_result/search_controller.dart/search_controller.dart';
+import 'components/accent_picker_widget.dart';
+import 'controller/text_controller.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:english_accent_dictionary/feature/data/entity/word_entity.dart';
 import 'package:hive/hive.dart';
 
+import '../entity/word_entity.dart';
 import 'license.dart';
 
 part 'phonetic.g.dart';

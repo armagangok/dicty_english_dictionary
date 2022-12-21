@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
+import 'controller/word_of_the_day_controller.dart';
 
 class WordOfTheDayView extends StatelessWidget {
   WordOfTheDayView({Key? key}) : super(key: key);

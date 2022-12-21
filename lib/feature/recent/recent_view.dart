@@ -1,11 +1,10 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls
-
-import 'package:english_accent_dictionary/core/navigation/constant/routes.dart';
-import 'package:english_accent_dictionary/core/navigation/contract/base_navigation_service.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/components/ios_dialog.dart';
 import '../../../../global/export/export.dart';
+import '../../core/navigation/constant/routes.dart';
+import '../../core/navigation/contract/base_navigation_service.dart';
+import 'controller/recent_controller.dart';
 
 class RecentView extends StatefulWidget {
   const RecentView({Key? key}) : super(key: key);

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../feature/data/model/word_model.dart';
-import '../../feature/presentation/page/about_me/about_me_view.dart';
-import '../../feature/presentation/page/home/home_view.dart';
-import '../../feature/presentation/page/recent/recent_detail_view.dart';
-import '../../feature/presentation/page/recent/recent_view.dart';
-import '../../feature/presentation/page/search_result/search_result_view.dart';
-import '../../feature/presentation/page/word_of_the_day/word_of_the_day_view.dart';
+
+import '../../data/model/word_model.dart';
+import '../../feature/about_me/about_me_view.dart';
+import '../../feature/home/home_view.dart';
+import '../../feature/recent/recent_detail_view.dart';
+import '../../feature/recent/recent_view.dart';
+import '../../feature/search_result/search_result_view.dart';
+import '../../feature/word_of_the_day/word_of_the_day_view.dart';
 import 'constant/routes.dart';
 
 class NavigationRoute {

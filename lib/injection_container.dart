@@ -2,11 +2,13 @@ import 'package:get_it/get_it.dart';
 
 import 'core/navigation/contract/base_navigation_service.dart';
 import 'core/navigation/navigation_service.dart';
-import 'feature/data/contract/word_service.dart';
-import 'feature/domain/repository/repository.dart';
-import 'feature/domain/usecase/word_usecase.dart';
-
+import 'data/contract/word_service.dart';
+import 'data/service/word_service_imp.dart';
+import 'domain/repository/repository.dart';
+import 'domain/usecase/word_usecase.dart';
+import 'feature/home/controller/accent_controller.dart';
 import 'feature/presentation/page/search_result/search/search_cubit.dart';
+import 'feature/word_of_the_day/controller/word_of_the_day_controller.dart';
 import 'global/export/export.dart';
 
 var getIt = GetIt.instance;

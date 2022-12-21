@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'core/navigation/navigation_route.dart';
 import 'core/navigation/navigation_service.dart';
+import 'feature/home/home_view.dart';
 import 'global/export/export.dart';
-import 'feature/presentation/page/home/home_view.dart';
+
 
 void main() async {
   await Initialization.instance.initApp();
