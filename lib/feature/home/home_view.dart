@@ -160,7 +160,7 @@ class _HomeViewState extends State<HomeView> {
                   CupertinoIcons.forward,
                   size: 28,
                   color: context.colors.primary.withOpacity(0.8),
-                )
+                ),
               ],
             ),
           ),

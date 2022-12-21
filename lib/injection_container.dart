@@ -38,7 +38,5 @@ void initDependencies() {
     () => SearchCubit(),
   );
 
-  getIt.registerLazySingleton<WordUsecase>(
-    () => WordUsecase(repository: WordRepository.instance),
-  );
+
 }
