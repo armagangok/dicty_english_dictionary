@@ -7,7 +7,7 @@ import 'data/service/word_service_imp.dart';
 import 'domain/repository/repository.dart';
 import 'domain/usecase/word_usecase.dart';
 import 'feature/home/controller/accent_controller.dart';
-import 'feature/presentation/page/search_result/search/search_cubit.dart';
+import 'feature/search_result/search/search_cubit.dart';
 import 'feature/word_of_the_day/controller/word_of_the_day_controller.dart';
 import 'global/export/export.dart';
 
