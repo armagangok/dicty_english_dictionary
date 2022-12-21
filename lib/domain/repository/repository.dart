@@ -24,9 +24,14 @@ class WordRepository {
 
         return Right(model);
       } else if (response.statusCode == 404) {
-        var decodedErrorMessage = (jsonDecode(response.body));
+        var decodedErrorMessage = jsonDecode(response.body);
 
-        return Left(NetWork404Failure(errorMessage: decodedErrorMessage));
+        return Left(
+          NetWork404Failure(
+            errorTitle: decodedErrorMessage["title"],
+            errorMessage: decodedErrorMessage["message"],
+          ),
+        );
       } else {
         return Left(NetWorkUnknownFailure());
       }

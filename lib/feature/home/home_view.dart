@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/navigation/constant/routes.dart';
 import '../../../../core/navigation/contract/base_navigation_service.dart';
 import '../../../../global/export/export.dart';
-import '../search_result/search_controller.dart/search_controller.dart';
+import '../search_result/search/search_cubit.dart';
 import 'components/accent_picker_widget.dart';
 import 'controller/text_controller.dart';
 
@@ -20,12 +20,14 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     navigator = getIt<NavigationServiceContract>.call();
+    searchCubit = getIt.call<SearchCubit>();
+    textController = TextController.instance;
+
     super.initState();
   }
 
-  final textController = TextController.instance;
-
-  final searchController = SearchController.instance;
+  late final TextController textController;
+  late final SearchCubit searchCubit;
   late final NavigationServiceContract navigator;
 
   @override
@@ -199,12 +201,10 @@ class _HomeViewState extends State<HomeView> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: SizedBox(
-            height: context.height(0.06),
+            height: context.height(0.04),
             child: Column(
               children: const [
-                Text(
-                  "Warning",
-                ),
+                Text("Warning"),
                 Text("Please enter a text to search for!"),
               ],
             ),
@@ -213,7 +213,7 @@ class _HomeViewState extends State<HomeView> {
       );
     } else {
       navigator.navigateTo(path: KRoute.SEARCH_RESULT_PAGE);
-      await searchController.fetchWord(textController.search.text);
+      await searchCubit.fetchWord(word: textController.search.text);
       textController.search.clear();
     }
   }

@@ -1,7 +1,7 @@
+import 'package:english_accent_dictionary/feature/search_result/search/search_cubit.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
-import '../../search_result/search_controller.dart/search_controller.dart';
 
 class CustomTextField extends StatelessWidget {
   final Function? onTap;
@@ -21,7 +21,7 @@ class CustomTextField extends StatelessWidget {
     this.icon,
   }) : super(key: key);
 
-  final searchController = SearchController.instance;
+  final searchController = getIt<SearchCubit>.call();
 
   @override
   Widget build(BuildContext context) => SizedBox(
@@ -74,7 +74,7 @@ class CustomTextField extends StatelessWidget {
     //     duration: const Duration(milliseconds: 3000),
     //   )
     // : Get.to(SearchResultView());
-    await searchController.fetchWord(controller.text);
+    await searchController.fetchWord(word: controller.text);
     controller.text = "";
   }
 }
