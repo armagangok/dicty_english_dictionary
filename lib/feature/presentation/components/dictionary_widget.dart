@@ -1,3 +1,5 @@
+import '../../../data/entity/word_entity.dart';
+
 import '../../../../global/export/export.dart';
 import '../../recent/controller/recent_controller.dart';
 
@@ -7,7 +9,7 @@ class DictionaryWidget extends StatelessWidget {
     required this.definitions,
   }) : super(key: key);
 
-  final List<Definition> definitions;
+  final List<WordEntity> definitions;
 
   final _listController = RecentController.instance;
 

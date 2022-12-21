@@ -1,4 +1,6 @@
 import 'package:english_accent_dictionary/data/entity/word_entity.dart';
+import 'package:english_accent_dictionary/data/model/definition.dart';
+import 'package:english_accent_dictionary/feature/presentation/controller/base_word_controller.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../injection_container.dart';
@@ -10,7 +12,7 @@ import '../../presentation/controller/hive_controller.dart';
 
 part 'search_state.dart';
 
-class SearchCubit extends Cubit<SearchState> {
+class SearchCubit extends Cubit<SearchState> implements BaseWordController {
   SearchCubit() : super(SearchInitial());
 
   late final _wordUsecase = getIt.call<WordUsecase>();
@@ -18,23 +20,6 @@ class SearchCubit extends Cubit<SearchState> {
   late WordModel _wordModel;
   WordModel get getWord => _wordModel;
   final _hiveService = HiveController.instance;
-
-  @override
-  List<WordEntity> noun = [];
-  @override
-  List<WordEntity> verb = [];
-  @override
-  List<WordEntity> interjection = [];
-  @override
-  List<WordEntity> pronoun = [];
-  @override
-  List<WordEntity> articles = [];
-  @override
-  List<WordEntity> adverb = [];
-  @override
-  List<WordEntity> preposition = [];
-  @override
-  List<WordEntity> adjective = [];
 
   Future<void> fetchWord({required String word}) async {
     emit(SearchingState());
@@ -150,4 +135,28 @@ class SearchCubit extends Cubit<SearchState> {
     }
     emit(SearchSucceded(wordModel: r));
   }
+
+  @override
+  List<WordEntity> adjective = [];
+
+  @override
+  List<WordEntity> adverb = [];
+
+  @override
+  List<WordEntity> articles = [];
+
+  @override
+  List<WordEntity> interjection = [];
+
+  @override
+  List<WordEntity> noun = [];
+
+  @override
+  List<WordEntity> preposition = [];
+
+  @override
+  List<WordEntity> pronoun = [];
+
+  @override
+  List<WordEntity> verb = [];
 }

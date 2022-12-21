@@ -23,7 +23,7 @@ class _SearchResultViewState extends State<SearchResultView> {
   }
 
   late final _hiveService;
-  late final searchWordController;
+  
   late final navigator;
   late final _searchCubit;
 
@@ -57,7 +57,7 @@ class _SearchResultViewState extends State<SearchResultView> {
           } else if (state is SearchSucceded) {
             return WordWidget(
               wordModel: state.wordModel,
-              controller: searchWordController,
+              controller: _searchCubit,
             );
           } else {
             return const Center(

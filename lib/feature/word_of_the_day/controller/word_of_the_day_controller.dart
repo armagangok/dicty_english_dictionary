@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:english_accent_dictionary/core/helpers/utils/log_helper.dart';
+import 'package:english_accent_dictionary/data/entity/word_entity.dart';
 
 import 'package:intl/intl.dart';
 
@@ -17,21 +18,21 @@ class WordOfTheDayController implements BaseWordController {
   final dynamic _wordModel = null;
 
   @override
-  List<Definition> noun = [];
+  List<WordEntity> noun = [];
   @override
-  List<Definition> verb = [];
+  List<WordEntity> verb = [];
   @override
-  List<Definition> interjection = [];
+  List<WordEntity> interjection = [];
   @override
-  List<Definition> pronoun = [];
+  List<WordEntity> pronoun = [];
   @override
-  List<Definition> articles = [];
+  List<WordEntity> articles = [];
   @override
-  List<Definition> adverb = [];
+  List<WordEntity> adverb = [];
   @override
-  List<Definition> preposition = [];
+  List<WordEntity> preposition = [];
   @override
-  List<Definition> adjective = [];
+  List<WordEntity> adjective = [];
 
   get wordModel => _wordModel.value;
 

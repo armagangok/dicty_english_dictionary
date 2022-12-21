@@ -1,5 +1,7 @@
 // ignore_for_file: overridden_fields
 
+import 'package:english_accent_dictionary/data/entity/word_entity.dart';
+
 import '../../../../global/export/export.dart';
 
 class HiveController extends BaseWordController {
@@ -7,21 +9,21 @@ class HiveController extends BaseWordController {
   static final instance = HiveController._();
 
   @override
-  late List<Definition> adjective = [];
+  late List<WordEntity> adjective = [];
   @override
-  List<Definition> adverb = [];
+  List<WordEntity> adverb = [];
   @override
-  List<Definition> articles = [];
+  List<WordEntity> articles = [];
   @override
-  List<Definition> interjection = [];
+  List<WordEntity> interjection = [];
   @override
-  List<Definition> noun = [];
+  List<WordEntity> noun = [];
   @override
-  List<Definition> preposition = [];
+  List<WordEntity> preposition = [];
   @override
-  List<Definition> pronoun = [];
+  List<WordEntity> pronoun = [];
   @override
-  List<Definition> verb = [];
+  List<WordEntity> verb = [];
 
   List<WordModel> wordList = [];
   late final Box<WordModel> _hiveWords;
