@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
+import '../page/search_result/search_controller.dart/search_controller.dart';
 
 class CustomTextField extends StatelessWidget {
   final Function? onTap;

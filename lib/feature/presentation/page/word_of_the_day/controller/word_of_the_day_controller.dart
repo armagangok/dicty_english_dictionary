@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:english_accent_dictionary/core/helpers/utils/log_helper.dart';
+import 'package:english_accent_dictionary/feature/domain/usecase/word_usecase.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../global/export/export.dart';
@@ -11,7 +12,7 @@ class WordOfTheDayController implements BaseWordController {
   }
   static final instance = WordOfTheDayController._();
 
-  final _wordService = WordServiceImp.instance;
+  final _wordUsecase = getIt.call<WordUsecase>();
   final dynamic _wordModel = null;
 
   @override
@@ -45,7 +46,7 @@ class WordOfTheDayController implements BaseWordController {
     if (word.isEmpty) {
       return null;
     } else {
-      _wordModel.value = await _wordService.fetchWord(word: word);
+      _wordModel.value = await _wordUsecase.fetchWord(word: word);
 
       for (Meaning element in _wordModel.value!.meanings!) {
         switch (element.partOfSpeech) {

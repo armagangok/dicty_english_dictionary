@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/navigation/contract/base_navigation_service.dart';
 import '../../../../global/export/export.dart';
+import 'search_controller.dart/search_controller.dart';
 
 class SearchResultView extends StatelessWidget {
   final searchWordController = SearchController.instance;

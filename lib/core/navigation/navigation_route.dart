@@ -1,12 +1,12 @@
-import 'package:english_accent_dictionary/feature/data/model/word_model.dart';
-import 'package:english_accent_dictionary/feature/presentation/page/about_me/about_me_view.dart';
-import 'package:english_accent_dictionary/feature/presentation/page/home/home_view.dart';
-import 'package:english_accent_dictionary/feature/presentation/page/recent/recent_detail_view.dart';
-import 'package:english_accent_dictionary/feature/presentation/page/recent/recent_view.dart';
-import 'package:english_accent_dictionary/feature/presentation/page/search_result/search_result_view.dart';
-import 'package:english_accent_dictionary/feature/presentation/page/word_of_the_day/word_of_the_day_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../feature/data/model/word_model.dart';
+import '../../feature/presentation/page/about_me/about_me_view.dart';
+import '../../feature/presentation/page/home/home_view.dart';
+import '../../feature/presentation/page/recent/recent_detail_view.dart';
+import '../../feature/presentation/page/recent/recent_view.dart';
+import '../../feature/presentation/page/search_result/search_result_view.dart';
+import '../../feature/presentation/page/word_of_the_day/word_of_the_day_view.dart';
 import 'constant/routes.dart';
 
 class NavigationRoute {
@@ -16,7 +16,7 @@ class NavigationRoute {
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
       case KRoute.HOME_PAGE:
-        return _getRoute(HomeView());
+        return _getRoute(const HomeView());
 
       case KRoute.ABOUT_ME_PAGE:
         return _getRoute(const AboutMeView());
@@ -29,7 +29,7 @@ class NavigationRoute {
         );
 
       case KRoute.RECENT_PAGE:
-        return _getRoute(RecentView());
+        return _getRoute(const RecentView());
 
       case KRoute.SEARCH_RESULT_PAGE:
         return _getRoute(SearchResultView());

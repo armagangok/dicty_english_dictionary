@@ -1,14 +1,17 @@
+import 'package:english_accent_dictionary/core/helpers/utils/log_helper.dart';
+
 import '../../../../../global/export/export.dart';
+import '../../../../domain/usecase/word_usecase.dart';
+
 
 class SearchController implements BaseWordController {
   SearchController._();
-
   static final instance = SearchController._();
 
   final _hiveService = HiveController.instance;
-  final _wordService = WordServiceImp.instance;
+  final _wordUsecase = getIt.call<WordUsecase>();
 
-  late final WordModel _wordModel;
+  late WordModel _wordModel;
   WordModel get getWord => _wordModel;
 
   @override
@@ -32,11 +35,14 @@ class SearchController implements BaseWordController {
     clearAllList();
     int checker = 0;
 
-    var response = await _wordService.fetchWord(word: word);
+    var response = await _wordUsecase.fetchWord(word: word);
+    print(response);
 
     response.fold(
-      (l) => null,
+      (failure) => LogHelper.shared.debugPrint("$failure"),
       (data) async {
+        print(data);
+        _wordModel = data;
         if (data.meanings != null) {
           for (var element in data.meanings!) {
             switch (element.partOfSpeech) {

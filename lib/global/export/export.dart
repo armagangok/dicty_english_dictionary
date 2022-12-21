@@ -45,9 +45,7 @@ export '../../feature/presentation/page/home/controller/theme_controller.dart';
 export '../../feature/presentation/page/recent/components/recent_item.dart';
 export '../../feature/presentation/page/recent/controller/recent_controller.dart';
 export '../../feature/presentation/page/recent/recent_view.dart';
-export '../../feature/presentation/page/search_result/search_controller.dart/search_controller.dart';
-export '../../feature/presentation/page/search_result/search_controller.dart/search_controller.dart';
-export '../../feature/presentation/page/search_result/search_result_view.dart';
+
 export '../../feature/presentation/page/word_of_the_day/controller/word_of_the_day_controller.dart';
 export '../../feature/presentation/page/word_of_the_day/word_of_the_day_view.dart';
 export '../constant/kasset.dart';
