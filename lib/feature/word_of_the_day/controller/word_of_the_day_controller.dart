@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:english_accent_dictionary/core/helpers/utils/log_helper.dart';
+import 'package:english_accent_dictionary/core/helpers/log_helper.dart';
 import 'package:english_accent_dictionary/data/entity/word_entity.dart';
 
 import 'package:intl/intl.dart';
 
 import '../../../../../global/export/export.dart';
-import '../../../domain/usecase/word_usecase.dart';
+import '../../../domain/usecase/remote_word_usecase.dart';
 
 class WordOfTheDayController implements BaseWordController {
   WordOfTheDayController._() {
@@ -14,8 +14,8 @@ class WordOfTheDayController implements BaseWordController {
   }
   static final instance = WordOfTheDayController._();
 
-  final _wordUsecase = getIt.call<WordUsecase>();
-  final dynamic _wordModel = null;
+  final _wordUsecase = getIt.call<RemoteWordUsecase>();
+  dynamic _wordModel;
 
   @override
   List<WordEntity> noun = [];
@@ -38,7 +38,7 @@ class WordOfTheDayController implements BaseWordController {
 
   Future<void> onInit() async {
     try {
-      _wordModel.value = await _fetchWord(await getDatedWord());
+      _wordModel = await _fetchWord(await getDatedWord());
     } on PlatformException catch (e) {
       LogHelper.shared.debugPrint("$e");
     }
@@ -48,7 +48,7 @@ class WordOfTheDayController implements BaseWordController {
     if (word.isEmpty) {
       return null;
     } else {
-      _wordModel.value = await _wordUsecase.fetchWord(word: word);
+      _wordModel = await _wordUsecase.fetchWord(word: word);
 
       for (Meaning element in _wordModel.value!.meanings!) {
         switch (element.partOfSpeech) {

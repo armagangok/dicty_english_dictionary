@@ -21,7 +21,7 @@ class CustomTextField extends StatelessWidget {
     this.icon,
   }) : super(key: key);
 
-  final searchController = getIt<SearchCubit>.call();
+  final searchController = getIt.call<SearchCubit>();
 
   @override
   Widget build(BuildContext context) => SizedBox(
@@ -74,7 +74,7 @@ class CustomTextField extends StatelessWidget {
     //     duration: const Duration(milliseconds: 3000),
     //   )
     // : Get.to(SearchResultView());
-    await searchController.fetchWord(word: controller.text);
+    searchController.fetchWord(controller.text);
     controller.text = "";
   }
 }

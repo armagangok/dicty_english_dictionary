@@ -30,18 +30,6 @@ class HiveController extends BaseWordController {
 
   Box<WordModel> get getHiveBox => _hiveWords;
 
-  Future<void> initializeHive() async {
-    await Hive.initFlutter();
-    Hive.registerAdapter(WordModelAdapter());
-    Hive.registerAdapter(DefinitionAdapter());
-    Hive.registerAdapter(LicenseAdapter());
-    Hive.registerAdapter(MeaningAdapter());
-    Hive.registerAdapter(PhoneticAdapter());
-
-    _hiveWords = await Hive.openBox<WordModel>("hiveWords");
-    await Hive.openBox("countryBox");
-  }
-
   Future<void> addData(WordModel word) async => await _hiveWords.add(word);
 
   List<WordModel> getAll() {

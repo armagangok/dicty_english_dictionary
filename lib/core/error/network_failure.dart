@@ -1,4 +1,4 @@
-abstract class Failure {}
+import 'contract/failure.dart';
 
 class NetworkFetchFailure extends Failure {}
 

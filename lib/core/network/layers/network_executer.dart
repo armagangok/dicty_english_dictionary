@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../helpers/utils/log_helper.dart';
+import '../../helpers/log_helper.dart';
 import '../contracts/base_network_model.dart';
 import 'network_connectivity_checker.dart';
 import 'network_decoder.dart';

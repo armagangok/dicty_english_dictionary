@@ -2,17 +2,13 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 
-import '../../../core/error/failure.dart';
+import '../../core/error/contract/failure.dart';
+import '../../core/error/network_failure.dart';
 import '../../../global/export/export.dart';
 import '../../data/contract/word_service.dart';
-import '../../data/service/word_service_imp.dart';
 
-class WordRepository {
-  WordRepository._({required this.service});
-
-  static final instance = WordRepository._(
-    service: WordServiceImp.instance,
-  );
+class RemoteWordRepository {
+  RemoteWordRepository({required this.service});
 
   late final WordService service;
 

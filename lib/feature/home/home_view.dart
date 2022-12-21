@@ -213,7 +213,7 @@ class _HomeViewState extends State<HomeView> {
       );
     } else {
       navigator.navigateTo(path: KRoute.SEARCH_RESULT_PAGE);
-      await searchCubit.fetchWord(word: textController.search.text);
+      searchCubit.fetchWord(textController.search.text);
       textController.search.clear();
     }
   }

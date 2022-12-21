@@ -1,4 +1,5 @@
 import '../../../global/export/export.dart';
+import '../helpers/hive/hive_helper.dart';
 
 class Initialization {
   Initialization._();
@@ -7,8 +8,7 @@ class Initialization {
   Future<void> initApp() async {
     WidgetsFlutterBinding.ensureInitialized();
 
-    await HiveController.instance.initializeHive();
-    // await GetStorage.init();
+    await HiveHelper.shared.initializeHive();
 
     var _prefs = await SharedPreferences.getInstance();
 

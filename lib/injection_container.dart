@@ -1,11 +1,15 @@
+import 'package:english_accent_dictionary/core/helpers/hive/hive_helper.dart';
+import 'package:english_accent_dictionary/data/service/word_service_local_imp.dart';
+import 'package:english_accent_dictionary/domain/usecase/local_word_usecase.dart';
 import 'package:get_it/get_it.dart';
 
 import 'core/navigation/contract/base_navigation_service.dart';
 import 'core/navigation/navigation_service.dart';
 import 'data/contract/word_service.dart';
-import 'data/service/word_service_imp.dart';
-import 'domain/repository/repository.dart';
-import 'domain/usecase/word_usecase.dart';
+import 'data/service/word_service_remote_imp.dart';
+import 'domain/repository/local_word_repository.dart';
+import 'domain/repository/remote_word_repository.dart';
+import 'domain/usecase/remote_word_usecase.dart';
 import 'feature/home/controller/accent_controller.dart';
 import 'feature/search_result/search/search_cubit.dart';
 import 'feature/word_of_the_day/controller/word_of_the_day_controller.dart';
@@ -15,7 +19,7 @@ var getIt = GetIt.instance;
 
 void initDependencies() {
   getIt.registerLazySingleton<WordService>(
-    () => WordServiceImp.instance,
+    () => WordServiceRemoteImp(),
   );
 
   getIt.registerLazySingleton<NavigationServiceContract>(
@@ -30,13 +34,43 @@ void initDependencies() {
     () => WordOfTheDayController.instance,
   );
 
-  getIt.registerLazySingleton<WordUsecase>(
-    () => WordUsecase(repository: WordRepository.instance),
-  );
-
   getIt.registerLazySingleton<SearchCubit>(
     () => SearchCubit(),
   );
 
+  getIt.registerLazySingleton<WordOfTheDayController>(
+    () => WordOfTheDayController.instance,
+  );
 
+  getIt.registerLazySingleton<HiveHelper>(
+    () => HiveHelper.shared,
+  );
+
+  getIt.registerLazySingleton<HiveHelper>(
+    () => HiveHelper.shared,
+  );
+
+  getIt.registerLazySingleton<LocalWordRepository>(
+    () => LocalWordRepository(
+      service: WordServiceLocalImp(),
+    ),
+  );
+
+  getIt.registerLazySingleton<RemoteWordRepository>(
+    () => RemoteWordRepository(service: WordServiceRemoteImp()),
+  );
+
+  getIt.registerLazySingleton<LocalWordUsecase>(
+    () => LocalWordUsecase(
+      repository: getIt.call<LocalWordRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<RemoteWordUsecase>(
+    () => RemoteWordUsecase(
+      repository: RemoteWordRepository(
+        service: getIt.call<WordService>(),
+      ),
+    ),
+  );
 }

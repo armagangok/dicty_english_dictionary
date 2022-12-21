@@ -1,3 +1,4 @@
+import '../../../domain/usecase/local_word_usecase.dart';
 import '../../../global/export/export.dart';
 
 class TextToSpeech {
@@ -5,11 +6,16 @@ class TextToSpeech {
   static final instance = TextToSpeech._();
 
   final FlutterTts flutterTts = FlutterTts();
-  final HiveController _hiveService = HiveController.instance;
+  final _hiveUsecase = getIt.call<LocalWordUsecase>();
 
   Future<void> initTTS() async {
-    String lang = await _hiveService.getLanguage();
-    await setLanguage(lang);
+    var response = await _hiveUsecase.getLanguage();
+
+    response.fold(
+      (l) => null,
+      (r) => print(r),
+    );
+    // String lang = await setLanguage(lang);
   }
 
   Future<void> speakWordOneTime(String phrase) async {
