@@ -1,4 +1,3 @@
-import '../../../domain/usecase/local_word_usecase.dart';
 import '../../../global/export/export.dart';
 
 class TextToSpeech {
@@ -12,8 +11,8 @@ class TextToSpeech {
     var response = await _localUsecase.getLanguage();
 
     response.fold(
-      (l) => print(l),
-      (r) => print(r),
+      (l) {},
+      (r) {},
     );
   }
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../global/export/export.dart';
+import '../controller/tabbar_cubit/tab_cubit.dart';
 
 class WordWidget extends StatelessWidget {
   WordWidget({
@@ -11,29 +13,35 @@ class WordWidget extends StatelessWidget {
 
   final BaseWordController controller;
   final WordModel wordModel;
-  final tabBarController = TabBarController.instance;
+  final tabCubit = getIt.call<TabCubit>();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        wordTextSpeakButton(),
-        Expanded(
-          child: ListView(
-            padding: context.mediumPadding,
-            physics: const ClampingScrollPhysics(),
-            shrinkWrap: true,
-            children: [
-              expandedItems1(),
-              SizedBox(height: context.height(0.0075)),
-              expandedItems2(),
-              wordKindWidget(),
-            ],
-          ),
-        )
-      ],
+    return BlocConsumer<TabCubit, TabState>(
+      bloc: tabCubit,
+      listener: (context, tabCubit) {},
+      builder: (context, tabCubit) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            wordTextSpeakButton(),
+            Expanded(
+              child: ListView(
+                padding: context.mediumPadding,
+                physics: const ClampingScrollPhysics(),
+                shrinkWrap: true,
+                children: [
+                  expandedItems1(),
+                  SizedBox(height: context.height(0.0075)),
+                  expandedItems2(),
+                  wordKindWidget(tabCubit),
+                ],
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 
@@ -117,45 +125,45 @@ class WordWidget extends StatelessWidget {
 
   //
 
-  Widget wordKindWidget() => Column(
+  Widget wordKindWidget(TabState tabCubit) => Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          tabBarController.currentIndex == 0
+          tabCubit.index == 0
               ? DictionaryWidget(
                   definitions: controller.noun,
                 )
               : const SizedBox(),
-          tabBarController.currentIndex == 1
+          tabCubit.index == 1
               ? DictionaryWidget(
                   definitions: controller.pronoun,
                 )
               : const SizedBox(),
-          tabBarController.currentIndex == 2
+          tabCubit.index == 2
               ? DictionaryWidget(
                   definitions: controller.articles,
                 )
               : const SizedBox(),
-          tabBarController.currentIndex == 3
+          tabCubit.index == 3
               ? DictionaryWidget(
                   definitions: controller.interjection,
                 )
               : const SizedBox(),
-          tabBarController.currentIndex == 4
+          tabCubit.index == 4
               ? DictionaryWidget(
                   definitions: controller.verb,
                 )
               : const SizedBox(),
-          tabBarController.currentIndex == 5
+          tabCubit.index == 5
               ? DictionaryWidget(
                   definitions: controller.adverb,
                 )
               : const SizedBox(),
-          tabBarController.currentIndex == 6
+          tabCubit.index == 6
               ? DictionaryWidget(
                   definitions: controller.preposition,
                 )
               : const SizedBox(),
-          tabBarController.currentIndex == 7
+          tabCubit.index == 7
               ? DictionaryWidget(
                   definitions: controller.adjective,
                 )
@@ -174,25 +182,25 @@ class WordWidget extends StatelessWidget {
             ExpandedItem(
               text: "Verb",
               clickedNumber: 4,
-              onTap: () => tabBarController.changeIndex(4),
+              onTap: () => tabCubit.changeIndex(4),
               amount: controller.verb.length,
             ),
             ExpandedItem(
               text: "Adverb",
               clickedNumber: 5,
-              onTap: () => tabBarController.changeIndex(5),
+              onTap: () => tabCubit.changeIndex(5),
               amount: controller.adverb.length,
             ),
             ExpandedItem(
               text: "Preposition",
               clickedNumber: 6,
-              onTap: () => tabBarController.changeIndex(6),
+              onTap: () => tabCubit.changeIndex(6),
               amount: controller.preposition.length,
             ),
             ExpandedItem(
               text: "Adjecive",
               clickedNumber: 7,
-              onTap: () => tabBarController.changeIndex(7),
+              onTap: () => tabCubit.changeIndex(7),
               amount: controller.adjective.length,
             ),
           ],
@@ -212,25 +220,25 @@ class WordWidget extends StatelessWidget {
                 ExpandedItem(
                   text: "Noun",
                   clickedNumber: 0,
-                  onTap: () => tabBarController.changeIndex(0),
+                  onTap: () => tabCubit.changeIndex(0),
                   amount: controller.noun.length,
                 ),
                 ExpandedItem(
                   text: "Pronoun",
                   clickedNumber: 1,
-                  onTap: () => tabBarController.changeIndex(1),
+                  onTap: () => tabCubit.changeIndex(1),
                   amount: controller.pronoun.length,
                 ),
                 ExpandedItem(
                   text: "Articles",
                   clickedNumber: 2,
-                  onTap: () => tabBarController.changeIndex(2),
+                  onTap: () => tabCubit.changeIndex(2),
                   amount: controller.articles.length,
                 ),
                 ExpandedItem(
                   text: "Interjection",
                   clickedNumber: 3,
-                  onTap: () => tabBarController.changeIndex(3),
+                  onTap: () => tabCubit.changeIndex(3),
                   amount: controller.interjection.length,
                 ),
               ],
