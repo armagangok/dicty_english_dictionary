@@ -1,10 +1,9 @@
-import 'package:english_accent_dictionary/core/helpers/hive/hive_keys.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/entity/word_entity.dart';
-
 import '../../../core/error/network_failure.dart';
+import '../../../core/helpers/hive/hive_keys.dart';
 import '../../../core/helpers/log_helper.dart';
+import '../../../data/entity/word_entity.dart';
 import '../../../domain/usecase/local_word_usecase.dart';
 import '../../../domain/usecase/remote_word_usecase.dart';
 import '../../../global/export/export.dart';
@@ -85,11 +84,11 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
   Future<void> deleteAllWords() async => await _hiveWords.clear();
 
   Future<void> fetchWord(String word) async {
+    clearAllList();
     emit(SearchingState());
     var response = await _remoteUsecase.fetchWord(word: word);
     response.fold(
       (failure) {
-        print(state);
         if (failure is NetWork404Failure) {
           emit(SearchFailed(
             errorTitle: failure.errorTitle,
@@ -161,6 +160,15 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
                     }
                     break;
                 }
+                // if (checker == 0) {
+                //   final WordModel hiveWord = WordModel(
+                //     word: _wordModel.word,
+                //     phonetics: _wordModel.phonetics,
+                //     license: _wordModel.license,
+                //   );
+
+                //   await _hiveService.addData(hiveWord);
+                // }
 
                 emit(SearchSucceded(wordModel: data));
               }
@@ -175,50 +183,14 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
 
   // }
 
-  // void clearAllList() {
-  //   noun.clear();
-  //   verb.clear();
-  //   interjection.clear();
-  //   pronoun.clear();
-  //   articles.clear();
-  //   adverb.clear();
-  //   preposition.clear();
-  //   adjective.clear();
-  // }
-
-  //   if (checker == 0) {
-  //     final WordModel hiveWord = WordModel(
-  //       word: _wordModel.word,
-  //       phonetics: _wordModel.phonetics,
-  //       license: _wordModel.license,
-  //     );
-
-  //     await _hiveService.addData(hiveWord);
-  //   }
-  //   emit(SearchSucceded(wordModel: r));
-  // }
-
-  // @override
-  // List<WordEntity> adjective = [];
-
-  // @override
-  // List<WordEntity> adverb = [];
-
-  // @override
-  // List<WordEntity> articles = [];
-
-  // @override
-  // List<WordEntity> interjection = [];
-
-  // @override
-  // List<WordEntity> noun = [];
-
-  // @override
-  // List<WordEntity> preposition = [];
-
-  // @override
-  // List<WordEntity> pronoun = [];
-
-  // @override
-  // List<WordEntity> verb = [];
+  void clearAllList() {
+    noun.clear();
+    verb.clear();
+    interjection.clear();
+    pronoun.clear();
+    articles.clear();
+    adverb.clear();
+    preposition.clear();
+    adjective.clear();
+  }
 }

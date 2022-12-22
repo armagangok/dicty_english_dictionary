@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/navigation/contract/base_navigation_service.dart';
 import '../../../../global/export/export.dart';
-import 'search/search_cubit.dart';
+import 'cubit/search_cubit.dart';
 
 class SearchResultView extends StatefulWidget {
   const SearchResultView({Key? key}) : super(key: key);

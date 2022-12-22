@@ -1,4 +1,4 @@
-import '../../search_result/search/search_cubit.dart';
+import '../../search_result/cubit/search_cubit.dart';
 
 import '../../../../../global/export/export.dart';
 

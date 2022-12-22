@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/navigation/constant/routes.dart';
 import '../../../../core/navigation/contract/base_navigation_service.dart';
 import '../../../../global/export/export.dart';
-import '../search_result/search/search_cubit.dart';
+import '../search_result/cubit/search_cubit.dart';
 import 'components/accent_picker_widget.dart';
 import 'controller/text_controller.dart';
 

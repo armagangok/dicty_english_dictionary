@@ -1,10 +1,9 @@
-import 'package:english_accent_dictionary/feature/search_result/search/search_cubit.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../core/components/ios_dialog.dart';
 import '../../../../global/export/export.dart';
 import '../../core/navigation/constant/routes.dart';
 import '../../core/navigation/contract/base_navigation_service.dart';
+import '../search_result/cubit/search_cubit.dart';
 import 'controller/recent_controller.dart';
 
 class RecentView extends StatefulWidget {

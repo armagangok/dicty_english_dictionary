@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
-import 'package:english_accent_dictionary/data/entity/word_entity.dart';
+import '../../../data/entity/word_entity.dart';
 import 'package:intl/intl.dart';
 
 import '../../../core/error/contract/failure.dart';
