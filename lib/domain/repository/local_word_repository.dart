@@ -63,9 +63,9 @@ class LocalWordRepository {
     }
   }
 
-  Future<Either<Failure, int>> getLanguage() async {
+  Future<Either<Failure, String>> getLanguage() async {
     try {
-      int response = await service.getLanguage();
+      var response = await service.getLanguage();
       return Right(response);
     } on PlatformException catch (e) {
       return Left(

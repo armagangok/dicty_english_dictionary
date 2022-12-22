@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-
+import '../../data/model/license.dart';
 import '../../data/model/word_model.dart';
 import '../../feature/about_me/about_me_view.dart';
 import '../../feature/home/home_view.dart';
 import '../../feature/recent/recent_detail_view.dart';
 import '../../feature/recent/recent_view.dart';
 import '../../feature/search_result/search_result_view.dart';
-import '../../feature/word_of_the_day/word_of_the_day_view.dart';
+import '../../feature/word_of_the_day/word_of_the_day.dart';
 import 'constant/routes.dart';
 
 class NavigationRoute {
@@ -25,7 +25,14 @@ class NavigationRoute {
       case KRoute.RECENT_DETAIL_PAGE:
         return _getRoute(
           RecentDetailWiew(
-            wordModel: WordModel(),
+            wordModel: WordModel(
+              word: "",
+              // origin: "",
+              phonetics: [],
+              meanings: [],
+              license: License(name: "", url: ""),
+              sourceUrls: [],
+            ),
           ),
         );
 
@@ -33,10 +40,10 @@ class NavigationRoute {
         return _getRoute(const RecentView());
 
       case KRoute.SEARCH_RESULT_PAGE:
-        return _getRoute(SearchResultView());
+        return _getRoute(const SearchResultView());
 
       case KRoute.WORD_OF_THE_DAY_PAGE:
-        return _getRoute(WordOfTheDayView());
+        return _getRoute(const WordOfDayView());
 
       default:
         return MaterialPageRoute(

@@ -1,6 +1,7 @@
 import 'package:english_accent_dictionary/core/helpers/hive/hive_helper.dart';
 import 'package:english_accent_dictionary/data/service/word_service_local_imp.dart';
 import 'package:english_accent_dictionary/domain/usecase/local_word_usecase.dart';
+import 'package:english_accent_dictionary/feature/word_of_the_day/cubit/word_of_the_day_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import 'core/navigation/contract/base_navigation_service.dart';
@@ -30,21 +31,21 @@ void initDependencies() {
     () => AccentController.instance,
   );
 
-  getIt.registerLazySingleton<BaseWordController>(
-    () => WordOfTheDayController.instance,
-  );
+  // getIt.registerLazySingleton<BaseWordController>(
+  //   () => WordOfTheDayController.instance,
+  // );
 
   getIt.registerLazySingleton<SearchCubit>(
     () => SearchCubit(),
   );
 
-  getIt.registerLazySingleton<WordOfTheDayController>(
-    () => WordOfTheDayController.instance,
+  getIt.registerLazySingleton<WordOfTheDayCubit>(
+    () => WordOfTheDayCubit(),
   );
 
-  getIt.registerLazySingleton<HiveHelper>(
-    () => HiveHelper.shared,
-  );
+  // getIt.registerLazySingleton<WordOfTheDayController>(
+  //   () => WordOfTheDayController.instance,
+  // );
 
   getIt.registerLazySingleton<HiveHelper>(
     () => HiveHelper.shared,

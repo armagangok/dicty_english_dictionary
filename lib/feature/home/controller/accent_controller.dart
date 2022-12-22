@@ -1,3 +1,5 @@
+import '../../search_result/search/search_cubit.dart';
+
 import '../../../../../global/export/export.dart';
 
 class AccentController {
@@ -7,7 +9,7 @@ class AccentController {
   }
   static final instance = AccentController._();
 
-  final _hiveService = HiveController.instance;
+  final _hiveService = getIt.call<SearchCubit>();
 
   dynamic accent;
 

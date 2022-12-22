@@ -18,7 +18,7 @@ class HiveHelper {
     await Hive.openBox<WordModel>(HiveBoxes.wordBox);
   }
 
-  Future<T?> getData<T>(String boxName, dynamic key) async {
+  T? getData<T>(String boxName, dynamic key) {
     var box = Hive.box<T>(boxName);
     return box.get(key);
   }

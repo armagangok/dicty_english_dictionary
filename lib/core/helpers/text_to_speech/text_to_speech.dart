@@ -6,16 +6,15 @@ class TextToSpeech {
   static final instance = TextToSpeech._();
 
   final FlutterTts flutterTts = FlutterTts();
-  final _hiveUsecase = getIt.call<LocalWordUsecase>();
+  final _localUsecase = getIt.call<LocalWordUsecase>();
 
   Future<void> initTTS() async {
-    var response = await _hiveUsecase.getLanguage();
+    var response = await _localUsecase.getLanguage();
 
     response.fold(
-      (l) => null,
+      (l) => print(l),
       (r) => print(r),
     );
-    // String lang = await setLanguage(lang);
   }
 
   Future<void> speakWordOneTime(String phrase) async {

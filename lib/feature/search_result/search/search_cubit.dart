@@ -1,3 +1,4 @@
+import 'package:english_accent_dictionary/core/helpers/hive/hive_keys.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/entity/word_entity.dart';
@@ -34,7 +35,7 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
   List<WordEntity> verb = [];
 
   List<WordModel> wordList = [];
-  late final Box<WordModel> _hiveWords;
+  final Box<WordModel> _hiveWords = Hive.box(HiveBoxes.wordBox);
 
   Box<WordModel> get getHiveBox => _hiveWords;
 
@@ -59,8 +60,8 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
     return index;
   }
 
-  Future<void> setupLanguage() async =>
-      await Hive.box("countryBox").add("English-GB");
+  // Future<void> setupLanguage() async =>
+  //     await Hive.box("countryBox").add("English-GB");
 
   Future<void> saveLanguage(String lang) async {
     await Hive.box("countryBox").clear();
@@ -71,7 +72,7 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
     final Map<dynamic, WordModel> deliveriesMap = _hiveWords.toMap();
     dynamic desiredKey;
     deliveriesMap.forEach((key, value) {
-      if (value.isSelected) {
+      if (value.isSelected!) {
         desiredKey = key;
       }
     });
@@ -86,83 +87,88 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
   Future<void> fetchWord(String word) async {
     emit(SearchingState());
     var response = await _remoteUsecase.fetchWord(word: word);
+    response.fold(
+      (failure) {
+        print(state);
+        if (failure is NetWork404Failure) {
+          emit(SearchFailed(
+            errorTitle: failure.errorTitle,
+            errorMessage: failure.errorMessage,
+          ));
+        } else {
+          emit(SearchFailed(
+            errorTitle: SearchFailedState.errorTitle,
+            errorMessage: SearchFailedState.errorMessage,
+          ));
+        }
+      },
+      (r) async {
+        int checker = 0;
 
-    response.fold((failure) {
-      if (failure is NetWork404Failure) {
-        emit(SearchFailed(
-          errorTitle: failure.errorTitle,
-          errorMessage: failure.errorMessage,
-        ));
-      } else {
-        SearchFailed(
-          errorTitle: SearchFailedState.errorTitle,
-          errorMessage: SearchFailedState.errorMessage,
-        );
-      }
-    }, (r) async {
-      int checker = 0;
+        var response = await _remoteUsecase.fetchWord(word: word);
 
-      var response = await _remoteUsecase.fetchWord(word: word);
+        response.fold(
+          (failure) => LogHelper.shared.debugPrint("$failure"),
+          (data) async {
+            if (data.meanings != null) {
+              for (var element in data.meanings!) {
+                switch (element.partOfSpeech) {
+                  case "noun":
+                    for (var element in element.definitions!) {
+                      noun.add(element);
+                    }
+                    break;
 
-      response.fold(
-        (failure) => LogHelper.shared.debugPrint("$failure"),
-        (data) async {
-          if (data.meanings != null) {
-            for (var element in data.meanings!) {
-              switch (element.partOfSpeech) {
-                case "noun":
-                  for (var element in element.definitions!) {
-                    noun.add(element);
-                  }
-                  break;
+                  case "verb":
+                    for (var element in element.definitions!) {
+                      verb.add(element);
+                    }
+                    break;
 
-                case "verb":
-                  for (var element in element.definitions!) {
-                    verb.add(element);
-                  }
-                  break;
+                  case "interjection":
+                    for (var element in element.definitions!) {
+                      interjection.add(element);
+                    }
+                    break;
 
-                case "interjection":
-                  for (var element in element.definitions!) {
-                    interjection.add(element);
-                  }
-                  break;
+                  case "pronoun":
+                    for (var element in element.definitions!) {
+                      pronoun.add(element);
+                    }
+                    break;
 
-                case "pronoun":
-                  for (var element in element.definitions!) {
-                    pronoun.add(element);
-                  }
-                  break;
+                  case "articles":
+                    for (var element in element.definitions!) {
+                      articles.add(element);
+                    }
+                    break;
 
-                case "articles":
-                  for (var element in element.definitions!) {
-                    articles.add(element);
-                  }
-                  break;
+                  case "adverb":
+                    for (var element in element.definitions!) {
+                      adverb.add(element);
+                    }
+                    break;
 
-                case "adverb":
-                  for (var element in element.definitions!) {
-                    adverb.add(element);
-                  }
-                  break;
+                  case "preposition":
+                    for (var element in element.definitions!) {
+                      preposition.add(element);
+                    }
+                    break;
 
-                case "preposition":
-                  for (var element in element.definitions!) {
-                    preposition.add(element);
-                  }
-                  break;
+                  case "adjective":
+                    for (var element in element.definitions!) {
+                      adjective.add(element);
+                    }
+                    break;
+                }
 
-                case "adjective":
-                  for (var element in element.definitions!) {
-                    adjective.add(element);
-                  }
-                  break;
+                emit(SearchSucceded(wordModel: data));
               }
             }
-          }
-        },
-      );
-    });
+          },
+        );
+      },
+    );
   }
 
   // Future<void> fetchWord({required String word}) async {

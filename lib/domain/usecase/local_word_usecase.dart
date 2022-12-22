@@ -25,7 +25,7 @@ class LocalWordUsecase {
     return await repository.deleteWord(index);
   }
 
-  Future<Either<Failure, int>> getLanguage() async {
+  Future<Either<Failure, String>> getLanguage() async {
     return await repository.getLanguage();
   }
 

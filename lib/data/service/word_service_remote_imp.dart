@@ -32,7 +32,7 @@ class WordServiceRemoteImp implements WordService {
   }
 
   @override
-  Future<int> getLanguage() {
+  Future<String> getLanguage() {
     // TODO: implement getLanguage
     throw UnimplementedError();
   }

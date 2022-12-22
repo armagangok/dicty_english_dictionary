@@ -1,10 +1,11 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+
 import 'dart:convert';
 
+import 'package:english_accent_dictionary/data/entity/word_entity.dart';
+import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
-import '../../../core/network/contracts/base_network_model.dart';
-import '../entity/word_entity.dart';
-import 'definition.dart';
 import 'license.dart';
 import 'meaning.dart';
 import 'phonetic.dart';
@@ -12,28 +13,28 @@ import 'phonetic.dart';
 part 'word_model.g.dart';
 
 @HiveType(typeId: 1)
-class WordModel extends BaseNetworkModel implements WordEntity {
+class WordModel extends WordEntity {
   @override
   @HiveField(0)
-  final String? word;
+  String? word;
   @override
   @HiveField(1)
-  final String? origin;
+  String? origin;
   @override
   @HiveField(2)
-  final List<Phonetic>? phonetics;
+  List<Phonetic>? phonetics;
   @override
   @HiveField(3)
-  final List<Meaning>? meanings;
+  List<Meaning>? meanings;
   @override
   @HiveField(4)
-  final License? license;
+  License? license;
   @override
   @HiveField(5)
-  final List<dynamic>? sourceUrls;
-  @HiveField(6)
-  bool isSelected;
+  List<dynamic>? sourceUrls;
 
+  @HiveField(6)
+  bool? isSelected;
   WordModel({
     this.word,
     this.origin,
@@ -41,15 +42,37 @@ class WordModel extends BaseNetworkModel implements WordEntity {
     this.meanings,
     this.license,
     this.sourceUrls,
-    this.isSelected = false,
+    this.isSelected,
   });
 
+  WordModel copyWith({
+    String? word,
+    String? origin,
+    List<Phonetic>? phonetics,
+    List<Meaning>? meanings,
+    License? license,
+    List<dynamic>? sourceUrls,
+    bool? isSelected,
+  }) {
+    return WordModel(
+      word: word ?? this.word,
+      origin: origin ?? this.origin,
+      phonetics: phonetics ?? this.phonetics,
+      meanings: meanings ?? this.meanings,
+      license: license ?? this.license,
+      sourceUrls: sourceUrls ?? this.sourceUrls,
+      isSelected: isSelected ?? this.isSelected,
+    );
+  }
+
   Map<String, dynamic> toMap() {
-    return {
+    return <String, dynamic>{
       'word': word,
       'origin': origin,
-      'phonetics': phonetics?.map((x) => x.toMap()).toList(),
-      'meanings': meanings?.map((x) => x.toMap()).toList(),
+      'phonetics':
+          phonetics == null ? {} : phonetics!.map((x) => x.toMap()).toList(),
+      'meanings':
+          meanings == null ? {} : meanings!.map((x) => x.toMap()).toList(),
       'license': license?.toMap(),
       'sourceUrls': sourceUrls,
       'isSelected': isSelected,
@@ -58,61 +81,63 @@ class WordModel extends BaseNetworkModel implements WordEntity {
 
   factory WordModel.fromMap(Map<String, dynamic> map) {
     return WordModel(
-      word: map['word'],
-      origin: map['origin'],
+      word: map['word'] != null ? map['word'] as String : null,
+      origin: map['origin'] != null ? map['origin'] as String : null,
       phonetics: map['phonetics'] != null
           ? List<Phonetic>.from(
-              map['phonetics']?.map((x) => Phonetic.fromMap(x)))
+              (map['phonetics']).map<Phonetic?>(
+                (x) => Phonetic.fromMap(x as Map<String, dynamic>),
+              ),
+            )
           : null,
       meanings: map['meanings'] != null
-          ? List<Meaning>.from(map['meanings']?.map((x) => Meaning.fromMap(x)))
+          ? List<Meaning>.from(
+              (map['meanings']).map<Meaning?>(
+                (x) => Meaning.fromMap(x as Map<String, dynamic>),
+              ),
+            )
           : null,
-      license: map['license'] != null ? License.fromMap(map['license']) : null,
-      sourceUrls: List<dynamic>.from(map['sourceUrls']),
-      isSelected: map['isSelected'] ?? false,
+      license: map['license'] != null
+          ? License.fromMap(map['license'] as Map<String, dynamic>)
+          : null,
+      sourceUrls: map['sourceUrls'] != null
+          ? List<dynamic>.from((map['sourceUrls'] as List<dynamic>))
+          : null,
+      isSelected: map['isSelected'] != null ? map['isSelected'] as bool : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
   factory WordModel.fromJson(String source) =>
-      WordModel.fromMap(json.decode(source));
+      WordModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  // TODO: implement antonyms
-  List? get antonyms => throw UnimplementedError();
-
-  @override
-  // TODO: implement definition
-  String? get definition => throw UnimplementedError();
-
-  @override
-  // TODO: implement definitions
-  List<Definition>? get definitions => throw UnimplementedError();
-
-  @override
-  // TODO: implement example
-  String? get example => throw UnimplementedError();
-
-  @override
-  fromJson(Map<String, dynamic> json) {
-    // TODO: implement fromJson
-    throw UnimplementedError();
+  String toString() {
+    return 'WordModel(word: $word, origin: $origin, phonetics: $phonetics, meanings: $meanings, license: $license, sourceUrls: $sourceUrls, isSelected: $isSelected)';
   }
 
   @override
-  // TODO: implement name
-  String? get name => throw UnimplementedError();
+  bool operator ==(covariant WordModel other) {
+    if (identical(this, other)) return true;
+
+    return other.word == word &&
+        other.origin == origin &&
+        listEquals(other.phonetics, phonetics) &&
+        listEquals(other.meanings, meanings) &&
+        other.license == license &&
+        listEquals(other.sourceUrls, sourceUrls) &&
+        other.isSelected == isSelected;
+  }
 
   @override
-  // TODO: implement partOfSpeech
-  String? get partOfSpeech => throw UnimplementedError();
-
-  @override
-  // TODO: implement synonyms
-  List? get synonyms => throw UnimplementedError();
-
-  @override
-  // TODO: implement url
-  String? get url => throw UnimplementedError();
+  int get hashCode {
+    return word.hashCode ^
+        origin.hashCode ^
+        phonetics.hashCode ^
+        meanings.hashCode ^
+        license.hashCode ^
+        sourceUrls.hashCode ^
+        isSelected.hashCode;
+  }
 }

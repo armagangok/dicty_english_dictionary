@@ -1,3 +1,4 @@
+import 'package:english_accent_dictionary/feature/search_result/search/search_cubit.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
@@ -12,7 +13,7 @@ class RecentDetailWiew extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         appBar: CustomAppBar(),
         body: WordWidget(
-          controller: HiveController.instance,
+          controller: getIt.call<SearchCubit>(),
           wordModel: wordModel,
         ),
       );

@@ -1,3 +1,4 @@
+import 'package:english_accent_dictionary/feature/search_result/search/search_cubit.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/components/ios_dialog.dart';
@@ -16,7 +17,7 @@ class RecentView extends StatefulWidget {
 class _RecentViewState extends State<RecentView> {
   final _recentController = RecentController.instance;
 
-  final _hiveController = HiveController.instance;
+  final _hiveController = SearchCubit();
 
   final navigator = getIt<NavigationServiceContract>.call();
 
@@ -140,7 +141,7 @@ class _RecentViewState extends State<RecentView> {
         itemBuilder: (context, index) {
           return ListTile(
             onTap: () {
-              _hiveController.fetchWord(wordList[index]);
+              _hiveController.fetchWord("wordList[index]");
               navigator.navigateTo(
                 path: KRoute.RECENT_DETAIL_PAGE,
               );
@@ -148,7 +149,7 @@ class _RecentViewState extends State<RecentView> {
               // Get.to(RecentDetailWiew(wordModel: wordList[index]));
             },
             title: Text(
-              wordList[index].word!,
+              wordList[index].word ?? "null word",
               style: context.textTheme.bodyMedium!.copyWith(
                 color: context.primary,
               ),
@@ -168,10 +169,10 @@ class _RecentViewState extends State<RecentView> {
           value: wordList[index].isSelected,
           onChanged: (val) async {
             wordList[index].isSelected = val!;
-            await HiveController.instance.save(index, wordList[index]);
+            // await HiveController.instance.save(index, wordList[index]);
           },
           title: Text(
-            wordList[index].word!,
+            wordList[index].word ?? "null word",
             style: context.textTheme.bodyMedium!.copyWith(
               color: context.primary,
             ),

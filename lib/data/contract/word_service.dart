@@ -4,7 +4,7 @@ abstract class WordService {
   Future fetchWord({required String word});
   Future<void> deleteWord(int index);
 
-  Future<int> getLanguage();
+  Future<String> getLanguage();
 
   Future<void> setupLanguage();
 

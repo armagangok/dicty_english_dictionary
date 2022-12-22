@@ -56,7 +56,7 @@ class WordWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     AutoSizeText(
-                      wordModel.word!,
+                      wordModel.word ?? "null word",
                       style: context.textTheme.bodyLarge!.copyWith(
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
@@ -64,7 +64,7 @@ class WordWidget extends StatelessWidget {
                           fontStyle: FontStyle.italic),
                       maxLines: 1,
                     ),
-                    SpeakButton(data: wordModel.word!),
+                    SpeakButton(data: wordModel.word ?? "null word"),
                   ],
                 ),
                 phonetics(),
@@ -88,7 +88,7 @@ class WordWidget extends StatelessWidget {
   //
 
   Widget phonetics() => Builder(
-        builder: (context) => wordModel.phonetics!.isEmpty
+        builder: (context) => wordModel.phonetics == null
             ? const SizedBox()
             : ConstrainedBox(
                 constraints: BoxConstraints(
@@ -101,13 +101,15 @@ class WordWidget extends StatelessWidget {
                   ),
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
-                  itemCount: wordModel.phonetics!.length,
+                  itemCount: wordModel.phonetics == null
+                      ? 0
+                      : wordModel.phonetics!.length,
                   itemBuilder: (context, index) =>
                       wordModel.phonetics![index].text == null
                           ? const SizedBox()
                           : Center(
                               child: Text(
-                                wordModel.phonetics![index].text!,
+                                wordModel.phonetics![index].text ?? "null list",
                                 style: context.textTheme.bodyMedium!
                                     .copyWith(color: Colors.white),
                               ),

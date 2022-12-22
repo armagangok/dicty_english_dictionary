@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:english_accent_dictionary/feature/search_result/search/search_cubit.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../global/export/export.dart';
@@ -14,13 +15,13 @@ class RecentItem extends StatelessWidget {
     required this.index,
   }) : super(key: key);
 
-  final _hiveController = HiveController.instance;
+  final _hiveController = getIt.call<SearchCubit>();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        _hiveController.fetchWord(wordModel);
+        _hiveController.fetchWord("");
 
         showDialog(
           context: context,
