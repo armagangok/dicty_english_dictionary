@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
-import 'dictionary_widget.dart';
-import 'expanded_item.dart';
-import 'speak_button.dart';
 
 class WordWidget extends StatelessWidget {
   WordWidget({

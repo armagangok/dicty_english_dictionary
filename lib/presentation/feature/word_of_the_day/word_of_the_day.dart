@@ -1,8 +1,9 @@
-import 'package:english_accent_dictionary/feature/word_of_the_day/cubit/word_of_the_day_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../global/export/export.dart';
+import '../../components/word_widget.dart';
+import 'cubit/word_of_the_day_cubit.dart';
 
 class WordOfDayView extends StatefulWidget {
   const WordOfDayView({Key? key}) : super(key: key);

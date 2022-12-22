@@ -29,5 +29,6 @@ class NavigationService extends NavigationServiceContract {
     );
   }
 
+  @override
   void getBack() => navigatorKey.currentState!.pop();
 }

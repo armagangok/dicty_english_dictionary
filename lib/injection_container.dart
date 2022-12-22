@@ -10,9 +10,9 @@ import 'domain/repository/local_word_repository.dart';
 import 'domain/repository/remote_word_repository.dart';
 import 'domain/usecase/local_word_usecase.dart';
 import 'domain/usecase/remote_word_usecase.dart';
-import 'feature/home/controller/accent_controller.dart';
-import 'feature/search_result/cubit/search_cubit.dart';
-import 'feature/word_of_the_day/cubit/word_of_the_day_cubit.dart';
+import 'presentation/feature/home/controller/accent_controller.dart';
+import 'presentation/feature/search_result/cubit/search_cubit.dart';
+import 'presentation/feature/word_of_the_day/cubit/word_of_the_day_cubit.dart';
 
 var getIt = GetIt.instance;
 

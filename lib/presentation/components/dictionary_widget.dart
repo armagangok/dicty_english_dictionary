@@ -1,7 +1,4 @@
-import '../../../data/entity/word_entity.dart';
-
 import '../../../../global/export/export.dart';
-import '../../recent/controller/recent_controller.dart';
 
 class DictionaryWidget extends StatelessWidget {
   DictionaryWidget({

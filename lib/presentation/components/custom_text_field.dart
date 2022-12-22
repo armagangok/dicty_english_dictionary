@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
-import '../../search_result/cubit/search_cubit.dart';
+
 
 class CustomTextField extends StatelessWidget {
   final Function? onTap;

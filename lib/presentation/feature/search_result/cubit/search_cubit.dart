@@ -1,12 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/error/network_failure.dart';
-import '../../../core/helpers/hive/hive_keys.dart';
-import '../../../core/helpers/log_helper.dart';
-import '../../../data/entity/word_entity.dart';
-import '../../../domain/usecase/local_word_usecase.dart';
-import '../../../domain/usecase/remote_word_usecase.dart';
-import '../../../global/export/export.dart';
+
+import '../../../../global/export/export.dart';
+
 
 part 'search_state.dart';
 
@@ -160,6 +156,7 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
                     }
                     break;
                 }
+
                 // if (checker == 0) {
                 //   final WordModel hiveWord = WordModel(
                 //     word: _wordModel.word,
