@@ -22,64 +22,59 @@ class AccentPickerWidget extends StatelessWidget {
         bloc: accentCubit,
         listener: (context, state) {},
         builder: (context, state) {
-          return Builder(
-            builder: ((context) {
-              if (state is AccentFetched) {
-                return CupertinoPicker(
-                  scrollController: FixedExtentScrollController(
-                    initialItem: items.indexOf("${state.accent}"),
-                  ),
-                  useMagnifier: true,
-                  magnification: 1.2,
-                  itemExtent: 50,
-                  onSelectedItemChanged: (value) async {
-                    await accentCubit.saveAccent(value);
-                  },
-                  children: items
-                      .map(
-                        (item) => Center(
-                          child: Text(
-                            item,
-                            style: context.textTheme.bodyText1,
-                          ),
-                        ),
-                      )
-                      .toList(),
-                );
-              } else {
-                return const Text("data");
-              }
-              // switch (accentCubit.accent) {
-              //   case null:
-              //     return const SizedBox();
-
-              //   case -1:
-              //     return const Center(
-              //       child: Text("Unknown Error"),
-              //     );
-
-              //   default:
-              //     return CupertinoPicker(
-              //       scrollController: FixedExtentScrollController(
-              //         initialItem: items.indexOf("${accentCubit.accent.value}"),
-              //       ),
-              //       useMagnifier: true,
-              //       magnification: 1.2,
-              //       itemExtent: 50,
-              //       onSelectedItemChanged: (value) async {
-              //         await accentCubit.saveAccent(items[value]);
-              //       },
-              //       children: items
-              //           .map((item) => Center(
-              //                   child: Text(
-              //                 item,
-              //                 style: context.textTheme.bodyText1,
-              //               )))
-              //           .toList(),
-              //     );
-              // }
-            }),
+          print(state.accent);
+          return CupertinoPicker(
+            scrollController: FixedExtentScrollController(
+              initialItem: state.accent,
+              // items.indexOf("${state.accent}"),
+            ),
+            useMagnifier: true,
+            magnification: 1.2,
+            itemExtent: 50,
+            onSelectedItemChanged: (value) async {
+              await accentCubit.saveAccent(value);
+            },
+            children: items
+                .map((item) => Center(
+                      child: Text(item, style: context.textTheme.bodyText1),
+                    ))
+                .toList(),
           );
+          // if (state is AccentFetched) {
+          //   print("Accent number: " "${state.accent}");
+
+          // } else {
+          //   return const Text("data");
+          // }
+          // switch (accentCubit.accent) {
+          //   case null:
+          //     return const SizedBox();
+
+          //   case -1:
+          //     return const Center(
+          //       child: Text("Unknown Error"),
+          //     );
+
+          //   default:
+          //     return CupertinoPicker(
+          //       scrollController: FixedExtentScrollController(
+          //         initialItem: items.indexOf("${accentCubit.accent.value}"),
+          //       ),
+          //       useMagnifier: true,
+          //       magnification: 1.2,
+          //       itemExtent: 50,
+          //       onSelectedItemChanged: (value) async {
+          //         await accentCubit.saveAccent(items[value]);
+          //       },
+          //       children: items
+          //           .map((item) => Center(
+          //                   child: Text(
+          //                 item,
+          //                 style: context.textTheme.bodyText1,
+          //               )))
+          //           .toList(),
+          //     );
+          // }
         },
       ),
     );

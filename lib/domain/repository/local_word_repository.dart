@@ -60,23 +60,23 @@ class LocalWordRepository {
     }
   }
 
-  Future<Either<Failure, bool>> save(int index, WordModel value) async {
-    try {
-      await service.save(index, value);
-      return const Right(true);
-    } on PlatformException catch (e) {
-      return Left(
-        LocalSavingFailure(
-          errorMessage: e.details ?? "Local saving error.",
-          errorTitle: e.details ?? "Warning.",
-        ),
-      );
-    }
-  }
+  // Future<Either<Failure, bool>> save(int index, WordModel value) async {
+  //   try {
+  //     await service.save(index, value);
+  //     return const Right(true);
+  //   } on PlatformException catch (e) {
+  //     return Left(
+  //       LocalSavingFailure(
+  //         errorMessage: e.details ?? "Local saving error.",
+  //         errorTitle: e.details ?? "Warning.",
+  //       ),
+  //     );
+  //   }
+  // }
 
   Future<Either<Failure, bool>> setupLanguage() async {
     try {
-      await service.setupLanguage();
+      await service.setupAccent();
       return const Right(true);
     } on PlatformException catch (e) {
       return Left(

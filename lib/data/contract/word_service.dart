@@ -6,11 +6,11 @@ abstract class WordService {
 
   Future<int> getAccent();
 
-  Future<void> setupLanguage();
+  Future<void> setupAccent();
 
   Future<void> deleteByName(WordModel wordModel);
 
-  Future<void> save(int index, WordModel value);
+  // Future<void> save(int index, WordModel value);
 
   Future<void> deleteAllWords();
 

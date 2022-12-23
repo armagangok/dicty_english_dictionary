@@ -44,7 +44,7 @@ class WordServiceRemoteImp implements WordService {
   }
 
   @override
-  Future<void> setupLanguage() {
+  Future<void> setupAccent() {
     // TODO: implement setupLanguage
     throw UnimplementedError();
   }

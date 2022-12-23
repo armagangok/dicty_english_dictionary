@@ -14,6 +14,6 @@ class Initialization {
 
     await getIt.call<LocalWordUsecase>().setupLanguage();
 
-    // await TextToSpeech.instance.initTTS();
+    await TextToSpeech.instance.initTTS();
   }
 }
