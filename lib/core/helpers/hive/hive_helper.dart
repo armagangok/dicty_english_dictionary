@@ -1,5 +1,4 @@
 import '../../../global/export/export.dart';
-import 'hive_keys.dart';
 
 class HiveHelper {
   HiveHelper._();
@@ -14,7 +13,7 @@ class HiveHelper {
     Hive.registerAdapter(MeaningAdapter());
     Hive.registerAdapter(PhoneticAdapter());
 
-    await Hive.openBox<String>(HiveBoxes.countryBox);
+    await Hive.openBox<int>(HiveBoxes.countryBox);
     await Hive.openBox<WordModel>(HiveBoxes.wordBox);
   }
 

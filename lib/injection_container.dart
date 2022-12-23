@@ -1,5 +1,6 @@
 import 'package:english_accent_dictionary/global/export/export.dart';
 import 'package:english_accent_dictionary/presentation/controller/tabbar_cubit/tab_cubit.dart';
+import 'package:english_accent_dictionary/presentation/feature/home/cubit/accent/accent_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import 'core/helpers/hive/hive_helper.dart';
@@ -9,7 +10,6 @@ import 'data/service/word_service_local_imp.dart';
 import 'data/service/word_service_remote_imp.dart';
 import 'domain/repository/local_word_repository.dart';
 import 'domain/repository/remote_word_repository.dart';
-import 'presentation/feature/home/controller/accent_controller.dart';
 import 'presentation/feature/word_of_the_day/cubit/word_of_the_day_cubit.dart';
 
 var getIt = GetIt.instance;
@@ -23,8 +23,8 @@ void initDependencies() {
     () => NavigationService.instance,
   );
 
-  getIt.registerLazySingleton<AccentController>(
-    () => AccentController.instance,
+  getIt.registerLazySingleton<AccentCubit>(
+    () => AccentCubit(),
   );
 
   getIt.registerLazySingleton<SearchCubit>(
@@ -41,7 +41,7 @@ void initDependencies() {
 
   getIt.registerLazySingleton<LocalWordRepository>(
     () => LocalWordRepository(
-      service: WordServiceLocalImp(),
+      service: WordServiceLocalImp.instance,
     ),
   );
 

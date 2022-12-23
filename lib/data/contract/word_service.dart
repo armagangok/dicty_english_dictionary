@@ -4,7 +4,7 @@ abstract class WordService {
   Future fetchWord({required String word});
   Future<void> deleteWord(int index);
 
-  Future<String> getLanguage();
+  Future<int> getAccent();
 
   Future<void> setupLanguage();
 
@@ -13,4 +13,6 @@ abstract class WordService {
   Future<void> save(int index, WordModel value);
 
   Future<void> deleteAllWords();
+
+  Future<void> saveAccent({required int accent});
 }

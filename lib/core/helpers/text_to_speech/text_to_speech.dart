@@ -8,7 +8,7 @@ class TextToSpeech {
   final _localUsecase = getIt.call<LocalWordUsecase>();
 
   Future<void> initTTS() async {
-    var response = await _localUsecase.getLanguage();
+    var response = await _localUsecase.getAccent();
 
     response.fold(
       (l) {},

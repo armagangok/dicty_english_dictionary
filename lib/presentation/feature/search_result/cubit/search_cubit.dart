@@ -1,8 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 import '../../../../global/export/export.dart';
-
 
 part 'search_state.dart';
 
@@ -175,10 +173,6 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
       },
     );
   }
-
-  // Future<void> fetchWord({required String word}) async {
-
-  // }
 
   void clearAllList() {
     noun.clear();

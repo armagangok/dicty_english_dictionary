@@ -25,8 +25,8 @@ class LocalWordUsecase {
     return await repository.deleteWord(index);
   }
 
-  Future<Either<Failure, String>> getLanguage() async {
-    return await repository.getLanguage();
+  Future<Either<Failure, int>> getAccent() async {
+    return await repository.getAccent();
   }
 
   Future<Either<Failure, bool>> save(int index, WordModel value) async {
@@ -35,5 +35,9 @@ class LocalWordUsecase {
 
   Future<Either<Failure, bool>> setupLanguage() async {
     return await repository.setupLanguage();
+  }
+
+  Future<Either<Failure, bool>> saveAccent({required int accent}) async {
+    return await repository.saveAccent(accent: accent);
   }
 }

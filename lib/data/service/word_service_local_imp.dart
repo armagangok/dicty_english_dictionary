@@ -1,9 +1,10 @@
 import '../../core/helpers/hive/hive_helper.dart';
-import '../../core/helpers/hive/hive_keys.dart';
 import '../../global/export/export.dart';
-import '../contract/word_service.dart';
 
 class WordServiceLocalImp extends WordService {
+  static final instance = WordServiceLocalImp._();
+  WordServiceLocalImp._();
+  
   final _countryBox = HiveBoxes.countryBox;
   final _wordBox = HiveBoxes.wordBox;
 
@@ -19,19 +20,24 @@ class WordServiceLocalImp extends WordService {
       await _hiveHelper.deleteDataAt<WordModel>(_wordBox, index);
 
   @override
-  Future<String> getLanguage() async {
-    String? index = _hiveHelper.getData(_countryBox, 0);
+  Future<int> getAccent() async {
+    var accent = _hiveHelper.getData<int>(_countryBox, _countryBox);
 
-    return index ?? "";
+    if (accent == null) {
+      await _hiveHelper.addData<int>(_countryBox, 0);
+      accent = _hiveHelper.getData<int>(_countryBox, _countryBox);
+    }
+
+    return accent!;
   }
 
   @override
-  Future<void> setupLanguage() async =>
-      await _hiveHelper.addData(_countryBox, "English-GB");
+  Future<void> setupLanguage() async {
+    var accent = _hiveHelper.getData<int>(_countryBox, _countryBox);
 
-  Future<void> saveLanguage(String lang) async {
-    await _hiveHelper.clearBox(_countryBox);
-    await _hiveHelper.addData(_countryBox, lang);
+    if (accent == null) {
+      await _hiveHelper.addData<int>(_countryBox, 0);
+    }
   }
 
   @override
@@ -65,5 +71,10 @@ class WordServiceLocalImp extends WordService {
     //   _wordBox,
     //   desiredKey,
     // );
+  }
+
+  @override
+  Future<void> saveAccent({required int accent}) async {
+    await _hiveHelper.putData<int>(_countryBox, _countryBox, accent);
   }
 }

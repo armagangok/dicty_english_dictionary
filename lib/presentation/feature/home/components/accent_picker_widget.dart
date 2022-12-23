@@ -1,5 +1,5 @@
 import '../../../../../global/export/export.dart';
-import '../controller/accent_controller.dart';
+import '../cubit/accent/accent_cubit.dart';
 
 class AccentPickerWidget extends StatelessWidget {
   final List<String> items = const [
@@ -11,45 +11,76 @@ class AccentPickerWidget extends StatelessWidget {
     'English-ZA',
   ];
 
-  const AccentPickerWidget({Key? key}) : super(key: key);
+  final accentCubit = getIt<AccentCubit>.call();
+  AccentPickerWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final AccentController accentController = getIt<AccentController>.call();
-
     return SizedBox(
       height: context.height(0.2),
       width: double.minPositive,
-      child: Builder(
-        builder: ((context) {
-          switch (accentController.accent.value) {
-            case null:
-              return const SizedBox();
+      child: BlocConsumer<AccentCubit, AccentState>(
+        bloc: accentCubit,
+        listener: (context, state) {},
+        builder: (context, state) {
+          return Builder(
+            builder: ((context) {
+              if (state is AccentFetched) {
+                return CupertinoPicker(
+                  scrollController: FixedExtentScrollController(
+                    initialItem: items.indexOf("${state.accent}"),
+                  ),
+                  useMagnifier: true,
+                  magnification: 1.2,
+                  itemExtent: 50,
+                  onSelectedItemChanged: (value) async {
+                    await accentCubit.saveAccent(value);
+                  },
+                  children: items
+                      .map(
+                        (item) => Center(
+                          child: Text(
+                            item,
+                            style: context.textTheme.bodyText1,
+                          ),
+                        ),
+                      )
+                      .toList(),
+                );
+              } else {
+                return const Text("data");
+              }
+              // switch (accentCubit.accent) {
+              //   case null:
+              //     return const SizedBox();
 
-            case -1:
-              return const Center(child: Text("Unknown Error"));
+              //   case -1:
+              //     return const Center(
+              //       child: Text("Unknown Error"),
+              //     );
 
-            default:
-              return CupertinoPicker(
-                scrollController: FixedExtentScrollController(
-                  initialItem:
-                      items.indexOf("${accentController.accent.value}"),
-                ),
-                useMagnifier: true,
-                magnification: 1.2,
-                itemExtent: 50,
-                onSelectedItemChanged: (value) async {
-                  await accentController.saveAccent(items[value]);
-                },
-                children: items
-                    .map((item) => Center(
-                            child: Text(
-                          item,
-                          style: context.textTheme.bodyText1,
-                        )))
-                    .toList(),
-              );
-          }
-        }),
+              //   default:
+              //     return CupertinoPicker(
+              //       scrollController: FixedExtentScrollController(
+              //         initialItem: items.indexOf("${accentCubit.accent.value}"),
+              //       ),
+              //       useMagnifier: true,
+              //       magnification: 1.2,
+              //       itemExtent: 50,
+              //       onSelectedItemChanged: (value) async {
+              //         await accentCubit.saveAccent(items[value]);
+              //       },
+              //       children: items
+              //           .map((item) => Center(
+              //                   child: Text(
+              //                 item,
+              //                 style: context.textTheme.bodyText1,
+              //               )))
+              //           .toList(),
+              //     );
+              // }
+            }),
+          );
+        },
       ),
     );
   }

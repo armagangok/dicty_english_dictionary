@@ -2,8 +2,8 @@ import '../../../global/export/export.dart';
 import '../helpers/hive/hive_helper.dart';
 
 class Initialization {
-  Initialization._();
   static final instance = Initialization._();
+  Initialization._();
 
   Future<void> initApp() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -12,13 +12,8 @@ class Initialization {
 
     await HiveHelper.shared.initializeHive();
 
-    var _prefs = await SharedPreferences.getInstance();
+    await getIt.call<LocalWordUsecase>().setupLanguage();
 
-    // if (_prefs.getInt("firstRun") == null) {
-    //   await getIt.call<SearchCubit>().setupLanguage();
-    //   await _prefs.setInt("firstRun", 1);
-    // }
-
-    await TextToSpeech.instance.initTTS();
+    // await TextToSpeech.instance.initTTS();
   }
 }

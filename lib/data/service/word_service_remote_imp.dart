@@ -1,7 +1,7 @@
-import 'package:english_accent_dictionary/data/model/word_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../contract/word_service.dart';
+import '../model/word_model.dart';
 
 class WordServiceRemoteImp implements WordService {
   @override
@@ -32,7 +32,7 @@ class WordServiceRemoteImp implements WordService {
   }
 
   @override
-  Future<String> getLanguage() {
+  Future<int> getAccent() {
     // TODO: implement getLanguage
     throw UnimplementedError();
   }
@@ -46,6 +46,12 @@ class WordServiceRemoteImp implements WordService {
   @override
   Future<void> setupLanguage() {
     // TODO: implement setupLanguage
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> saveAccent({required int accent}) {
+    // TODO: implement saveAccent
     throw UnimplementedError();
   }
 }

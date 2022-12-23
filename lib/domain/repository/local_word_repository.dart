@@ -1,8 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:english_accent_dictionary/data/contract/word_service.dart';
 
-import '../../core/error/contract/failure.dart';
-import '../../core/error/local_failure.dart';
 import '../../global/export/export.dart';
 
 class LocalWordRepository {
@@ -63,20 +60,6 @@ class LocalWordRepository {
     }
   }
 
-  Future<Either<Failure, String>> getLanguage() async {
-    try {
-      var response = await service.getLanguage();
-      return Right(response);
-    } on PlatformException catch (e) {
-      return Left(
-        LocalSavingFailure(
-          errorMessage: e.details ?? "Local saving error.",
-          errorTitle: e.details ?? "Warning.",
-        ),
-      );
-    }
-  }
-
   Future<Either<Failure, bool>> save(int index, WordModel value) async {
     try {
       await service.save(index, value);
@@ -94,6 +77,34 @@ class LocalWordRepository {
   Future<Either<Failure, bool>> setupLanguage() async {
     try {
       await service.setupLanguage();
+      return const Right(true);
+    } on PlatformException catch (e) {
+      return Left(
+        LocalSavingFailure(
+          errorMessage: e.details ?? "Local saving error.",
+          errorTitle: e.details ?? "Warning.",
+        ),
+      );
+    }
+  }
+
+  Future<Either<Failure, int>> getAccent() async {
+    try {
+      var response = await service.getAccent();
+      return Right(response);
+    } on PlatformException catch (e) {
+      return Left(
+        LocalSavingFailure(
+          errorMessage: e.details ?? "Local saving error.",
+          errorTitle: e.details ?? "Warning.",
+        ),
+      );
+    }
+  }
+
+  Future<Either<Failure, bool>> saveAccent({required int accent}) async {
+    try {
+      await service.saveAccent(accent: accent);
       return const Right(true);
     } on PlatformException catch (e) {
       return Left(

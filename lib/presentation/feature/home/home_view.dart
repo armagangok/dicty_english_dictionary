@@ -1,9 +1,10 @@
 import 'dart:ui';
 
+import 'package:english_accent_dictionary/presentation/feature/home/components/accent_picker_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
-import 'components/accent_picker_widget.dart';
+import 'components/theme_picker_widget.dart';
 import 'controller/text_controller.dart';
 
 class HomeView extends StatefulWidget {
@@ -215,7 +216,7 @@ class _HomeViewState extends State<HomeView> {
     }
   }
 
-  buildDialog(Widget child) => Builder(
+  buildDialog(Widget widget) => Builder(
         builder: (context) => BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 0.9, sigmaY: 0.9),
           child: Dialog(
@@ -226,7 +227,7 @@ class _HomeViewState extends State<HomeView> {
                 horizontal: context.width(0.05),
                 vertical: context.width(0.05),
               ),
-              child: child,
+              child: widget,
             ),
           ),
         ),
@@ -249,14 +250,14 @@ class _HomeViewState extends State<HomeView> {
         _drawerItem(
           text: KString.accent,
           iconData: CupertinoIcons.speaker_3,
-          onPressed: () => buildDialog(const AccentPickerWidget()),
+          onPressed: () async => await _showMyDialog(),
         ),
-        // _divider,
-        // _drawerItem(
-        //   text: KString.darkMode,
-        //   iconData: CupertinoIcons.moon,
-        //   onPressed: () => buildDialog(const ThemePickerWidget()),
-        // ),
+        _divider,
+        _drawerItem(
+          text: KString.darkMode,
+          iconData: CupertinoIcons.moon,
+          onPressed: () => buildDialog(const ThemePickerWidget()),
+        ),
         _divider,
         _drawerItem(
           text: KString.aboutMe,
@@ -270,4 +271,19 @@ class _HomeViewState extends State<HomeView> {
           onPressed: () async => await RatingHelper.shared.requestReview(),
         )
       ];
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      // barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          // title: Text('AlertDialog Title'),
+          content: SingleChildScrollView(
+            child: AccentPickerWidget(),
+          ),
+        );
+      },
+    );
+  }
 }
