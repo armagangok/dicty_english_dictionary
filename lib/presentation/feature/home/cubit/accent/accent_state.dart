@@ -2,24 +2,17 @@
 part of 'accent_cubit.dart';
 
 abstract class AccentState {
-  int accent;
+  int accentIndex;
 
-  AccentState({required this.accent});
+  AccentState({required this.accentIndex});
 }
 
 class AccentInitial extends AccentState {
-  AccentInitial({required int accent}) : super(accent: accent);
+  AccentInitial({required int accentIndex}) : super(accentIndex: accentIndex);
 }
 
-class AccentFetchingError implements AccentState {
-  AccentFetchingError({required this.accent});
-
-  @override
-  int accent = 0;
-
+class AccentFetchingError extends AccentState {
+  AccentFetchingError({required int accentIndex})
+      : super(accentIndex: accentIndex);
   static const errorMessage = "Error while fetching accent.";
-}
-
-class AccentFetched extends AccentState {
-  AccentFetched({required int accent}) : super(accent: accent);
 }

@@ -1,4 +1,3 @@
-import '../../core/helpers/hive/hive_helper.dart';
 import '../../global/export/export.dart';
 
 class WordServiceLocalImp extends WordService {
@@ -60,7 +59,6 @@ class WordServiceLocalImp extends WordService {
   @override
   Future<int> getAccent() async {
     var accent = _hiveHelper.getData<int>(_countryBox, _countryBox);
-
     return accent ?? 4;
   }
 
