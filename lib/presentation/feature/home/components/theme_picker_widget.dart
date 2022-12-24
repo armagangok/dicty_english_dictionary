@@ -1,29 +1,37 @@
 import '../../../../../global/export/export.dart';
-import '../controller/theme_controller.dart';
+import '../cubit/theme/theme_cubit_cubit.dart';
 
 class ThemePickerWidget extends StatelessWidget {
   const ThemePickerWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    ThemeController themeController = ThemeController.instance;
+    final themeController = getIt.call<ThemeCubit>();
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       mainAxisSize: MainAxisSize.min,
       children: [
         FittedBox(
           child: Text(
             "Dark Mode",
-            style: context.textTheme.headline1!
-                .copyWith(fontSize: 20, fontWeight: FontWeight.normal),
+            style: context.textTheme.headline1!.copyWith(
+              fontSize: 20,
+              fontWeight: FontWeight.normal,
+            ),
             maxLines: 1,
           ),
         ),
-        CupertinoSwitch(
-          value: themeController.switchValue,
-          onChanged: (value) {
-            themeController.change(value);
-            // ThemeService.instance.changeTheme();
+        BlocConsumer<ThemeCubit, ThemeState>(
+          bloc: themeController,
+          listener: (context, state) {},
+          builder: (context, state) {
+            return CupertinoSwitch(
+              value: themeController.isDarkMode,
+              onChanged: (value) async {
+                await themeController.saveThemeMode(value);
+                // ThemeService.instance.changeTheme();
+              },
+            );
           },
         ),
       ],

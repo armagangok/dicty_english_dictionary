@@ -3,6 +3,7 @@ class HiveBoxes {
 
   static const String countryBox = "countryBox";
   static const String wordBox = "hiveWords";
+  static const String themeBox = "themeBox";
   
 }
 

@@ -1,5 +1,6 @@
+import 'package:english_accent_dictionary/core/theme/contract/theme.dart';
+
 import '../../../global/export/export.dart';
-import '../helpers/hive/hive_helper.dart';
 
 class Initialization {
   static final instance = Initialization._();
@@ -13,6 +14,7 @@ class Initialization {
     await HiveHelper.shared.initializeHive();
 
     await getIt.call<LocalWordUsecase>().setupLanguage();
+    await getIt.call<ThemeService>().initTheme();
 
     await TextToSpeech.instance.initTTS();
   }

@@ -250,13 +250,22 @@ class _HomeViewState extends State<HomeView> {
         _drawerItem(
           text: KString.accent,
           iconData: CupertinoIcons.speaker_3,
-          onPressed: () async => await _showMyDialog(),
+          onPressed: () async => await _showMyDialog(
+            const AlertDialog(
+              // title: Text('AlertDialog Title'),
+              content: SingleChildScrollView(
+                child: AccentPickerWidget(),
+              ),
+            ),
+          ),
         ),
         _divider,
         _drawerItem(
           text: KString.darkMode,
           iconData: CupertinoIcons.moon,
-          onPressed: () => buildDialog(const ThemePickerWidget()),
+          onPressed: () => _showMyDialog(const AlertDialog(
+            content: ThemePickerWidget(),
+          )),
         ),
         _divider,
         _drawerItem(
@@ -272,17 +281,12 @@ class _HomeViewState extends State<HomeView> {
         )
       ];
 
-  Future<void> _showMyDialog() async {
+  Future<void> _showMyDialog(Widget widget) async {
     return showDialog<void>(
       context: context,
       // barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
-        return AlertDialog(
-          // title: Text('AlertDialog Title'),
-          content: SingleChildScrollView(
-            child: AccentPickerWidget(),
-          ),
-        );
+        return widget;
       },
     );
   }

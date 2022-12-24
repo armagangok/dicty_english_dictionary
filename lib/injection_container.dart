@@ -1,4 +1,5 @@
 import 'global/export/export.dart';
+import 'presentation/feature/home/cubit/theme/theme_cubit_cubit.dart';
 
 var getIt = GetIt.instance;
 
@@ -13,6 +14,10 @@ void initDependencies() {
 
   getIt.registerLazySingleton<AccentCubit>(
     () => AccentCubit(),
+  );
+
+  getIt.registerLazySingleton<ThemeCubit>(
+    () => ThemeCubit(),
   );
 
   getIt.registerLazySingleton<SearchCubit>(
@@ -53,5 +58,9 @@ void initDependencies() {
         service: getIt.call<WordService>(),
       ),
     ),
+  );
+
+  getIt.registerLazySingleton<ThemeService>(
+    () => ThemeServiceImp.instance,
   );
 }
