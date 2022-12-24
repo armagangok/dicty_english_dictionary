@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 import '../../../../global/export/export.dart';
-
 
 class SearchResultView extends StatefulWidget {
   const SearchResultView({Key? key}) : super(key: key);
@@ -15,7 +13,7 @@ class SearchResultView extends StatefulWidget {
 class _SearchResultViewState extends State<SearchResultView> {
   @override
   void initState() {
-    navigator = getIt<NavigationServiceContract>.call();
+    navigator = getIt<NavigationService>.call();
 
     _searchCubit = getIt.call<SearchCubit>();
     // _hiveService = getIt..call<SearchCubit>();
@@ -23,7 +21,7 @@ class _SearchResultViewState extends State<SearchResultView> {
   }
 
   // late final _hiveService;
-  late final NavigationServiceContract navigator;
+  late final NavigationService navigator;
   late final _searchCubit;
 
   @override

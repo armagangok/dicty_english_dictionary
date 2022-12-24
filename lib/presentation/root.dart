@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
           themeMode: _themeCubit.getThemeMode,
           // initialRoute: '/onboard',
           onGenerateRoute: NavigationRoute.instance.generateRoute,
-          navigatorKey: NavigationService.instance.navigatorKey,
+          navigatorKey: NavigationServiceImp.instance.navigatorKey,
         );
       },
     );

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'contract/base_navigation_service.dart';
+import 'contract/navigation_service.dart';
 
-class NavigationService extends NavigationServiceContract {
-  static final NavigationService _instance = NavigationService._init();
-  static NavigationService get instance => _instance;
-  NavigationService._init();
+class NavigationServiceImp extends NavigationService {
+  static final NavigationServiceImp _instance = NavigationServiceImp._();
+  static NavigationServiceImp get instance => _instance;
+  NavigationServiceImp._();
 
   GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 

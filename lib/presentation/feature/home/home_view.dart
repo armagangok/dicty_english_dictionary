@@ -17,7 +17,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
-    navigator = getIt<NavigationServiceContract>.call();
+    navigator = getIt<NavigationService>.call();
     searchCubit = getIt.call<SearchCubit>();
     textController = TextController.instance;
 
@@ -26,7 +26,7 @@ class _HomeViewState extends State<HomeView> {
 
   late final TextController textController;
   late final SearchCubit searchCubit;
-  late final NavigationServiceContract navigator;
+  late final NavigationService navigator;
 
   @override
   Widget build(BuildContext context) {

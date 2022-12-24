@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../../core/components/ios_dialog.dart';
 import '../../../../global/export/export.dart';
 
-
 class RecentView extends StatefulWidget {
   const RecentView({Key? key}) : super(key: key);
 
@@ -15,7 +14,7 @@ class _RecentViewState extends State<RecentView> {
 
   final _hiveController = SearchCubit();
 
-  final navigator = getIt<NavigationServiceContract>.call();
+  final navigator = getIt<NavigationService>.call();
 
   @override
   Widget build(BuildContext context) => Scaffold(

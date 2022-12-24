@@ -1,4 +1,3 @@
-import 'package:english_accent_dictionary/core/navigation/contract/base_navigation_service.dart';
 import 'package:flutter/material.dart';
 
 import '../../../global/export/export.dart';
@@ -20,7 +19,7 @@ class IosDeleteDialog extends StatefulWidget {
 }
 
 class _IosDeleteDialogState extends State<IosDeleteDialog> {
-  final navigator = getIt.call<NavigationServiceContract>();
+  final navigator = getIt.call<NavigationService>();
   @override
   Widget build(BuildContext context) {
     return Dialog(

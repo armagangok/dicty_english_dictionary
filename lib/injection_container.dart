@@ -8,8 +8,8 @@ void initDependencies() {
     () => WordServiceRemoteImp(),
   );
 
-  getIt.registerLazySingleton<NavigationServiceContract>(
-    () => NavigationService.instance,
+  getIt.registerLazySingleton<NavigationService>(
+    () => NavigationServiceImp.instance,
   );
 
   getIt.registerLazySingleton<AccentCubit>(

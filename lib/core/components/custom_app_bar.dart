@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../global/export/export.dart';
-import '../navigation/contract/base_navigation_service.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   CustomAppBar({
@@ -19,7 +18,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Function? onTap;
   final Widget? widget;
 
-  final navigator = getIt.call<NavigationServiceContract>();
+  final navigator = getIt.call<NavigationService>();
 
   @override
   Widget build(BuildContext context) {
@@ -40,4 +39,4 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => Size.fromHeight(height!);
 
   void get alternativeOnTap => navigator.getBack();
-}  
+}
