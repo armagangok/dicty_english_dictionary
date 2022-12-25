@@ -60,7 +60,6 @@ export '../../presentation/controller/base_word_controller.dart';
 export '../../presentation/controller/contract/tab_bar_contract.dart';
 export '../../presentation/feature/about_me/about_me_view.dart';
 export '../../presentation/feature/home/home_view.dart';
-export '../../presentation/feature/recent/controller/recent_controller.dart';
 export '../../presentation/feature/recent/recent_detail_view.dart';
 export '../../presentation/feature/recent/recent_view.dart';
 export '../../presentation/feature/search_result/cubit/search_cubit.dart';

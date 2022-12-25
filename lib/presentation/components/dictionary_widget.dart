@@ -1,4 +1,5 @@
 import '../../../../global/export/export.dart';
+import '../feature/recent/cubit/recent/recent_cubit.dart';
 
 class DictionaryWidget extends StatelessWidget {
   DictionaryWidget({
@@ -8,7 +9,7 @@ class DictionaryWidget extends StatelessWidget {
 
   final List<WordEntity> definitions;
 
-  final _listController = RecentController.instance;
+  final _listController = getIt.call<RecentCubit>();
 
   @override
   Widget build(BuildContext context) {

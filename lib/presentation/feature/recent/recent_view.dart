@@ -1,3 +1,4 @@
+import 'package:english_accent_dictionary/presentation/feature/recent/cubit/recent/recent_cubit.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/components/ios_dialog.dart';
 import '../../../../global/export/export.dart';
@@ -10,7 +11,7 @@ class RecentView extends StatefulWidget {
 }
 
 class _RecentViewState extends State<RecentView> {
-  final _recentController = RecentController.instance;
+  final _recentController = getIt.call<RecentCubit>();
 
   final _hiveController = SearchCubit();
 
