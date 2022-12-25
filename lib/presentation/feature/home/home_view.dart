@@ -263,9 +263,11 @@ class _HomeViewState extends State<HomeView> {
         _drawerItem(
           text: KString.darkMode,
           iconData: CupertinoIcons.moon,
-          onPressed: () => _showMyDialog(const AlertDialog(
-            content: ThemePickerWidget(),
-          )),
+          onPressed: () => _showMyDialog(
+            const AlertDialog(
+              content: ThemePickerWidget(),
+            ),
+          ),
         ),
         _divider,
         _drawerItem(

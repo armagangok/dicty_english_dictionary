@@ -1,11 +1,6 @@
 import 'dart:convert';
 
-import 'package:bloc/bloc.dart';
-import '../../../../core/error/contract/failure.dart';
-import '../../../../data/entity/word_entity.dart';
-import '../../../../domain/usecase/remote_word_usecase.dart';
 import '../../../../global/export/export.dart';
-import '../../../controller/base_word_controller.dart';
 
 import 'package:intl/intl.dart';
 

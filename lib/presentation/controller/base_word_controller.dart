@@ -4,11 +4,11 @@ import '../../../../global/export/export.dart';
 
 abstract class BaseWordController {
   List<WordEntity> noun = [];
-  late List<WordEntity> verb = [];
-  late List<WordEntity> interjection = [];
-  late List<WordEntity> pronoun = [];
-  late List<WordEntity> articles = [];
-  late List<WordEntity> adverb = [];
-  late List<WordEntity> preposition = [];
-  late List<WordEntity> adjective = [];
+  List<WordEntity> verb = [];
+  List<WordEntity> interjection = [];
+  List<WordEntity> pronoun = [];
+  List<WordEntity> articles = [];
+  List<WordEntity> adverb = [];
+  List<WordEntity> preposition = [];
+  List<WordEntity> adjective = [];
 }
