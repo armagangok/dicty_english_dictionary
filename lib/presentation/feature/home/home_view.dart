@@ -1,11 +1,12 @@
 import 'dart:ui';
 
-import 'package:english_accent_dictionary/presentation/feature/home/components/accent_picker_widget.dart';
+import 'components/accent_picker_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
 import 'components/theme_picker_widget.dart';
 import 'controller/text_controller.dart';
+import 'cubit/home/home_cubit.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class _HomeViewState extends State<HomeView> {
     navigator = getIt<NavigationService>.call();
     searchCubit = getIt.call<SearchCubit>();
     textController = TextController.instance;
+    _homeCubit = getIt.call<HomeCubit>();
 
     super.initState();
   }
@@ -27,6 +29,7 @@ class _HomeViewState extends State<HomeView> {
   late final TextController textController;
   late final SearchCubit searchCubit;
   late final NavigationService navigator;
+  late final HomeCubit _homeCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,31 @@ class _HomeViewState extends State<HomeView> {
         child: Scaffold(
           drawer: _buildDrawer,
           appBar: _buildAppBar,
-          body: Padding(
+          body: _buildBody(),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBody() {
+    return BlocConsumer<HomeCubit, HomeState>(
+      listener: (context, state) {
+        if (state is RateFailed) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("An Error occured."),
+            ),
+          );
+        }
+      },
+      bloc: _homeCubit,
+      builder: (context, state) {
+        if (state is RateRequested) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else {
+          return Padding(
             padding: context.bigPadding,
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -56,9 +83,9 @@ class _HomeViewState extends State<HomeView> {
                 _blinkingButton,
               ],
             ),
-          ),
-        ),
-      ),
+          );
+        }
+      },
     );
   }
 
@@ -279,7 +306,10 @@ class _HomeViewState extends State<HomeView> {
         _drawerItem(
           text: KString.rateUS,
           iconData: CupertinoIcons.star,
-          onPressed: () async => await RatingHelper.shared.requestReview(),
+          onPressed: () async {
+            await _homeCubit.requestRate();
+            navigator.getBack();
+          },
         )
       ];
 

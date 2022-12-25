@@ -5,12 +5,11 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
   final ratingHelper = RatingHelper.shared;
-  Future<void> rateApp() async {
+  Future<void> requestRate() async {
     emit(RateRequested());
-
     try {
       await ratingHelper.requestReview();
-      RateSucceded();
+      emit(RateSucceded());
     } catch (e) {
       emit(RateFailed());
     }
