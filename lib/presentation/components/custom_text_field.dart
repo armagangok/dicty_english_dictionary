@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
-
 
 class CustomTextField extends StatelessWidget {
   final Function? onTap;
@@ -22,7 +20,8 @@ class CustomTextField extends StatelessWidget {
     this.icon,
   }) : super(key: key);
 
-  final searchController = getIt.call<SearchCubit>();
+  final searchCubit = getIt.call<SearchCubit>();
+  final navigator = getIt.call<NavigationService>();
 
   @override
   Widget build(BuildContext context) => SizedBox(
@@ -46,36 +45,42 @@ class CustomTextField extends StatelessWidget {
             ),
           ),
           textInputAction: TextInputAction.done,
-          onFieldSubmitted: (value) => searchForTheWord,
+          onFieldSubmitted: (value) {
+            searchForTheWord(context);
+          },
         ),
       );
 
-  InputDecoration get _inputDecoration => InputDecoration(
-        label: Builder(
-          builder: (context) => Text(
-            "Search",
-            style: context.textTheme.bodyLarge!.copyWith(color: Colors.white),
-          ),
-        ),
-        suffixIcon: _suffixIcon,
-      );
+  // InputDecoration get _inputDecoration => InputDecoration(
+  //       label: Builder(
+  //         builder: (context) => Text(
+  //           "Search",
+  //           style: context.textTheme.bodyLarge!.copyWith(color: Colors.white),
+  //         ),
+  //       ),
+  //       suffixIcon: _suffixIcon,
+  //     );
 
-  InkWell get _suffixIcon => InkWell(
-        child: icon ?? const Text(""),
-        onTap: () => onTap!(),
-        splashColor: null,
-      );
+  // InkWell get _suffixIcon => InkWell(
+  //       child: icon ?? const Text(""),
+  //       onTap: () => onTap!(),
+  //       splashColor: null,
+  //     );
 
-  void get searchForTheWord async {
-    // controller.text.isEmpty
-    // ? Get.snackbar(
-    //     "Warning",
-    //     "Please enter a text to search for!",
-    //     snackPosition: SnackPosition.TOP,
-    //     duration: const Duration(milliseconds: 3000),
-    //   )
-    // : Get.to(SearchResultView());
-    searchController.fetchWord(controller.text);
+  void searchForTheWord(BuildContext context) async {
+    controller.text.isEmpty
+        ? ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  Text("Warning \n Please enter a text to search for!")
+                ],
+              ),
+            ),
+          )
+        : navigator.navigateTo(path: KRoute.SEARCH_RESULT_PAGE);
+    searchCubit.fetchWord(controller.text);
     controller.text = "";
   }
 }
