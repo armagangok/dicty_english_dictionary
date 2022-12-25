@@ -14,7 +14,10 @@ class NavigationServiceImp extends NavigationService {
   @override
   Future<void> navigateTo({required String path, Object? data}) async {
     try {
-      await navigatorKey.currentState!.pushNamed(path, arguments: data);
+      await navigatorKey.currentState!.pushNamed(
+        path,
+        arguments: data,
+      );
     } catch (e) {
       rethrow;
     }

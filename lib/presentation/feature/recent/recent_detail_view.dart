@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
-import '../search_result/cubit/search_cubit.dart';
 
 class RecentDetailWiew extends StatelessWidget {
   const RecentDetailWiew({
     Key? key,
     required this.wordModel,
   }) : super(key: key);
+
   final WordModel wordModel;
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: CustomAppBar(),
-        body: WordWidget(
-          controller: getIt.call<SearchCubit>(),
-          wordModel: wordModel,
-        ),
-      );
+  Widget build(BuildContext context) {
+    print(wordModel.word);
+    return Scaffold(
+      appBar: _buildAppBar(),
+      body: buildBody(),
+    );
+  }
+
+  WordWidget buildBody() {
+    return WordWidget(
+      controller: getIt.call<SearchCubit>(),
+      wordModel: wordModel,
+    );
+  }
+
+  CustomAppBar _buildAppBar() => CustomAppBar();
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../global/export/export.dart';
-import 'constant/routes.dart';
 
 class NavigationRoute {
   static final NavigationRoute _instance = NavigationRoute._init();
@@ -18,14 +17,7 @@ class NavigationRoute {
       case KRoute.RECENT_DETAIL_PAGE:
         return _getRoute(
           RecentDetailWiew(
-            wordModel: WordModel(
-              word: "",
-              // origin: "",
-              phonetics: [],
-              meanings: [],
-              license: License(name: "", url: ""),
-              sourceUrls: [],
-            ),
+            wordModel: WordModel(isSelected: false),
           ),
         );
 

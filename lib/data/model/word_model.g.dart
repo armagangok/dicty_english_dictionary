@@ -23,7 +23,7 @@ class WordModelAdapter extends TypeAdapter<WordModel> {
       meanings: (fields[3] as List?)?.cast<Meaning>(),
       license: fields[4] as License?,
       sourceUrls: (fields[5] as List?)?.cast<dynamic>(),
-      isSelected: fields[6] as bool?,
+      isSelected: fields[6] as bool,
     );
   }
 

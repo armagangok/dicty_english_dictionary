@@ -38,7 +38,7 @@ class WordServiceRemoteImp implements WordService {
   }
 
   @override
-  Future<void> save(int index, WordModel value) {
+  Future<void> saveWord(WordModel value) {
     // TODO: implement save
     throw UnimplementedError();
   }
@@ -52,6 +52,15 @@ class WordServiceRemoteImp implements WordService {
   @override
   Future<void> saveAccent({required int accent}) {
     // TODO: implement saveAccent
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> updateWord({
+    required int index,
+    required WordModel wordModel,
+  }) {
+    // TODO: implement updateWord
     throw UnimplementedError();
   }
 }

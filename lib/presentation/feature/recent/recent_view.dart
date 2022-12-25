@@ -1,6 +1,5 @@
-import 'package:english_accent_dictionary/presentation/feature/recent/cubit/recent/recent_cubit.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/components/ios_dialog.dart';
+
 import '../../../../global/export/export.dart';
 
 class RecentView extends StatefulWidget {
@@ -11,40 +10,47 @@ class RecentView extends StatefulWidget {
 }
 
 class _RecentViewState extends State<RecentView> {
-  final _recentController = getIt.call<RecentCubit>();
-
-  final _hiveController = SearchCubit();
-
-  final navigator = getIt<NavigationService>.call();
+  final _recentCubit = getIt.call<RecentCubit>();
+  final _searchCubit = getIt.call<SearchCubit>();
+  final _navigator = getIt<NavigationService>.call();
 
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: _buildAppBar(),
-        body: ValueListenableBuilder(
-          valueListenable: _hiveController.getHiveBox.listenable(),
-          builder: (context, Box<WordModel> wordBox, _) => wordBox.isEmpty
-              ? _noRecentSearch()
-              : Column(
-                  children: [
-                    _deleteWidget(),
-                    Expanded(
-                      child: ListView(
-                        shrinkWrap: true,
-                        physics: const ClampingScrollPhysics(),
-                        children: [
-                          _recentBuilder(_hiveController.getAll()),
-                        ],
+        body: _buildBody(),
+      );
+
+  Widget _buildBody() => BlocConsumer<RecentCubit, RecentState>(
+        bloc: _recentCubit,
+        listener: (context, state) {},
+        builder: (context, state) {
+          print(state);
+          return ValueListenableBuilder(
+            valueListenable: _searchCubit.getHiveBox.listenable(),
+            builder: (context, Box<WordModel> wordBox, _) => wordBox.isEmpty
+                ? _noRecentSearch()
+                : Column(
+                    children: [
+                      _deleteWidget(),
+                      Expanded(
+                        child: ListView(
+                          shrinkWrap: true,
+                          physics: const ClampingScrollPhysics(),
+                          children: [
+                            _recentBuilder(_searchCubit.getAll()),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-        ),
+                    ],
+                  ),
+          );
+        },
       );
 
   Widget _deleteWidget() => Builder(
         builder: (context) {
           return AnimatedContainer(
-            height: _recentController.isEditting ? context.height(0.07) : 0,
+            height: _recentCubit.isEditting ? context.height(0.07) : 0,
             color: const Color.fromARGB(255, 141, 160, 255).withOpacity(0.2),
             duration: const Duration(milliseconds: 300),
             child: Row(
@@ -67,7 +73,7 @@ class _RecentViewState extends State<RecentView> {
                   title: "Warning",
                   message: "Do you want to delete all items?",
                   dialogAction: () async {
-                    await _hiveController.deleteAllWords();
+                    await _searchCubit.deleteAllWords();
                   },
                 );
               });
@@ -86,8 +92,8 @@ class _RecentViewState extends State<RecentView> {
               return IosDeleteDialog(
                 title: "Warning",
                 message: "Do you want to delete selected items?",
-                dialogAction: () => _hiveController.wordList.forEach(
-                  (element) async => await _hiveController.deleteByName(
+                dialogAction: () => _searchCubit.wordList.forEach(
+                  (element) async => await _searchCubit.deleteByName(
                     element,
                   ),
                 ),
@@ -108,10 +114,10 @@ class _RecentViewState extends State<RecentView> {
             style: ButtonStyle(
                 padding: MaterialStateProperty.all(EdgeInsets.zero)),
             onPressed: () {
-              _recentController.edit();
+              _recentCubit.edit();
             },
             child: Text(
-              _recentController.isEditting ? KString.done : KString.edit,
+              _recentCubit.isEditting ? KString.done : KString.edit,
               style: context.textTheme.bodyMedium!.copyWith(
                 color: Colors.white,
               ),
@@ -123,7 +129,7 @@ class _RecentViewState extends State<RecentView> {
 //
   Widget _recentBuilder(List<WordModel> wordList) => Builder(
         builder: (context) {
-          return _recentController.isEditting
+          return _recentCubit.isEditting
               ? buildEditListView(wordList)
               : buildListView(wordList);
         },
@@ -137,12 +143,10 @@ class _RecentViewState extends State<RecentView> {
         itemBuilder: (context, index) {
           return ListTile(
             onTap: () {
-              _hiveController.fetchWord("wordList[index]");
-              navigator.navigateTo(
+              _navigator.navigateTo(
                 path: KRoute.RECENT_DETAIL_PAGE,
+                data: wordList[index],
               );
-
-              // Get.to(RecentDetailWiew(wordModel: wordList[index]));
             },
             title: Text(
               wordList[index].word ?? "null word",
@@ -164,8 +168,9 @@ class _RecentViewState extends State<RecentView> {
           activeColor: KColor.deepOrange,
           value: wordList[index].isSelected,
           onChanged: (val) async {
-            wordList[index].isSelected = val!;
-            // await HiveController.instance.save(index, wordList[index]);
+            var word = wordList[index];
+            word.isSelected = val!;
+            await _searchCubit.updateWord(index, word);
           },
           title: Text(
             wordList[index].word ?? "null word",

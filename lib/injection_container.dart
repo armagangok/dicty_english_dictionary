@@ -1,8 +1,5 @@
-import 'package:english_accent_dictionary/presentation/feature/home/cubit/home/home_cubit.dart';
-import 'package:english_accent_dictionary/presentation/feature/recent/cubit/recent/recent_cubit.dart';
-
 import 'global/export/export.dart';
-import 'presentation/feature/home/cubit/theme/theme_cubit_cubit.dart';
+
 
 var getIt = GetIt.instance;
 

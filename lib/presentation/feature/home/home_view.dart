@@ -1,12 +1,8 @@
 import 'dart:ui';
 
-import 'components/accent_picker_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
-import 'components/theme_picker_widget.dart';
-import 'controller/text_controller.dart';
-import 'cubit/home/home_cubit.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -18,17 +14,17 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
-    navigator = getIt<NavigationService>.call();
-    searchCubit = getIt.call<SearchCubit>();
-    textController = TextController.instance;
+    _navigator = getIt<NavigationService>.call();
+    _searchCubit = getIt.call<SearchCubit>();
+    _textController = TextController.instance;
     _homeCubit = getIt.call<HomeCubit>();
 
     super.initState();
   }
 
-  late final TextController textController;
-  late final SearchCubit searchCubit;
-  late final NavigationService navigator;
+  late final TextController _textController;
+  late final SearchCubit _searchCubit;
+  late final NavigationService _navigator;
   late final HomeCubit _homeCubit;
 
   @override
@@ -199,7 +195,7 @@ class _HomeViewState extends State<HomeView> {
           return Column(
             children: [
               CustomTextField(
-                controller: textController.search,
+                controller: _textController.search,
                 icon: const Icon(
                   Icons.search,
                   color: Colors.white,
@@ -222,7 +218,7 @@ class _HomeViewState extends State<HomeView> {
       );
 
   void get _searchForTheWord async {
-    if (textController.search.text.isEmpty) {
+    if (_textController.search.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: SizedBox(
@@ -237,9 +233,9 @@ class _HomeViewState extends State<HomeView> {
         ),
       );
     } else {
-      navigator.navigateTo(path: KRoute.SEARCH_RESULT_PAGE);
-      searchCubit.fetchWord(textController.search.text);
-      textController.search.clear();
+      _navigator.navigateTo(path: KRoute.SEARCH_RESULT_PAGE);
+      _searchCubit.fetchWord(_textController.search.text);
+      _textController.search.clear();
     }
   }
 
@@ -264,14 +260,14 @@ class _HomeViewState extends State<HomeView> {
         _drawerItem(
           text: KString.recent,
           iconData: CupertinoIcons.time,
-          onPressed: () => navigator.navigateTo(path: KRoute.RECENT_PAGE),
+          onPressed: () => _navigator.navigateTo(path: KRoute.RECENT_PAGE),
         ),
         _divider,
         _drawerItem(
           text: KString.wordOfTheDay,
           iconData: CupertinoIcons.calendar_today,
           onPressed: () =>
-              navigator.navigateTo(path: KRoute.WORD_OF_THE_DAY_PAGE),
+              _navigator.navigateTo(path: KRoute.WORD_OF_THE_DAY_PAGE),
         ),
         _divider,
         _drawerItem(
@@ -300,7 +296,7 @@ class _HomeViewState extends State<HomeView> {
         _drawerItem(
           text: KString.aboutMe,
           iconData: CupertinoIcons.info,
-          onPressed: () => navigator.navigateTo(path: KRoute.ABOUT_ME_PAGE),
+          onPressed: () => _navigator.navigateTo(path: KRoute.ABOUT_ME_PAGE),
         ),
         _divider,
         _drawerItem(
@@ -308,7 +304,7 @@ class _HomeViewState extends State<HomeView> {
           iconData: CupertinoIcons.star,
           onPressed: () async {
             await _homeCubit.requestRate();
-            navigator.getBack();
+            _navigator.getBack();
           },
         )
       ];

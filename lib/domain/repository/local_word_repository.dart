@@ -60,19 +60,39 @@ class LocalWordRepository {
     }
   }
 
-  // Future<Either<Failure, bool>> save(int index, WordModel value) async {
-  //   try {
-  //     await service.save(index, value);
-  //     return const Right(true);
-  //   } on PlatformException catch (e) {
-  //     return Left(
-  //       LocalSavingFailure(
-  //         errorMessage: e.details ?? "Local saving error.",
-  //         errorTitle: e.details ?? "Warning.",
-  //       ),
-  //     );
-  //   }
-  // }
+  Future<Either<Failure, bool>> saveWord(WordModel wordModel) async {
+    try {
+      await service.saveWord(wordModel);
+      return const Right(true);
+    } on PlatformException catch (e) {
+      return Left(
+        LocalSavingFailure(
+          errorMessage: e.details ?? "Local saving error.",
+          errorTitle: e.details ?? "Warning.",
+        ),
+      );
+    }
+  }
+
+  Future<Either<Failure, bool>> updateWord({
+    required int index,
+    required WordModel wordModel,
+  }) async {
+    try {
+      await service.updateWord(
+        index: index,
+        wordModel: wordModel,
+      );
+      return const Right(true);
+    } on PlatformException catch (e) {
+      return Left(
+        LocalSavingFailure(
+          errorMessage: e.details ?? "Local saving error.",
+          errorTitle: e.details ?? "Warning.",
+        ),
+      );
+    }
+  }
 
   Future<Either<Failure, bool>> setupLanguage() async {
     try {

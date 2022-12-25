@@ -1,10 +1,11 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, overridden_fields
 
 import 'dart:convert';
 
-import 'package:english_accent_dictionary/data/entity/word_entity.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
+
+import 'package:english_accent_dictionary/data/entity/word_entity.dart';
 
 import 'license.dart';
 import 'meaning.dart';
@@ -17,24 +18,31 @@ class WordModel extends WordEntity {
   @override
   @HiveField(0)
   String? word;
+
   @override
   @HiveField(1)
   String? origin;
+
   @override
   @HiveField(2)
   List<Phonetic>? phonetics;
+
   @override
   @HiveField(3)
   List<Meaning>? meanings;
+
   @override
   @HiveField(4)
   License? license;
+
   @override
   @HiveField(5)
   List<dynamic>? sourceUrls;
 
+  @override
   @HiveField(6)
-  bool? isSelected;
+  bool isSelected;
+
   WordModel({
     this.word,
     this.origin,
@@ -42,7 +50,7 @@ class WordModel extends WordEntity {
     this.meanings,
     this.license,
     this.sourceUrls,
-    this.isSelected,
+    required this.isSelected,
   });
 
   WordModel copyWith({
@@ -69,10 +77,8 @@ class WordModel extends WordEntity {
     return <String, dynamic>{
       'word': word,
       'origin': origin,
-      'phonetics':
-          phonetics == null ? {} : phonetics!.map((x) => x.toMap()).toList(),
-      'meanings':
-          meanings == null ? {} : meanings!.map((x) => x.toMap()).toList(),
+      'phonetics': phonetics?.map((x) => x.toMap()).toList(),
+      'meanings': meanings?.map((x) => x.toMap()).toList(),
       'license': license?.toMap(),
       'sourceUrls': sourceUrls,
       'isSelected': isSelected,
@@ -85,14 +91,14 @@ class WordModel extends WordEntity {
       origin: map['origin'] != null ? map['origin'] as String : null,
       phonetics: map['phonetics'] != null
           ? List<Phonetic>.from(
-              (map['phonetics']).map<Phonetic?>(
+              (map['phonetics'] as List).map<Phonetic?>(
                 (x) => Phonetic.fromMap(x as Map<String, dynamic>),
               ),
             )
           : null,
       meanings: map['meanings'] != null
           ? List<Meaning>.from(
-              (map['meanings']).map<Meaning?>(
+              (map['meanings'] as List).map<Meaning?>(
                 (x) => Meaning.fromMap(x as Map<String, dynamic>),
               ),
             )
@@ -103,7 +109,7 @@ class WordModel extends WordEntity {
       sourceUrls: map['sourceUrls'] != null
           ? List<dynamic>.from((map['sourceUrls'] as List<dynamic>))
           : null,
-      isSelected: map['isSelected'] != null ? map['isSelected'] as bool : null,
+      isSelected: map['isSelected'] ?? false,
     );
   }
 

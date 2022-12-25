@@ -29,9 +29,19 @@ class LocalWordUsecase {
     return await repository.getAccent();
   }
 
-  // Future<Either<Failure, bool>> save(int index, WordModel value) async {
-  //   return await repository.save(index, value);
-  // }
+  Future<Either<Failure, bool>> saveWord(WordModel wordModel) async {
+    return await repository.saveWord(wordModel);
+  }
+
+  Future<Either<Failure, bool>> updateWord({
+    required int index,
+    required WordModel wordModel,
+  }) async {
+    return await repository.updateWord(
+      index: index,
+      wordModel: wordModel,
+    );
+  }
 
   Future<Either<Failure, bool>> setupLanguage() async {
     return await repository.setupLanguage();

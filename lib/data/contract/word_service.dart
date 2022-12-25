@@ -10,7 +10,12 @@ abstract class WordService {
 
   Future<void> deleteByName(WordModel wordModel);
 
-  // Future<void> save(int index, WordModel value);
+  Future<void> saveWord(WordModel wordModel);
+
+  Future<void> updateWord({
+    required int index,
+    required WordModel wordModel,
+  });
 
   Future<void> deleteAllWords();
 

@@ -70,4 +70,17 @@ class WordServiceLocalImp extends WordService {
       await _hiveHelper.putData<int>(_countryBox, _countryBox, 0);
     }
   }
+
+  @override
+  Future<void> saveWord(WordModel wordModel) async {
+    await _hiveHelper.addData(_wordBox, wordModel);
+  }
+
+  @override
+  Future<void> updateWord({
+    required int index,
+    required WordModel wordModel,
+  }) async {
+    await _hiveHelper.putDataAt(_wordBox, wordModel, index);
+  }
 }

@@ -20,6 +20,8 @@ class WordEntity {
   List<Meaning>? meanings;
   List<dynamic>? sourceUrls;
 
+  bool isSelected;
+
   WordEntity({
     this.definition = "",
     this.example = "",
@@ -35,5 +37,6 @@ class WordEntity {
     this.phonetics = const [],
     this.meanings = const [],
     this.sourceUrls = const [],
+    this.isSelected = false,
   });
 }

@@ -1,5 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../global/export/export.dart';
 
 part 'search_state.dart';
@@ -53,9 +51,6 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
     return index;
   }
 
-  // Future<void> setupLanguage() async =>
-  //     await Hive.box("countryBox").add("English-GB");
-
   Future<void> saveLanguage(String lang) async {
     await Hive.box("countryBox").clear();
     await Hive.box("countryBox").add(lang);
@@ -64,16 +59,19 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
   Future<void> deleteByName(WordModel wordModel) async {
     final Map<dynamic, WordModel> deliveriesMap = _hiveWords.toMap();
     dynamic desiredKey;
-    deliveriesMap.forEach((key, value) {
-      if (value.isSelected!) {
+    deliveriesMap.forEach((key, wordModel) {
+      if (wordModel.isSelected) {
         desiredKey = key;
       }
     });
     await _hiveWords.delete(desiredKey);
   }
 
-  Future<void> save(int index, WordModel value) async =>
-      await _hiveWords.putAt(index, value);
+  Future<void> updateWord(int index, WordModel wordModel) async =>
+      await _localUsecase.updateWord(
+        index: index,
+        wordModel: wordModel,
+      );
 
   Future<void> deleteAllWords() async => await _hiveWords.clear();
 
@@ -155,17 +153,19 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
                     break;
                 }
 
-                // if (checker == 0) {
-                //   final WordModel hiveWord = WordModel(
-                //     word: _wordModel.word,
-                //     phonetics: _wordModel.phonetics,
-                //     license: _wordModel.license,
-                //   );
+                if (checker == 0) {
+                  final WordModel hiveWord = WordModel(
+                    word: data.word,
+                    phonetics: data.phonetics,
+                    license: data.license,
+                    isSelected: false,
+                  );
 
-                //   await _hiveService.addData(hiveWord);
-                // }
+                  await _localUsecase.saveWord(hiveWord);
+                }
 
                 emit(SearchSucceded(wordModel: data));
+                return;
               }
             }
           },
