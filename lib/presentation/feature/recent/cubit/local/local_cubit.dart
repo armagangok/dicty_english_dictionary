@@ -1,11 +1,10 @@
-import '../../../../global/export/export.dart';
+import '../../../../../global/export/export.dart';
 
-part 'search_state.dart';
+part 'local_state.dart';
 
-class SearchCubit extends Cubit<SearchState> implements BaseWordController {
-  SearchCubit() : super(SearchInitial());
+class LocalCubit extends Cubit<LocalState> implements BaseWordController {
+  LocalCubit() : super(LocalInitial());
 
-  late final _remoteUsecase = getIt.call<RemoteWordUsecase>();
   late final _localUsecase = getIt.call<LocalWordUsecase>();
 
   @override
@@ -77,13 +76,13 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
 
   Future<void> fetchWord({required String word}) async {
     clearAllList();
-    emit(SearchingState());
-    var response = await _remoteUsecase.fetchWord(word: word);
+    emit(LocalingState());
+    var response = await _localUsecase.fetchWord(word: word);
     response.fold(
       (Failure failure) => emit(
-        SearchFailed(
+        LocalFailed(
           errorMessage: "failure",
-          errorTitle: "SearchFailed.errorMessage",
+          errorTitle: "LocalFailed.errorMessage",
         ),
       ),
       (WordModel data) {
@@ -143,7 +142,7 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
           }
         }
 
-        emit(SearchSucceded(wordModel: data));
+        emit(LocalSucceded(wordModel: data));
       },
     );
   }

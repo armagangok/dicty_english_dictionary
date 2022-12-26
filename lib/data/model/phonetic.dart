@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'dart:convert';
 
 import 'package:hive/hive.dart';
@@ -12,78 +10,42 @@ part 'phonetic.g.dart';
 @HiveType(typeId: 5)
 class Phonetic extends WordEntity {
   @HiveField(0)
-  String? audio;
+  final String? audio;
   @HiveField(1)
-  String? sourceUrl;
+  final String? sourceUrl;
   @override
   @HiveField(2)
-  License? license;
+  final License? license;
   @HiveField(3)
-  String? text;
-  Phonetic({
-    this.audio,
-    this.sourceUrl,
-    this.license,
-    this.text,
-  });
+  final String? text;
 
-  Phonetic copyWith({
-    String? audio,
-    String? sourceUrl,
-    License? license,
-    String? text,
-  }) {
-    return Phonetic(
-      audio: audio ?? this.audio,
-      sourceUrl: sourceUrl ?? this.sourceUrl,
-      license: license ?? this.license,
-      text: text ?? this.text,
-    );
+  Phonetic({this.audio, this.sourceUrl, this.license, this.text});
+
+  factory Phonetic.fromMap(Map<String, dynamic> data) => Phonetic(
+        audio: data['audio'] as String?,
+        sourceUrl: data['sourceUrl'] as String?,
+        license: data['license'] == null
+            ? null
+            : License.fromMap(data['license'] as Map<String, dynamic>),
+        text: data['text'] as String?,
+      );
+
+  Map<String, dynamic> toMap() => {
+        'audio': audio,
+        'sourceUrl': sourceUrl,
+        'license': license?.toMap(),
+        'text': text,
+      };
+
+  /// `dart:convert`
+  ///
+  /// Parses the string and returns the resulting Json object as [Phonetic].
+  factory Phonetic.fromJson(String data) {
+    return Phonetic.fromMap(json.decode(data) as Map<String, dynamic>);
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'audio': audio,
-      'sourceUrl': sourceUrl,
-      'license': license?.toMap(),
-      'text': text,
-    };
-  }
-
-  factory Phonetic.fromMap(Map<String, dynamic> map) {
-    return Phonetic(
-      audio: map['audio'] != null ? map['audio'] as String : null,
-      sourceUrl: map['sourceUrl'] != null ? map['sourceUrl'] as String : null,
-      license: map['license'] != null ? License.fromMap(map['license'] as Map<String,dynamic>) : null,
-      text: map['text'] != null ? map['text'] as String : null,
-    );
-  }
-
+  /// `dart:convert`
+  ///
+  /// Converts [Phonetic] to a JSON string.
   String toJson() => json.encode(toMap());
-
-  factory Phonetic.fromJson(String source) => Phonetic.fromMap(json.decode(source) as Map<String, dynamic>);
-
-  @override
-  String toString() {
-    return 'Phonetic(audio: $audio, sourceUrl: $sourceUrl, license: $license, text: $text)';
-  }
-
-  @override
-  bool operator ==(covariant Phonetic other) {
-    if (identical(this, other)) return true;
-  
-    return 
-      other.audio == audio &&
-      other.sourceUrl == sourceUrl &&
-      other.license == license &&
-      other.text == text;
-  }
-
-  @override
-  int get hashCode {
-    return audio.hashCode ^
-      sourceUrl.hashCode ^
-      license.hashCode ^
-      text.hashCode;
-  }
 }

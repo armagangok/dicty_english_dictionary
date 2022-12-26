@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import '../../../../../global/export/export.dart';
-import '../../search_result/cubit/search_cubit.dart';
 
 class RecentItem extends StatelessWidget {
   final WordModel wordModel;
@@ -15,13 +14,13 @@ class RecentItem extends StatelessWidget {
     required this.index,
   }) : super(key: key);
 
-  final _hiveController = getIt.call<SearchCubit>();
+  final _searchCubit = getIt.call<SearchCubit>();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        _hiveController.fetchWord("");
+        _searchCubit.fetchWord(word: "word");
 
         showDialog(
           context: context,
@@ -65,7 +64,7 @@ class RecentItem extends StatelessWidget {
                   physics: const ClampingScrollPhysics(),
                   children: [
                     WordWidget(
-                      controller: _hiveController,
+                      controller: _searchCubit,
                       wordModel: wordModel,
                     ),
                   ],

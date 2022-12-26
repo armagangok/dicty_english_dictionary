@@ -1,11 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-import 'package:hive/hive.dart';
-
 import '../entity/word_entity.dart';
+import 'package:hive/hive.dart';
 
 part 'definition.g.dart';
 
@@ -13,16 +9,17 @@ part 'definition.g.dart';
 class Definition extends WordEntity {
   @override
   @HiveField(0)
-  String? definition;
+  final String? definition;
   @override
   @HiveField(1)
-  List<dynamic>? synonyms;
+  final List<dynamic>? synonyms;
   @override
   @HiveField(2)
-  List<dynamic>? antonyms;
+  final List<dynamic>? antonyms;
   @override
   @HiveField(3)
-  String? example;
+  final String? example;
+
   Definition({
     this.definition,
     this.synonyms,
@@ -30,68 +27,29 @@ class Definition extends WordEntity {
     this.example,
   });
 
-  Definition copyWith({
-    String? definition,
-    List<dynamic>? synonyms,
-    List<dynamic>? antonyms,
-    String? example,
-  }) {
-    return Definition(
-      definition: definition ?? this.definition,
-      synonyms: synonyms ?? this.synonyms,
-      antonyms: antonyms ?? this.antonyms,
-      example: example ?? this.example,
-    );
+  factory Definition.fromMap(Map<String, dynamic> data) => Definition(
+        definition: data['definition'] as String?,
+        synonyms: data['synonyms'] as List<dynamic>?,
+        antonyms: data['antonyms'] as List<dynamic>?,
+        example: data['example'] as String?,
+      );
+
+  Map<String, dynamic> toMap() => {
+        'definition': definition,
+        'synonyms': synonyms,
+        'antonyms': antonyms,
+        'example': example,
+      };
+
+  /// `dart:convert`
+  ///
+  /// Parses the string and returns the resulting Json object as [Definition].
+  factory Definition.fromJson(String data) {
+    return Definition.fromMap(json.decode(data) as Map<String, dynamic>);
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'definition': definition,
-      'synonyms': synonyms,
-      'antonyms': antonyms,
-      'example': example,
-    };
-  }
-
-  factory Definition.fromMap(Map<String, dynamic> map) {
-    return Definition(
-      definition:
-          map['definition'] != null ? map['definition'] as String : null,
-      synonyms: map['synonyms'] != null
-          ? List<dynamic>.from((map['synonyms'] as List<dynamic>))
-          : null,
-      antonyms: map['antonyms'] != null
-          ? List<dynamic>.from((map['antonyms'] as List<dynamic>))
-          : null,
-      example: map['example'] != null ? map['example'] as String : null,
-    );
-  }
-
+  /// `dart:convert`
+  ///
+  /// Converts [Definition] to a JSON string.
   String toJson() => json.encode(toMap());
-
-  factory Definition.fromJson(String source) =>
-      Definition.fromMap(json.decode(source) as Map<String, dynamic>);
-
-  @override
-  String toString() {
-    return 'Definition(definition: $definition, synonyms: $synonyms, antonyms: $antonyms, example: $example)';
-  }
-
-  @override
-  bool operator ==(covariant Definition other) {
-    if (identical(this, other)) return true;
-
-    return other.definition == definition &&
-        listEquals(other.synonyms, synonyms) &&
-        listEquals(other.antonyms, antonyms) &&
-        other.example == example;
-  }
-
-  @override
-  int get hashCode {
-    return definition.hashCode ^
-        synonyms.hashCode ^
-        antonyms.hashCode ^
-        example.hashCode;
-  }
 }

@@ -12,7 +12,7 @@ class RecentView extends StatefulWidget {
 class _RecentViewState extends State<RecentView> {
   final _recentCubit = getIt.call<RecentCubit>();
   final _searchCubit = getIt.call<SearchCubit>();
-  final _navigator = getIt<NavigationService>.call();
+  // final _navigator = getIt<NavigationService>.call();
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -24,7 +24,6 @@ class _RecentViewState extends State<RecentView> {
         bloc: _recentCubit,
         listener: (context, state) {},
         builder: (context, state) {
-          print(state);
           return ValueListenableBuilder(
             valueListenable: _searchCubit.getHiveBox.listenable(),
             builder: (context, Box<WordModel> wordBox, _) => wordBox.isEmpty
@@ -93,9 +92,7 @@ class _RecentViewState extends State<RecentView> {
                 title: "Warning",
                 message: "Do you want to delete selected items?",
                 dialogAction: () => _searchCubit.wordList.forEach(
-                  (element) async => await _searchCubit.deleteByName(
-                    element,
-                  ),
+                  (element) async => await _searchCubit.deleteByName(element),
                 ),
               );
             },
@@ -141,15 +138,22 @@ class _RecentViewState extends State<RecentView> {
         physics: const ClampingScrollPhysics(),
         itemCount: wordList.length,
         itemBuilder: (context, index) {
+          var wordModel = wordList[index];
           return ListTile(
             onTap: () {
-              _navigator.navigateTo(
-                path: KRoute.RECENT_DETAIL_PAGE,
-                data: wordList[index],
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => RecentDetailWiew(wordModel: wordModel),
+                ),
               );
+              // _navigator.navigateTo(
+              //   path: KRoute.RECENT_DETAIL_PAGE,
+              //   data: wordList[index],
+              // );
             },
             title: Text(
-              wordList[index].word ?? "null word",
+              wordModel.word ?? "null",
               style: context.textTheme.bodyMedium!.copyWith(
                 color: context.primary,
               ),
@@ -173,7 +177,7 @@ class _RecentViewState extends State<RecentView> {
             await _searchCubit.updateWord(index, word);
           },
           title: Text(
-            wordList[index].word ?? "null word",
+            wordList[index].word ?? "null",
             style: context.textTheme.bodyMedium!.copyWith(
               color: context.primary,
             ),

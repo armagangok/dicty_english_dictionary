@@ -11,7 +11,6 @@ class RecentDetailWiew extends StatelessWidget {
   final WordModel wordModel;
   @override
   Widget build(BuildContext context) {
-    print(wordModel.word);
     return Scaffold(
       appBar: _buildAppBar(),
       body: buildBody(),

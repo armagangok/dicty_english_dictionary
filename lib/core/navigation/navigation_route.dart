@@ -14,12 +14,12 @@ class NavigationRoute {
       case KRoute.ABOUT_ME_PAGE:
         return _getRoute(const AboutMeView());
 
-      case KRoute.RECENT_DETAIL_PAGE:
-        return _getRoute(
-          RecentDetailWiew(
-            wordModel: WordModel(isSelected: false),
-          ),
-        );
+      // case KRoute.RECENT_DETAIL_PAGE:
+      //   return _getRoute(
+      //     RecentDetailWiew(
+      //       wordModel: WordModel(isSelected: false),
+      //     ),
+      //   );
 
       case KRoute.RECENT_PAGE:
         return _getRoute(const RecentView());

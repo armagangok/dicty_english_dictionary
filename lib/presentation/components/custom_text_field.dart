@@ -80,7 +80,7 @@ class CustomTextField extends StatelessWidget {
             ),
           )
         : navigator.navigateTo(path: KRoute.SEARCH_RESULT_PAGE);
-    searchCubit.fetchWord(controller.text);
+    searchCubit.fetchWord(word: controller.text);
     controller.text = "";
   }
 }
