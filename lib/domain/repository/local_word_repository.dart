@@ -135,4 +135,18 @@ class LocalWordRepository {
       );
     }
   }
+
+  Future<Either<Failure, List<WordModel>>> fetchAllCachedWords() async {
+    try {
+      var response = await service.fetchAllCachedWords();
+      return Right(response);
+    } on PlatformException catch (e) {
+      return Left(
+        LocalSavingFailure(
+          errorMessage: e.details ?? "Local saving error.",
+          errorTitle: e.details ?? "Warning.",
+        ),
+      );
+    }
+  }
 }

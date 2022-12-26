@@ -13,9 +13,9 @@ class HiveHelper {
     Hive.registerAdapter(MeaningAdapter());
     Hive.registerAdapter(PhoneticAdapter());
 
-    await Hive.openBox<int>(HiveBoxes.countryBox);
-    await Hive.openBox<WordModel>(HiveBoxes.wordBox);
-    await Hive.openBox<bool>(HiveBoxes.themeBox);
+    await Hive.openBox<int>(HiveKeys.countryBox);
+    await Hive.openBox<WordModel>(HiveKeys.wordBox);
+    await Hive.openBox<bool>(HiveKeys.themeBox);
   }
 
   T? getData<T>(String boxName, dynamic key) {

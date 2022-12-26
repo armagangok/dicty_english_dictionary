@@ -8,6 +8,8 @@ class ThemeServiceImp extends ThemeService {
     _hiveHelper = getIt.call<HiveHelper>();
   }
 
+  final _themeBox = HiveKeys.themeBox;
+
   late final HiveHelper _hiveHelper;
 
   @override
@@ -17,8 +19,8 @@ class ThemeServiceImp extends ThemeService {
 
   bool get _isDarkMode {
     var response = _hiveHelper.getData<bool>(
-      HiveBoxes.themeBox,
-      HiveBoxes.themeBox,
+      _themeBox,
+      _themeBox,
     );
 
     return response!;
@@ -27,8 +29,8 @@ class ThemeServiceImp extends ThemeService {
   @override
   Future<void> saveThemeMode(bool isDarkMode) async {
     await _hiveHelper.putData<bool>(
-      HiveBoxes.themeBox,
-      HiveBoxes.themeBox,
+      _themeBox,
+      _themeBox,
       isDarkMode,
     );
   }
@@ -36,13 +38,13 @@ class ThemeServiceImp extends ThemeService {
   @override
   Future<void> initTheme() async {
     var response = _hiveHelper.getData<bool>(
-      HiveBoxes.themeBox,
-      HiveBoxes.themeBox,
+      _themeBox,
+      _themeBox,
     );
     if (response == null) {
       await _hiveHelper.putData<bool>(
-        HiveBoxes.themeBox,
-        HiveBoxes.themeBox,
+        _themeBox,
+        _themeBox,
         false,
       );
     }
@@ -51,8 +53,8 @@ class ThemeServiceImp extends ThemeService {
   @override
   bool get isDarkMode {
     var response = _hiveHelper.getData<bool>(
-      HiveBoxes.themeBox,
-      HiveBoxes.themeBox,
+      _themeBox,
+      _themeBox,
     );
     return response!;
   }

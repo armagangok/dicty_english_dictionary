@@ -4,8 +4,8 @@ class WordServiceLocalImp extends WordService {
   static final instance = WordServiceLocalImp._();
   WordServiceLocalImp._();
 
-  final _countryBox = HiveBoxes.countryBox;
-  final _wordBox = HiveBoxes.wordBox;
+  final _countryBox = HiveKeys.countryBox;
+  final _wordBox = HiveKeys.wordBox;
 
   final _hiveHelper = getIt.call<HiveHelper>();
 
@@ -15,20 +15,9 @@ class WordServiceLocalImp extends WordService {
   }
 
   @override
-  Future<void> deleteWord(index) async =>
-      await _hiveHelper.deleteDataAt<WordModel>(_wordBox, index);
+  Future<void> deleteWord(index) async => await _hiveHelper.deleteDataAt<WordModel>(_wordBox, index);
 
-  @override
-  Future<void> deleteByName(WordModel wordModel) async {
-    // final Map<dynamic, WordModel> deliveriesMap = _hiveWords.toMap();
-    // dynamic desiredKey;
-    // deliveriesMap.forEach((key, value) {
-    //   if (value.isSelected) {
-    //     desiredKey = key;
-    //   }
-    // });
-    // await _hiveHelper.deleteData(_wordBox, desiredKey);
-  }
+
 
   // @override
   // Future<void> save(int index, WordModel value) async {
@@ -82,5 +71,24 @@ class WordServiceLocalImp extends WordService {
     required WordModel wordModel,
   }) async {
     await _hiveHelper.putDataAt(_wordBox, wordModel, index);
+  }
+
+  @override
+  Future<List<WordModel>> fetchAllCachedWords() async {
+    var response = await _hiveHelper.getAll<WordModel>(_wordBox);
+
+    return response;
+  }
+
+  @override
+  Future<void> deleteByName(WordModel wordModel) async {
+    final Map<dynamic, WordModel> deliveriesMap = HiveBoxes.wordBox.toMap();
+    dynamic desiredKey;
+    deliveriesMap.forEach((key, wordModel) {
+      if (wordModel.isSelected) {
+        desiredKey = key;
+      }
+    });
+    await HiveBoxes.wordBox.delete(desiredKey);
   }
 }

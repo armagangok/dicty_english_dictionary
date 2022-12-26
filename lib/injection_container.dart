@@ -1,5 +1,6 @@
-import 'global/export/export.dart';
+import 'package:english_accent_dictionary/presentation/feature/recent/cubit/local/local_cubit.dart';
 
+import 'global/export/export.dart';
 
 var getIt = GetIt.instance;
 
@@ -68,5 +69,8 @@ void initDependencies() {
   );
   getIt.registerLazySingleton<RecentCubit>(
     () => RecentCubit(),
+  );
+  getIt.registerLazySingleton<LocalCubit>(
+    () => LocalCubit(),
   );
 }

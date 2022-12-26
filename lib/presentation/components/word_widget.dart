@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../global/export/export.dart';
-import '../controller/tabbar_cubit/tab_cubit.dart';
 
 class WordWidget extends StatelessWidget {
   WordWidget({
     Key? key,
     required this.controller,
     required this.wordModel,
+    required this.tabCubit,
   }) : super(key: key);
 
   final BaseWordController controller;
   final WordModel wordModel;
-  final tabCubit = getIt.call<TabCubit>();
+  final TabCubit tabCubit;
 
   @override
   Widget build(BuildContext context) {

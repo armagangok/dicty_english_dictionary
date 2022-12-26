@@ -50,4 +50,10 @@ class LocalWordUsecase {
   Future<Either<Failure, bool>> saveAccent({required int accent}) async {
     return await repository.saveAccent(accent: accent);
   }
+
+  Future<Either<Failure, List<WordModel>>> fetchAllCachedWords() async {
+    var response = await repository.fetchAllCachedWords();
+
+    return response;
+  }
 }

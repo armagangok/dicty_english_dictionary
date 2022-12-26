@@ -54,6 +54,7 @@ class _SearchResultViewState extends State<SearchResultView> {
             return WordWidget(
               wordModel: state.wordModel,
               controller: _searchCubit,
+              tabCubit: getIt.call<TabCubit>(),
             );
           } else {
             return const Center(

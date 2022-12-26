@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
+import 'cubit/local/local_cubit.dart';
 
 class RecentView extends StatefulWidget {
   const RecentView({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class RecentView extends StatefulWidget {
 
 class _RecentViewState extends State<RecentView> {
   final _recentCubit = getIt.call<RecentCubit>();
-  final _searchCubit = getIt.call<SearchCubit>();
+  final _localCubit = getIt.call<LocalCubit>();
   // final _navigator = getIt<NavigationService>.call();
 
   @override
@@ -25,7 +26,7 @@ class _RecentViewState extends State<RecentView> {
         listener: (context, state) {},
         builder: (context, state) {
           return ValueListenableBuilder(
-            valueListenable: _searchCubit.getHiveBox.listenable(),
+            valueListenable: _localCubit.getHiveBox.listenable(),
             builder: (context, Box<WordModel> wordBox, _) => wordBox.isEmpty
                 ? _noRecentSearch()
                 : Column(
@@ -36,7 +37,7 @@ class _RecentViewState extends State<RecentView> {
                           shrinkWrap: true,
                           physics: const ClampingScrollPhysics(),
                           children: [
-                            _recentBuilder(_searchCubit.getAll()),
+                            _recentBuilder(_localCubit.getAll()),
                           ],
                         ),
                       ),
@@ -72,7 +73,7 @@ class _RecentViewState extends State<RecentView> {
                   title: "Warning",
                   message: "Do you want to delete all items?",
                   dialogAction: () async {
-                    await _searchCubit.deleteAllWords();
+                    await _localCubit.deleteAllWords();
                   },
                 );
               });
@@ -91,8 +92,8 @@ class _RecentViewState extends State<RecentView> {
               return IosDeleteDialog(
                 title: "Warning",
                 message: "Do you want to delete selected items?",
-                dialogAction: () => _searchCubit.wordList.forEach(
-                  (element) async => await _searchCubit.deleteByName(element),
+                dialogAction: () => _localCubit.wordList.forEach(
+                  (element) async => await _localCubit.deleteByName(element),
                 ),
               );
             },
@@ -139,6 +140,7 @@ class _RecentViewState extends State<RecentView> {
         itemCount: wordList.length,
         itemBuilder: (context, index) {
           var wordModel = wordList[index];
+
           return ListTile(
             onTap: () {
               Navigator.push(
@@ -147,10 +149,6 @@ class _RecentViewState extends State<RecentView> {
                   builder: (context) => RecentDetailWiew(wordModel: wordModel),
                 ),
               );
-              // _navigator.navigateTo(
-              //   path: KRoute.RECENT_DETAIL_PAGE,
-              //   data: wordList[index],
-              // );
             },
             title: Text(
               wordModel.word ?? "null",
@@ -174,7 +172,7 @@ class _RecentViewState extends State<RecentView> {
           onChanged: (val) async {
             var word = wordList[index];
             word.isSelected = val!;
-            await _searchCubit.updateWord(index, word);
+            await _localCubit.updateWord(index, word);
           },
           title: Text(
             wordList[index].word ?? "null",

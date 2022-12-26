@@ -11,6 +11,8 @@ class SearchInitial extends SearchState {}
 
 class SearchingState extends SearchState {}
 
+class SearchSavingFailure extends SearchState {}
+
 class SearchFailed extends SearchFailedState {
   SearchFailed({
     required this.errorMessage,

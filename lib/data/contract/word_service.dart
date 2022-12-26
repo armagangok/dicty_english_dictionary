@@ -20,4 +20,6 @@ abstract class WordService {
   Future<void> deleteAllWords();
 
   Future<void> saveAccent({required int accent});
+
+  Future<List<WordModel>> fetchAllCachedWords();
 }

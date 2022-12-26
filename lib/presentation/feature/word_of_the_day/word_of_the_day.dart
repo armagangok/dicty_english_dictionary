@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-
 import '../../../../global/export/export.dart';
-
 
 class WordOfDayView extends StatefulWidget {
   const WordOfDayView({Key? key}) : super(key: key);
@@ -43,6 +41,7 @@ class _WordOfDayViewState extends State<WordOfDayView> {
             return WordWidget(
               wordModel: state.wordModel,
               controller: wordOfTheDayCubit,
+              tabCubit: getIt.call<TabCubit>(),
             );
           } else {
             return const Center(

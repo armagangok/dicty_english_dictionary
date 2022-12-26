@@ -63,4 +63,10 @@ class WordServiceRemoteImp implements WordService {
     // TODO: implement updateWord
     throw UnimplementedError();
   }
+
+  @override
+  Future<List<WordModel>> fetchAllCachedWords() {
+    // TODO: implement fetchAllCachedWords
+    throw UnimplementedError();
+  }
 }

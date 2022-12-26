@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_final_fields
+
 import '../../../../../global/export/export.dart';
 
 part 'local_state.dart';
@@ -24,20 +26,23 @@ class LocalCubit extends Cubit<LocalState> implements BaseWordController {
   @override
   List<WordEntity> verb = [];
 
-  List<WordModel> wordList = [];
-  final Box<WordModel> _hiveWords = Hive.box(HiveBoxes.wordBox);
+  List<WordModel> _wordList = [];
+
+  List<WordModel> get wordList => _wordList;
+
+  final Box<WordModel> _hiveWords = HiveBoxes.wordBox;
 
   Box<WordModel> get getHiveBox => _hiveWords;
 
   Future<void> addData(WordModel word) async => await _hiveWords.add(word);
 
   List<WordModel> getAll() {
-    wordList.clear();
+    _wordList.clear();
 
     for (WordModel word in _hiveWords.values) {
-      wordList.add(word);
+      _wordList.add(word);
     }
-    return wordList;
+    return _wordList;
   }
 
   Future<void> deleteData(index) async => await _hiveWords.deleteAt(index);

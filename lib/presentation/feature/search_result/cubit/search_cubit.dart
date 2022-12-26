@@ -26,46 +26,31 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
   List<WordEntity> verb = [];
 
   List<WordModel> wordList = [];
-  final Box<WordModel> _hiveWords = Hive.box(HiveBoxes.wordBox);
 
-  Box<WordModel> get getHiveBox => _hiveWords;
-
-  Future<void> addData(WordModel word) async => await _hiveWords.add(word);
-
-  List<WordModel> getAll() {
+  Future<void> getAll() async {
     wordList.clear();
+    var response = await _localUsecase.fetchAllCachedWords();
 
-    for (WordModel word in _hiveWords.values) {
-      wordList.add(word);
-    }
-    return wordList;
+    response.fold(
+      (failure) => print(failure),
+      (data) => wordList = data,
+    );
   }
 
-  Future<void> deleteData(index) async => await _hiveWords.deleteAt(index);
+  // Future<void> saveWord(WordModel wordModel) async {
+  //   await _localUsecase.saveWord(wordModel);
+  // }
 
-  WordModel getData(int index) => _hiveWords.getAt(index) as WordModel;
-
-  Future<String> getLanguage() async {
-    final Box box = Hive.box("countryBox");
-    final String index = await box.getAt(0);
-    return index;
-  }
-
-  Future<void> saveLanguage(String lang) async {
-    await Hive.box("countryBox").clear();
-    await Hive.box("countryBox").add(lang);
-  }
-
-  Future<void> deleteByName(WordModel wordModel) async {
-    final Map<dynamic, WordModel> deliveriesMap = _hiveWords.toMap();
-    dynamic desiredKey;
-    deliveriesMap.forEach((key, wordModel) {
-      if (wordModel.isSelected) {
-        desiredKey = key;
-      }
-    });
-    await _hiveWords.delete(desiredKey);
-  }
+  // Future<void> deleteByName(WordModel wordModel) async {
+  //   final Map<dynamic, WordModel> deliveriesMap = _hiveWords.toMap();
+  //   dynamic desiredKey;
+  //   deliveriesMap.forEach((key, wordModel) {
+  //     if (wordModel.isSelected) {
+  //       desiredKey = key;
+  //     }
+  //   });
+  //   await _hiveWords.delete(desiredKey);
+  // }
 
   Future<void> updateWord(int index, WordModel wordModel) async =>
       await _localUsecase.updateWord(
@@ -73,7 +58,7 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
         wordModel: wordModel,
       );
 
-  Future<void> deleteAllWords() async => await _hiveWords.clear();
+  // Future<void> deleteAllWords() async => await _hiveWords.clear();
 
   Future<void> fetchWord({required String word}) async {
     clearAllList();
@@ -86,7 +71,7 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
           errorTitle: "SearchFailed.errorMessage",
         ),
       ),
-      (WordModel data) {
+      (WordModel data) async {
         if (data.meanings != null) {
           for (Meaning element in data.meanings!) {
             switch (element.partOfSpeech) {
@@ -143,8 +128,18 @@ class SearchCubit extends Cubit<SearchState> implements BaseWordController {
           }
         }
 
+        await saveSearchedWord(data);
+
         emit(SearchSucceded(wordModel: data));
       },
+    );
+  }
+
+  Future<void> saveSearchedWord(WordModel word) async {
+    var response = await _localUsecase.saveWord(word);
+    response.fold(
+      (failure) => emit(SearchSavingFailure()),
+      (data) => print("Search saved successfuly."),
     );
   }
 
