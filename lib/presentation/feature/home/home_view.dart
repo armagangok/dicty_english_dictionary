@@ -191,20 +191,18 @@ class _HomeViewState extends State<HomeView> {
       );
 
   AppBar get _buildAppBar => AppBar(
-        title: Builder(builder: (context) {
-          return Column(
-            children: [
-              CustomTextField(
-                controller: _textController.search,
-                icon: const Icon(
-                  Icons.search,
-                  color: Colors.white,
-                ),
-                onTap: () async => _searchForTheWord,
+        title: Builder(
+          builder: (context) {
+            return CustomTextField(
+              controller: _textController.search,
+              icon: const Icon(
+                Icons.search,
+                color: Colors.white,
               ),
-            ],
-          );
-        }),
+              onTap: () async => _searchForTheWord,
+            );
+          },
+        ),
         actions: [
           IconButton(
             splashRadius: 0.1,

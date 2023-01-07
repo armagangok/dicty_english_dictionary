@@ -1,6 +1,9 @@
 export 'package:auto_size_text/auto_size_text.dart';
 export 'package:english_accent_dictionary/presentation/controller/tabbar_cubit/tab_cubit.dart';
 export 'package:english_accent_dictionary/presentation/feature/home/cubit/accent/accent_cubit.dart';
+export 'package:english_accent_dictionary/presentation/feature/recent/cubit/local/local_cubit.dart';
+export 'package:english_accent_dictionary/presentation/feature/recent/page/recent_detail_page.dart';
+export 'package:english_accent_dictionary/presentation/feature/recent/page/recent_page.dart';
 export 'package:flutter/cupertino.dart';
 export 'package:flutter/services.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,8 +70,6 @@ export '../../presentation/feature/home/cubit/home/home_cubit.dart';
 export '../../presentation/feature/home/cubit/theme/theme_cubit_cubit.dart';
 export '../../presentation/feature/home/home_view.dart';
 export '../../presentation/feature/recent/cubit/recent/recent_cubit.dart';
-export '../../presentation/feature/recent/recent_detail_view.dart';
-export '../../presentation/feature/recent/recent_view.dart';
 export '../../presentation/feature/search_result/cubit/search_cubit.dart';
 export '../../presentation/feature/search_result/search_result_view.dart';
 export '../../presentation/feature/word_of_the_day/cubit/word_of_the_day_cubit.dart';

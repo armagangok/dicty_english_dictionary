@@ -22,7 +22,7 @@ class NavigationRoute {
       //   );
 
       case KRoute.RECENT_PAGE:
-        return _getRoute(const RecentView());
+        return _getRoute(const RecentPage());
 
       case KRoute.SEARCH_RESULT_PAGE:
         return _getRoute(const SearchResultView());

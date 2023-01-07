@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
-import 'cubit/local/local_cubit.dart';
 
-class RecentView extends StatefulWidget {
-  const RecentView({Key? key}) : super(key: key);
+class RecentPage extends StatefulWidget {
+  const RecentPage({Key? key}) : super(key: key);
 
   @override
-  State<RecentView> createState() => _RecentViewState();
+  State<RecentPage> createState() => _RecentPageState();
 }
 
-class _RecentViewState extends State<RecentView> {
+class _RecentPageState extends State<RecentPage> {
   final _recentCubit = getIt.call<RecentCubit>();
   final _localCubit = getIt.call<LocalCubit>();
   // final _navigator = getIt<NavigationService>.call();
@@ -146,7 +145,7 @@ class _RecentViewState extends State<RecentView> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => RecentDetailWiew(wordModel: wordModel),
+                  builder: (context) => RecentDetailPage(wordModel: wordModel),
                 ),
               );
             },

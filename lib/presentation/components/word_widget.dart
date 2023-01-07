@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../global/export/export.dart';
 
 class WordWidget extends StatelessWidget {
-  WordWidget({
+  const WordWidget({
     Key? key,
     required this.controller,
     required this.wordModel,

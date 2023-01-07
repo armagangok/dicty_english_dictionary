@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../global/export/export.dart';
-import 'feature/home/cubit/theme/theme_cubit_cubit.dart';
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class AppRoot extends StatefulWidget {
+  const AppRoot({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<AppRoot> createState() => _AppRootState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _AppRootState extends State<AppRoot> {
   final _themeCubit = getIt.call<ThemeCubit>();
   @override
   @override
