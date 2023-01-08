@@ -9,7 +9,7 @@ class NavigationRoute {
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
       case KRoute.HOME_PAGE:
-        return _getRoute(const HomeView());
+        return _getRoute(const HomePage());
 
       case KRoute.ABOUT_ME_PAGE:
         return _getRoute(const AboutMeView());
@@ -25,10 +25,10 @@ class NavigationRoute {
         return _getRoute(const RecentPage());
 
       case KRoute.SEARCH_RESULT_PAGE:
-        return _getRoute(const SearchResultView());
+        return _getRoute(const SearchResultPage());
 
       case KRoute.WORD_OF_THE_DAY_PAGE:
-        return _getRoute(const WordOfDayView());
+        return _getRoute(const WordOfDayPage());
 
       default:
         return MaterialPageRoute(

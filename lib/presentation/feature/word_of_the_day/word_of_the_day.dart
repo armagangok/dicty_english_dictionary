@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
 
-class WordOfDayView extends StatefulWidget {
-  const WordOfDayView({Key? key}) : super(key: key);
+class WordOfDayPage extends StatefulWidget {
+  const WordOfDayPage({Key? key}) : super(key: key);
 
   @override
-  State<WordOfDayView> createState() => _WordOfDayViewState();
+  State<WordOfDayPage> createState() => _WordOfDayPageState();
 }
 
-class _WordOfDayViewState extends State<WordOfDayView> {
+class _WordOfDayPageState extends State<WordOfDayPage> {
   late final WordOfTheDayCubit wordOfTheDayCubit;
 
   @override

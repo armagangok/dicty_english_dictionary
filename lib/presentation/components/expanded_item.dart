@@ -1,6 +1,4 @@
-import 'package:english_accent_dictionary/presentation/controller/tabbar_cubit/tab_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../global/export/export.dart';
 

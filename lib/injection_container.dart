@@ -1,5 +1,3 @@
-import 'package:english_accent_dictionary/presentation/feature/recent/cubit/local/local_cubit.dart';
-
 import 'global/export/export.dart';
 
 var getIt = GetIt.instance;

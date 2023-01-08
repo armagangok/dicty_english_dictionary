@@ -1,5 +1,3 @@
-import 'package:english_accent_dictionary/data/entity/word_entity.dart';
-
 import '../../../../global/export/export.dart';
 
 abstract class WordCubitContract {

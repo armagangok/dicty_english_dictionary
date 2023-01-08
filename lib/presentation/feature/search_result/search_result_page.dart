@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
 
-class SearchResultView extends StatefulWidget {
-  const SearchResultView({Key? key}) : super(key: key);
+class SearchResultPage extends StatefulWidget {
+  const SearchResultPage({Key? key}) : super(key: key);
 
   @override
-  State<SearchResultView> createState() => _SearchResultViewState();
+  State<SearchResultPage> createState() => _SearchResultPageState();
 }
 
-class _SearchResultViewState extends State<SearchResultView> {
+class _SearchResultPageState extends State<SearchResultPage> {
   @override
   void initState() {
     navigator = getIt<NavigationService>.call();

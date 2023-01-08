@@ -6,8 +6,8 @@ class AboutMeView extends StatelessWidget {
   const AboutMeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar:  CustomAppBar(
-          title: Text(KString.aboutMe),
+        appBar: CustomAppBar(
+          title: const Text(KString.aboutMe),
         ),
         body: Padding(
           padding: context.mediumPadding,
@@ -43,8 +43,11 @@ class AboutMeView extends StatelessWidget {
           ])));
 
   Widget get _aboutMeText => Builder(
-      builder: (context) => Text(KString.aboutMeContent,
+        builder: (context) => Text(
+          KString.aboutMeContent,
           style: context.textTheme.subtitle2!.copyWith(
             color: context.colors.primary,
-          )));
+          ),
+        ),
+      );
 }

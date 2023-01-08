@@ -19,7 +19,7 @@ class _AppRootState extends State<AppRoot> {
       builder: (context, state) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: const HomeView(),
+          home: const HomePage(),
           theme: CustomTheme.instance.ligthTheme,
           darkTheme: CustomTheme.instance.darkTheme,
           themeMode: _themeCubit.getThemeMode,

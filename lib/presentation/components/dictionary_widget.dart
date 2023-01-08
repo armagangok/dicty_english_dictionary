@@ -1,5 +1,4 @@
 import '../../../../global/export/export.dart';
-import '../feature/recent/cubit/recent/recent_cubit.dart';
 
 class DictionaryWidget extends StatelessWidget {
   DictionaryWidget({
