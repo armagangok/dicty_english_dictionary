@@ -1,5 +1,4 @@
 import '../../../../../global/export/export.dart';
-import '../cubit/theme/theme_cubit_cubit.dart';
 
 class ThemePickerWidget extends StatelessWidget {
   const ThemePickerWidget({Key? key}) : super(key: key);

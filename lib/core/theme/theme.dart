@@ -52,7 +52,7 @@ class CustomTheme {
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        primary: Colors.transparent,
+        foregroundColor: Colors.transparent,
         elevation: 0,
       ),
     ),
@@ -81,65 +81,66 @@ class CustomTheme {
   );
 
   final darkTheme = ThemeData.dark().copyWith(
-      scaffoldBackgroundColor: const Color.fromARGB(255, 18, 18, 18),
-      primaryColor: const Color.fromARGB(255, 23, 87, 126),
-      splashColor: Colors.transparent,
-      dividerColor: Colors.white,
-      dividerTheme: const DividerThemeData(thickness: 0.2),
-      inputDecorationTheme: InputDecorationTheme(
-        labelStyle: const TextStyle(fontSize: 14),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(6.0),
-          borderSide: const BorderSide(
-            color: Colors.white,
-            width: 1,
-          ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(6.0),
-          borderSide: const BorderSide(
-            color: Colors.white,
-          ),
+    scaffoldBackgroundColor: const Color.fromARGB(255, 18, 18, 18),
+    primaryColor: const Color.fromARGB(255, 23, 87, 126),
+    splashColor: Colors.transparent,
+    dividerColor: Colors.white,
+    dividerTheme: const DividerThemeData(thickness: 0.2),
+    inputDecorationTheme: InputDecorationTheme(
+      labelStyle: const TextStyle(fontSize: 14),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(6.0),
+        borderSide: const BorderSide(
+          color: Colors.white,
+          width: 1,
         ),
       ),
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        backgroundColor: Colors.blue,
-      ),
-      cupertinoOverrideTheme: const CupertinoThemeData(
-        textTheme: CupertinoTextThemeData(
-          pickerTextStyle: TextStyle(color: Colors.white),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(6.0),
+        borderSide: const BorderSide(
+          color: Colors.white,
         ),
       ),
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData().copyWith(
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
+    ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: Colors.blue,
+    ),
+    cupertinoOverrideTheme: const CupertinoThemeData(
+      textTheme: CupertinoTextThemeData(
+        pickerTextStyle: TextStyle(color: Colors.white),
       ),
-      appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        // titleTextStyle: TextStyle(
-        //   color: Colors.white,
-        // ),
-      ),
-      colorScheme: const ColorScheme(
-        primary: Colors.white,
-        secondary: Colors.white,
-        surface: Color(0xffffffff),
-        background: Color.fromARGB(255, 18, 18, 18),
-        error: Color(0xffd32f2f),
-        onPrimary: Color(0xffffffff),
-        onSecondary: Color(0xffffffff),
-        onSurface: Color.fromARGB(255, 101, 162, 197),
-        onBackground: Color.fromARGB(255, 94, 150, 183),
-        onError: Color(0xffffffff),
-        brightness: Brightness.light,
-        primaryContainer: Colors.black,
-      ),
-      textSelectionTheme: TextSelectionThemeData(
-        selectionColor: Colors.white.withOpacity(0.2),
-        cursorColor: Colors.white.withOpacity(0.4),
-        selectionHandleColor: Colors.white,
-      ));
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData().copyWith(
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.grey,
+    ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      // titleTextStyle: TextStyle(
+      //   color: Colors.white,
+      // ),
+    ),
+    colorScheme: const ColorScheme(
+      primary: Colors.white,
+      secondary: KColor.primaryColor,
+      surface: Color(0xffffffff),
+      background: Color.fromARGB(255, 18, 18, 18),
+      error: Color(0xffd32f2f),
+      onPrimary: Color(0xffffffff),
+      onSecondary: Color(0xffffffff),
+      onSurface: Color.fromARGB(255, 101, 162, 197),
+      onBackground: Color.fromARGB(255, 94, 150, 183),
+      onError: Color(0xffffffff),
+      brightness: Brightness.light,
+      primaryContainer: Colors.black,
+    ),
+    textSelectionTheme: TextSelectionThemeData(
+      selectionColor: Colors.white.withOpacity(0.2),
+      cursorColor: Colors.white.withOpacity(0.4),
+      selectionHandleColor: Colors.white,
+    ),
+  );
 }
 
 // textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.black),

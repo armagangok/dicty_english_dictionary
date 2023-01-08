@@ -13,8 +13,14 @@ class DrawerWidget extends StatefulWidget {
 }
 
 class _DrawerWidgetState extends State<DrawerWidget> {
-  late final _homeCubit = getIt.call<HomeCubit>();
-  late final _navigator = getIt<NavigationService>.call();
+  @override
+  void initState() {
+    super.initState();
+    getIt.call<AccentCubit>().getAccent();
+  }
+
+  final _homeCubit = getIt.call<HomeCubit>();
+  final _navigator = getIt.call<NavigationService>();
 
   @override
   Widget build(BuildContext context) {
