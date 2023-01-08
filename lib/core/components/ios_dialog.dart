@@ -107,3 +107,22 @@ class _IosDeleteDialogState extends State<IosDeleteDialog> {
     });
   }
 }
+
+
+  // Widget buildDialog(Widget widget) => Builder(
+  //       builder: (context) => BackdropFilter(
+  //         filter: ImageFilter.blur(sigmaX: 0.9, sigmaY: 0.9),
+  //         child: Dialog(
+  //           shape: RoundedRectangleBorder(
+  //             borderRadius: BorderRadius.circular(16),
+  //           ),
+  //           child: Padding(
+  //             padding: EdgeInsets.symmetric(
+  //               horizontal: context.width(0.05),
+  //               vertical: context.width(0.05),
+  //             ),
+  //             child: widget,
+  //           ),
+  //         ),
+  //       ),
+  //     );

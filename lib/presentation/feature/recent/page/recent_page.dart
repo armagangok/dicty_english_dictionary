@@ -10,8 +10,17 @@ class RecentPage extends StatefulWidget {
 }
 
 class _RecentPageState extends State<RecentPage> {
-  final _recentCubit = getIt.call<RecentCubit>();
-  final _localCubit = getIt.call<LocalCubit>();
+  late final RecentCubit _recentCubit;
+  late final LocalCubit _localCubit;
+
+  @override
+  void initState() {
+    _recentCubit = getIt.call<RecentCubit>();
+    _localCubit = getIt.call<LocalCubit>();
+
+    super.initState();
+  }
+
   // final _navigator = getIt<NavigationService>.call();
 
   @override
@@ -47,8 +56,7 @@ class _RecentPageState extends State<RecentPage> {
       );
 
   Widget _deleteWidget() => Builder(
-        builder: (context) {
-          return AnimatedContainer(
+        builder: (context) => AnimatedContainer(
             height: _recentCubit.isEditting ? context.height(0.07) : 0,
             color: const Color.fromARGB(255, 141, 160, 255).withOpacity(0.2),
             duration: const Duration(milliseconds: 300),
@@ -59,8 +67,7 @@ class _RecentPageState extends State<RecentPage> {
                 _deleteAllButton,
               ],
             ),
-          );
-        },
+          ),
       );
 
   TextButton get _deleteAllButton => TextButton(
@@ -127,12 +134,12 @@ class _RecentPageState extends State<RecentPage> {
   Widget _recentBuilder(List<WordModel> wordList) => Builder(
         builder: (context) {
           return _recentCubit.isEditting
-              ? buildEditListView(wordList)
-              : buildListView(wordList);
+              ? editListView(wordList)
+              : listView(wordList);
         },
       );
 
-  ListView buildListView(List<WordModel> wordList) => ListView.separated(
+  ListView listView(List<WordModel> wordList) => ListView.separated(
         separatorBuilder: (context, index) => const Divider(),
         shrinkWrap: true,
         physics: const ClampingScrollPhysics(),
@@ -159,7 +166,7 @@ class _RecentPageState extends State<RecentPage> {
         },
       );
 
-  ListView buildEditListView(List<WordModel> wordList) => ListView.separated(
+  ListView editListView(List<WordModel> wordList) => ListView.separated(
         padding: EdgeInsets.zero,
         separatorBuilder: (context, index) => const Divider(),
         shrinkWrap: true,

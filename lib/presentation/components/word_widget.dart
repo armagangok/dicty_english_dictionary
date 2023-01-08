@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
@@ -10,7 +11,7 @@ class WordWidget extends StatelessWidget {
     required this.tabCubit,
   }) : super(key: key);
 
-  final BaseWordController controller;
+  final WordCubitContract controller;
   final WordModel wordModel;
   final TabCubit tabCubit;
 
@@ -49,7 +50,7 @@ class WordWidget extends StatelessWidget {
   Widget wordTextSpeakButton() => Builder(
         builder: (context) => Container(
           decoration: BoxDecoration(
-            gradient: _gradientDecoration,
+            gradient: gradientDecoration,
           ),
           child: SizedBox(
             height: context.height(0.15),
@@ -78,16 +79,7 @@ class WordWidget extends StatelessWidget {
         ),
       );
 
-  LinearGradient get _gradientDecoration => const LinearGradient(
-        colors: [
-          KColor.primaryColorBright,
-          KColor.primaryColor,
-        ],
-        begin: FractionalOffset(0.0, 0.0),
-        end: FractionalOffset(1.0, 0.0),
-        stops: [0.0, 1.0],
-        tileMode: TileMode.clamp,
-      );
+
 
   //
 

@@ -1,4 +1,5 @@
 export 'package:auto_size_text/auto_size_text.dart';
+export 'package:english_accent_dictionary/core/components/shapes.dart';
 export 'package:english_accent_dictionary/presentation/controller/tabbar_cubit/tab_cubit.dart';
 export 'package:english_accent_dictionary/presentation/feature/home/cubit/accent/accent_cubit.dart';
 export 'package:english_accent_dictionary/presentation/feature/recent/cubit/local/local_cubit.dart';
@@ -78,3 +79,4 @@ export '../constant/kasset.dart';
 export '../constant/kcolor.dart';
 export '../constant/knetwork.dart';
 export '../constant/kstrings.dart';
+

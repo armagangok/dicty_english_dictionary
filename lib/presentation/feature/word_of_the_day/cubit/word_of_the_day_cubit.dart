@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 part 'word_of_the_day_state.dart';
 
 class WordOfTheDayCubit extends Cubit<WordOfTheDayState>
-    implements BaseWordController {
+    implements WordCubitContract {
   WordOfTheDayCubit() : super(WordOfTheDayInitial()) {
     _wordUsecase = getIt.call<RemoteWordUsecase>();
     fetchWord();

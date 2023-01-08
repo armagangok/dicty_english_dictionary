@@ -2,7 +2,7 @@ import 'package:english_accent_dictionary/data/entity/word_entity.dart';
 
 import '../../../../global/export/export.dart';
 
-abstract class BaseWordController {
+abstract class WordCubitContract {
   List<WordEntity> noun = [];
   List<WordEntity> verb = [];
   List<WordEntity> interjection = [];

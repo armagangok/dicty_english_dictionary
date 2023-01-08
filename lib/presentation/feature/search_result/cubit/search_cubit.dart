@@ -2,7 +2,7 @@ import '../../../../global/export/export.dart';
 
 part 'search_state.dart';
 
-class SearchCubit extends Cubit<SearchState> implements BaseWordController {
+class SearchCubit extends Cubit<SearchState> implements WordCubitContract {
   SearchCubit() : super(SearchInitial());
 
   late final _remoteUsecase = getIt.call<RemoteWordUsecase>();

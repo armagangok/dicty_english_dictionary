@@ -4,7 +4,7 @@ import '../../../../../global/export/export.dart';
 
 part 'local_state.dart';
 
-class LocalCubit extends Cubit<LocalState> implements BaseWordController {
+class LocalCubit extends Cubit<LocalState> implements WordCubitContract {
   LocalCubit() : super(LocalInitial());
 
   late final _localUsecase = getIt.call<LocalWordUsecase>();

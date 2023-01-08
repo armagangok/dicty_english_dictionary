@@ -51,22 +51,6 @@ class CustomTextField extends StatelessWidget {
         ),
       );
 
-  // InputDecoration get _inputDecoration => InputDecoration(
-  //       label: Builder(
-  //         builder: (context) => Text(
-  //           "Search",
-  //           style: context.textTheme.bodyLarge!.copyWith(color: Colors.white),
-  //         ),
-  //       ),
-  //       suffixIcon: _suffixIcon,
-  //     );
-
-  // InkWell get _suffixIcon => InkWell(
-  //       child: icon ?? const Text(""),
-  //       onTap: () => onTap!(),
-  //       splashColor: null,
-  //     );
-
   void searchForTheWord(BuildContext context) async {
     controller.text.isEmpty
         ? ScaffoldMessenger.of(context).showSnackBar(
@@ -84,3 +68,20 @@ class CustomTextField extends StatelessWidget {
     controller.text = "";
   }
 }
+
+
+  // InputDecoration get _inputDecoration => InputDecoration(
+  //       label: Builder(
+  //         builder: (context) => Text(
+  //           "Search",
+  //           style: context.textTheme.bodyLarge!.copyWith(color: Colors.white),
+  //         ),
+  //       ),
+  //       suffixIcon: _suffixIcon,
+  //     );
+
+  // InkWell get _suffixIcon => InkWell(
+  //       child: icon ?? const Text(""),
+  //       onTap: () => onTap!(),
+  //       splashColor: null,
+  //     );
