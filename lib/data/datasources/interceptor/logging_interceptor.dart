@@ -1,6 +1,6 @@
 import '../../../global/export/export.dart';
 
-class LoggingInterceptor implements Interceptor {
+class LoggerInterceptor implements Interceptor {
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
     handler.next(err);

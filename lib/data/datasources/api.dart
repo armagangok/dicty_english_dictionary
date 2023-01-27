@@ -17,7 +17,7 @@ class Api {
       ..options.receiveTimeout = 120000
       ..interceptors.addAll(
         [
-          LoggingInterceptor(),
+          LoggerInterceptor(),
         ],
       );
     return _dio!;
