@@ -66,7 +66,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
       );
     } else {
       _navigator.navigateTo(path: KRoute.SEARCH_RESULT_PAGE);
-      // _searchCubit.fetchWord(word: _textController.search.text);
+      _searchCubit.fetchWord(word: _textController.search.text);
       _textController.search.clear();
     }
   }

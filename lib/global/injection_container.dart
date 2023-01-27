@@ -1,3 +1,5 @@
+import 'package:english_accent_dictionary/features/search/presentation/cubit/search_cubit.dart';
+
 import '../features/recent_search/presentation/cubit/recent/recent_cubit.dart';
 import 'export/export.dart';
 
@@ -14,6 +16,10 @@ void initDependencies() {
 
   getIt.registerLazySingleton<ThemeCubit>(
     () => ThemeCubit(),
+  );
+
+  getIt.registerLazySingleton<SearchCubit>(
+    () => SearchCubit(),
   );
 
   // getIt.registerLazySingleton<WordOfTheDayCubit>(
