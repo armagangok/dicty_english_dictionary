@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/search/presentation/pages/search_page.dart';
 import '../../global/export/export.dart';
 
+
 class NavigationRoute {
-  static final NavigationRoute _instance = NavigationRoute._init();
+  static final NavigationRoute _instance = NavigationRoute._();
   static NavigationRoute get instance => _instance;
-  NavigationRoute._init();
+  NavigationRoute._();
+
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
       case KRoute.HOME_PAGE:
@@ -21,11 +25,11 @@ class NavigationRoute {
       //     ),
       //   );
 
-      case KRoute.RECENT_PAGE:
-        return _getRoute(const RecentPage());
+      // case KRoute.RECENT_PAGE:
+      //   return _getRoute(const RecentPage());
 
       case KRoute.SEARCH_RESULT_PAGE:
-        return _getRoute(const SearchResultPage());
+        return _getRoute(const SearchPage());
 
       case KRoute.WORD_OF_THE_DAY_PAGE:
         return _getRoute(const WordOfDayPage());

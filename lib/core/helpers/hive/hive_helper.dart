@@ -7,14 +7,14 @@ class HiveHelper {
   Future<void> initializeHive() async {
     await Hive.initFlutter();
 
-    Hive.registerAdapter(WordModelAdapter());
-    Hive.registerAdapter(DefinitionAdapter());
-    Hive.registerAdapter(LicenseAdapter());
-    Hive.registerAdapter(MeaningAdapter());
-    Hive.registerAdapter(PhoneticAdapter());
+    // Hive.registerAdapter(WordModelAdapter());
+    // Hive.registerAdapter(DefinitionAdapter());
+    // Hive.registerAdapter(LicenseAdapter());
+    // Hive.registerAdapter(MeaningAdapter());
+    // Hive.registerAdapter(PhoneticAdapter());
 
     await Hive.openBox<int>(HiveKeys.countryBox);
-    await Hive.openBox<WordModel>(HiveKeys.wordBox);
+    await Hive.openBox<String>(HiveKeys.wordBox);
     await Hive.openBox<bool>(HiveKeys.themeBox);
   }
 

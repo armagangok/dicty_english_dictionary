@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-extension ContextExtension on BuildContext {
+extension EasyContext on BuildContext {
   MediaQueryData get mediaQuery => MediaQuery.of(this);
 
   void dismissKeyboard() {

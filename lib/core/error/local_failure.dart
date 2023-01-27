@@ -4,7 +4,7 @@ class LocalSavingFailure extends Failure {
   final String errorTitle;
   final String errorMessage;
 
-  LocalSavingFailure ({
+  LocalSavingFailure({
     required this.errorMessage,
     required this.errorTitle,
   });

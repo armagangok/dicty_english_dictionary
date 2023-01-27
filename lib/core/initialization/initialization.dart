@@ -1,4 +1,5 @@
-import 'package:english_accent_dictionary/core/theme/contract/theme.dart';
+
+import 'package:english_accent_dictionary/global/injection.dart';
 
 import '../../../global/export/export.dart';
 
@@ -13,9 +14,9 @@ class Initialization {
 
     await HiveHelper.shared.initializeHive();
 
-    await getIt.call<LocalWordUsecase>().setupLanguage();
-    await getIt.call<ThemeService>().initTheme();
+    // await localWordUsecase.setupLanguage();
+    await themeService.initTheme();
 
-    await TextToSpeech.instance.initTTS();
+    // await TextToSpeech.instance.initTTS();
   }
 }

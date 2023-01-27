@@ -1,3 +1,4 @@
+
 class ErrorModel {
   final String title;
   final String message;

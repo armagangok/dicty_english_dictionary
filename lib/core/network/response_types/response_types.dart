@@ -1,3 +1,0 @@
-class CustomResponseTypes {
-  CustomResponseTypes._();
-}

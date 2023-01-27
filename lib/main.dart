@@ -1,5 +1,5 @@
 import 'global/export/export.dart';
-import 'presentation/root.dart';
+import 'features/root.dart';
 
 void main() async {
   await Initialization.instance.initApp();

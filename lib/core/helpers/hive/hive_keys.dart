@@ -3,7 +3,7 @@ import '../../../global/export/export.dart';
 class HiveBoxes {
   HiveBoxes._();
 
-  static final Box<WordModel> wordBox = Hive.box(HiveKeys.wordBox);
+  static final wordBox = Hive.box<String>(HiveKeys.wordBox);
 }
 
 class HiveKeys {
