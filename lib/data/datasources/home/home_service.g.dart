@@ -13,7 +13,7 @@ class _HomeClient implements HomeClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://api.dictionaryapi.dev/api/v2/entries/en';
+    baseUrl ??= 'https://api.dictionaryapi.dev/api/v2/entries/en/';
   }
 
   final Dio _dio;
@@ -21,26 +21,27 @@ class _HomeClient implements HomeClient {
   String? baseUrl;
 
   @override
-  Future<WordResponse> fetchWord(request) async {
+  Future<List<WordResponse>> fetchWord(word) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(request.toJson());
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<WordResponse>(Options(
-      method: 'POST',
+        .fetch<List<dynamic>>(_setStreamType<List<WordResponse>>(Options(
+      method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '',
+              '${word}',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = WordResponse.fromJson(_result.data!);
+    var value = _result.data!
+        .map((dynamic i) => WordResponse.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 

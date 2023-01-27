@@ -10,11 +10,11 @@ part 'word_response.g.dart';
 @freezed
 abstract class WordResponse with _$WordResponse {
   const factory WordResponse({
-    String? word,
-    List<Phonetics>? phonetics,
-    List<Meanings>? meanings,
-    License? license,
-    List<String>? sourceUrls,
+    required String? word,
+    required List<Phonetics>? phonetics,
+    required List<Meaning>? meanings,
+    required License? license,
+    required List<String>? sourceUrls,
   }) = _WordResponse;
 
   factory WordResponse.fromJson(Map<String, dynamic> json) =>

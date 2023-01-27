@@ -6,7 +6,6 @@ export 'package:english_accent_dictionary/core/components/word_kind_widget.dart'
 export 'package:english_accent_dictionary/core/controller/tabbar_cubit/tab_cubit.dart';
 export 'package:english_accent_dictionary/features/word_for_you/presentation/cubit/word_of_the_day_cubit.dart';
 
-
 export 'package:flutter/cupertino.dart';
 export 'package:flutter/services.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
@@ -60,5 +59,4 @@ export '../constant/kasset.dart';
 export '../constant/kcolor.dart';
 export '../constant/knetwork.dart';
 export '../constant/kstrings.dart';
-export '../injection_container.dart';
 export '../injection_container.dart';

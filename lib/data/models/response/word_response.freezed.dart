@@ -22,7 +22,7 @@ WordResponse _$WordResponseFromJson(Map<String, dynamic> json) {
 mixin _$WordResponse {
   String? get word => throw _privateConstructorUsedError;
   List<Phonetics>? get phonetics => throw _privateConstructorUsedError;
-  List<Meanings>? get meanings => throw _privateConstructorUsedError;
+  List<Meaning>? get meanings => throw _privateConstructorUsedError;
   License? get license => throw _privateConstructorUsedError;
   List<String>? get sourceUrls => throw _privateConstructorUsedError;
 
@@ -41,7 +41,7 @@ abstract class $WordResponseCopyWith<$Res> {
   $Res call(
       {String? word,
       List<Phonetics>? phonetics,
-      List<Meanings>? meanings,
+      List<Meaning>? meanings,
       License? license,
       List<String>? sourceUrls});
 
@@ -79,7 +79,7 @@ class _$WordResponseCopyWithImpl<$Res, $Val extends WordResponse>
       meanings: freezed == meanings
           ? _value.meanings
           : meanings // ignore: cast_nullable_to_non_nullable
-              as List<Meanings>?,
+              as List<Meaning>?,
       license: freezed == license
           ? _value.license
           : license // ignore: cast_nullable_to_non_nullable
@@ -115,7 +115,7 @@ abstract class _$$_WordResponseCopyWith<$Res>
   $Res call(
       {String? word,
       List<Phonetics>? phonetics,
-      List<Meanings>? meanings,
+      List<Meaning>? meanings,
       License? license,
       List<String>? sourceUrls});
 
@@ -152,7 +152,7 @@ class __$$_WordResponseCopyWithImpl<$Res>
       meanings: freezed == meanings
           ? _value._meanings
           : meanings // ignore: cast_nullable_to_non_nullable
-              as List<Meanings>?,
+              as List<Meaning>?,
       license: freezed == license
           ? _value.license
           : license // ignore: cast_nullable_to_non_nullable
@@ -169,11 +169,11 @@ class __$$_WordResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_WordResponse implements _WordResponse {
   const _$_WordResponse(
-      {this.word,
-      final List<Phonetics>? phonetics,
-      final List<Meanings>? meanings,
-      this.license,
-      final List<String>? sourceUrls})
+      {required this.word,
+      required final List<Phonetics>? phonetics,
+      required final List<Meaning>? meanings,
+      required this.license,
+      required final List<String>? sourceUrls})
       : _phonetics = phonetics,
         _meanings = meanings,
         _sourceUrls = sourceUrls;
@@ -193,9 +193,9 @@ class _$_WordResponse implements _WordResponse {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<Meanings>? _meanings;
+  final List<Meaning>? _meanings;
   @override
-  List<Meanings>? get meanings {
+  List<Meaning>? get meanings {
     final value = _meanings;
     if (value == null) return null;
     if (_meanings is EqualUnmodifiableListView) return _meanings;
@@ -260,11 +260,11 @@ class _$_WordResponse implements _WordResponse {
 
 abstract class _WordResponse implements WordResponse {
   const factory _WordResponse(
-      {final String? word,
-      final List<Phonetics>? phonetics,
-      final List<Meanings>? meanings,
-      final License? license,
-      final List<String>? sourceUrls}) = _$_WordResponse;
+      {required final String? word,
+      required final List<Phonetics>? phonetics,
+      required final List<Meaning>? meanings,
+      required final License? license,
+      required final List<String>? sourceUrls}) = _$_WordResponse;
 
   factory _WordResponse.fromJson(Map<String, dynamic> json) =
       _$_WordResponse.fromJson;
@@ -274,7 +274,7 @@ abstract class _WordResponse implements WordResponse {
   @override
   List<Phonetics>? get phonetics;
   @override
-  List<Meanings>? get meanings;
+  List<Meaning>? get meanings;
   @override
   License? get license;
   @override

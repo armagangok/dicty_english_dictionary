@@ -1,4 +1,3 @@
-import 'package:english_accent_dictionary/data/models/request/word_request.dart';
 import 'package:english_accent_dictionary/data/models/response/response_data/meanings/meanings.dart';
 import 'package:english_accent_dictionary/features/search/domain/usecases/search_usecase.dart';
 
@@ -33,10 +32,12 @@ class SearchCubit extends Cubit<SearchState> implements WordCubitContract {
   List<WordResponse> wordList = [];
 
   Future<void> fetchWord({required String word}) async {
-    var wordRequest = WordRequest(wordText: word);
+    // var wordRequest = WordRequest(wordText: word);
+
     clearAllList();
     emit(SearchingState());
-    var response = await _searchUsecase.fetchWord(wordRequest);
+    var response = await _searchUsecase.fetchWord(word);
+
     response.fold(
       (Failure failure) => emit(
         SearchFailed(
@@ -45,59 +46,57 @@ class SearchCubit extends Cubit<SearchState> implements WordCubitContract {
         ),
       ),
       (WordResponse wordModel) async {
-        if (wordModel.meanings != null) {
-          for (Meanings element in wordModel.meanings!) {
-            switch (element.partOfSpeech) {
-              case "noun":
-                for (var element in element.definitions!) {
-                  noun.add(element);
-                }
-                break;
+        for (Meaning element in wordModel.meanings!) {
+          switch (element.partOfSpeech) {
+            case "noun":
+              for (var element in element.definitions!) {
+                noun.add(element);
+              }
+              break;
 
-              case "verb":
-                for (var element in element.definitions!) {
-                  verb.add(element);
-                }
-                break;
+            case "verb":
+              for (var element in element.definitions!) {
+                verb.add(element);
+              }
+              break;
 
-              case "interjection":
-                for (var element in element.definitions!) {
-                  interjection.add(element);
-                }
-                break;
+            case "interjection":
+              for (var element in element.definitions!) {
+                interjection.add(element);
+              }
+              break;
 
-              case "pronoun":
-                for (var element in element.definitions!) {
-                  pronoun.add(element);
-                }
-                break;
+            case "pronoun":
+              for (var element in element.definitions!) {
+                pronoun.add(element);
+              }
+              break;
 
-              case "articles":
-                for (var element in element.definitions!) {
-                  articles.add(element);
-                }
-                break;
+            case "articles":
+              for (var element in element.definitions!) {
+                articles.add(element);
+              }
+              break;
 
-              case "adverb":
-                for (var element in element.definitions!) {
-                  adverb.add(element);
-                }
-                break;
+            case "adverb":
+              for (var element in element.definitions!) {
+                adverb.add(element);
+              }
+              break;
 
-              case "preposition":
-                for (var element in element.definitions!) {
-                  preposition.add(element);
-                }
-                break;
+            case "preposition":
+              for (var element in element.definitions!) {
+                preposition.add(element);
+              }
+              break;
 
-              case "adjective":
-                for (var element in element.definitions!) {
-                  adjective.add(element);
-                }
-                break;
+            case "adjective":
+              for (var element in element.definitions!) {
+                adjective.add(element);
+              }
+              break;
 
-              default:
-            }
+            default:
           }
         }
 

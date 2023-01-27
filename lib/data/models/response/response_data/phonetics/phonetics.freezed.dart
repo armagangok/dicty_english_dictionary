@@ -145,7 +145,11 @@ class __$$_PhoneticsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Phonetics implements _Phonetics {
-  const _$_Phonetics({this.audio, this.sourceUrl, this.license, this.text});
+  const _$_Phonetics(
+      {required this.audio,
+      required this.sourceUrl,
+      required this.license,
+      required this.text});
 
   factory _$_Phonetics.fromJson(Map<String, dynamic> json) =>
       _$$_PhoneticsFromJson(json);
@@ -196,10 +200,10 @@ class _$_Phonetics implements _Phonetics {
 
 abstract class _Phonetics implements Phonetics {
   const factory _Phonetics(
-      {final String? audio,
-      final String? sourceUrl,
-      final License? license,
-      final String? text}) = _$_Phonetics;
+      {required final String? audio,
+      required final String? sourceUrl,
+      required final License? license,
+      required final String? text}) = _$_Phonetics;
 
   factory _Phonetics.fromJson(Map<String, dynamic> json) =
       _$_Phonetics.fromJson;

@@ -6,14 +6,14 @@ part 'meanings.freezed.dart';
 part 'meanings.g.dart';
 
 @freezed
-abstract class Meanings with _$Meanings {
-  const factory Meanings({
-    String? partOfSpeech,
-    List<Definitions>? definitions,
-    List? synonyms,
-    List? antonyms,
-  }) = _Meanings;
+abstract class Meaning with _$Meaning {
+  const factory Meaning({
+    required String? partOfSpeech,
+    required List<Definitions>? definitions,
+    required List? synonyms,
+    required List? antonyms,
+  }) = _Meaning;
 
-  factory Meanings.fromJson(Map<String, dynamic> json) =>
-      _$MeaningsFromJson(json);
+  factory Meaning.fromJson(Map<String, dynamic> json) =>
+      _$MeaningFromJson(json);
 }

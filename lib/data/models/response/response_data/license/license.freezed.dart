@@ -104,7 +104,7 @@ class __$$_LicenseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_License implements _License {
-  const _$_License({this.name, this.url});
+  const _$_License({required this.name, required this.url});
 
   factory _$_License.fromJson(Map<String, dynamic> json) =>
       _$$_LicenseFromJson(json);
@@ -147,7 +147,8 @@ class _$_License implements _License {
 }
 
 abstract class _License implements License {
-  const factory _License({final String? name, final String? url}) = _$_License;
+  const factory _License(
+      {required final String? name, required final String? url}) = _$_License;
 
   factory _License.fromJson(Map<String, dynamic> json) = _$_License.fromJson;
 

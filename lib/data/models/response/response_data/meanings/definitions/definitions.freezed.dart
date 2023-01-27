@@ -139,10 +139,10 @@ class __$$_DefinitionsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Definitions implements _Definitions {
   const _$_Definitions(
-      {this.definition,
-      final List<dynamic>? synonyms,
-      final List<dynamic>? antonyms,
-      this.example})
+      {required this.definition,
+      required final List<dynamic>? synonyms,
+      required final List<dynamic>? antonyms,
+      required this.example})
       : _synonyms = synonyms,
         _antonyms = antonyms;
 
@@ -216,10 +216,10 @@ class _$_Definitions implements _Definitions {
 
 abstract class _Definitions implements Definitions {
   const factory _Definitions(
-      {final String? definition,
-      final List<dynamic>? synonyms,
-      final List<dynamic>? antonyms,
-      final String? example}) = _$_Definitions;
+      {required final String? definition,
+      required final List<dynamic>? synonyms,
+      required final List<dynamic>? antonyms,
+      required final String? example}) = _$_Definitions;
 
   factory _Definitions.fromJson(Map<String, dynamic> json) =
       _$_Definitions.fromJson;

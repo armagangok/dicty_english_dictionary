@@ -89,5 +89,4 @@ class WordWidget extends StatelessWidget {
   Widget phonetics() => PhoneticsWidget(wordModel: wordModel);
 
   //
-
 }

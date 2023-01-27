@@ -6,8 +6,8 @@ part 'license.g.dart';
 @freezed
 abstract class License with _$License {
   const factory License({
-    String? name,
-    String? url,
+    required String? name,
+    required String? url,
   }) = _License;
 
   factory License.fromJson(Map<String, dynamic> json) =>

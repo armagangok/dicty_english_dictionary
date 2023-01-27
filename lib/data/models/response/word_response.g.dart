@@ -13,7 +13,7 @@ _$_WordResponse _$$_WordResponseFromJson(Map<String, dynamic> json) =>
           ?.map((e) => Phonetics.fromJson(e as Map<String, dynamic>))
           .toList(),
       meanings: (json['meanings'] as List<dynamic>?)
-          ?.map((e) => Meanings.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Meaning.fromJson(e as Map<String, dynamic>))
           .toList(),
       license: json['license'] == null
           ? null

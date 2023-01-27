@@ -7,12 +7,7 @@ class Api {
   Api._();
   factory Api() => _api;
 
-  String get _baseApiUrl => BASE_API_URL;
-
-  late final HomeClient homeClient = HomeClient(
-    dio,
-    baseUrl: _baseApiUrl,
-  );
+  late final HomeClient homeClient = HomeClient(dio);
 
   Dio? _dio;
 

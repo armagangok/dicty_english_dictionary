@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Meanings _$MeaningsFromJson(Map<String, dynamic> json) {
-  return _Meanings.fromJson(json);
+Meaning _$MeaningFromJson(Map<String, dynamic> json) {
+  return _Meaning.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Meanings {
+mixin _$Meaning {
   String? get partOfSpeech => throw _privateConstructorUsedError;
   List<Definitions>? get definitions => throw _privateConstructorUsedError;
   List<dynamic>? get synonyms => throw _privateConstructorUsedError;
@@ -27,14 +27,13 @@ mixin _$Meanings {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MeaningsCopyWith<Meanings> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MeaningCopyWith<Meaning> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MeaningsCopyWith<$Res> {
-  factory $MeaningsCopyWith(Meanings value, $Res Function(Meanings) then) =
-      _$MeaningsCopyWithImpl<$Res, Meanings>;
+abstract class $MeaningCopyWith<$Res> {
+  factory $MeaningCopyWith(Meaning value, $Res Function(Meaning) then) =
+      _$MeaningCopyWithImpl<$Res, Meaning>;
   @useResult
   $Res call(
       {String? partOfSpeech,
@@ -44,9 +43,9 @@ abstract class $MeaningsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MeaningsCopyWithImpl<$Res, $Val extends Meanings>
-    implements $MeaningsCopyWith<$Res> {
-  _$MeaningsCopyWithImpl(this._value, this._then);
+class _$MeaningCopyWithImpl<$Res, $Val extends Meaning>
+    implements $MeaningCopyWith<$Res> {
+  _$MeaningCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,10 +82,10 @@ class _$MeaningsCopyWithImpl<$Res, $Val extends Meanings>
 }
 
 /// @nodoc
-abstract class _$$_MeaningsCopyWith<$Res> implements $MeaningsCopyWith<$Res> {
-  factory _$$_MeaningsCopyWith(
-          _$_Meanings value, $Res Function(_$_Meanings) then) =
-      __$$_MeaningsCopyWithImpl<$Res>;
+abstract class _$$_MeaningCopyWith<$Res> implements $MeaningCopyWith<$Res> {
+  factory _$$_MeaningCopyWith(
+          _$_Meaning value, $Res Function(_$_Meaning) then) =
+      __$$_MeaningCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -97,11 +96,10 @@ abstract class _$$_MeaningsCopyWith<$Res> implements $MeaningsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_MeaningsCopyWithImpl<$Res>
-    extends _$MeaningsCopyWithImpl<$Res, _$_Meanings>
-    implements _$$_MeaningsCopyWith<$Res> {
-  __$$_MeaningsCopyWithImpl(
-      _$_Meanings _value, $Res Function(_$_Meanings) _then)
+class __$$_MeaningCopyWithImpl<$Res>
+    extends _$MeaningCopyWithImpl<$Res, _$_Meaning>
+    implements _$$_MeaningCopyWith<$Res> {
+  __$$_MeaningCopyWithImpl(_$_Meaning _value, $Res Function(_$_Meaning) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +110,7 @@ class __$$_MeaningsCopyWithImpl<$Res>
     Object? synonyms = freezed,
     Object? antonyms = freezed,
   }) {
-    return _then(_$_Meanings(
+    return _then(_$_Meaning(
       partOfSpeech: freezed == partOfSpeech
           ? _value.partOfSpeech
           : partOfSpeech // ignore: cast_nullable_to_non_nullable
@@ -135,18 +133,18 @@ class __$$_MeaningsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Meanings implements _Meanings {
-  const _$_Meanings(
-      {this.partOfSpeech,
-      final List<Definitions>? definitions,
-      final List<dynamic>? synonyms,
-      final List<dynamic>? antonyms})
+class _$_Meaning implements _Meaning {
+  const _$_Meaning(
+      {required this.partOfSpeech,
+      required final List<Definitions>? definitions,
+      required final List<dynamic>? synonyms,
+      required final List<dynamic>? antonyms})
       : _definitions = definitions,
         _synonyms = synonyms,
         _antonyms = antonyms;
 
-  factory _$_Meanings.fromJson(Map<String, dynamic> json) =>
-      _$$_MeaningsFromJson(json);
+  factory _$_Meaning.fromJson(Map<String, dynamic> json) =>
+      _$$_MeaningFromJson(json);
 
   @override
   final String? partOfSpeech;
@@ -182,14 +180,14 @@ class _$_Meanings implements _Meanings {
 
   @override
   String toString() {
-    return 'Meanings(partOfSpeech: $partOfSpeech, definitions: $definitions, synonyms: $synonyms, antonyms: $antonyms)';
+    return 'Meaning(partOfSpeech: $partOfSpeech, definitions: $definitions, synonyms: $synonyms, antonyms: $antonyms)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Meanings &&
+            other is _$_Meaning &&
             (identical(other.partOfSpeech, partOfSpeech) ||
                 other.partOfSpeech == partOfSpeech) &&
             const DeepCollectionEquality()
@@ -210,25 +208,25 @@ class _$_Meanings implements _Meanings {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MeaningsCopyWith<_$_Meanings> get copyWith =>
-      __$$_MeaningsCopyWithImpl<_$_Meanings>(this, _$identity);
+  _$$_MeaningCopyWith<_$_Meaning> get copyWith =>
+      __$$_MeaningCopyWithImpl<_$_Meaning>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MeaningsToJson(
+    return _$$_MeaningToJson(
       this,
     );
   }
 }
 
-abstract class _Meanings implements Meanings {
-  const factory _Meanings(
-      {final String? partOfSpeech,
-      final List<Definitions>? definitions,
-      final List<dynamic>? synonyms,
-      final List<dynamic>? antonyms}) = _$_Meanings;
+abstract class _Meaning implements Meaning {
+  const factory _Meaning(
+      {required final String? partOfSpeech,
+      required final List<Definitions>? definitions,
+      required final List<dynamic>? synonyms,
+      required final List<dynamic>? antonyms}) = _$_Meaning;
 
-  factory _Meanings.fromJson(Map<String, dynamic> json) = _$_Meanings.fromJson;
+  factory _Meaning.fromJson(Map<String, dynamic> json) = _$_Meaning.fromJson;
 
   @override
   String? get partOfSpeech;
@@ -240,6 +238,6 @@ abstract class _Meanings implements Meanings {
   List<dynamic>? get antonyms;
   @override
   @JsonKey(ignore: true)
-  _$$_MeaningsCopyWith<_$_Meanings> get copyWith =>
+  _$$_MeaningCopyWith<_$_Meaning> get copyWith =>
       throw _privateConstructorUsedError;
 }
