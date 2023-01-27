@@ -1,4 +1,5 @@
 import '../../../../global/export/export.dart';
+import '../../data/models/response/response_data/meanings/definitions/definitions.dart';
 import '../../features/recent_search/presentation/cubit/recent/recent_cubit.dart';
 
 class DictionaryWidget extends StatelessWidget {

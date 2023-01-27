@@ -23,7 +23,7 @@ class SearchFailed extends SearchFailedState {
 }
 
 class SearchSucceded extends SearchState {
-  SearchSucceded({required this.wordModel});
+  SearchSucceded({required this.response});
 
-  final WordModelResponse wordModel;
+  final WordResponse response;
 }

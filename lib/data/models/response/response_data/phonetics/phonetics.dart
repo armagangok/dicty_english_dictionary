@@ -1,4 +1,4 @@
-import '../../../../export/export.dart';
+import '../../../../../global/export/export.dart';
 import '../license/license.dart';
 
 part 'phonetics.freezed.dart';

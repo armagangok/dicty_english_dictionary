@@ -1,4 +1,4 @@
-import '../../../../../export/export.dart';
+import '../../../../../../global/export/export.dart';
 
 part 'definitions.freezed.dart';
 part 'definitions.g.dart';

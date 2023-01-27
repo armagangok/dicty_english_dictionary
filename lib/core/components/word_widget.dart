@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
+import '../../data/models/response/word_response.dart';
 
 class WordWidget extends StatelessWidget {
   const WordWidget({

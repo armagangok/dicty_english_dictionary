@@ -1,4 +1,4 @@
-import '../../../../export/export.dart';
+import '../../../../../global/export/export.dart';
 
 part 'license.freezed.dart';
 part 'license.g.dart';

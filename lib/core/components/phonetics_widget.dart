@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../data/models/response/word_response.dart';
 import '../../global/export/export.dart';
 
 class PhoneticsWidget extends StatelessWidget {

@@ -20,7 +20,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   @override
   void initState() {
     super.initState();
-    getIt.call<AccentCubit>().getAccent();
+    // getIt.call<AccentCubit>().getAccent();
   }
 
   final _homeCubit = getIt.call<HomeCubit>();

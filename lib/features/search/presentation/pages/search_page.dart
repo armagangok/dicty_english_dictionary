@@ -53,7 +53,7 @@ class _SearchPageState extends State<SearchPage> {
             );
           } else if (state is SearchSucceded) {
             return WordWidget(
-              wordModel: state.wordModel,
+              wordModel: state.response,
               cubit: _searchCubit,
               tabCubit: getIt.call<TabCubit>(),
             );

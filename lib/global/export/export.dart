@@ -5,9 +5,7 @@ export 'package:english_accent_dictionary/core/components/shapes.dart';
 export 'package:english_accent_dictionary/core/components/word_kind_widget.dart';
 export 'package:english_accent_dictionary/core/controller/tabbar_cubit/tab_cubit.dart';
 export 'package:english_accent_dictionary/features/word_for_you/presentation/cubit/word_of_the_day_cubit.dart';
-export 'package:english_accent_dictionary/global/models/response/response_data/meanings/definitions/definitions.dart';
-export 'package:english_accent_dictionary/global/models/response/response_data/meanings/meanings.dart';
-export 'package:english_accent_dictionary/global/models/response/word_response.dart';
+
 
 export 'package:flutter/cupertino.dart';
 export 'package:flutter/services.dart';

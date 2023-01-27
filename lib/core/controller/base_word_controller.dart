@@ -1,4 +1,4 @@
-import '../../global/models/response/response_data/meanings/definitions/definitions.dart';
+import '../../data/models/response/response_data/meanings/definitions/definitions.dart';
 
 abstract class WordCubitContract {
   List<Definitions> noun = [];

@@ -8,17 +8,17 @@ void initDependencies() {
     () => NavigationServiceImp.instance,
   );
 
-  getIt.registerLazySingleton<AccentCubit>(
-    () => AccentCubit(),
-  );
+  // getIt.registerLazySingleton<AccentCubit>(
+  //   () => AccentCubit(),
+  // );
 
   getIt.registerLazySingleton<ThemeCubit>(
     () => ThemeCubit(),
   );
 
-  getIt.registerLazySingleton<WordOfTheDayCubit>(
-    () => WordOfTheDayCubit(),
-  );
+  // getIt.registerLazySingleton<WordOfTheDayCubit>(
+  //   () => WordOfTheDayCubit(),
+  // );
 
   getIt.registerLazySingleton<HiveHelper>(
     () => HiveHelper.shared,

@@ -13,35 +13,35 @@ class AccentPickerWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          BlocBuilder<AccentCubit, AccentState>(
-            bloc: getIt<AccentCubit>.call(),
-            // listener: (context, state) {},
-            builder: (context, state) => SizedBox(
-              height: context.height(0.2),
-              child: CupertinoPicker(
-                scrollController: FixedExtentScrollController(
-                  initialItem: getIt<AccentCubit>.call().accent,
-                ),
-                useMagnifier: true,
-                magnification: 1.2,
-                itemExtent: 50,
-                onSelectedItemChanged: (value) async => selectedItem = value,
-                children: items
-                    .map(
-                      (item) => Center(
-                        child: Text(
-                          item,
-                          style: context.textTheme.bodyText1,
-                        ),
-                      ),
-                    )
-                    .toList(),
-              ),
-            ),
-          ),
+          // BlocBuilder<AccentCubit, AccentState>(
+          //   bloc: getIt<AccentCubit>.call(),
+          //   // listener: (context, state) {},
+          //   builder: (context, state) => SizedBox(
+          //     height: context.height(0.2),
+          //     child: CupertinoPicker(
+          //       scrollController: FixedExtentScrollController(
+          //         // initialItem: getIt<AccentCubit>.call().accent,
+          //       ),
+          //       useMagnifier: true,
+          //       magnification: 1.2,
+          //       itemExtent: 50,
+          //       onSelectedItemChanged: (value) async => selectedItem = value,
+          //       children: items
+          //           .map(
+          //             (item) => Center(
+          //               child: Text(
+          //                 item,
+          //                 style: context.textTheme.bodyText1,
+          //               ),
+          //             ),
+          //           )
+          //           .toList(),
+          //     ),
+          //   ),
+          // ),
           ElevatedButton(
             onPressed: () async {
-              await getIt<AccentCubit>.call().saveAccent(selectedItem);
+              // await getIt<AccentCubit>.call().saveAccent(selectedItem);
             },
             child: Text(
               "Save",

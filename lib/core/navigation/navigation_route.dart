@@ -31,8 +31,8 @@ class NavigationRoute {
       case KRoute.SEARCH_RESULT_PAGE:
         return _getRoute(const SearchPage());
 
-      case KRoute.WORD_OF_THE_DAY_PAGE:
-        return _getRoute(const WordOfDayPage());
+      // case KRoute.WORD_OF_THE_DAY_PAGE:
+      //   return _getRoute(const WordOfDayPage());
 
       default:
         return MaterialPageRoute(

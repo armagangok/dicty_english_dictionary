@@ -1,69 +1,42 @@
+import 'package:english_accent_dictionary/data/models/request/word_request.dart';
+import 'package:english_accent_dictionary/data/models/response/response_data/meanings/meanings.dart';
+import 'package:english_accent_dictionary/features/search/domain/usecases/search_usecase.dart';
+
+import '../../../../data/models/response/response_data/meanings/definitions/definitions.dart';
+import '../../../../data/models/response/word_response.dart';
 import '../../../../global/export/export.dart';
 
-
+part 'search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> implements WordCubitContract {
   SearchCubit() : super(SearchInitial());
 
-  late final _remoteUsecase = getIt.call<RemoteWordUsecase>();
-  // late final _localUsecase = getIt.call<LocalWordUsecase>();
+  final _searchUsecase = SearchUseCase();
 
   @override
-  late List<Definition> adjective = [];
+  late List<Definitions> adjective = [];
   @override
-  List<Definition> adverb = [];
+  List<Definitions> adverb = [];
   @override
-  List<Definition> articles = [];
+  List<Definitions> articles = [];
   @override
-  List<Definition> interjection = [];
+  List<Definitions> interjection = [];
   @override
-  List<Definition> noun = [];
+  List<Definitions> noun = [];
   @override
-  List<Definition> preposition = [];
+  List<Definitions> preposition = [];
   @override
-  List<Definition> pronoun = [];
+  List<Definitions> pronoun = [];
   @override
-  List<Definition> verb = [];
+  List<Definitions> verb = [];
 
-  List<WordModelResponse> wordList = [];
-
-  Future<void> getAll() async {
-    wordList.clear();
-    var response = await _localUsecase.fetchAllCachedWords();
-
-    response.fold(
-      (failure) => print(failure),
-      (data) => wordList = data,
-    );
-  }
-
-  // Future<void> saveWord(WordModel wordModel) async {
-  //   await _localUsecase.saveWord(wordModel);
-  // }
-
-  // Future<void> deleteByName(WordModel wordModel) async {
-  //   final Map<dynamic, WordModel> deliveriesMap = _hiveWords.toMap();
-  //   dynamic desiredKey;
-  //   deliveriesMap.forEach((key, wordModel) {
-  //     if (wordModel.isSelected) {
-  //       desiredKey = key;
-  //     }
-  //   });
-  //   await _hiveWords.delete(desiredKey);
-  // }
-
-  Future<void> updateWord(int index, WordModelResponse wordModel) async =>
-      await _localUsecase.updateWord(
-        index: index,
-        wordModel: wordModel,
-      );
-
-  // Future<void> deleteAllWords() async => await _hiveWords.clear();
+  List<WordResponse> wordList = [];
 
   Future<void> fetchWord({required String word}) async {
+    var wordRequest = WordRequest(wordText: word);
     clearAllList();
     emit(SearchingState());
-    var response = await _remoteUsecase.fetchWord(word: word);
+    var response = await _searchUsecase.fetchWord(wordRequest);
     response.fold(
       (Failure failure) => emit(
         SearchFailed(
@@ -71,9 +44,9 @@ class SearchCubit extends Cubit<SearchState> implements WordCubitContract {
           errorTitle: "SearchFailed.errorMessage",
         ),
       ),
-      (WordModelResponse wordModel) async {
+      (WordResponse wordModel) async {
         if (wordModel.meanings != null) {
-          for (Meaning element in wordModel.meanings!) {
+          for (Meanings element in wordModel.meanings!) {
             switch (element.partOfSpeech) {
               case "noun":
                 for (var element in element.definitions!) {
@@ -130,18 +103,10 @@ class SearchCubit extends Cubit<SearchState> implements WordCubitContract {
 
         print(wordModel.meanings);
 
-        await saveSearchedWord(wordModel);
+        // await saveSearchedWord(wordModel);
 
-        emit(SearchSucceded(wordModel: wordModel));
+        emit(SearchSucceded(response: wordModel));
       },
-    );
-  }
-
-  Future<void> saveSearchedWord(WordModelResponse word) async {
-    var response = await _localUsecase.saveWord(word);
-    response.fold(
-      (failure) => emit(SearchSavingFailure()),
-      (data) => print("Search saved successfuly. $data"),
     );
   }
 
@@ -156,3 +121,46 @@ class SearchCubit extends Cubit<SearchState> implements WordCubitContract {
     adjective.clear();
   }
 }
+
+
+
+  // Future<void> saveSearchedWord(WordResponseResponse word) async {
+  //   var response = await _localUsecase.saveWord(word);
+  //   response.fold(
+  //     (failure) => emit(SearchSavingFailure()),
+  //     (data) => print("Search saved successfuly. $data"),
+  //   );
+  // }
+
+  // Future<void> getAll() async {
+  //   wordList.clear();
+  //   var response = await _localUsecase.fetchAllCachedWords();
+
+  //   response.fold(
+  //     (failure) => print(failure),
+  //     (data) => wordList = data,
+  //   );
+  // }
+
+  // Future<void> saveWord(WordResponse wordModel) async {
+  //   await _localUsecase.saveWord(wordModel);
+  // }
+
+  // Future<void> deleteByName(WordResponse wordModel) async {
+  //   final Map<dynamic, WordResponse> deliveriesMap = _hiveWords.toMap();
+  //   dynamic desiredKey;
+  //   deliveriesMap.forEach((key, wordModel) {
+  //     if (wordModel.isSelected) {
+  //       desiredKey = key;
+  //     }
+  //   });
+  //   await _hiveWords.delete(desiredKey);
+  // }
+
+  // Future<void> updateWord(int index, WordResponseResponse wordModel) async =>
+  //     await _localUsecase.updateWord(
+  //       index: index,
+  //       response: wordModel,
+  //     );
+
+  // Future<void> deleteAllWords() async => await _hiveWords.clear();
