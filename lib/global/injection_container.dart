@@ -21,9 +21,9 @@ void initDependencies() {
     () => SearchCubit(),
   );
 
-  // getIt.registerLazySingleton<WordOfTheDayCubit>(
-  //   () => WordOfTheDayCubit(),
-  // );
+  getIt.registerLazySingleton<WordOfTheDayCubit>(
+    () => WordOfTheDayCubit(),
+  );
 
   getIt.registerLazySingleton<HiveHelper>(
     () => HiveHelper.shared,

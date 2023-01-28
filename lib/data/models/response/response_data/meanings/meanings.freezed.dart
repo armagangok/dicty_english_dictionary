@@ -21,7 +21,7 @@ Meaning _$MeaningFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Meaning {
   String? get partOfSpeech => throw _privateConstructorUsedError;
-  List<Definitions>? get definitions => throw _privateConstructorUsedError;
+  List<Definition>? get definitions => throw _privateConstructorUsedError;
   List<dynamic>? get synonyms => throw _privateConstructorUsedError;
   List<dynamic>? get antonyms => throw _privateConstructorUsedError;
 
@@ -37,7 +37,7 @@ abstract class $MeaningCopyWith<$Res> {
   @useResult
   $Res call(
       {String? partOfSpeech,
-      List<Definitions>? definitions,
+      List<Definition>? definitions,
       List<dynamic>? synonyms,
       List<dynamic>? antonyms});
 }
@@ -68,7 +68,7 @@ class _$MeaningCopyWithImpl<$Res, $Val extends Meaning>
       definitions: freezed == definitions
           ? _value.definitions
           : definitions // ignore: cast_nullable_to_non_nullable
-              as List<Definitions>?,
+              as List<Definition>?,
       synonyms: freezed == synonyms
           ? _value.synonyms
           : synonyms // ignore: cast_nullable_to_non_nullable
@@ -90,7 +90,7 @@ abstract class _$$_MeaningCopyWith<$Res> implements $MeaningCopyWith<$Res> {
   @useResult
   $Res call(
       {String? partOfSpeech,
-      List<Definitions>? definitions,
+      List<Definition>? definitions,
       List<dynamic>? synonyms,
       List<dynamic>? antonyms});
 }
@@ -118,7 +118,7 @@ class __$$_MeaningCopyWithImpl<$Res>
       definitions: freezed == definitions
           ? _value._definitions
           : definitions // ignore: cast_nullable_to_non_nullable
-              as List<Definitions>?,
+              as List<Definition>?,
       synonyms: freezed == synonyms
           ? _value._synonyms
           : synonyms // ignore: cast_nullable_to_non_nullable
@@ -136,7 +136,7 @@ class __$$_MeaningCopyWithImpl<$Res>
 class _$_Meaning implements _Meaning {
   const _$_Meaning(
       {required this.partOfSpeech,
-      required final List<Definitions>? definitions,
+      required final List<Definition>? definitions,
       required final List<dynamic>? synonyms,
       required final List<dynamic>? antonyms})
       : _definitions = definitions,
@@ -148,9 +148,9 @@ class _$_Meaning implements _Meaning {
 
   @override
   final String? partOfSpeech;
-  final List<Definitions>? _definitions;
+  final List<Definition>? _definitions;
   @override
-  List<Definitions>? get definitions {
+  List<Definition>? get definitions {
     final value = _definitions;
     if (value == null) return null;
     if (_definitions is EqualUnmodifiableListView) return _definitions;
@@ -222,7 +222,7 @@ class _$_Meaning implements _Meaning {
 abstract class _Meaning implements Meaning {
   const factory _Meaning(
       {required final String? partOfSpeech,
-      required final List<Definitions>? definitions,
+      required final List<Definition>? definitions,
       required final List<dynamic>? synonyms,
       required final List<dynamic>? antonyms}) = _$_Meaning;
 
@@ -231,7 +231,7 @@ abstract class _Meaning implements Meaning {
   @override
   String? get partOfSpeech;
   @override
-  List<Definitions>? get definitions;
+  List<Definition>? get definitions;
   @override
   List<dynamic>? get synonyms;
   @override

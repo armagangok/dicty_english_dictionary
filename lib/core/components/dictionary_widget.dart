@@ -8,7 +8,7 @@ class DictionaryWidget extends StatelessWidget {
     required this.definitions,
   }) : super(key: key);
 
-  final List<Definitions> definitions;
+  final List<Definition> definitions;
 
   final _listController = getIt.call<RecentCubit>();
 

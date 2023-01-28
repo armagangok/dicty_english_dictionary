@@ -4,14 +4,14 @@ part 'definitions.freezed.dart';
 part 'definitions.g.dart';
 
 @freezed
-abstract class Definitions with _$Definitions {
-  const factory Definitions({
+abstract class Definition with _$Definition {
+  const factory Definition({
     required String? definition,
     required List? synonyms,
     required List? antonyms,
     required String? example,
-  }) = _Definitions;
+  }) = _Definition;
 
-  factory Definitions.fromJson(Map<String, dynamic> json) =>
-      _$DefinitionsFromJson(json);
+  factory Definition.fromJson(Map<String, dynamic> json) =>
+      _$DefinitionFromJson(json);
 }

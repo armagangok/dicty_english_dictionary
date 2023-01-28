@@ -9,7 +9,7 @@ part 'meanings.g.dart';
 abstract class Meaning with _$Meaning {
   const factory Meaning({
     required String? partOfSpeech,
-    required List<Definitions>? definitions,
+    required List<Definition>? definitions,
     required List? synonyms,
     required List? antonyms,
   }) = _Meaning;

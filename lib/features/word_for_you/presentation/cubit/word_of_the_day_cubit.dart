@@ -1,128 +1,129 @@
-// import 'dart:convert';
+import 'dart:convert';
 
+import 'package:english_accent_dictionary/features/home/domain/usecases/home_usecase.dart';
 
+import '../../../../data/models/response/response_data/meanings/definitions/definitions.dart';
+import '../../../../data/models/response/response_data/meanings/meanings.dart';
+import '../../../../data/models/response/word_response.dart';
+import '../../../../global/export/export.dart';
 
+import 'package:intl/intl.dart';
 
-// import '../../../../data/models/response/word_response.dart';
-// import '../../../../global/export/export.dart';
+part 'word_of_the_day_state.dart';
 
-// import 'package:intl/intl.dart';
+class WordOfTheDayCubit extends Cubit<WordOfTheDayState>
+    implements WordCubitContract {
+  WordOfTheDayCubit() : super(WordOfTheDayInitial()) {
+    _wordUsecase = HomeUseCase();
+    fetchWord();
+  }
 
-// part 'word_of_the_day_state.dart';
+  late final HomeUseCase _wordUsecase;
 
-// class WordOfTheDayCubit extends Cubit<WordOfTheDayState>
-//     implements WordCubitContract {
-//   WordOfTheDayCubit() : super(WordOfTheDayInitial()) {
-//     _wordUsecase = getIt.call<RemoteWordUsecase>();
-//     fetchWord();
-//   }
+  Future<void> fetchWord() async {
+    emit(WordOfTheDayFetchingState());
+    var response = await _wordUsecase.fetchWord(await getDatedWord());
+    response.fold(
+      (Failure failure) => emit(
+        WordOfTheDayFailed(
+          errorMessage: WordOfTheDayFailedState.errorMessage,
+          errorTitle: WordOfTheDayFailedState.errorMessage,
+        ),
+      ),
+      (WordResponse data) {
+        if (data.meanings != null) {
+          for (Meaning element in data.meanings!) {
+            switch (element.partOfSpeech) {
+              case "noun":
+                for (var element in element.definitions!) {
+                  noun.add(element);
+                }
+                break;
 
-//   late final RemoteWordUsecase _wordUsecase;
+              case "verb":
+                for (var element in element.definitions!) {
+                  verb.add(element);
+                }
+                break;
 
-//   Future<void> fetchWord() async {
-//     emit(WordOfTheDayFetchingState());
-//     var response = await _wordUsecase.fetchWord(word: await getDatedWord());
-//     response.fold(
-//       (Failure failure) => emit(
-//         WordOfTheDayFailed(
-//           errorMessage: WordOfTheDayFailedState.errorMessage,
-//           errorTitle: WordOfTheDayFailedState.errorMessage,
-//         ),
-//       ),
-//       (WordResponse data) {
-//         if (data.meanings != null) {
-//           for (Meanings element in data.meanings!) {
-//             switch (element.partOfSpeech) {
-//               case "noun":
-//                 for (var element in element.definitions!) {
-//                   noun.add(element);
-//                 }
-//                 break;
+              case "interjection":
+                for (var element in element.definitions!) {
+                  interjection.add(element);
+                }
+                break;
 
-//               case "verb":
-//                 for (var element in element.definitions!) {
-//                   verb.add(element);
-//                 }
-//                 break;
+              case "pronoun":
+                for (var element in element.definitions!) {
+                  pronoun.add(element);
+                }
+                break;
 
-//               case "interjection":
-//                 for (var element in element.definitions!) {
-//                   interjection.add(element);
-//                 }
-//                 break;
+              case "articles":
+                for (var element in element.definitions!) {
+                  articles.add(element);
+                }
+                break;
 
-//               case "pronoun":
-//                 for (var element in element.definitions!) {
-//                   pronoun.add(element);
-//                 }
-//                 break;
+              case "adverb":
+                for (var element in element.definitions!) {
+                  adverb.add(element);
+                }
+                break;
 
-//               case "articles":
-//                 for (var element in element.definitions!) {
-//                   articles.add(element);
-//                 }
-//                 break;
+              case "preposition":
+                for (var element in element.definitions!) {
+                  preposition.add(element);
+                }
+                break;
 
-//               case "adverb":
-//                 for (var element in element.definitions!) {
-//                   adverb.add(element);
-//                 }
-//                 break;
+              case "adjective":
+                for (var element in element.definitions!) {
+                  adjective.add(element);
+                }
+                break;
 
-//               case "preposition":
-//                 for (var element in element.definitions!) {
-//                   preposition.add(element);
-//                 }
-//                 break;
+              default:
+            }
+          }
+        } else {}
 
-//               case "adjective":
-//                 for (var element in element.definitions!) {
-//                   adjective.add(element);
-//                 }
-//                 break;
+        emit(WordOfTheDaySucceded(wordModel: data));
+      },
+    );
+  }
 
-//               default:
-//             }
-//           }
-//         } else {}
+  @override
+  List<Definition> adjective = [];
 
-//         emit(WordOfTheDaySucceded(wordModel: data));
-//       },
-//     );
-//   }
+  @override
+  List<Definition> adverb = [];
 
-//   @override
-//   List<Definitions> adjective = [];
+  @override
+  List<Definition> articles = [];
 
-//   @override
-//   List<Definitions> adverb = [];
+  @override
+  List<Definition> interjection = [];
 
-//   @override
-//   List<Definitions> articles = [];
+  @override
+  List<Definition> noun = [];
 
-//   @override
-//   List<Definitions> interjection = [];
+  @override
+  List<Definition> preposition = [];
 
-//   @override
-//   List<Definitions> noun = [];
+  @override
+  List<Definition> pronoun = [];
 
-//   @override
-//   List<Definitions> preposition = [];
+  @override
+  List<Definition> verb = [];
 
-//   @override
-//   List<Definitions> pronoun = [];
+  Future<String> getDatedWord() async {
+    final String response =
+        await rootBundle.loadString('assets/data/data.json');
+    final data = await json.decode(response);
 
-//   @override
-//   List<Definitions> verb = [];
+    var now = DateTime.now();
+    var formatter = DateFormat('yyyy-MM-dd');
 
-//   Future<String> getDatedWord() async {
-//     final String response =
-//         await rootBundle.loadString('assets/data/data.json');
-//     final data = await json.decode(response);
-
-//     var now = DateTime.now();
-//     var formatter = DateFormat('yyyy-MM-dd');
-
-//     return data[formatter.format(now)];
-//   }
-// }
+    return data[formatter.format(now)];
+  }
+}

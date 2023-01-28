@@ -6,15 +6,15 @@ part of 'definitions.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Definitions _$$_DefinitionsFromJson(Map<String, dynamic> json) =>
-    _$_Definitions(
+_$_Definition _$$_DefinitionFromJson(Map<String, dynamic> json) =>
+    _$_Definition(
       definition: json['definition'] as String?,
       synonyms: json['synonyms'] as List<dynamic>?,
       antonyms: json['antonyms'] as List<dynamic>?,
       example: json['example'] as String?,
     );
 
-Map<String, dynamic> _$$_DefinitionsToJson(_$_Definitions instance) =>
+Map<String, dynamic> _$$_DefinitionToJson(_$_Definition instance) =>
     <String, dynamic>{
       'definition': instance.definition,
       'synonyms': instance.synonyms,

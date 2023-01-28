@@ -13,21 +13,21 @@ class SearchCubit extends Cubit<SearchState> implements WordCubitContract {
   final _searchUsecase = SearchUseCase();
 
   @override
-  late List<Definitions> adjective = [];
+  late List<Definition> adjective = [];
   @override
-  List<Definitions> adverb = [];
+  List<Definition> adverb = [];
   @override
-  List<Definitions> articles = [];
+  List<Definition> articles = [];
   @override
-  List<Definitions> interjection = [];
+  List<Definition> interjection = [];
   @override
-  List<Definitions> noun = [];
+  List<Definition> noun = [];
   @override
-  List<Definitions> preposition = [];
+  List<Definition> preposition = [];
   @override
-  List<Definitions> pronoun = [];
+  List<Definition> pronoun = [];
   @override
-  List<Definitions> verb = [];
+  List<Definition> verb = [];
 
   List<WordResponse> wordList = [];
 

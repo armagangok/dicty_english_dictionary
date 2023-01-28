@@ -9,7 +9,7 @@ part of 'meanings.dart';
 _$_Meaning _$$_MeaningFromJson(Map<String, dynamic> json) => _$_Meaning(
       partOfSpeech: json['partOfSpeech'] as String?,
       definitions: (json['definitions'] as List<dynamic>?)
-          ?.map((e) => Definitions.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Definition.fromJson(e as Map<String, dynamic>))
           .toList(),
       synonyms: json['synonyms'] as List<dynamic>?,
       antonyms: json['antonyms'] as List<dynamic>?,
