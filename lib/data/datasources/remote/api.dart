@@ -1,4 +1,6 @@
-import '../../../global/export/export.dart';
+import '../../../../global/export/export.dart';
+
+import 'home/home_service.dart';
 import 'interceptor/logging_interceptor.dart';
 
 class Api {

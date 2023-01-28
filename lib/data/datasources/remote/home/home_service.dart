@@ -1,6 +1,6 @@
 import 'package:retrofit/retrofit.dart';
 
-import '../../../global/export/export.dart';
+import '../../../../global/export/export.dart';
 
 part 'home_service.g.dart';
 

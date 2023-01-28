@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../global/export/export.dart';
+import '../datasources/remote/home/home_service.dart';
 
 class WordRepository {
   final HomeClient homeClient = Api().homeClient;
@@ -8,8 +9,6 @@ class WordRepository {
   Future<Either<Failure, WordResponse>> fetchWord(String request) async {
     try {
       var response = await homeClient.fetchWord(request);
-
-      print(response);
 
       return Right(response[0]);
     } catch (e) {

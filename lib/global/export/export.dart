@@ -50,8 +50,8 @@ export '../../core/navigation/navigation_service_imp.dart';
 export '../../core/theme/contract/theme.dart';
 export '../../core/theme/theme.dart';
 export '../../core/theme/theme_service_imp.dart';
-export '../../data/datasources/api.dart';
-export '../../data/datasources/home/home_service.dart';
+export '../../data/datasources/remote/api.dart';
+
 export '../../data/models/response/word_response.dart';
 export '../../features/about_me/about_me_page.dart';
 export '../../features/home/presentation/cubit/accent/accent_cubit.dart';

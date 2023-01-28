@@ -11,3 +11,5 @@ class LocalSavingFailure extends Failure {
 }
 
 class LocalFetchingFailure extends Failure {}
+
+class LocalDeletingFailure extends Failure {}
