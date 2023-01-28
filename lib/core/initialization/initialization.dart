@@ -1,5 +1,5 @@
 
-import 'package:english_accent_dictionary/global/injection.dart';
+import '../../global/injection.dart';
 
 import '../../../global/export/export.dart';
 

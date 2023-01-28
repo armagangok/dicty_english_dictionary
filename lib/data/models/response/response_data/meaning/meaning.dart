@@ -1,9 +1,9 @@
 import '../../../../../global/export/export.dart';
 
-import 'definitions/definitions.dart';
+import 'definitions/definition.dart';
 
-part 'meanings.freezed.dart';
-part 'meanings.g.dart';
+part 'meaning.freezed.dart';
+part 'meaning.g.dart';
 
 @freezed
 abstract class Meaning with _$Meaning {

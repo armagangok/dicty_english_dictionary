@@ -1,4 +1,4 @@
-import 'package:english_accent_dictionary/global/injection.dart';
+import '../../../../../global/injection.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../global/export/export.dart';

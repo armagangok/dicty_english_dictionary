@@ -1,10 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:english_accent_dictionary/core/error/contract/failure.dart';
-import 'package:english_accent_dictionary/core/error/network_failure.dart';
-import 'package:english_accent_dictionary/data/datasources/api.dart';
-import 'package:english_accent_dictionary/data/datasources/home/home_service.dart';
 
-import '../models/response/word_response.dart';
+import '../../global/export/export.dart';
 
 class WordRepository {
   final HomeClient homeClient = Api().homeClient;

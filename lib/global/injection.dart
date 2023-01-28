@@ -1,4 +1,3 @@
-import '../features/home/presentation/cubit/theme/theme_cubit_cubit.dart';
 import 'export/export.dart';
 
 final themeCubit = getIt.call<ThemeCubit>();

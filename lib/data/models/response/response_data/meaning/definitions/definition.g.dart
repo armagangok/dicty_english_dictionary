@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'definitions.dart';
+part of 'definition.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

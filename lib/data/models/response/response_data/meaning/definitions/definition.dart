@@ -1,7 +1,7 @@
 import '../../../../../../global/export/export.dart';
 
-part 'definitions.freezed.dart';
-part 'definitions.g.dart';
+part 'definition.freezed.dart';
+part 'definition.g.dart';
 
 @freezed
 abstract class Definition with _$Definition {

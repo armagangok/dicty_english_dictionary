@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:english_accent_dictionary/data/repositories/word_repository.dart';
+import '../../../../data/repositories/word_repository.dart';
 
 import '../../../../core/error/contract/failure.dart';
 import '../../../../data/models/response/word_response.dart';

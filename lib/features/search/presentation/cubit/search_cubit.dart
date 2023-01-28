@@ -1,9 +1,5 @@
-import 'package:english_accent_dictionary/data/models/response/response_data/meanings/meanings.dart';
-import 'package:english_accent_dictionary/features/search/domain/usecases/search_usecase.dart';
-
-import '../../../../data/models/response/response_data/meanings/definitions/definitions.dart';
-import '../../../../data/models/response/word_response.dart';
 import '../../../../global/export/export.dart';
+import '../../domain/usecases/search_usecase.dart';
 
 part 'search_state.dart';
 

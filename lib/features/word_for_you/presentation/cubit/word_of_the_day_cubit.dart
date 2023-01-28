@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:english_accent_dictionary/features/home/domain/usecases/home_usecase.dart';
+import '../../../home/domain/usecases/home_usecase.dart';
 
-import '../../../../data/models/response/response_data/meanings/definitions/definitions.dart';
-import '../../../../data/models/response/response_data/meanings/meanings.dart';
+import '../../../../data/models/response/response_data/meaning/definitions/definition.dart';
+import '../../../../data/models/response/response_data/meaning/meaning.dart';
 import '../../../../data/models/response/word_response.dart';
 import '../../../../global/export/export.dart';
 
@@ -32,53 +32,53 @@ class WordOfTheDayCubit extends Cubit<WordOfTheDayState>
       ),
       (WordResponse data) {
         if (data.meanings != null) {
-          for (Meaning element in data.meanings!) {
-            switch (element.partOfSpeech) {
+          for (Meaning meaning in data.meanings!) {
+            switch (meaning.partOfSpeech) {
               case "noun":
-                for (var element in element.definitions!) {
-                  noun.add(element);
+                for (var definition in meaning.definitions!) {
+                  noun.add(definition);
                 }
                 break;
 
               case "verb":
-                for (var element in element.definitions!) {
-                  verb.add(element);
+                for (var definition in meaning.definitions!) {
+                  verb.add(definition);
                 }
                 break;
 
               case "interjection":
-                for (var element in element.definitions!) {
-                  interjection.add(element);
+                for (var definition in meaning.definitions!) {
+                  interjection.add(definition);
                 }
                 break;
 
               case "pronoun":
-                for (var element in element.definitions!) {
-                  pronoun.add(element);
+                for (var definition in meaning.definitions!) {
+                  pronoun.add(definition);
                 }
                 break;
 
               case "articles":
-                for (var element in element.definitions!) {
-                  articles.add(element);
+                for (var definition in meaning.definitions!) {
+                  articles.add(definition);
                 }
                 break;
 
               case "adverb":
-                for (var element in element.definitions!) {
-                  adverb.add(element);
+                for (var definition in meaning.definitions!) {
+                  adverb.add(definition);
                 }
                 break;
 
               case "preposition":
-                for (var element in element.definitions!) {
-                  preposition.add(element);
+                for (var definition in meaning.definitions!) {
+                  preposition.add(definition);
                 }
                 break;
 
               case "adjective":
-                for (var element in element.definitions!) {
-                  adjective.add(element);
+                for (var definition in meaning.definitions!) {
+                  adjective.add(definition);
                 }
                 break;
 

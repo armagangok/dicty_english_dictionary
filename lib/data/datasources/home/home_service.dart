@@ -1,4 +1,3 @@
-import 'package:english_accent_dictionary/data/models/response/word_response.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../../global/export/export.dart';
