@@ -35,7 +35,7 @@ class LocalServiceImp implements LocalService {
 
   @override
   Future<void> deleteWord(int index) async {
-    await _hiveHelper.deleteDataAt<String>(
+    await _hiveHelper.deleteData<String>(
       HiveKeys.wordBox,
       index,
     );

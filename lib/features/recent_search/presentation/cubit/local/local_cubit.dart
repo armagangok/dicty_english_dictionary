@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_final_fields
+// ignore_for_file: prefer_final_fields, avoid_function_literals_in_foreach_calls
 
 import 'dart:convert';
 
@@ -36,7 +36,9 @@ class LocalCubit extends Cubit<LocalState> implements WordCubitContract {
 
   Box<String> get getHiveBox => _hiveWords;
 
-  Future<void> deleteByName(String word) async => await _hiveWords.delete(word);
+  // Future<void> deleteIfSelected(WordResponse wordModel) async {
+  //   await _localUsecase.deleteWord(wordModel);
+  // }
 
   Future<void> updateWord(int index, WordResponse wordModel) async {
     String jsonWordData = jsonEncode(wordModel.toJson());
@@ -117,6 +119,16 @@ class LocalCubit extends Cubit<LocalState> implements WordCubitContract {
     adverb.clear();
     preposition.clear();
     adjective.clear();
+  }
+
+  int index = 0;
+  Future<void> deleteIfSelected() async {
+    wordList.forEach((word) async {
+      if (word.isSelected) {
+        await _localUsecase.deleteWord(index);
+      }
+      index++;
+    });
   }
 }
 

@@ -8,11 +8,12 @@ class LocalRepository {
 
   final localService = LocalServiceImp.instance;
 
-  Future<Either<Failure, bool>> deleteWord(int index) async {
+  Future<Either<Failure, bool>> deleteWord(index) async {
     try {
       await localService.deleteWord(index);
       return const Right(true);
     } catch (e) {
+      print(e);
       return left(LocalDeletingFailure());
     }
   }
