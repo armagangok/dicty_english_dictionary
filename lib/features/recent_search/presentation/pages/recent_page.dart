@@ -4,8 +4,6 @@ import 'recent_detail_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../global/export/export.dart';
-import '../cubit/local/local_cubit.dart';
-import '../cubit/recent/recent_cubit.dart';
 
 class RecentPage extends StatefulWidget {
   const RecentPage({Key? key}) : super(key: key);
@@ -20,8 +18,8 @@ class _RecentPageState extends State<RecentPage> {
 
   @override
   void initState() {
-    _recentCubit = getIt.call<RecentCubit>();
-    _localCubit = getIt.call<LocalCubit>();
+    _recentCubit = Injection.recentCubit;
+    _localCubit = Injection.localCubit;
 
     super.initState();
   }
@@ -100,7 +98,9 @@ class _RecentPageState extends State<RecentPage> {
                 title: "Warning",
                 message: "Do you want to delete selected items?",
                 dialogAction: () => _localCubit.wordList.forEach(
-                  (element) async => await _localCubit.deleteByName(element),
+                  (element) async => await _localCubit.deleteByName(
+                    element.word!,
+                  ),
                 ),
               );
             },
@@ -151,6 +151,7 @@ class _RecentPageState extends State<RecentPage> {
 
         return ListTile(
           onTap: () async {
+            Injection.localCubit.fetchWord(word: wordModel);
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -182,8 +183,8 @@ class _RecentPageState extends State<RecentPage> {
           value: wordList[index].isSelected,
           onChanged: (val) async {
             var word = wordList[index];
-            // word.isSelected = val!;
-            // await _localCubit.updateWord(index, word);
+
+            await _localCubit.updateWord(index, word);
           },
           title: Text(
             wordList[index].word ?? "null",
@@ -195,6 +196,7 @@ class _RecentPageState extends State<RecentPage> {
       );
 
 //
+
   Widget _noRecentSearch() => Builder(
         builder: (context) => Center(
           child: Padding(

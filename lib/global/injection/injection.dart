@@ -5,7 +5,7 @@ import 'package:english_accent_dictionary/global/export/export.dart';
 class Injection {
   Injection._();
 
-  static NavigationService get navigator => getIt.call<NavigationServiceImp>();
+  static NavigationService get navigator => getIt.call<NavigationService>();
 
   static ThemeCubit get themeCubit => getIt.call<ThemeCubit>();
 
