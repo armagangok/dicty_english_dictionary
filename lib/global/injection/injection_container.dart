@@ -1,3 +1,4 @@
+
 import '../export/export.dart';
 
 var getIt = GetIt.instance;
@@ -27,9 +28,9 @@ void initDependencies() {
     () => HiveHelper.shared,
   );
 
-  // getIt.registerLazySingleton<LocalWordUsecase>(
-  //   () => LocalWordUsecase(repository: localWordRepository),
-  // );
+  getIt.registerLazySingleton<RecentSearchUsecase>(
+    () => RecentSearchUsecase(),
+  );
 
   getIt.registerLazySingleton<TabCubit>(
     () => TabCubit(),

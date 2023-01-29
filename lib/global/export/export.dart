@@ -51,21 +51,19 @@ export '../../core/theme/contract/theme.dart';
 export '../../core/theme/theme.dart';
 export '../../core/theme/theme_service_imp.dart';
 export '../../data/datasources/remote/api.dart';
-
 export '../../data/models/response/word_response.dart';
 export '../../features/about_me/about_me_page.dart';
 export '../../features/home/presentation/cubit/accent/accent_cubit.dart';
 export '../../features/home/presentation/cubit/home/home_cubit.dart';
 export '../../features/home/presentation/cubit/theme/theme_cubit_cubit.dart';
+export '../../features/recent_search/domain/usecases/recent_search_usecase.dart';
+export '../../features/recent_search/presentation/cubit/local/local_cubit.dart';
+export '../../features/recent_search/presentation/cubit/recent/recent_cubit.dart';
+export '../../features/search/presentation/cubit/search_cubit.dart';
 export '../../features/word_for_you/presentation/pages/word_of_the_day.dart';
 export '../constant/kasset.dart';
 export '../constant/kcolor.dart';
 export '../constant/knetwork.dart';
 export '../constant/kstrings.dart';
-export '../injection/injection_container.dart';
-
-export '../../features/recent_search/presentation/cubit/local/local_cubit.dart';
-export '../../features/recent_search/presentation/cubit/recent/recent_cubit.dart';
-export '../../features/search/presentation/cubit/search_cubit.dart';
-
 export '../injection/injection.dart';
+export '../injection/injection_container.dart';
