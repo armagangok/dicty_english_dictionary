@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../../global/export/export.dart';
 import '../components/drawer_widget.dart';
 import '../components/home_app_bar.dart';
-import '../cubit/home/home_cubit.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -80,7 +79,7 @@ class _HomePageState extends State<HomePage> {
         alignment: Alignment.bottomRight,
         child: MyBlinkingButton(
           onTap: () async =>
-              await UrlLauncherHelper.shared.openUrl(KNetwork.myUrl),
+              await UrlLauncherHelper.shared.openUrl(linkTreeUrl),
           text: KString.madeBy,
         ),
       );
@@ -88,7 +87,7 @@ class _HomePageState extends State<HomePage> {
   Widget get _followButton => Builder(
         builder: (context) => GestureDetector(
           onTap: () async =>
-              await UrlLauncherHelper.shared.openUrl(KNetwork.appUrl),
+              await UrlLauncherHelper.shared.openUrl(linkTreeUrl),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -112,7 +111,7 @@ class _HomePageState extends State<HomePage> {
   Widget get _dictyText => Builder(
         builder: (context) => AutoSizeText(
           KString.dictyText,
-          style: context.textTheme.headline4!.copyWith(
+          style: context.textTheme.headlineMedium!.copyWith(
             color: context.colors.primary,
             fontStyle: FontStyle.italic,
             fontWeight: FontWeight.w800,

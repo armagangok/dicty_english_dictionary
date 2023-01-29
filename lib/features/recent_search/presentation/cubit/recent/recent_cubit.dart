@@ -6,7 +6,7 @@ part 'recent_state.dart';
 class RecentCubit extends Cubit<RecentState> {
   RecentCubit() : super(RecentInitial());
 
-    bool _isEditting = false;
+  bool _isEditting = false;
   bool _isExtended = true;
   final List<bool> _choosenItemList = [];
 

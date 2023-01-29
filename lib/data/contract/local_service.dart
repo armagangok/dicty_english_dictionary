@@ -3,7 +3,7 @@ abstract class LocalService {
 
   Future<dynamic> fetchWord();
 
-  Future<void> updateWord();
+  Future<void> updateWord(String word, int index);
 
   Future<void> deleteWord(int index);
 }

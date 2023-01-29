@@ -26,7 +26,7 @@ class AboutMeView extends StatelessWidget {
 
   Widget get _contactMeButton => Builder(
       builder: (context) => GestureDetector(
-          onTap: () => UrlLauncherHelper.shared.openUrl(KNetwork.myUrl),
+          onTap: () => UrlLauncherHelper.shared.openUrl(linkTreeUrl),
           child: Row(mainAxisSize: MainAxisSize.min, children: [
             Text(
               "Contact with me ",

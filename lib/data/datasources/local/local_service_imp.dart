@@ -25,7 +25,13 @@ class LocalServiceImp implements LocalService {
   }
 
   @override
-  Future<void> updateWord() async {}
+  Future<void> updateWord(String word, int index) async {
+    await _hiveHelper.putDataAt<String>(
+      HiveKeys.wordBox,
+      word,
+      index,
+    );
+  }
 
   @override
   Future<void> deleteWord(int index) async {

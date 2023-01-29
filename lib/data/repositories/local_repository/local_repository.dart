@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:english_accent_dictionary/core/error/contract/failure.dart';
-import 'package:english_accent_dictionary/core/error/local_failure.dart';
 import 'package:english_accent_dictionary/data/datasources/local/local_service_imp.dart';
+import 'package:english_accent_dictionary/global/export/export.dart';
 
 class LocalRepository {
   LocalRepository._();
@@ -41,7 +40,9 @@ class LocalRepository {
     }
   }
 
-  Future<void> updateWord() async {}
+  Future<void> updateWord(String word, int index) async {
+    localService.updateWord(word, index);
+  }
 
   String fetchLanguage(int index) {
     var response = localService.fetchLanguage(index);

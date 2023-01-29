@@ -1,6 +1,6 @@
-import '../../../../core/error/contract/failure.dart';
+import 'package:english_accent_dictionary/global/export/export.dart';
+
 import 'package:dartz/dartz.dart';
-import '../../../../core/error/local_failure.dart';
 import '../../../../data/repositories/local_repository/local_repository.dart';
 
 class RecentSearchUsecase {
@@ -24,8 +24,8 @@ class RecentSearchUsecase {
     return resposne;
   }
 
-  Future<void> updateWord() async {
-    var resposne = await _localRepository.updateWord();
+  Future<void> updateWord(String word, int index) async {
+    var resposne = await _localRepository.updateWord(word, index);
 
     return resposne;
   }

@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_final_fields
 
+import 'dart:convert';
+
 import '../../../../../global/export/export.dart';
-import '../../../domain/usecases/recent_search_usecase.dart';
 
 part 'local_state.dart';
 
@@ -37,8 +38,13 @@ class LocalCubit extends Cubit<LocalState> implements WordCubitContract {
 
   Future<void> deleteByName(String word) async => await _hiveWords.delete(word);
 
-  Future<void> updateWord(int index, WordResponse wordModel) async =>
-      await _localUsecase.updateWord();
+  Future<void> updateWord(int index, WordResponse wordModel) async {
+    String jsonWordData = jsonEncode(wordModel.toJson());
+    await _localUsecase.updateWord(
+      jsonWordData,
+      index,
+    );
+  }
 
   Future<void> deleteAllWords() async => await _hiveWords.clear();
 

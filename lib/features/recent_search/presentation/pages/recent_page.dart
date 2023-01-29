@@ -36,7 +36,6 @@ class _RecentPageState extends State<RecentPage> {
           valueListenable: _localCubit.getHiveBox.listenable(),
           builder: (context, Box<String> wordBox, _) {
             List<WordResponse> wordList = [];
-
             for (var element in wordBox.values) {
               var model = WordResponse.fromJson(jsonDecode(element));
               wordList.add(model);
@@ -172,28 +171,32 @@ class _RecentPageState extends State<RecentPage> {
     );
   }
 
-  ListView editListView(List<WordResponse> wordList) => ListView.separated(
-        padding: EdgeInsets.zero,
-        separatorBuilder: (context, index) => const Divider(),
-        shrinkWrap: true,
-        physics: const ClampingScrollPhysics(),
-        itemCount: wordList.length,
-        itemBuilder: (context, index) => CheckboxListTile(
-          activeColor: KColor.deepOrange,
-          value: wordList[index].isSelected,
-          onChanged: (val) async {
-            var word = wordList[index];
+  ListView editListView(List<WordResponse> wordList) {
+    print("object");
+    return ListView.separated(
+      padding: EdgeInsets.zero,
+      separatorBuilder: (context, index) => const Divider(),
+      shrinkWrap: true,
+      physics: const ClampingScrollPhysics(),
+      itemCount: wordList.length,
+      itemBuilder: (context, index) => CheckboxListTile(
+        activeColor: KColor.deepOrange,
+        value: wordList[index].isSelected,
+        onChanged: (val) async {
+          WordResponse word = wordList[index];
+          word = word.copyWith(isSelected: !word.isSelected);
 
-            await _localCubit.updateWord(index, word);
-          },
-          title: Text(
-            wordList[index].word ?? "null",
-            style: context.textTheme.bodyMedium!.copyWith(
-              color: context.primary,
-            ),
+          await _localCubit.updateWord(index, word);
+        },
+        title: Text(
+          wordList[index].word ?? "null",
+          style: context.textTheme.bodyMedium!.copyWith(
+            color: context.primary,
           ),
         ),
-      );
+      ),
+    );
+  }
 
 //
 
