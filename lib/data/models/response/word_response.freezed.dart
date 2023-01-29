@@ -25,6 +25,7 @@ mixin _$WordResponse {
   List<Meaning>? get meanings => throw _privateConstructorUsedError;
   License? get license => throw _privateConstructorUsedError;
   List<String>? get sourceUrls => throw _privateConstructorUsedError;
+  bool get isSelected => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +44,8 @@ abstract class $WordResponseCopyWith<$Res> {
       List<Phonetics>? phonetics,
       List<Meaning>? meanings,
       License? license,
-      List<String>? sourceUrls});
+      List<String>? sourceUrls,
+      bool isSelected});
 
   $LicenseCopyWith<$Res>? get license;
 }
@@ -66,6 +68,7 @@ class _$WordResponseCopyWithImpl<$Res, $Val extends WordResponse>
     Object? meanings = freezed,
     Object? license = freezed,
     Object? sourceUrls = freezed,
+    Object? isSelected = null,
   }) {
     return _then(_value.copyWith(
       word: freezed == word
@@ -88,6 +91,10 @@ class _$WordResponseCopyWithImpl<$Res, $Val extends WordResponse>
           ? _value.sourceUrls
           : sourceUrls // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      isSelected: null == isSelected
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -117,7 +124,8 @@ abstract class _$$_WordResponseCopyWith<$Res>
       List<Phonetics>? phonetics,
       List<Meaning>? meanings,
       License? license,
-      List<String>? sourceUrls});
+      List<String>? sourceUrls,
+      bool isSelected});
 
   @override
   $LicenseCopyWith<$Res>? get license;
@@ -139,6 +147,7 @@ class __$$_WordResponseCopyWithImpl<$Res>
     Object? meanings = freezed,
     Object? license = freezed,
     Object? sourceUrls = freezed,
+    Object? isSelected = null,
   }) {
     return _then(_$_WordResponse(
       word: freezed == word
@@ -161,6 +170,10 @@ class __$$_WordResponseCopyWithImpl<$Res>
           ? _value._sourceUrls
           : sourceUrls // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      isSelected: null == isSelected
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -173,7 +186,8 @@ class _$_WordResponse implements _WordResponse {
       required final List<Phonetics>? phonetics,
       required final List<Meaning>? meanings,
       required this.license,
-      required final List<String>? sourceUrls})
+      required final List<String>? sourceUrls,
+      this.isSelected = false})
       : _phonetics = phonetics,
         _meanings = meanings,
         _sourceUrls = sourceUrls;
@@ -216,8 +230,12 @@ class _$_WordResponse implements _WordResponse {
   }
 
   @override
+  @JsonKey()
+  final bool isSelected;
+
+  @override
   String toString() {
-    return 'WordResponse(word: $word, phonetics: $phonetics, meanings: $meanings, license: $license, sourceUrls: $sourceUrls)';
+    return 'WordResponse(word: $word, phonetics: $phonetics, meanings: $meanings, license: $license, sourceUrls: $sourceUrls, isSelected: $isSelected)';
   }
 
   @override
@@ -231,7 +249,9 @@ class _$_WordResponse implements _WordResponse {
             const DeepCollectionEquality().equals(other._meanings, _meanings) &&
             (identical(other.license, license) || other.license == license) &&
             const DeepCollectionEquality()
-                .equals(other._sourceUrls, _sourceUrls));
+                .equals(other._sourceUrls, _sourceUrls) &&
+            (identical(other.isSelected, isSelected) ||
+                other.isSelected == isSelected));
   }
 
   @JsonKey(ignore: true)
@@ -242,7 +262,8 @@ class _$_WordResponse implements _WordResponse {
       const DeepCollectionEquality().hash(_phonetics),
       const DeepCollectionEquality().hash(_meanings),
       license,
-      const DeepCollectionEquality().hash(_sourceUrls));
+      const DeepCollectionEquality().hash(_sourceUrls),
+      isSelected);
 
   @JsonKey(ignore: true)
   @override
@@ -264,7 +285,8 @@ abstract class _WordResponse implements WordResponse {
       required final List<Phonetics>? phonetics,
       required final List<Meaning>? meanings,
       required final License? license,
-      required final List<String>? sourceUrls}) = _$_WordResponse;
+      required final List<String>? sourceUrls,
+      final bool isSelected}) = _$_WordResponse;
 
   factory _WordResponse.fromJson(Map<String, dynamic> json) =
       _$_WordResponse.fromJson;
@@ -279,6 +301,8 @@ abstract class _WordResponse implements WordResponse {
   License? get license;
   @override
   List<String>? get sourceUrls;
+  @override
+  bool get isSelected;
   @override
   @JsonKey(ignore: true)
   _$$_WordResponseCopyWith<_$_WordResponse> get copyWith =>

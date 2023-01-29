@@ -4,7 +4,10 @@ import 'package:english_accent_dictionary/core/error/local_failure.dart';
 import 'package:english_accent_dictionary/data/datasources/local/local_service_imp.dart';
 
 class LocalRepository {
-  final localService = LocalServiceImp();
+  LocalRepository._();
+  static LocalRepository instance = LocalRepository._();
+
+  final localService = LocalServiceImp.instance;
 
   Future<Either<Failure, bool>> deleteWord(int index) async {
     try {
@@ -39,4 +42,21 @@ class LocalRepository {
   }
 
   Future<void> updateWord() async {}
+
+  String fetchLanguage(int index) {
+    var response = localService.fetchLanguage(index);
+    return response;
+  }
+
+  Future<Either<Failure, bool>> saveLanguage(String lang) async {
+    try {
+      await localService.saveLanguage(lang);
+      return const Right(true);
+    } catch (e) {
+      return Left(LocalSavingFailure(
+        errorMessage: "",
+        errorTitle: "",
+      ));
+    }
+  }
 }

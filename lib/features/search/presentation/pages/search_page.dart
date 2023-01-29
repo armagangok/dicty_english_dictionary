@@ -16,7 +16,6 @@ class _SearchPageState extends State<SearchPage> {
     navigator = getIt<NavigationService>.call();
 
     _searchCubit = getIt.call<SearchCubit>();
-    // _hiveService = getIt..call<SearchCubit>();
     super.initState();
   }
 

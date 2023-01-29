@@ -21,6 +21,7 @@ _$_WordResponse _$$_WordResponseFromJson(Map<String, dynamic> json) =>
       sourceUrls: (json['sourceUrls'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      isSelected: json['isSelected'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_WordResponseToJson(_$_WordResponse instance) =>
@@ -30,4 +31,5 @@ Map<String, dynamic> _$$_WordResponseToJson(_$_WordResponse instance) =>
       'meanings': instance.meanings,
       'license': instance.license,
       'sourceUrls': instance.sourceUrls,
+      'isSelected': instance.isSelected,
     };

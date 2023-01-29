@@ -2,6 +2,9 @@ import '../../../global/export/export.dart';
 import '../../contract/local_service.dart';
 
 class LocalServiceImp implements LocalService {
+  LocalServiceImp._();
+  static final instance = LocalServiceImp._();
+
   final _hiveHelper = HiveHelper.shared;
 
   @override
@@ -30,5 +33,19 @@ class LocalServiceImp implements LocalService {
       HiveKeys.wordBox,
       index,
     );
+  }
+
+  String fetchLanguage(int index) {
+    var response = _hiveHelper.getAt(
+      index,
+      HiveKeys.countryBox,
+    );
+
+    return response;
+  }
+
+  Future<void> saveLanguage(String lang) async {
+    await _hiveHelper.clearBox(HiveKeys.countryBox);
+    await _hiveHelper.addData(HiveKeys.countryBox, lang);
   }
 }

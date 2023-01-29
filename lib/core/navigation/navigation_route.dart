@@ -1,9 +1,10 @@
+import 'package:english_accent_dictionary/features/recent_search/presentation/pages/recent_detail_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/recent_search/presentation/pages/recent_page.dart';
 import '../../features/search/presentation/pages/search_page.dart';
 import '../../global/export/export.dart';
-
 
 class NavigationRoute {
   static final NavigationRoute _instance = NavigationRoute._();
@@ -20,13 +21,13 @@ class NavigationRoute {
 
       // case KRoute.RECENT_DETAIL_PAGE:
       //   return _getRoute(
-      //     RecentDetailWiew(
-      //       wordModel: WordModel(isSelected: false),
+      //     RecentDetailPage(
+      //       wordModel: WordResponse(word: "word", phonetics: phonetics, meanings: meanings, license: license, sourceUrls: sourceUrls),
       //     ),
       //   );
 
-      // case KRoute.RECENT_PAGE:
-      //   return _getRoute(const RecentPage());
+      case KRoute.RECENT_PAGE:
+        return _getRoute(const RecentPage());
 
       case KRoute.SEARCH_RESULT_PAGE:
         return _getRoute(const SearchPage());

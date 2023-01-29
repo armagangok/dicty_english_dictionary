@@ -1,7 +1,6 @@
 import '../../../global/export/export.dart';
 
 import 'response_data/license/license.dart';
-import 'response_data/meaning/meaning.dart';
 import 'response_data/phonetics/phonetics.dart';
 
 part 'word_response.freezed.dart';
@@ -15,8 +14,11 @@ abstract class WordResponse with _$WordResponse {
     required List<Meaning>? meanings,
     required License? license,
     required List<String>? sourceUrls,
+    @Default(false) bool isSelected,
   }) = _WordResponse;
 
   factory WordResponse.fromJson(Map<String, dynamic> json) =>
       _$WordResponseFromJson(json);
+
+      
 }

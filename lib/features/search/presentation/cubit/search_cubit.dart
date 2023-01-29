@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../../../../global/export/export.dart';
 import '../../domain/usecases/search_usecase.dart';
 
@@ -28,8 +30,6 @@ class SearchCubit extends Cubit<SearchState> implements WordCubitContract {
   List<WordResponse> wordList = [];
 
   Future<void> fetchWord({required String word}) async {
-    // var wordRequest = WordRequest(wordText: word);
-
     clearAllList();
     emit(SearchingState());
     var response = await _searchUsecase.fetchWord(word);
@@ -96,13 +96,16 @@ class SearchCubit extends Cubit<SearchState> implements WordCubitContract {
           }
         }
 
-        print(wordModel.meanings);
-
-        // await saveSearchedWord(wordModel);
+        await saveSearchedWord(wordModel);
 
         emit(SearchSucceded(response: wordModel));
       },
     );
+  }
+
+  Future saveSearchedWord(WordResponse wordResponse) async {
+    var jsonWordData = jsonEncode(wordResponse.toJson());
+    await _searchUsecase.saveWord(jsonWordData);
   }
 
   void clearAllList() {

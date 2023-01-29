@@ -10,7 +10,9 @@ part of 'home_service.dart';
 
 class _HomeClient implements HomeClient {
   _HomeClient(
-    this._dio) {
+    this._dio, {
+    this.baseUrl,
+  }) {
     baseUrl ??= 'https://api.dictionaryapi.dev/api/v2/entries/en/';
   }
 
@@ -32,7 +34,7 @@ class _HomeClient implements HomeClient {
     )
             .compose(
               _dio.options,
-              word,
+              '${word}',
               queryParameters: queryParameters,
               data: _data,
             )

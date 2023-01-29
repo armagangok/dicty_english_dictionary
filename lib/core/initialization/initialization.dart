@@ -1,6 +1,3 @@
-
-import '../../global/injection.dart';
-
 import '../../../global/export/export.dart';
 
 class Initialization {
@@ -15,7 +12,7 @@ class Initialization {
     await HiveHelper.shared.initializeHive();
 
     // await localWordUsecase.setupLanguage();
-    await themeService.initTheme();
+    await ThemeServiceImp.instance.initTheme();
 
     // await TextToSpeech.instance.initTTS();
   }

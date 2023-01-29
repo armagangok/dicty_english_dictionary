@@ -18,8 +18,8 @@ export '../../../../core/components/ios_dialog.dart';
 export '../../../../core/error/network_failure.dart';
 export '../../../../core/helpers/hive/hive_keys.dart';
 export '../../../../core/helpers/log_helper.dart';
-export  '../../../../data/models/response/response_data/meaning/definitions/definition.dart';
-export  '../../../../data/models/response/response_data/meaning/meaning.dart';
+export '../../../../data/models/response/response_data/meaning/definitions/definition.dart';
+export '../../../../data/models/response/response_data/meaning/meaning.dart';
 export '../../core/components/custom_app_bar.dart';
 export '../../core/components/custom_text_field.dart';
 export '../../core/components/dictionary_widget.dart';
@@ -62,4 +62,10 @@ export '../constant/kasset.dart';
 export '../constant/kcolor.dart';
 export '../constant/knetwork.dart';
 export '../constant/kstrings.dart';
-export '../injection_container.dart';
+export '../injection/injection_container.dart';
+
+export '../../features/recent_search/presentation/cubit/local/local_cubit.dart';
+export '../../features/recent_search/presentation/cubit/recent/recent_cubit.dart';
+export '../../features/search/presentation/cubit/search_cubit.dart';
+
+export '../injection/injection.dart';

@@ -4,6 +4,8 @@ class HiveBoxes {
   HiveBoxes._();
 
   static final wordBox = Hive.box<String>(HiveKeys.wordBox);
+
+  static final countryBox = Hive.box<String>(HiveKeys.countryBox);
 }
 
 class HiveKeys {

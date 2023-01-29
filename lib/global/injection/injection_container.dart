@@ -1,6 +1,4 @@
-import '../features/search/presentation/cubit/search_cubit.dart';
-import '../features/recent_search/presentation/cubit/recent/recent_cubit.dart';
-import 'export/export.dart';
+import '../export/export.dart';
 
 var getIt = GetIt.instance;
 
@@ -37,16 +35,13 @@ void initDependencies() {
     () => TabCubit(),
   );
 
-  getIt.registerLazySingleton<ThemeService>(
-    () => ThemeServiceImp.instance,
-  );
   getIt.registerLazySingleton<HomeCubit>(
     () => HomeCubit(),
   );
   getIt.registerLazySingleton<RecentCubit>(
     () => RecentCubit(),
   );
-  // getIt.registerLazySingleton<LocalCubit>(
-  //   () => LocalCubit(),
-  // );
+  getIt.registerLazySingleton<LocalCubit>(
+    () => LocalCubit(),
+  );
 }
