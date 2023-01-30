@@ -29,6 +29,7 @@ class RecentPage extends StatelessWidget {
               var model = WordResponse.fromJson(jsonDecode(element));
               wordList.add(model);
             }
+            Injection.localCubit.setWordList = wordList;
 
             return wordBox.isEmpty
                 ? const NoRecentSearchWidget()

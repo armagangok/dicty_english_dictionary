@@ -30,6 +30,7 @@ class LocalCubit extends Cubit<LocalState> implements WordCubitContract {
 
   List<WordResponse> _wordList = [];
   List<WordResponse> get wordList => _wordList;
+  set wordList(List<WordResponse> list) => _wordList = list;
   set setWordList(List<WordResponse> wordList) => _wordList = wordList;
 
   final Box<String> _hiveWords = HiveBoxes.wordBox;
@@ -123,11 +124,13 @@ class LocalCubit extends Cubit<LocalState> implements WordCubitContract {
 
   int index = 0;
   Future<void> deleteIfSelected() async {
+    print(wordList);
     wordList.forEach((word) async {
       if (word.isSelected) {
         await _localUsecase.deleteWord(index);
+
+        index++;
       }
-      index++;
     });
   }
 }
